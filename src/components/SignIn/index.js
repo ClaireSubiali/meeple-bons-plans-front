@@ -11,7 +11,6 @@ import {
 function SignIn() {
   return (
     <div className="Parent">
-     
       <div className="title"><FontAwesomeIcon icon={faAddressCard} /> <h1 className="h1-inscription"> Créer un compte</h1></div>
       <input className="input--inscription" placeholder="Choisir un pseudo" type="text" />
       <span className="input--span">Ce pseudo n'est pas disponible</span>
