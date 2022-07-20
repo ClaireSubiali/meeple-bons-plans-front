@@ -15,6 +15,7 @@ import CGU from '../CGU';
 import LegalMentions from '../LegalMentions';
 import SearchResults from '../SearchResults';
 import Error from '../Error';
+import ContactForm from '../ContactForm';
 
 // == Composant
 function App() {
@@ -32,6 +33,7 @@ function App() {
         <Route path="/CGU" element={<CGU />} />
         <Route path="/mentions-legales" element={<LegalMentions />} />
         <Route path="/recherche?s=:searchWord" element={<SearchResults />} />
+        <Route path="/contact" element={<ContactForm />} />
         <Route path="*" element={<Error />} />
       </Routes>
       <Footer />
