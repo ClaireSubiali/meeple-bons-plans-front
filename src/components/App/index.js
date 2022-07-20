@@ -25,12 +25,12 @@ function App() {
       <Routes>
         <Route path="/" element={<DealList />} />
         <Route path="/bons-plans" element={<DealList />} />
-        <Route path="/bons-plans/:dealId" element={<Deal />} />
-        <Route path="/bons-plans" element={<DealList />} />
+        <Route path="/bon-plan/:dealId" element={<Deal />} />
+        <Route path="/bons-plans/:categorySlug" element={<DealList />} />
         <Route path="/ajouter-bon-plan" element={<AddDeal />} />
         <Route path="/inscription" element={<SignIn />} />
         <Route path="/team" element={<Team />} />
-        <Route path="/CGU" element={<CGU />} />
+        <Route path="/cgu" element={<CGU />} />
         <Route path="/mentions-legales" element={<LegalMentions />} />
         <Route path="/recherche?s=:searchWord" element={<SearchResults />} />
         <Route path="/contact" element={<ContactForm />} />
