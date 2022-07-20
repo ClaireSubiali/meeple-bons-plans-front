@@ -5,7 +5,17 @@ import './style.scss';
 // == Composant
 function Footer() {
   return (
-    <div>Footer</div>
+    <footer>
+       
+    <div className="footnav">
+     <a href="#" className="active">Contact</a>
+     <a href="#">CGU</a>
+     <a href="#">Mentions légales</a>
+     <a href="#">L'équipe</a>
+    
+   </div>
+    
+ </footer>
   );
 }
 

@@ -182,7 +182,7 @@ Transpilation ES6/JSX -> ES5.
   - [`@babel/preset-env`](https://babeljs.io/docs/en/babel-preset-env) - "Vocabulaire" ou règles de syntaxe pour Babel et l'ES6+.
   - [`@babel/preset-react`](https://babeljs.io/docs/en/babel-preset-react) - "Vocabulaire" ou règles de syntaxe pour Babel et le JSX (React).
 - Plugins :
-  - [`@babel/plugin-proposal-class-properties`](https://babeljs.io/docs/en/babel-plugin-proposal-class-properties) - Rend possible les propriétés de classe.
+  - [`@babel/plugin-proposal-className-properties`](https://babeljs.io/docs/en/babel-plugin-proposal-className-properties) - Rend possible les propriétés de classNamee.
   - [`@babel/plugin-proposal-object-rest-spread`](https://babeljs.io/docs/en/babel-plugin-proposal-object-rest-spread) - Rend possible le déversement d'objets.
 
 ### ESLint
@@ -326,4 +326,4 @@ Ou
 
 ## Installer yarn
 
-Suivre https://classic.yarnpkg.com/en/docs/install/ en fonction de votre OS
+Suivre https://classNameic.yarnpkg.com/en/docs/install/ en fonction de votre OS

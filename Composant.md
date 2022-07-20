@@ -7,7 +7,7 @@ App
 --- right-header (Barre search / ajouter un bon plan / s'inscrire)
 -- Nav (le dropDown ) peut etre seulement un simple span pour le sprint 1 ?
 - Main 
---- Deal (la class qui englobe le deal - decoupage en plus petits composant pour la suite (surtout pour la gestion des votes))
+--- Deal (la classNameName qui englobe le deal - decoupage en plus petits composant pour la suite (surtout pour la gestion des votes))
 --- Pagination 
 - Footer (contact/ CGU / Mentions legales/ L'equipe)
 
