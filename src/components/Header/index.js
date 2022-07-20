@@ -5,12 +5,10 @@ import './style.scss';
 // import des éléments de FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faPlus, faUser, faNewspaper, faShop, faChess, faDiceD20, faShieldHalved, faCaretDown
+  faPlus, faUser, faNewspaper, faShop, faChess, faDiceD20, faShieldHalved, faCaretDown,
 } from '@fortawesome/free-solid-svg-icons';
 
 import logo from '../../assets/img/logo-meeple.svg';
-
-// import logo from '/src/assets/img/logo-meeple.svg';
 
 // == Composant
 function Header() {

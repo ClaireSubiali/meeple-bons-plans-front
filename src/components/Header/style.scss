@@ -1,4 +1,7 @@
+@use 'src/styles/vars';
 
+
+ 
  
 
 /*! HEADER */
@@ -7,7 +10,7 @@ header {
     /*width:100%;*/
     color : white;
     
-    background-color: #333333;
+    background-color: vars.$secondaryDarkGrey;
     width:100%;
     z-index:9;
     transition:0.5s;
@@ -45,7 +48,7 @@ header {
 
 .header__title {
   letter-spacing:0.2rem;
-  font-family: 'Luckiest Guy', cursive;
+  font-family: vars.$font; /*'Luckiest Guy', cursive;*/
   font-size:1.8em;
 }
 
@@ -72,9 +75,9 @@ header {
  
 #add-deal {
         position: relative;
-        background-color: #d53767;
+        background-color: vars.$mainPink;
         border: none;
-        border-radius:0.5em;
+        border-radius:vars.$buttonRadius;
         font-size: 1em;
         color: #FFFFFF;
         padding: 10px;
@@ -88,7 +91,7 @@ header {
       
       #add-deal:after {
         content: "";
-        background: #da7593;
+        background: vars.$mainPinkAlternate;
         display: block;
         position: absolute;
         padding-top: 300%;
@@ -108,13 +111,12 @@ header {
 
       #login{
         position: relative;
-        background-color: #d53767;
+        background-color: vars.$mainPink;
         border: none;
-        border-radius:0.5em;
+        border-radius:vars.$buttonRadius;
         font-size: 1em;
         color: #FFFFFF;
         padding: 10px;
-        
         text-align: center;
         font-weight: bold;
         text-decoration: none;
@@ -124,7 +126,7 @@ header {
       
       #login:after {
         content: "";
-        background: #da7593;
+        background: vars.$mainPinkAlternate;
         display: block;
         position: absolute;
         padding-top: 300%;
@@ -150,15 +152,13 @@ header {
 
       .search-bar {
         padding: 10px; 
-        border-radius:0.5em;
+        border-radius: vars.$buttonRadius;
         margin-right:10px;
       }
 
        /* .fa-search { 
           color:#333333;
-          position: absolute; 
-          top: 25%;
-         right: 10%;
+    
   
         } */
 
@@ -171,7 +171,7 @@ header {
             
               }
 
-              #add-deal{border-radius:50%;
+              #add-deal{border-radius:vars.$buttonRadiusResponsive;
                 width:40px;
                 height:40px;
                 font-size: 1.2em;
@@ -179,7 +179,7 @@ header {
                  }
 
               #login{
-                border-radius:50%;
+                border-radius:vars.$buttonRadiusResponsive;
                 width:40px;
                 height:40px;
                 font-size: 1.2em;
@@ -194,8 +194,8 @@ header {
 nav {
     width:100%;
     margin: auto;
-    color : #333333;
-    background-color:#CDF7F6;
+    color : vars.$secondaryDarkGrey;
+    background-color: vars.$secondaryBlue;
     box-shadow:0px 6px 16px -6px rgba(1,1,1,0.5);
 }
   
@@ -236,7 +236,6 @@ a{
     .dropdown {
       float: left;
       overflow: hidden;
-       
       }
 
       .dropdown .dropbtn {
@@ -271,7 +270,7 @@ a{
           }
 
           .topnav a:hover, .dropdown:hover .dropbtn {
-            color: #d53767
+            color: vars.$mainPink;
             }
 
             .dropdown-content a:hover {
