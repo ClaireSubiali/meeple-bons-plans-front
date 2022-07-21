@@ -23,3 +23,34 @@
   margin-right: 1rem;
 
 }
+ 
+.team {
+  display:flex;
+  flex-direction:row;
+  justify-content: center;
+
+}
+
+.card {
+  
+  margin:10px;
+  background-color: vars.$mainBlue;
+  border-radius:0.5em;
+   
+  width:100px;
+  height: 150px;
+
+}
+.card:hover {
+  background-color: rgb(55, 146, 146);
+  border-radius:0.5em;
+   
+  
+}
+
+.cardName {
+  color:white;
+  font-weight: bold;
+  text-align: center;
+  margin-top:50%;
+}

@@ -11,31 +11,25 @@ function Team() {
   return (
     <div className="team-page">
       <h1 className="title"><FontAwesomeIcon icon={faPeopleGroup} className="icon" />  L'équipe MEEPLE Bons plans</h1>
-      <p>
-        Cupcake ipsum dolor sit amet. Bonbon croissant jujubes halvah cotton candy jelly-o.
-        Powder wafer chocolate bar cookie bear claw.
-        Wafer gingerbread croissant cupcake dessert tootsie roll.
-        Pastry jujubes sweet roll lollipop donut cookie jujubes donut.
-        Chocolate sesame snaps caramels soufflé chupa chups dragée bonbon
-        Brownie dessert cake jelly macaroon biscuit cupcake.
-        Muffin muffin wafer dragée cake pie pie.
-        Lollipop jujubes cupcake jelly chocolate cake.
-        Gummi bears dragée halvah pie jelly beans halvah bear claw.
-      </p>
-      <br />
-      <p>
-        Cupcake ipsum dolor sit amet. Bonbon croissant jujubes halvah cotton candy jelly-o.
-        Powder wafer chocolate bar cookie bear claw.
-        Wafer gingerbread croissant cupcake dessert tootsie roll.
-        Pastry jujubes sweet roll lollipop donut cookie jujubes donut.
-        Chocolate sesame snaps caramels soufflé chupa chups dragée bonbon
-        Brownie dessert cake jelly macaroon biscuit cupcake.
-        Muffin muffin wafer dragée cake pie pie.
-        Lollipop jujubes cupcake jelly chocolate cake.
-        Gummi bears dragée halvah pie jelly beans halvah bear claw.
-      </p>
-
+      <div className="team">
+        <div className="card">
+          <div className="cardName">Julien</div>
+        </div>
+        <div className="card">
+          <div className="cardName">Claire</div>
+        </div>
+        <div className="card">
+          <div className="cardName">Laurent</div>
+        </div>
+        <div className="card">
+          <div className="cardName">Camille</div>
+        </div>
+        <div className="card">
+          <div className="cardName">Christophe</div>
+        </div>
+      </div>
     </div>
+
   );
 }
 
