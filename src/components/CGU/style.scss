@@ -1,0 +1,27 @@
+@use 'src/styles/vars';
+
+.title {
+  margin-bottom:1em;
+  text-align: center;
+  margin-left:.05em;
+  font-weight: bold; 
+}
+.cgu-page {
+  width:60%;
+  display:flex;
+  flex-direction:column;
+  max-width: 80%;
+  margin: auto;
+  background-color:#FFFFFF;
+  padding:50px;
+  margin-top:2rem;
+  border-radius: vars.$buttonRadius;
+  box-shadow: 5px 3px 5px rgb(163, 163, 163);
+}
+
+.icon {
+  margin-right: 1rem;
+
+}
+
+

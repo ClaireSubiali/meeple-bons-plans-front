@@ -15,7 +15,8 @@ $font: 'Luckiest Guy', sans-serif;
 // Others
 //  Add deal / Login / Search Bar / deal / label discount & price
  
- $buttonRadius: 0.5em !default;
+$buttonRadius: 0.5em !default;
+$buttonPadding: 10px !default;
  
 code {
   border-radius:  $buttonRadius;
@@ -31,3 +32,4 @@ code {
 /*font = taille, epaisseur, familly*/
 /*button call_to_action = taille, couleur, radius, */
 /*button secondary = taille, couleur, radius, */
+

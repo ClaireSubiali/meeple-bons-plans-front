@@ -1,0 +1,151 @@
+@use 'src/styles/vars';
+
+
+h1 {
+margin-bottom:1em;
+}
+
+form {
+
+  width:60%;
+  display:flex;
+  flex-direction:column;
+  max-width: 80%;
+  margin: auto;
+  background-color:#FFFFFF;
+  padding:50px;
+  margin-top:2rem;
+  border-radius: vars.$buttonRadius;
+  box-shadow: 5px 3px 5px rgb(163, 163, 163);
+
+  & input{
+    padding: 6px; 
+    border-radius: vars.$buttonRadius;
+    margin-right:0.5em;
+    border: 1px rgb(218, 218, 218) solid;
+    
+  }
+}
+
+.headerDeal {
+  font-weight: bold;
+  display:flex;
+  flex-direction:row;
+  flex-wrap: wrap;
+  color:vars.$secondaryDarkGrey;
+  align-items: center;
+}
+
+.headerDealRightElement {
+  display:flex;
+  flex-direction:column;
+  align-items: center;
+ 
+   
+}
+
+.headerTitle {
+  margin-right:0.5em;
+}
+
+.gameornot {
+  margin:0.5em;
+}
+
+.gameDeal {
+  margin:0.5em;
+  padding:0.5em;
+  background-color:vars.$mainBlue;
+  border-radius: vars.$buttonRadius;
+  color:#FFFFFF;
+  font-weight: bold;
+}
+
+.title {
+  text-align: center;
+  margin-left:0.5em;
+  font-weight: bold;   
+}
+
+.titlepad {
+   
+  margin-left:0.2em;
+    
+}
+
+.secondarytitle {
+  font-weight: bold; 
+  margin-bottom:0.5em;
+}
+
+.addgame {
+  margin-left:0.5em;
+  background-color: #FFFFFF;  
+  border: none;
+  border-radius:vars.$buttonRadius;
+  font-size: 1em;
+  color: vars.$mainBlue;
+  padding: vars.$buttonPadding;
+  text-align: center;
+  font-weight: bold;
+  text-decoration: underline;
+  overflow: hidden;
+  cursor: pointer;
+  margin-right:10px;
+  
+  
+}
+
+.missing-game {
+  font-style: italic;
+  margin: 0 0 0 5px;
+  font-size:0.8em;
+}
+
+.content {
+  color:vars.$secondaryDarkGrey;
+  display:flex;
+  flex-direction:column;
+  border:2px dotted rgb(175, 175, 175);
+  padding:0.5em;
+}
+
+textarea {
+  border-radius:vars.$buttonRadius;
+  border: 1px solid rgb(202, 202, 202);
+  box-shadow: 1px 1px 1px #999;
+}
+
+.info {
+  display:flex;
+  flex-direction:row;
+  flex-wrap: wrap;
+  font-weight: bold;
+  color:vars.$secondaryDarkGrey;
+ 
+}
+
+.secondaryInfo {
+  display:flex;
+  flex-direction:row;
+  flex-wrap: wrap;
+  font-weight: bold;
+  color:vars.$secondaryDarkGrey;
+}
+
+.send {
+  margin-top:0.5em;
+  background-color: vars.$mainPink;
+  border: none;
+  border-radius:vars.$buttonRadius;
+  font-size: 1em;
+  color: #FFFFFF;
+  padding: vars.$buttonPadding;
+  text-align: center;
+  font-weight: bold;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+  margin-right:10px;
+}
+

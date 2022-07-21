@@ -23,7 +23,7 @@ function Header() {
       <div id="head-logo">
         <div id="left-header">
           <Link to="/">
-            <img src={logo} className="logotype" alt="Logo Meeple Bons PLans" />
+            <img src={logo} className="logotype" alt="Logo Meeple Bons Plans" />
           </Link>
           <div className="header__title">MEEPLE BONS PLANS</div>
         </div>
