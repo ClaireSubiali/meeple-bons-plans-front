@@ -6,8 +6,8 @@ import './style.scss';
 // == Composant
 function DealList() {
   return (
-    <div>
-      <div>Liste des Bons plans :</div>
+    <div className="deallist">
+      <div className="titledeallist">Liste des Bons plans :</div>
       <DealCard />
       <DealCard />
       <DealCard />
@@ -15,6 +15,7 @@ function DealList() {
     </div>
   );
 }
+
 
 // == Export
 export default DealList;

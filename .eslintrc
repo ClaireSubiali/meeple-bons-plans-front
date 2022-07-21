@@ -4,6 +4,10 @@
   "env": {
     "browser": true
   },
+  "parserOptions": {
+    "requireConfigFile": "false",
+    "babelOptions": { "configFile": "./.babelrc" }
+    },
   "rules": {
     "brace-style": ["error", "stroustrup"],
     "no-param-reassign": [

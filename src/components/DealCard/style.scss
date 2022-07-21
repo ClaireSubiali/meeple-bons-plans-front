@@ -1,0 +1,216 @@
+
+.deal {
+  background-color:white;
+  border-radius:0.5em;
+  display:flex;
+  flex-direction: row;
+  margin-bottom:1em;
+ 
+   
+  
+}
+
+.left-deal {
+display:flex;
+flex-direction: column;
+align-items: center;
+padding:1em;
+ 
+}
+
+.picture-deal {
+max-width:150px;
+}
+
+.vote {
+display:flex;
+flex-direction: row;
+justify-content: center;
+padding:0;
+margin:0;
+border-radius:10px;
+border:1px solid rgb(216, 216, 216);
+width:80%;
+margin-top:0.5em;
+}
+
+.degree {
+font-size:1.4em;
+font-weight: bold;
+margin:0.5em;
+color:rgb(255, 123, 0);
+ 
+}
+
+.icone-degree {
+display:flex;
+flex-direction: row;
+justify-content: center;
+align-self: center;
+}
+
+.flamme {
+height: 25px;
+}
+
+.icecube {
+height: 20px; 
+}
+
+.right-deal {
+margin-left:1em;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+ 
+
+ 
+ 
+}
+
+.header-deal {
+display:flex;
+align-items: baseline;
+justify-content: space-between;
+margin-top:0.5em;
+}
+
+h2 {
+margin:0;
+padding:0;
+
+}
+
+h6 {
+margin:0;
+padding:0;
+color:#949494;
+}
+
+.shop {
+font-weight: lighter;
+}
+
+.deal-label {
+display:flex;
+flex-direction: row;
+
+}
+
+
+.discount {
+background-color:#C1CFDA;
+border-radius:0.5em;
+padding:0.3em;
+margin-right:0.5em;
+font-weight: bold;
+}
+
+.price {
+
+background-color: #d53767;  
+border-radius:0.5em;
+padding:0.3em;
+margin-right:0.5em;
+color:white;
+font-weight: bold;
+
+}
+
+.deal-text {
+margin-right: 0.5em;
+
+}
+
+
+.footer-deal {
+display:flex;
+flex-direction: column;
+flex-wrap: nowrap;
+justify-content: flex-end;
+align-items: flex-end;
+align-content: flex-end;
+padding-right:0.5em;
+margin-bottom:0.5em; 
+
+
+}
+
+.see-deal {
+background-color: #007682;
+color:white;
+font-weight: bold;
+border-radius:0.5em;
+border-style: none;
+padding:0.8em;
+ 
+margin-bottom:0.5em;
+
+ 
+}
+
+.footer-dealp {
+margin:0;
+padding:0;
+ 
+
+}
+
+
+/*.fb-icon {
+margin:0;
+padding:0;
+font-size:2.5em;
+color:#3b5998;
+ 
+}*/
+
+.footer-deal-time {
+margin:0;
+padding:0;
+font-size:0.7em;
+color:#949494;
+ 
+}
+.clock {
+font-size:1.2em;
+ 
+}
+
+
+@media screen and (max-width: 900px) {
+  .picture-deal {
+    width:100px;
+     
+    
+  }
+    
+  .header-deal {
+    display:flex;
+    flex-direction: column;
+  }
+  
+  .deal-label {
+   margin-top:0.5em;
+  }
+
+  .left-deal {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    padding:1em;
+     
+  }
+
+  .vote {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    text-align:center;
+    padding:0.5em;
+    width:50%;
+    margin-top:0.5em;
+  }
+
+}
