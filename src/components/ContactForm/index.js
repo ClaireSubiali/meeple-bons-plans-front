@@ -3,11 +3,11 @@
 import './style.scss';
 
 // == Composant
-function AddDeal() {
+function ContactForm() {
   return (
-    <div>Je suis la page d'ajout d'un bon plan</div>
+    <div>Je suis le formulaire de contact</div>
   );
 }
 
 // == Export
-export default AddDeal;
+export default ContactForm;

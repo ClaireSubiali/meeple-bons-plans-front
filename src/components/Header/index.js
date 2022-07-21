@@ -9,24 +9,30 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 import logo from '../../assets/img/logo-meeple.svg';
+import { Link } from 'react-router-dom';
 
 // == Composant
 function Header() {
+  //TODO les parties dynamiques des URLs sont entrées en dur ICI à rendre dynamique plus tard avec les props ? Pour le moment ça fonctionne temporairement
+  const categoryJDS = 'jeux-de-societe';
+  const categoryJDR = 'jeux-de-roles';
+  const categoryJDF = 'jeux-de-figurines';
+
   return (
     <header>
       <div id="head-logo">
         <div id="left-header">
-          <a href="index.html">
+          <Link to="/">
             <img src={logo} className="logotype" alt="Logo Meeple Bons PLans" />
-          </a>
+          </Link>
           <div className="header__title">MEEPLE BONS PLANS</div>
         </div>
         <div id="right-header">
           <div className="search">
             <input type="search" className="search-bar" name="q" placeholder="rechercher" />
           </div>
-          <button type="button" id="add-deal"><FontAwesomeIcon icon={faPlus} /><span className="displaybutton"> Ajouter un bon plan</span></button>
-          <button type="button" id="login"><FontAwesomeIcon icon={faUser} /><span className="displaybutton"> Connexion</span></button>
+          <Link to="/ajouter-bon-plan" id="add-deal"><FontAwesomeIcon icon={faPlus} /><span className="displaybutton"> Ajouter un bon plan</span></Link>
+          <Link to="/inscription" id="login"><FontAwesomeIcon icon={faUser} /><span className="displaybutton"> Connexion</span></Link>
         </div>
       </div>
       <nav>
@@ -36,10 +42,10 @@ function Header() {
               <FontAwesomeIcon icon={faCaretDown} />
             </button>
             <div className="dropdown-content animate">
-              <a href="#">Tous les bons plans</a>
-              <a href="#"><FontAwesomeIcon icon={faChess} /> Jeux de société</a>
-              <a href="#"><FontAwesomeIcon icon={faShieldHalved} /> Jeux de figurines</a>
-              <a href="#"><FontAwesomeIcon icon={faDiceD20} />  Jeux de rôle</a>
+              <Link to="/bons-plans">Tous les bons plans</Link>
+              <Link to={`/bons-plans/${categoryJDS}`}><FontAwesomeIcon icon={faChess} /> Jeux de société</Link>
+              <Link to={`/bons-plans/${categoryJDF}`}><FontAwesomeIcon icon={faShieldHalved} /> Jeux de figurines</Link>
+              <Link to={`/bons-plans/${categoryJDR}`}><FontAwesomeIcon icon={faDiceD20} />  Jeux de rôle</Link>
             </div>
           </div>
           <a href="#"><FontAwesomeIcon icon={faNewspaper} /><span className="nav-link"> Actualité</span></a>
