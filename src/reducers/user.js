@@ -57,7 +57,7 @@ function reducer(state = initialState, action = {}) {
         ...state,
         loginSettings: {
           ...state.loginSettings,
-          temporaryMessage: action.status,
+          temporaryMessage: action.temporaryMessage,
         },
       };
     default:

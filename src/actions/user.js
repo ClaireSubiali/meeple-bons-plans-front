@@ -42,21 +42,27 @@ export const CHECK_LOGIN = 'CHECK_LOGIN';
 // Action creator => On l'utilise au moment du dispatch()
 export function testLogin(mailFromState, passwordFromState) {
   let loginStatus = '';
+  console.log(mailFromState);
   const meuh = data.find((user) => user.email === mailFromState);
+  console.log('user', meuh);
   if (meuh) {
     if (meuh.password === passwordFromState) {
       loginStatus = 'OK CONNEXION DE L\'UTILISATEUR';
+      console.log('pass ok');
+      return {
+        type: TOGGLE_VISIBILITY,
+      };
     }
-    else {
-      loginStatus = 'MOT DE PASSE INCORRECT';
-    }
+    loginStatus = 'MOT DE PASSE INCORRECT';
+    console.log('pass incorrect');
   }
   else {
     loginStatus = 'VOUS N\'ETES PAS MEMBRE';
+    console.log('pas membre');
   }
   return {
     type: CHECK_LOGIN,
-    status: loginStatus,
+    temporaryMessage: loginStatus,
   };
 }
 

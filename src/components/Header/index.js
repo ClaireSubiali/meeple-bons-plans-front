@@ -11,7 +11,11 @@ import { faPlus, faUser, faNewspaper, faShop, faChess, faDiceD20, faShieldHalved
 import logo from '../../assets/img/logo-meeple.svg';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { toggleLogin, onChangeMail, OnChangePassword, testLogin,
+import { 
+  toggleLogin,
+  onChangeMail,
+  OnChangePassword,
+  testLogin,
 } from '../../actions/user';
 
 // == Composant
@@ -21,7 +25,7 @@ function Header() {
   const categoryJDR = 'jeux-de-roles';
   const categoryJDF = 'jeux-de-figurines';
   // récupération des données du state qu'on utilise ici pour gérer le formulaire de connexion:
-  const { isOpen, email, password } = useSelector((state) => state.user.loginSettings);
+  const { isOpen, email, password, temporaryMessage } = useSelector((state) => state.user.loginSettings);
  
 
   // permet d'envoyer des données au state (avec les actions et reducer) (useSelector = pull du stat // useDispatch = push_vers_state)
@@ -34,7 +38,7 @@ function Header() {
   //!temporaire :
   const handleSubmitLogin = (event) => {
     event.preventDefault();
-    dispatch(testLogin('meuh', 'meuh'));
+    dispatch(testLogin(email, password));
   };
 
   // Permet de generer un changement a chaque modification qui enverra le contenu de la variable newMail dans le state 
@@ -62,7 +66,7 @@ function Header() {
             <input type="search" className="search-bar" name="q" placeholder="Rechercher" />
           </div>
           <Link to="/ajouter-bon-plan" id="add-deal"><FontAwesomeIcon icon={faPlus} /><span className="displaybutton"> Ajouter un bon plan</span></Link>
-          <button type="button" id="login" onClick={handleClickToggleLogin}><FontAwesomeIcon icon={faUser} /><span className="displaybutton"> Connexion</span></button>
+          <button type="button" id="login" onClick={handleClickToggleLogin}>< FontAwesomeIcon icon={faUser} /><span className="displaybutton"> Connexion</span></button>
         </div>
       </div>
       <nav>
@@ -84,7 +88,7 @@ function Header() {
       </nav>
       <div className="login-popup">
         <div className={isOpen ? 'form-popup' : 'display-none'} /*id="popupForm "*/>
-          <form action="#" className="form-container">
+          <form action="#" className="form-container" onSubmit={handleSubmitLogin}>
             <h2>Connexion</h2>
             <label htmlFor="email">
               <strong>E-mail</strong>
@@ -94,8 +98,8 @@ function Header() {
               <strong>Mot de passe</strong>
             </label>
             <input type="password" onChange={handleChangePassword} id="psw" placeholder="Votre Mot de passe" name="psw" value={password} required />
-            <div className="lost-password">Mot de passe oublié ?</div>
-            <button type="submit" className="btn" onSubmit={handleSubmitLogin}>Se connecter</button>
+            <div className="lost-password">Connexion ok ? : {temporaryMessage}</div>
+            <button type="submit" className="btn" >Se connecter</button>
             <button type="button" className="btn cancel" onClick={handleClickToggleLogin}>Fermer</button>
           </form>
         </div>
