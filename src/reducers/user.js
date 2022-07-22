@@ -4,6 +4,7 @@ import {
   CHECK_LOGIN,
   CHANGE_PASSWORD,
   TOGGLE_VISIBILITY_AND_AVATAR,
+  CLICK_MEEPLE,
 } from '../actions/user';
 
 //CHANGE_FIELD_VALUE,
@@ -70,6 +71,18 @@ function reducer(state = initialState, action = {}) {
           isOpen: !state.loginSettings.isOpen,
         },
         isAvatarVisible: !state.isAvatarVisible,
+      };
+    case CLICK_MEEPLE:
+      return {
+        ...state,
+        isAvatarVisible: false,
+        loginSettings: {
+          isOpen: false, 
+          email: '', 
+          password: '',
+          temporaryMessage: '',
+          
+        },
       };
     default:
       return state;

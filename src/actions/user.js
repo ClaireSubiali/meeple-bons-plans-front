@@ -38,6 +38,14 @@ export function OnChangePassword(inputPassword) {
   };
 }
 
+export const CLICK_MEEPLE = "CLICK_MEEPLE";
+
+export function disconnect() {
+  return {
+    type: CLICK_MEEPLE,
+  };
+}
+
 // pour gerer le dispatcher de icone/avatar
 export const TOGGLE_VISIBILITY_AND_AVATAR = 'TOGGLE_VISIBILITY_AND_AVATAR';
 

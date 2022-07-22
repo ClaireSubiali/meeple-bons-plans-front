@@ -12,11 +12,12 @@ import { faPlus, faUser, faNewspaper, faShop, faChess, faDiceD20, faShieldHalved
 
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { 
+import {
   toggleLogin,
   onChangeMail,
   OnChangePassword,
   testLogin,
+  disconnect,
 } from '../../actions/user';
 
 import logo from '../../assets/img/logo-meeple.svg';
@@ -51,6 +52,10 @@ function Header() {
     dispatch(testLogin(email, password));
   };
 
+  const handleDisconnect = () => {
+    dispatch(disconnect());
+  }
+
   // Permet de generer un changement a chaque modification qui enverra le contenu de la variable newMail dans le state 
   const handleChangeEmail = (event) => {
     const inputMail = event.currentTarget.value;
@@ -76,7 +81,7 @@ function Header() {
             <input type="search" className="search-bar" name="q" placeholder="Rechercher" />
           </div>
           <Link to="/ajouter-bon-plan" id="add-deal"><FontAwesomeIcon icon={faPlus} /><span className="displaybutton"> Ajouter un bon plan</span></Link>
-          {isAvatarVisible ? <img src={avatar} alt="profil meeple" id="avatar" /> : <button type="button" id="login" onClick={handleClickToggleLogin}><FontAwesomeIcon icon={faUser} /><span className="displaybutton"> Connexion</span></button> }
+          {isAvatarVisible ? <button type="button" onClick={handleDisconnect} id="button-avatar"><img src={avatar} alt="profil meeple" id="avatar" /></button> : <button type="button" id="login" onClick={handleClickToggleLogin}><FontAwesomeIcon icon={faUser} /><span className="displaybutton"> Connexion</span></button> }
         </div>
       </div>
       <nav>
