@@ -2,7 +2,8 @@ import {
   TOGGLE_VISIBILITY,
   CHANGE_MAIL,
   CHECK_LOGIN,
-  CHANGE_PASSWORD
+  CHANGE_PASSWORD,
+  TOGGLE_VISIBILITY_AND_AVATAR,
 } from '../actions/user';
 
 //CHANGE_FIELD_VALUE,
@@ -10,7 +11,9 @@ import {
 
 // le initalstate sert a creer un stat "vierge" qui sert modifier à chaque iteration  
 const initialState = {
-  currentUser: '', // Renvoyé par l'API lors de la connexion
+  currentUser: '', // Pseudo de l'utilisateur Renvoyé par l'API lors de la connexion
+  userAvatar: '', // Avatar de l'utilisateur renvoyé par l'api lors de la connexion
+  isAvatarVisible: false,
 
   loginSettings: {
     isOpen: false, // est-ce que l'encart de connexion est ouvert ?
@@ -51,7 +54,6 @@ function reducer(state = initialState, action = {}) {
           password: action.newPassword,
         },
       };
-      
     case CHECK_LOGIN:
       return {
         ...state,
@@ -59,6 +61,15 @@ function reducer(state = initialState, action = {}) {
           ...state.loginSettings,
           temporaryMessage: action.temporaryMessage,
         },
+      };
+    case TOGGLE_VISIBILITY_AND_AVATAR:
+      return {
+        ...state,
+        loginSettings: {
+          ...state.loginSettings,
+          isOpen: !state.loginSettings.isOpen,
+        },
+        isAvatarVisible: !state.isAvatarVisible,
       };
     default:
       return state;

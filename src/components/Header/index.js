@@ -3,12 +3,13 @@
 // import PropTypesLib from 'prop-types';
 import './style.scss';
 
+
 // import des éléments de FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faUser, faNewspaper, faShop, faChess, faDiceD20, faShieldHalved, faCaretDown,
 } from '@fortawesome/free-solid-svg-icons';
 
-import logo from '../../assets/img/logo-meeple.svg';
+
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { 
@@ -18,6 +19,9 @@ import {
   testLogin,
 } from '../../actions/user';
 
+import logo from '../../assets/img/logo-meeple.svg';
+import avatar from '../../assets/img/m-orange.png';
+
 // == Composant
 function Header() {
   //TODO les parties dynamiques des URLs sont entrées en dur ICI à rendre dynamique plus tard avec les props ? Pour le moment ça fonctionne temporairement
@@ -25,9 +29,15 @@ function Header() {
   const categoryJDR = 'jeux-de-roles';
   const categoryJDF = 'jeux-de-figurines';
   // récupération des données du state qu'on utilise ici pour gérer le formulaire de connexion:
-  const { isOpen, email, password, temporaryMessage } = useSelector((state) => state.user.loginSettings);
- 
-
+  const {
+    isOpen,
+    email,
+    password,
+    temporaryMessage,
+  } = useSelector((state) => state.user.loginSettings);
+  const isAvatarVisible = useSelector((state) => state.user.isAvatarVisible);
+  
+  console.log('isVisible ?', isAvatarVisible);
   // permet d'envoyer des données au state (avec les actions et reducer) (useSelector = pull du stat // useDispatch = push_vers_state)
   const dispatch = useDispatch();
 
@@ -66,7 +76,7 @@ function Header() {
             <input type="search" className="search-bar" name="q" placeholder="Rechercher" />
           </div>
           <Link to="/ajouter-bon-plan" id="add-deal"><FontAwesomeIcon icon={faPlus} /><span className="displaybutton"> Ajouter un bon plan</span></Link>
-          <button type="button" id="login" onClick={handleClickToggleLogin}>< FontAwesomeIcon icon={faUser} /><span className="displaybutton"> Connexion</span></button>
+          {isAvatarVisible ? <img src={avatar} alt="profil meeple" id="avatar" /> : <button type="button" id="login" onClick={handleClickToggleLogin}><FontAwesomeIcon icon={faUser} /><span className="displaybutton"> Connexion</span></button> }
         </div>
       </div>
       <nav>
@@ -98,8 +108,8 @@ function Header() {
               <strong>Mot de passe</strong>
             </label>
             <input type="password" onChange={handleChangePassword} id="psw" placeholder="Votre Mot de passe" name="psw" value={password} required />
-            <div className="lost-password">Connexion ok ? : {temporaryMessage}</div>
-            <button type="submit" className="btn" >Se connecter</button>
+            <div className="lost-password">{temporaryMessage}</div>
+            <button type="submit" className="btn">Se connecter</button>
             <button type="button" className="btn cancel" onClick={handleClickToggleLogin}>Fermer</button>
           </form>
         </div>
@@ -107,6 +117,7 @@ function Header() {
     </header>
   );
 }
+
 
 // == Export
 export default Header;

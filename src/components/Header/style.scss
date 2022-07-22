@@ -122,6 +122,7 @@ header {
         text-decoration: none;
         overflow: hidden;
         cursor: pointer;
+        
       }
       
       #login:after {
@@ -161,6 +162,17 @@ header {
     
   
         } */
+
+        #avatar {
+          position: relative;
+          background-color: black;
+          border: none;
+          overflow: hidden;
+          cursor: pointer;
+          border-radius:vars.$buttonRadiusResponsive;
+                width:40px;
+                height:40px;
+        }
 
         
       @media screen and (max-width: 1520px) {

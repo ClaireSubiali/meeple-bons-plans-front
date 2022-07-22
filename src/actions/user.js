@@ -1,10 +1,14 @@
 //IMPORT TEMPORAIRE LE TEMPS DE VERIFIER LES DONNES DE CONNEXION SANS API
 // ! A supprimer après :
+import { useDispatch } from 'react-redux';
 import data from '../data/dataUser';
+
+
 
 //On creer une actions seulement pour le dispatch pas besoin pour le useSelector
 
 // IL faut creer une const exemple
+
 
 export const TOGGLE_VISIBILITY = 'TOGGLE_VISIBILITY';
 
@@ -34,23 +38,27 @@ export function OnChangePassword(inputPassword) {
   };
 }
 
+// pour gerer le dispatcher de icone/avatar
+export const TOGGLE_VISIBILITY_AND_AVATAR = 'TOGGLE_VISIBILITY_AND_AVATAR';
+
 
 //! ACTION TEMPORAIRE A SUPPRIMER QUAND API
 // Action Type => On l'utilise dans l'action creator ET dans le reducer
 export const CHECK_LOGIN = 'CHECK_LOGIN';
 
+
 // Action creator => On l'utilise au moment du dispatch()
 export function testLogin(mailFromState, passwordFromState) {
+  
   let loginStatus = '';
   console.log(mailFromState);
   const meuh = data.find((user) => user.email === mailFromState);
-  console.log('user', meuh);
   if (meuh) {
     if (meuh.password === passwordFromState) {
       loginStatus = 'OK CONNEXION DE L\'UTILISATEUR';
       console.log('pass ok');
       return {
-        type: TOGGLE_VISIBILITY,
+        type: TOGGLE_VISIBILITY_AND_AVATAR,
       };
     }
     loginStatus = 'MOT DE PASSE INCORRECT';
