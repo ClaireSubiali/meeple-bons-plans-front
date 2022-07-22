@@ -5,14 +5,14 @@ import './style.scss';
 
 // import des éléments de FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faPlus, faUser, faNewspaper, faShop, faChess, faDiceD20, faShieldHalved, faCaretDown,
+import { faPlus, faUser, faNewspaper, faShop, faChess, faDiceD20, faShieldHalved, faCaretDown,
 } from '@fortawesome/free-solid-svg-icons';
 
 import logo from '../../assets/img/logo-meeple.svg';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { toggleLogin } from '../../actions/user';
+import { toggleLogin, onChangeMail, OnChangePassword, testLogin,
+} from '../../actions/user';
 
 // == Composant
 function Header() {
@@ -21,8 +21,8 @@ function Header() {
   const categoryJDR = 'jeux-de-roles';
   const categoryJDF = 'jeux-de-figurines';
   // récupération des données du state qu'on utilise ici pour gérer le formulaire de connexion:
-  const isOpen = useSelector((state) => state.user.loginSettings.isOpen);
-  console.log(isOpen);
+  const { isOpen, email, password } = useSelector((state) => state.user.loginSettings);
+ 
 
   // permet d'envoyer des données au state (avec les actions et reducer) (useSelector = pull du stat // useDispatch = push_vers_state)
   const dispatch = useDispatch();
@@ -31,12 +31,23 @@ function Header() {
   const handleClickToggleLogin = () => {
     dispatch(toggleLogin());
   };
-
-  const handleSubmitLogin = () => {
-    // Normalement ici on dispatch vers un middleware pour gerer la requête api, là c'est un test avec le tableau de données en local
-    dispatch(testLogin());
+  //!temporaire :
+  const handleSubmitLogin = (event) => {
+    event.preventDefault();
+    dispatch(testLogin('meuh', 'meuh'));
   };
 
+  // Permet de generer un changement a chaque modification qui enverra le contenu de la variable newMail dans le state 
+  const handleChangeEmail = (event) => {
+    const inputMail = event.currentTarget.value;
+    dispatch(onChangeMail(inputMail));
+  };
+
+  const handleChangePassword = (event) => {
+    const inputPassword = event.currentTarget.value;
+    dispatch(OnChangePassword(inputPassword));
+  };
+  
   return (
     <header>
       <div id="head-logo">
@@ -78,11 +89,11 @@ function Header() {
             <label htmlFor="email">
               <strong>E-mail</strong>
             </label>
-            <input type="text" id="email" placeholder="Votre Email" name="email" required />
+            <input type="email" onChange={handleChangeEmail} id="email" placeholder="Votre Email" name="email" value={email} required />
             <label htmlFor="psw">
               <strong>Mot de passe</strong>
             </label>
-            <input type="password" id="psw" placeholder="Votre Mot de passe" name="psw" required />
+            <input type="password" onChange={handleChangePassword} id="psw" placeholder="Votre Mot de passe" name="psw" value={password} required />
             <div className="lost-password">Mot de passe oublié ?</div>
             <button type="submit" className="btn" onSubmit={handleSubmitLogin}>Se connecter</button>
             <button type="button" className="btn cancel" onClick={handleClickToggleLogin}>Fermer</button>
