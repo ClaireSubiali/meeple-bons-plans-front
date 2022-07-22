@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 // == Import
 // import PropTypesLib from 'prop-types';
 import './style.scss';
@@ -10,6 +11,8 @@ import {
 
 import logo from '../../assets/img/logo-meeple.svg';
 import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { toggleLogin } from '../../actions/user';
 
 // == Composant
 function Header() {
@@ -17,6 +20,22 @@ function Header() {
   const categoryJDS = 'jeux-de-societe';
   const categoryJDR = 'jeux-de-roles';
   const categoryJDF = 'jeux-de-figurines';
+  // récupération des données du state qu'on utilise ici pour gérer le formulaire de connexion:
+  const isOpen = useSelector((state) => state.user.loginSettings.isOpen);
+  console.log(isOpen);
+
+  // permet d'envoyer des données au state (avec les actions et reducer) (useSelector = pull du stat // useDispatch = push_vers_state)
+  const dispatch = useDispatch();
+
+  // Se déclenche au clic
+  const handleClickToggleLogin = () => {
+    dispatch(toggleLogin());
+  };
+
+  const handleSubmitLogin = () => {
+    // Normalement ici on dispatch vers un middleware pour gerer la requête api, là c'est un test avec le tableau de données en local
+    dispatch(testLogin());
+  };
 
   return (
     <header>
@@ -29,10 +48,10 @@ function Header() {
         </div>
         <div id="right-header">
           <div className="search">
-            <input type="search" className="search-bar" name="q" placeholder="rechercher" />
+            <input type="search" className="search-bar" name="q" placeholder="Rechercher" />
           </div>
           <Link to="/ajouter-bon-plan" id="add-deal"><FontAwesomeIcon icon={faPlus} /><span className="displaybutton"> Ajouter un bon plan</span></Link>
-          <Link to="/inscription" id="login"><FontAwesomeIcon icon={faUser} /><span className="displaybutton"> Connexion</span></Link>
+          <button type="button" id="login" onClick={handleClickToggleLogin}><FontAwesomeIcon icon={faUser} /><span className="displaybutton"> Connexion</span></button>
         </div>
       </div>
       <nav>
@@ -52,6 +71,24 @@ function Header() {
           <a href="#"><FontAwesomeIcon icon={faShop} /><span className="nav-link"> Boutiques</span></a>
         </div>
       </nav>
+      <div className="login-popup">
+        <div className={isOpen ? 'form-popup' : 'display-none'} /*id="popupForm "*/>
+          <form action="#" className="form-container">
+            <h2>Connexion</h2>
+            <label htmlFor="email">
+              <strong>E-mail</strong>
+            </label>
+            <input type="text" id="email" placeholder="Votre Email" name="email" required />
+            <label htmlFor="psw">
+              <strong>Mot de passe</strong>
+            </label>
+            <input type="password" id="psw" placeholder="Votre Mot de passe" name="psw" required />
+            <div className="lost-password">Mot de passe oublié ?</div>
+            <button type="submit" className="btn" onSubmit={handleSubmitLogin}>Se connecter</button>
+            <button type="button" className="btn cancel" onClick={handleClickToggleLogin}>Fermer</button>
+          </form>
+        </div>
+      </div>
     </header>
   );
 }
