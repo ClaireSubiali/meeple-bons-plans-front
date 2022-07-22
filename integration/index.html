@@ -19,44 +19,44 @@
             <div id="left-header">
                  
                     <a href="index.html">
-                    <img className="logotype" src="logo-meeple.svg" alt="Logo Meeple Bons PLans"></a>
-                    <div className="header__title">MEEPLE BONS PLANS</div>
+                    <img class="logotype" src="logo-meeple.svg" alt="Logo Meeple Bons PLans"></a>
+                    <div class="header__title">MEEPLE BONS PLANS</div>
                    
                  
             </div>
 
             <div id="right-header">
 
-                <div className="search"> 
+                <div class="search"> 
                     
-                    <input type="search" className="search-bar" name="q" placeholder="rechercher">
+                    <input type="search" class="search-bar" name="q" placeholder="rechercher">
                 </div>
 
                 
                
-                <button id="add-deal"><i className="fa fa-plus" aria-hidden="true"></i><span className="displaybutton"> Ajouter un bon plan</span></button>
-                <button id="login"><i className="fa fa-user" aria-hidden="true"></i> <span className="displaybutton">Connexion</span></button>
+                <button id="add-deal"><i class="fa fa-plus" aria-hidden="true"></i><span class="displaybutton"> Ajouter un bon plan</span></button>
+                <button  onclick="openForm()" id="login"><i class="fa fa-user" aria-hidden="true"></i> <span class="displaybutton">Connexion</span></button>
             </div>
         </div>
        
         <nav> 
 
-            <div className="topnav" id="myTopnav">
+            <div class="topnav" id="myTopnav">
                
-                <div className="dropdown">
-                    <button className="dropbtn">Bons Plans
-                    <i className="fa fa-caret-down"></i> 
+                <div class="dropdown">
+                    <button class="dropbtn">Bons Plans
+                    <i class="fa fa-caret-down"></i> 
                     </button>
-                    <div className="dropdown-content animate">
+                    <div class="dropdown-content animate">
                     <a href="#">Tous les bons plans</a>
-                    <a href="#"><i className="fa fa-folder-open-o" aria-hidden="true"></i> Jeux de société</a>
-                    <a href="#"><i className="fa fa-folder-open-o" aria-hidden="true"></i> Jeux de figurines</a>
-                    <a href="#"><i className="fa fa-folder-open-o" aria-hidden="true"></i>  Jeux de rôle</a>
+                    <a href="#"><i class="fa fa-folder-open-o" aria-hidden="true"></i> Jeux de société</a>
+                    <a href="#"><i class="fa fa-folder-open-o" aria-hidden="true"></i> Jeux de figurines</a>
+                    <a href="#"><i class="fa fa-folder-open-o" aria-hidden="true"></i>  Jeux de rôle</a>
                     </div>
                     </div> 
 
-                    <a href="#"><i className="fa fa-newspaper-o"></i> <span className="nav-link">Actualité</span></a>
-                    <a href="#"><i className="fa fa-shopping-cart" aria-hidden="true"></i> <span className="nav-link">Boutiques</span></a>
+                    <a href="#"><i class="fa fa-newspaper-o"></i> <span className="nav-link">Actualité</span></a>
+                    <a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i> <span className="nav-link">Boutiques</span></a>
                 </div>
 
 
@@ -68,54 +68,75 @@
         </nav>  
 
     </header>
+
+<!--LOGIN-->
+	<div class="login-popup">
+		<div class="form-popup" id="popupForm">
+		  <form action="#" class="form-container">
+			<h2>Connexion</h2>
+			<label for="email">
+			  <strong>E-mail</strong>
+			</label>
+			<input type="text" id="email" placeholder="Votre Email" name="email" required />
+			<label for="psw">
+			  <strong>Mot de passe</strong>
+			</label>
+			<input type="password" id="psw" placeholder="Votre Mot de passe" name="psw" required />
+			<div class="lost-password">Mot de passe oublié ?</div>
+			<button type="submit" class="btn">Connecter</button>
+			<button type="button" class="btn cancel" onclick="closeForm()">Fermer</button>
+		  </form>
+		</div>
+	  </div>
+
     <main>
         <section>
            <!-- <h1>LES BONS PLANS</h1>  -->
            
            <!--BON PLAN 1-->
-           <div className="deal">
+           <div class="deal">
 
             
-            <div className="left-deal">
-                 <img className="picture-deal" src="img-test.png" alt="image du bon plan">
+            <div class="left-deal">
+                 <img class="picture-deal" src="img-test.png" alt="image du bon plan">
                
-                 <div className="vote">
+                 <div class="vote">
                    
-                    <div className="icone-degree">
-                        <img className="flamme" src="logo-flamme.svg" alt="Icone flamme">
+                    <div class="icone-degree">
+                        <img class="flamme" src="logo-flamme.svg" alt="Icone flamme">
                     </div>
                    
-                    <div className="degree">25°</div>
+                    <div class="degree">25°</div>
 
-                    <div className="icone-degree"> 
-                    <img className="icecube" src="logo-icecube.svg" alt="Icone glacon">
+                    <div class="icone-degree"> 
+                    <img class="icecube" src="logo-icecube.svg" alt="Icone glacon">
                    </div>
                
                 </div>
             </div>
 
-            <div className="right-deal">
+            <div class="right-deal">
            
-            <div className="header-deal">
-                <div className="title-deal">
+            <div class="header-deal">
+                <div class="title-deal">
 
                     <h2>Dixit</h2>
-                     <h6>Bon plan jeux de société<span className="shop"> | Philibert</span></h6>
+                     <h6>Bon plan jeux de société<span class="shop"> | Philibert</span></h6>
                 </div>
-                <div className="deal-label">
-                     <div className="discount">-20%</div>
-                     <div className="price">20.90€</div>
+                <div class="deal-label">
+                     <div class="discount">-20%</div>
+                     <div class="price">20.90€</div>
                </div>
             </div>
 
-                <div className="main-deal">
-                    <p className="deal-text">Le principe de Dixit est simple : les joueurs doivent deviner et faire deviner des cartes illustrées. À chaque tour, un joueur devient le conteur qui choisit une carte et la décrit avec une phase, un mot ou un son...</p>
+                <div class="main-deal">
+                    <p class="deal-text">Le principe de Dixit est simple : les joueurs doivent deviner et faire deviner des cartes illustrées. À chaque tour, un joueur devient le conteur qui choisit une carte et la décrit avec une phase, un mot ou un son...</p>
                 </div>
            
-                 <div className="footer-deal">
-                     <!--<span className="fb-icon"><i className="fa fa-facebook-square" aria-hidden="true"></i></span>-->
-                    <p className="footer-dealp"><button className="see-deal">Voir le bon plan</button></p>
-                    <p className="footer-deal-time"><span className="clock"><i className="fa fa-clock-o" aria-hidden="true"></i></span> il y a 15 minutes</p>
+                 <div class="footer-deal">
+                     <!--<span class="fb-icon"><i className="fa fa-facebook-square" aria-hidden="true"></i></span>-->
+                    <p class="footer-dealp"><button class="see-deal">Voir le bon plan</button></p>
+                    <p class="footer-deal-time"><span class="clock"><i className="fa fa-clock-o" aria-hidden="true"></i></span> il y a 15 minutes</p>
                  </div>
            
             
@@ -127,160 +148,166 @@
 
 
             <!--BON PLAN 2-->
-           <div className="deal">
+			<div class="deal">
 
             
-            <div className="left-deal">
-                 <img className="picture-deal" src="https://www.myludo.fr/img/jeux/1651739797/300/bg/32937.png" alt="image du bon plan">
-               
-                 <div className="vote">
-                   
-                    <div className="icone-degree">
-                        <img className="flamme" src="logo-flamme.svg" alt="Icone flamme">
-                    </div>
-                   
-                    <div className="degree">25°</div>
-
-                    <div className="icone-degree"> 
-                    <img className="icecube" src="logo-icecube.svg" alt="Icone glacon">
-                   </div>
-               
-                </div>
-            </div>
-
-            <div className="right-deal">
-           
-            <div className="header-deal">
-                <div className="title-deal">
-
-                    <h2>Jaipur</h2>
-                     <h6>Bon plan jeux de société<span className="shop"> | Philibert</span></h6>
-                </div>
-                <div className="deal-label">
-                     <div className="discount">-20%</div>
-                     <div className="price">20.90€</div>
-               </div>
-            </div>
-
-            <div className="main-deal">
-                <p className="deal-text">Le principe de Dixit est simple : les joueurs doivent deviner et faire deviner des cartes illustrées. À chaque tour, un joueur devient le conteur qui choisit une carte et la décrit avec une phase, un mot ou un son...</p>
-            </div>
-            
-            <div className="footer-deal">
-                <!--<span className="fb-icon"><i className="fa fa-facebook-square" aria-hidden="true"></i></span>-->
-               <p className="footer-dealp"><button className="see-deal">Voir le bon plan</button></p>
-               <p className="footer-deal-time"><span className="clock"><i className="fa fa-clock-o" aria-hidden="true"></i></span> il y a 15 minutes</p>
-            </div>
-            
-            </div>
-        </div>
+				<div class="left-deal">
+					 <img class="picture-deal" src="img-test.png" alt="image du bon plan">
+				   
+					 <div class="vote">
+					   
+						<div class="icone-degree">
+							<img class="flamme" src="logo-flamme.svg" alt="Icone flamme">
+						</div>
+					   
+						<div class="degree">25°</div>
+	
+						<div class="icone-degree"> 
+						<img class="icecube" src="logo-icecube.svg" alt="Icone glacon">
+					   </div>
+				   
+					</div>
+				</div>
+	
+				<div class="right-deal">
+			   
+				<div class="header-deal">
+					<div class="title-deal">
+	
+						<h2>Dixit</h2>
+						 <h6>Bon plan jeux de société<span class="shop"> | Philibert</span></h6>
+					</div>
+					<div class="deal-label">
+						 <div class="discount">-20%</div>
+						 <div class="price">20.90€</div>
+				   </div>
+				</div>
+	
+					<div class="main-deal">
+						<p class="deal-text">Le principe de Dixit est simple : les joueurs doivent deviner et faire deviner des cartes illustrées. À chaque tour, un joueur devient le conteur qui choisit une carte et la décrit avec une phase, un mot ou un son...</p>
+					</div>
+			   
+					 <div class="footer-deal">
+						 <!--<span class="fb-icon"><i className="fa fa-facebook-square" aria-hidden="true"></i></span>-->
+						<p class="footer-dealp"><button class="see-deal">Voir le bon plan</button></p>
+						<p class="footer-deal-time"><span class="clock"><i className="fa fa-clock-o" aria-hidden="true"></i></span> il y a 15 minutes</p>
+					 </div>
+			   
+				
+				</div>
+				
+			</div>
         
         <!--BON PLAN 3-->
-        <div className="deal">
+        <div class="deal">
 
             
-            <div className="left-deal">
-                 <img className="picture-deal" src="https://www.myludo.fr/img/jeux/1627038257/300/bw/48479.png" alt="image du bon plan">
+            <div class="left-deal">
+                 <img class="picture-deal" src="img-test.png" alt="image du bon plan">
                
-                 <div className="vote">
+                 <div class="vote">
                    
-                    <div className="icone-degree">
-                        <img className="flamme" src="logo-flamme.svg" alt="Icone flamme">
+                    <div class="icone-degree">
+                        <img class="flamme" src="logo-flamme.svg" alt="Icone flamme">
                     </div>
                    
-                    <div className="degree">25°</div>
+                    <div class="degree">25°</div>
 
-                    <div className="icone-degree"> 
-                    <img className="icecube" src="logo-icecube.svg" alt="Icone glacon">
+                    <div class="icone-degree"> 
+                    <img class="icecube" src="logo-icecube.svg" alt="Icone glacon">
                    </div>
                
                 </div>
             </div>
 
-            <div className="right-deal">
+            <div class="right-deal">
            
-            <div className="header-deal">
-                <div className="title-deal">
+            <div class="header-deal">
+                <div class="title-deal">
 
-                    <h2>Dungeons and Dragons : L'Aventure commence</h2>
-                     <h6>Bon plan jeux de société<span className="shop"> | Philibert</span></h6>
+                    <h2>Dixit</h2>
+                     <h6>Bon plan jeux de société<span class="shop"> | Philibert</span></h6>
                 </div>
-                <div className="deal-label">
-                     <div className="discount">-20%</div>
-                     <div className="price">20.90€</div>
+                <div class="deal-label">
+                     <div class="discount">-20%</div>
+                     <div class="price">20.90€</div>
                </div>
             </div>
 
-            <div className="main-deal">
-                <p className="deal-text">Le principe de Dixit est simple : les joueurs doivent deviner et faire deviner des cartes illustrées. À chaque tour, un joueur devient le conteur qui choisit une carte et la décrit avec une phase, un mot ou un son...</p>
+                <div class="main-deal">
+                    <p class="deal-text">Le principe de Dixit est simple : les joueurs doivent deviner et faire deviner des cartes illustrées. À chaque tour, un joueur devient le conteur qui choisit une carte et la décrit avec une phase, un mot ou un son...</p>
+                </div>
+           
+                 <div class="footer-deal">
+                     <!--<span class="fb-icon"><i className="fa fa-facebook-square" aria-hidden="true"></i></span>-->
+                    <p class="footer-dealp"><button class="see-deal">Voir le bon plan</button></p>
+                    <p class="footer-deal-time"><span class="clock"><i className="fa fa-clock-o" aria-hidden="true"></i></span> il y a 15 minutes</p>
+                 </div>
+           
+            
             </div>
             
-            <div className="footer-deal">
-                <!--<span className="fb-icon"><i className="fa fa-facebook-square" aria-hidden="true"></i></span>-->
-               <p className="footer-dealp"><button className="see-deal">Voir le bon plan</button></p>
-               <p className="footer-deal-time"><span className="clock"><i className="fa fa-clock-o" aria-hidden="true"></i></span> il y a 15 minutes</p>
-            </div>
-            
-            </div>
         </div>
 
         <!--BON PLAN 4 -->
-        <div className="deal">
+        <div class="deal">
 
             
-            <div className="left-deal">
-                 <img className="picture-deal" src="https://www.myludo.fr/img/jeux/1639069147/300/at/19467.png" alt="image du bon plan">
+            <div class="left-deal">
+                 <img class="picture-deal" src="img-test.png" alt="image du bon plan">
                
-                 <div className="vote">
+                 <div class="vote">
                    
-                    <div className="icone-degree">
-                        <img className="flamme" src="logo-flamme.svg" alt="Icone flamme">
+                    <div class="icone-degree">
+                        <img class="flamme" src="logo-flamme.svg" alt="Icone flamme">
                     </div>
                    
-                    <div className="degree">25°</div>
+                    <div class="degree">25°</div>
 
-                    <div className="icone-degree"> 
-                    <img className="icecube" src="logo-icecube.svg" alt="Icone glacon">
+                    <div class="icone-degree"> 
+                    <img class="icecube" src="logo-icecube.svg" alt="Icone glacon">
                    </div>
                
                 </div>
             </div>
 
-            <div className="right-deal">
+            <div class="right-deal">
            
-            <div className="header-deal">
-                <div className="title-deal">
+            <div class="header-deal">
+                <div class="title-deal">
 
-                    <h2>Azul</h2>
-                     <h6>Bon plan jeux de société<span className="shop"> | Philibert</span></h6>
+                    <h2>Dixit</h2>
+                     <h6>Bon plan jeux de société<span class="shop"> | Philibert</span></h6>
                 </div>
-                <div className="deal-label">
-                     <div className="discount">-20%</div>
-                     <div className="price">20.90€</div>
+                <div class="deal-label">
+                     <div class="discount">-20%</div>
+                     <div class="price">20.90€</div>
                </div>
             </div>
 
-            <div className="main-deal">
-                <p className="deal-text">Le principe de Dixit est simple : les joueurs doivent deviner et faire deviner des cartes illustrées. À chaque tour, un joueur devient le conteur qui choisit une carte et la décrit avec une phase, un mot ou un son...</p>
+                <div class="main-deal">
+                    <p class="deal-text">Le principe de Dixit est simple : les joueurs doivent deviner et faire deviner des cartes illustrées. À chaque tour, un joueur devient le conteur qui choisit une carte et la décrit avec une phase, un mot ou un son...</p>
+                </div>
+           
+                 <div class="footer-deal">
+                     <!--<span class="fb-icon"><i className="fa fa-facebook-square" aria-hidden="true"></i></span>-->
+                    <p class="footer-dealp"><button class="see-deal">Voir le bon plan</button></p>
+                    <p class="footer-deal-time"><span class="clock"><i className="fa fa-clock-o" aria-hidden="true"></i></span> il y a 15 minutes</p>
+                 </div>
+           
+            
             </div>
             
-            <div className="footer-deal">
-                <!--<span className="fb-icon"><i className="fa fa-facebook-square" aria-hidden="true"></i></span>-->
-               <p className="footer-dealp"><button className="see-deal">Voir le bon plan</button></p>
-               <p className="footer-deal-time"><span className="clock"><i className="fa fa-clock-o" aria-hidden="true"></i></span> il y a 15 minutes</p>
-            </div>
-            
-            </div>
         </div>
 
 
        
         
 
-        <div className="pagination">
+        <div class="pagination">
             <a href="#">&laquo;</a>
             <a href="#">1</a>
-            <a className="active" href="#">2</a>
+            <a class="active" href="#">2</a>
             <a href="#">3</a>
             <a href="#">4</a>
             <a href="#">5</a>
@@ -316,12 +343,12 @@
    
     <footer>
        
-       <div className="footnav">
-        <a href="#" className="active">Contact</a>
+       <div class="footnav">
+        <a href="#" class="active">Contact</a>
         <a href="#">CGU</a>
         <a href="#">Mentions légales</a>
         <a href="#">L'équipe</a>
-        <!-- <p className="footp"><i className="fa fa-copyright" aria-hidden="true"></i> Meeple Bons Plans 2022</p> -->
+        <!-- <p class="footp"><i className="fa fa-copyright" aria-hidden="true"></i> Meeple Bons Plans 2022</p> -->
       </div>
        
     </footer>
