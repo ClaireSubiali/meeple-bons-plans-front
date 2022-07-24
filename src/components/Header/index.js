@@ -115,7 +115,7 @@ function Header() {
             <div className="login_error">{temporaryMessage}</div>
             <button type="submit" className="btn">Se connecter</button>
             <div className="lost_password">Mot de passe oublié?</div>
-            <Link to="/inscription"><button type="button" className="btn register" onClick={handleClickToggleLogin}>S'inscrire</button></Link> 
+            <Link to="/inscription"><button type="button" className="btn register" onClick={handleClickToggleLogin}>S'inscrire</button></Link>
           </form>
         </div>
       </div>

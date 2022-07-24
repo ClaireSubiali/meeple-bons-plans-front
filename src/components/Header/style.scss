@@ -323,16 +323,17 @@ a{
           // text-align:center;
         }
 
-        .cancel { 
-	  color: inherit;
-	  border: none;
-	  padding: 0;
-	  font: inherit;
-	  cursor: pointer;
-	  outline: inherit;
-    background-color: white;
-        }
 
+        .cancel { 
+          color: inherit;
+          border: none;
+          padding: 0;
+          font: inherit;
+          cursor: pointer;
+          outline: inherit;
+          background-color: white;
+              }
+              
         .subtitle_login {
           font-weight:bold;
           }
@@ -417,11 +418,13 @@ a{
           font-weight: bold;
           width: 100%;
           margin-bottom: 10px;
+          font-size:1.0em;
           opacity: 0.8;
         }
         /* Stylez le bouton pour annuler */
         .form-container .register {
           background-color: vars.$mainBlue;
+           
            
         }
         
@@ -431,17 +434,18 @@ a{
           opacity: 1;
         }
 
+        
         @media screen and (max-width: 1200px) {
 
          
-        .form-popup {
-         
-        
-          // transform: translate(-45%, 5%);
-          z-index: 9;
-          width: 100%;  
+          .form-popup {
+           
+          
+            // transform: translate(-45%, 5%);
+            z-index: 9;
+            width: 100%;  
+            
+          }
+  
           
         }
-
-        
-      }
