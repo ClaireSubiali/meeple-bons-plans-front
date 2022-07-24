@@ -5,6 +5,7 @@ import {
   CHANGE_PASSWORD,
   TOGGLE_VISIBILITY_AND_AVATAR,
   CLICK_MEEPLE,
+  TOGGLE_IS_PROFILE_VISIBLE,
 } from '../actions/user';
 
 //CHANGE_FIELD_VALUE,
@@ -17,6 +18,7 @@ const initialState = {
   isAvatarVisible: false,
 
   loginSettings: {
+    isProfileVisible: false,
     isOpen: false, // est-ce que l'encart de connexion est ouvert ?
     email: '', // pour champs contrôlé email
     password: '', // pour le champs contrôlé du mot de passe
@@ -46,9 +48,8 @@ function reducer(state = initialState, action = {}) {
           email: action.newMail,
         },
       };
-
     case CHANGE_PASSWORD:
-    return {
+      return {
         ...state,
         loginSettings: {
           ...state.loginSettings,
@@ -72,16 +73,23 @@ function reducer(state = initialState, action = {}) {
         },
         isAvatarVisible: !state.isAvatarVisible,
       };
+    case TOGGLE_IS_PROFILE_VISIBLE:
+      return {
+        ...state,
+        loginSettings: {
+          ...state.loginSettings,
+          isProfileVisible: !state.loginSettings.isProfileVisible,
+        },
+      };
     case CLICK_MEEPLE:
       return {
         ...state,
         isAvatarVisible: false,
         loginSettings: {
-          isOpen: false, 
-          email: '', 
+          isOpen: false,
+          email: '',
           password: '',
           temporaryMessage: '',
-          
         },
       };
     default:

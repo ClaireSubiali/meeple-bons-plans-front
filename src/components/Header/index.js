@@ -18,6 +18,7 @@ import {
   OnChangePassword,
   testLogin,
   disconnect,
+  toggleIsProfileVisible,
 } from '../../actions/user';
 
 import logo from '../../assets/img/logo-meeple.svg';
@@ -35,6 +36,7 @@ function Header() {
     email,
     password,
     temporaryMessage,
+    isProfileVisible,
   } = useSelector((state) => state.user.loginSettings);
   const isAvatarVisible = useSelector((state) => state.user.isAvatarVisible);
   
@@ -66,6 +68,10 @@ function Header() {
     const inputPassword = event.currentTarget.value;
     dispatch(OnChangePassword(inputPassword));
   };
+
+  const handleToggleProfile = () => {
+    dispatch(toggleIsProfileVisible());
+  }
   
   return (
     <header>
@@ -81,7 +87,7 @@ function Header() {
             <input type="search" className="search-bar" name="q" placeholder="Rechercher" />
           </div>
           <Link to="/ajouter-bon-plan" id="add-deal"><FontAwesomeIcon icon={faPlus} /><span className="displaybutton"> Ajouter un bon plan</span></Link>
-          {isAvatarVisible ? <button type="button" onClick={handleDisconnect} id="button-avatar"><img src={avatar} alt="profil meeple" id="avatar" /></button> : <button type="button" id="login" onClick={handleClickToggleLogin}><FontAwesomeIcon icon={faUser} /><span className="displaybutton"> Connexion</span></button> }
+          {isAvatarVisible ? <button type="button" onClick={handleToggleProfile} id="button-avatar"><img src={avatar} alt="profil meeple" id="avatar" /></button> : <button type="button" id="login" onClick={handleClickToggleLogin}><FontAwesomeIcon icon={faUser} /><span className="displaybutton"> Connexion</span></button> }
         </div>
       </div>
       <nav>
@@ -119,7 +125,19 @@ function Header() {
           </form>
         </div>
       </div>
+      <div className={isProfileVisible ? 'profile-popup' : 'display-none'}>
+        <div className="profile-header">
+          <img src={avatar} alt="profil meeple" id="avatar" />
+          <span>{email}</span>
+        </div>
+        <div>
+          <button type="button" className="btn">Consulter mon profil</button>
+          <button type="button" className="btn" onClick={handleDisconnect}>Se déconnecter</button>
+          <button type="button" className="btn close" onClick={handleToggleProfile}>Fermer</button>
+        </div>
+      </div>
     </header>
+  
   );
 }
 

@@ -38,11 +38,20 @@ export function OnChangePassword(inputPassword) {
   };
 }
 
-export const CLICK_MEEPLE = "CLICK_MEEPLE";
+export const CLICK_MEEPLE = 'CLICK_MEEPLE';
 
 export function disconnect() {
   return {
     type: CLICK_MEEPLE,
+  };
+}
+// Action Type => On l'utilise dans l'action creator ET dans le reducer
+export const TOGGLE_IS_PROFILE_VISIBLE = 'TOGGLE_IS_PROFILE_VISIBLE';
+
+// Action creator => On l'utilise au moment du dispatch()
+export function toggleIsProfileVisible() {
+  return {
+    type: TOGGLE_IS_PROFILE_VISIBLE,
   };
 }
 
@@ -81,28 +90,3 @@ export function testLogin(mailFromState, passwordFromState) {
     temporaryMessage: loginStatus,
   };
 }
-
-/*
-//gestion du changement de champ (modife dans les champs)
-export const CHANGE_FIELD_VALUE = 'CHANGE_FIELD_VALUE';
-
-//ici l'action creator qui est declanché au moment du dispatch
-export function changeFieldValue ( value, field) {
-return {
-    type: CHANGE_FIELD_VALUE,
-        value,
-        field,
-    };
-}
-//Gestion du login
-
-// IL faut creer un action creator qui servira pour le dispatch
-export const LOGIN = 'LOGIN'
-
-//action type il sert dans l'action creator et dans le reducer
-export const login() {
-    return {
-        type : LOGIN,
-    };
-}
-*/
