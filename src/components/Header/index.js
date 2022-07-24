@@ -6,8 +6,10 @@ import './style.scss';
 
 // import des éléments de FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faUser, faNewspaper, faShop, faChess, faDiceD20, faShieldHalved, faCaretDown,
+import {
+  faPlus, faUser, faNewspaper, faShop, faChess, faDiceD20, faShieldHalved, faCaretDown, faXmark,
 } from '@fortawesome/free-solid-svg-icons';
+
 
 
 import { Link } from 'react-router-dom';
@@ -26,7 +28,7 @@ import avatar from '../../assets/img/m-orange.png';
 
 // == Composant
 function Header() {
-  //TODO les parties dynamiques des URLs sont entrées en dur ICI à rendre dynamique plus tard avec les props ? Pour le moment ça fonctionne temporairement
+  // TODO les parties dynamiques des URLs sont entrées en dur ICI à rendre dynamique plus tard avec les props ? Pour le moment ça fonctionne temporairement
   const categoryJDS = 'jeux-de-societe';
   const categoryJDR = 'jeux-de-roles';
   const categoryJDF = 'jeux-de-figurines';
@@ -48,7 +50,7 @@ function Header() {
   const handleClickToggleLogin = () => {
     dispatch(toggleLogin());
   };
-  //!temporaire :
+  //! temporaire :
   const handleSubmitLogin = (event) => {
     event.preventDefault();
     dispatch(testLogin(email, password));
@@ -56,7 +58,7 @@ function Header() {
 
   const handleDisconnect = () => {
     dispatch(disconnect());
-  }
+  };
 
   // Permet de generer un changement a chaque modification qui enverra le contenu de la variable newMail dans le state 
   const handleChangeEmail = (event) => {
@@ -71,7 +73,7 @@ function Header() {
 
   const handleToggleProfile = () => {
     dispatch(toggleIsProfileVisible());
-  }
+  };
   
   return (
     <header>
@@ -108,20 +110,21 @@ function Header() {
         </div>
       </nav>
       <div className="login-popup">
-        <div className={isOpen ? 'form-popup' : 'display-none'} /*id="popupForm "*/>
+        <div className={isOpen ? 'form-popup' : 'display-none'}>
           <form action="#" className="form-container" onSubmit={handleSubmitLogin}>
-            <h2>Connexion</h2>
+          <div id="title_login">Connexion<span><button type="button" className="cancel" onClick={handleClickToggleLogin}><FontAwesomeIcon icon={faXmark} /></button></span></div>
             <label htmlFor="email">
-              <strong>E-mail</strong>
+            <strong className="subtitle_login">E-mail</strong>
             </label>
             <input type="email" onChange={handleChangeEmail} id="email" placeholder="Votre Email" name="email" value={email} required />
             <label htmlFor="psw">
-              <strong>Mot de passe</strong>
+            <strong className="subtitle_login">Mot de passe</strong>
             </label>
             <input type="password" onChange={handleChangePassword} id="psw" placeholder="Votre Mot de passe" name="psw" value={password} required />
-            <div className="lost-password">{temporaryMessage}</div>
+            <div className="login_error">{temporaryMessage}</div>
             <button type="submit" className="btn">Se connecter</button>
-            <button type="button" className="btn cancel" onClick={handleClickToggleLogin}>Fermer</button>
+            <div className="lost_password">Mot de passe oublié?</div>
+            <Link to="/inscription"><button type="button" className="btn register" onClick={handleClickToggleLogin}>S'inscrire</button></Link>
           </form>
         </div>
       </div>
@@ -137,10 +140,9 @@ function Header() {
         </div>
       </div>
     </header>
-  
+    
   );
 }
-
 
 // == Export
 export default Header;

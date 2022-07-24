@@ -78,11 +78,11 @@ export function testLogin(mailFromState, passwordFromState) {
         type: TOGGLE_VISIBILITY_AND_AVATAR,
       };
     }
-    loginStatus = 'MOT DE PASSE INCORRECT';
+    loginStatus = 'ERREUR : Mot de passe erroné…';
     console.log('pass incorrect');
   }
   else {
-    loginStatus = 'VOUS N\'ETES PAS MEMBRE';
+    loginStatus = 'ERREUR : Cet utilisateur n\'existe pas';
     console.log('pas membre');
   }
   return {
