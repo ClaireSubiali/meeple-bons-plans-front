@@ -11,29 +11,37 @@ function CGU() {
   return (
     <div className="cgu-page">
       <h1 className="title"><FontAwesomeIcon icon={faFileContract} className="icon" />  Conditions générales d'utilisation</h1>
-      <p>
-        Cupcake ipsum dolor sit amet. Bonbon croissant jujubes halvah cotton candy jelly-o.
-        Powder wafer chocolate bar cookie bear claw.
-        Wafer gingerbread croissant cupcake dessert tootsie roll.
-        Pastry jujubes sweet roll lollipop donut cookie jujubes donut.
-        Chocolate sesame snaps caramels soufflé chupa chups dragée bonbon
-        Brownie dessert cake jelly macaroon biscuit cupcake.
-        Muffin muffin wafer dragée cake pie pie.
-        Lollipop jujubes cupcake jelly chocolate cake.
-        Gummi bears dragée halvah pie jelly beans halvah bear claw.
+      <h2>PROPRIÉTÉ INTELLECTUELLE</h2>
+      <p>Tout contenu publié et mis à disposition sur ce site est la propriété de MEEEPLE BONS PLANS et de ses créateurs. Cela comprend, mais n'est pas limité aux images, textes, logos, documents, fichiers téléchargeables et tout ce qui contribue à la composition du site.
       </p>
       <br />
-      <p>
-        Cupcake ipsum dolor sit amet. Bonbon croissant jujubes halvah cotton candy jelly-o.
-        Powder wafer chocolate bar cookie bear claw.
-        Wafer gingerbread croissant cupcake dessert tootsie roll.
-        Pastry jujubes sweet roll lollipop donut cookie jujubes donut.
-        Chocolate sesame snaps caramels soufflé chupa chups dragée bonbon
-        Brownie dessert cake jelly macaroon biscuit cupcake.
-        Muffin muffin wafer dragée cake pie pie.
-        Lollipop jujubes cupcake jelly chocolate cake.
-        Gummi bears dragée halvah pie jelly beans halvah bear claw.
+
+      <h2>CONTRIBUTIONS D'UTILISATEURS</h2>
+      <p>Les utilisateurs peuvent publier les informations suivantes sur notre site :
+        <ul>
+          <li>Des bons plans</li>
+          <li>Des commentaires sur les bons plans</li>
+        </ul>
+        En affichant publiquement sur notre site, vous acceptez de ne pas agir illégalement ou violer les conditions d'utilisation acceptable émunérées dans ce document.
       </p>
+      <br />
+
+      <h2>COMPTES</h2>
+      <p>Lorsque vous créez un compte sur notre site, vous acceptez ce qui suit:
+        <ul>
+          <li>que vous êtes seul responsable de votre compte et de la sécurité et la confidentialité de votre compte, y compris les mots de passe ou les renseignements de nature délicate joints à ce compte, et</li>
+          <li>que tous les renseignements personnels que vous nous fournissez par l'entremise de votre compte sont à jour, exacts et véridiques et que vous mettrez à jour vos renseignements personnels s'ils changent.</li>
+        </ul>
+        Nous nous réservons le droit de suspendre ou de résilier votre compte si vous utilisez notre site illègalement ou si vous violez les conditions d'utilisation acceptable.
+      </p>
+      <br />
+
+      <h2>LIMITATION DE RESPONSABILITÉ</h2>
+      <p>MEEPLE BONS PLANS ou l'un de ses créateurs sera tenu responsable de tout problème découlant de ce site. Néanmoins MEEPLE BONS PLANS et ses créateurs ne seront pas tenus responsables de tout problème découlant de toute utilisation irrégulière de ce site.
+       
+      </p>
+      <br />
+  
 
     </div>
   );
