@@ -1,4 +1,5 @@
 import {
+  //ajout d'un bon plan
   CHANGE_DEAL_GAME,
   CHANGE_DEAL_TITLE,
   TOGGLE_CONCERN_A_GAME,
@@ -111,6 +112,6 @@ function reducer(state = initialState, action = {}) {
     default:
       return state;
   }
-}
+} 
 
 export default reducer;
