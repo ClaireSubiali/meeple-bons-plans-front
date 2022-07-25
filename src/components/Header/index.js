@@ -1,16 +1,14 @@
+
 /* eslint-disable jsx-a11y/label-has-associated-control */
 // == Import
 // import PropTypesLib from 'prop-types';
 import './style.scss';
-
 
 // import des éléments de FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faPlus, faUser, faNewspaper, faShop, faChess, faDiceD20, faShieldHalved, faCaretDown, faXmark,
 } from '@fortawesome/free-solid-svg-icons';
-
-
 
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
@@ -28,10 +26,12 @@ import avatar from '../../assets/img/m-orange.png';
 
 // == Composant
 function Header() {
-  // TODO les parties dynamiques des URLs sont entrées en dur ICI à rendre dynamique plus tard avec les props ? Pour le moment ça fonctionne temporairement
+  // TODO les parties dynamiques des URLs sont entrées en dur ICI
+  // à rendre dynamique plus tard avec les props ? Pour le moment ça fonctionne temporairement
   const categoryJDS = 'jeux-de-societe';
   const categoryJDR = 'jeux-de-roles';
   const categoryJDF = 'jeux-de-figurines';
+
   // récupération des données du state qu'on utilise ici pour gérer le formulaire de connexion:
   const {
     isOpen,
@@ -40,41 +40,64 @@ function Header() {
     temporaryMessage,
     isProfileVisible,
   } = useSelector((state) => state.user.loginSettings);
+
   const isAvatarVisible = useSelector((state) => state.user.isAvatarVisible);
-  
-  console.log('isVisible ?', isAvatarVisible);
-  // permet d'envoyer des données au state (avec les actions et reducer) (useSelector = pull du stat // useDispatch = push_vers_state)
+
+  // permet d'envoyer des données au state (avec les actions et reducer)
+  // (useSelector = 'pull' du state // useDispatch = 'push_vers_state')
   const dispatch = useDispatch();
 
-  // Se déclenche au clic
-  const handleClickToggleLogin = () => {
-    dispatch(toggleLogin());
-  };
-  //! temporaire :
+  //! temporaire avant API:
   const handleSubmitLogin = (event) => {
     event.preventDefault();
     dispatch(testLogin(email, password));
   };
 
-  const handleDisconnect = () => {
-    dispatch(disconnect());
+  // Handlers :
+  /* ------------ AFFICHAGE DES POPUPS ------------ */
+  /**
+   * Function that toggle the login popup
+   */
+  const handleClickToggleLogin = () => {
+    dispatch(toggleLogin());
+  };
+  /**
+   * Function that toggle the profile popup
+   */
+  const handleToggleProfile = () => {
+    dispatch(toggleIsProfileVisible());
   };
 
-  // Permet de generer un changement a chaque modification qui enverra le contenu de la variable newMail dans le state 
+  /* ------------ CHAMPS CONTROLES ------------ */
+
+  // Permet de générer un changement à chaque modification
+  // qui enverra le contenu de la variable inputMail dans le state
+  /**
+   * Handler for controlled input (Email)
+   * @param {*} event
+   */
   const handleChangeEmail = (event) => {
     const inputMail = event.currentTarget.value;
     dispatch(onChangeMail(inputMail));
   };
-
+  /**
+   * Handler for controlled input (Password)
+   * @param {*} event
+   */
   const handleChangePassword = (event) => {
     const inputPassword = event.currentTarget.value;
     dispatch(OnChangePassword(inputPassword));
   };
 
-  const handleToggleProfile = () => {
-    dispatch(toggleIsProfileVisible());
+  /* ------------ AUTRES HANDLERS ------------ */
+
+  /**
+   * Handler for logout (disconnect)
+   */
+  const handleDisconnect = () => {
+    dispatch(disconnect());
   };
-  
+
   return (
     <header>
       <div id="head-logo">
@@ -112,13 +135,13 @@ function Header() {
       <div className="login-popup">
         <div className={isOpen ? 'form-popup' : 'display-none'}>
           <form action="#" className="form-container" onSubmit={handleSubmitLogin}>
-          <div id="title_login">Connexion<span><button type="button" className="cancel" onClick={handleClickToggleLogin}><FontAwesomeIcon icon={faXmark} /></button></span></div>
+            <div id="title_login">Connexion<span><button type="button" className="cancel" onClick={handleClickToggleLogin}><FontAwesomeIcon icon={faXmark} /></button></span></div>
             <label htmlFor="email">
-            <strong className="subtitle_login">E-mail</strong>
+              <strong className="subtitle_login">E-mail</strong>
             </label>
             <input type="email" onChange={handleChangeEmail} id="email" placeholder="Votre Email" name="email" value={email} required />
             <label htmlFor="psw">
-            <strong className="subtitle_login">Mot de passe</strong>
+              <strong className="subtitle_login">Mot de passe</strong>
             </label>
             <input type="password" onChange={handleChangePassword} id="psw" placeholder="Votre Mot de passe" name="psw" value={password} required />
             <div className="login_error">{temporaryMessage}</div>
@@ -129,6 +152,7 @@ function Header() {
         </div>
       </div>
       <div className={isProfileVisible ? 'profile-popup' : 'display-none'}>
+        <div className="close-button-div"><button type="button" className="cancel" onClick={handleToggleProfile}><FontAwesomeIcon icon={faXmark} /></button></div>
         <div className="profile-header">
           <img src={avatar} alt="profil meeple" id="avatar" />
           <span>{email}</span>
@@ -136,11 +160,9 @@ function Header() {
         <div>
           <button type="button" className="btn">Consulter mon profil</button>
           <button type="button" className="btn" onClick={handleDisconnect}>Se déconnecter</button>
-          <button type="button" className="btn close" onClick={handleToggleProfile}>Fermer</button>
         </div>
       </div>
     </header>
-    
   );
 }
 
