@@ -12,3 +12,20 @@
   margin-bottom:1%;
   font-weight: bold;
 }
+
+
+//SMARTPHONE --------------- SMARTPHONE ---------------  // 
+@media screen and (max-width: 500px) {
+  // body {background-color: red;}
+
+  .deallist { 
+    
+    max-width: 100%;
+    width:100%;
+    }
+  .titledeallist{
+    margin-top:150px;
+  
+  }
+
+}

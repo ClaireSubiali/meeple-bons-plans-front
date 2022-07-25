@@ -6,24 +6,18 @@
 
 /*! HEADER */
 header {
-
   /*width:100%;*/
   color: white;
-
   background-color: vars.$secondaryDarkGrey;
   width: 100%;
   z-index: 9;
   transition: 0.5s;
-
-
 }
 
 .scrollEffect {
   opacity: 0;
   transition: all 0.5s;
 }
-
-
 
 /*! PARTIE CENTRALE */
 #head-logo {
@@ -33,9 +27,7 @@ header {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-
 }
-
 
 /*! LOGO + TITLE */
 #left-header {
@@ -43,7 +35,6 @@ header {
   flex-direction: row;
   align-items: center;
   margin-left: 10px;
-
 }
 
 .header__title {
@@ -60,14 +51,10 @@ header {
 }
 
 @media screen and (max-width: 1200px) {
-
   .header__title {
     display: none;
   }
-
-
 }
-
 
 /*! SEARCH + ADD DEAL + LOGIN */
 #right-header {
@@ -160,12 +147,6 @@ header {
   margin-right: 10px;
 }
 
-/* .fa-search { 
-          color:#333333;
-    
-  
-        } */
-
 #avatar {
   position: relative;
   background-color: black;
@@ -188,11 +169,7 @@ header {
   /*inherit*/
 }
 
-
-
 @media screen and (max-width: 1520px) {
-
-
 
   .displaybutton {
     display: none;
@@ -429,6 +406,7 @@ a {
 }
 
 .profile-header {
+  
   display: flex;
   align-items: center;
   justify-content: center;
@@ -547,7 +525,6 @@ a {
   color: vars.$mainBlue;
   text-align: center;
   margin-bottom: 1em;
-
 }
 
 .login_error {
@@ -562,9 +539,6 @@ a {
   position: relative;
   // text-align: center;
   width: 100%;
-
-
-
 }
 
 /* Masquez la forme Popup */
@@ -572,13 +546,14 @@ a {
   /*display: none;*/
   /* <---------------------DISPLAY NON A SUPPRIMER APRES REGLAGE */
   position: fixed;
-  left: 50%;
-  top: 5%;
-  transform: translate(-45%, 5%);
+  left: 0%;
+  top: -2%;
+   transform: translate(0%, 0%);
   z-index: 9;
-  width: 50%;
+  width: 100%;
   /*add*/
-
+  
+   
 }
 
 .display-none {
@@ -589,13 +564,12 @@ a {
 .form-container {
   color: black;
   /*max-width: 600px;*/
+  
   padding: 25px;
   background-color: white;
   border-radius: vars.$buttonRadius;
   box-shadow: 5px 5px 5px rgb(54, 54, 54, 0.5);
   filter: drop-shadow(0 0 5rem #000000);
-
-
 }
 
 /* Largeur complète pour les champs de saisie */
@@ -664,3 +638,141 @@ a {
   display: flex;
   justify-content: flex-end;
 }
+
+
+//SMARTPHONE ---------- ROTATE
+@media screen and (max-height: 375px)  
+  
+
+{
+
+  .login-popup {
+     
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .form-popup {
+   
+    background-color:rgba(0, 0, 0, 0.5);
+    left:0;
+    
+    transform: translate(0%, 0%);
+    z-index: 9;
+    width: 100%;
+    
+ 
+  }
+
+.form-popup {
+height:375px;
+border:1px solid black;
+overflow-y: scroll;
+scrollbar-color: rebeccapurple green;
+scrollbar-width: thin;
+width:100%;
+padding: 20px;
+border-radius: 0;
+    
+ 
+} 
+}
+
+//SMARTPHONE --------------- SMARTPHONE ---------------  // 
+@media screen and (max-width: 500px) {
+  // body {background-color: red;}
+
+  header {position:fixed;}
+
+/*! PARTIE CENTRALE */
+#head-logo {
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom:0.8em;
+  margin-top:0.5em;
+  
+}
+
+/*! LOGO + TITLE */
+.header__title {
+  letter-spacing: 0.1rem;
+  display:block;
+  font-size:1.5em;
+}
+
+.logotype {
+  height: 30px;
+}
+
+/*! SEARCH + ADD DEAL + LOGIN */
+
+  #add-deal {
+    border-radius: vars.$buttonRadiusResponsive;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2em;
+    
+  }
+
+  #login {
+    border-radius: vars.$buttonRadiusResponsive;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2em;
+    margin-left: 0.1em;
+  }
+ 
+
+  .topnav {
+    width:100%;
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+   
+  }
+ 
+  .login-popup {
+     
+    text-align: center;
+    max-width: 100%;
+  }
+  .form-popup {
+    /*display: none;*/
+    /* <---------------------DISPLAY NON A SUPPRIMER APRES REGLAGE */
+    background-color:rgba(0, 0, 0, 0.993);
+    left:0;
+    top:0;
+    transform: translate(0%, 0%);
+    z-index: 9;
+    width: 100%;
+    
+    /*add*/
+  }
+
+  .form-container {
+    width:100%;
+    padding: 20px;
+    border-radius: 0;
+    border:1px solid black;
+     
+  }
+ 
+
+  .profile-popup {
+    max-width: 100%;
+    border-radius: 0;
+    width:100%;
+    left: 50%;
+    top: 5%;
+    transform: translate(-50%, 5%);
+    z-index: 9;
+  
+  }
+  
+  
+   
+
+}
+
+  
