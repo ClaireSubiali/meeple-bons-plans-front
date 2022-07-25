@@ -10,19 +10,27 @@ import {
 // == Composant
 function ContactForm() {
   return (
-    <div className="Parent">
-      <div className="title"><FontAwesomeIcon icon={faEnvelope} /> <h1 className="h1-inscription"> Contact</h1></div>
-      <input className="input--inscription" placeholder="Votre nom ou pseudo sur le site" type="text" />
-      <span className="input--span">Merci de remplir ce champ</span>
-      <input className="input--inscription" placeholder="Adresse Mail" type="text" />
-      <span className="input--span">L'adresse mail n'est pas valide</span>
-      <input className="input--inscription" placeholder="Titre du message" type="text" />
+    <div className="contact-form">
+      <div className="contact-form-title"><FontAwesomeIcon icon={faEnvelope} /> <div className="contact-form-mainTitle"> Contact</div></div>
+     
+      <label className="secondarytitle" htmlFor="nom-contact">Nom d'utilisateur</label>
+      <input className="contact-form-input" placeholder="Votre nom ou pseudo sur le site" type="text" />
+      <span className="contact-form-span">Merci de remplir ce champ</span>
+      
+      <label className="secondarytitle" htmlFor="mail-contact">Adresse Mail</label>
+      <input className="contact-form-input" id="mail-contact" placeholder="Adresse Mail" type="text" />
+      <span className="contact-form-span">L'adresse mail n'est pas valide</span>
+      
+      <label className="secondarytitle" htmlFor="titre-contact">Titre du message</label>
+      <input className="contact-form-input" placeholder="Titre du message" type="text" />
+      
+      <label className="secondarytitle" htmlFor="message-contact">Message</label>
       <textarea
         rows="6"
-        id="input--message"
+        className="contact-form-message"
         placeholder="Saisissez votre message ici"
       />
-      <button type="button" className="button--inscription">Envoyer</button>
+      <button type="button" className="contact-form-button">Envoyer</button>
     </div>
   );
 }

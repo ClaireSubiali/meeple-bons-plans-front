@@ -1,93 +1,77 @@
 @use 'src/styles/vars';
 
-.Parent{
-    display: flex;
-    flex-direction: column;
-    
+.contact-form {
+  display:flex;
+  flex-direction: column;
+  background-color:white;
+  padding:20px;
+  border-radius:vars.$buttonRadius;
+  width:60%;
+  margin:auto;
+  margin-top:2em;
+}
+
+.contact-form-title {
+  display:flex;
+  flex-direction:row;
+  justify-content: center;
+  font-size: 2em;
+  margin-bottom:1em;
+}
+
+.contact-form-mainTitle {
+  margin-left:0.2em;
+}
+
+.contact-form-input, .contact-form-message  {
+width: 100%;
+padding: 10px;
+margin: 5px 0 22px 0;
+border: none;
+background: #eee;
+border-radius:0.5em;
+}
+
+.contact-form-input:focus, .contact-form-message:focus {
+  background-color: #ddd;
+  outline: none;
 }
 
 
-.title {
-    padding-top:2rem;
-    display:flex;
-    flex-direction:row;
-    justify-content: center;
-    font-size:2rem;
+ 
+.contact-form-span {
+  // display:none;
+  color:red;
+  margin-bottom:1.5em;
 }
-
-
-.h1-inscription{
-    text-align: center;
-    margin-left:0.5em;
-    font-weight: bold;
-    margin-bottom: 0rem;
-   
-}
-
-
-
-.img--user{
-    height: 5rem;
-    width: 5rem;
-    margin: auto;
-   
-        
-}
-
-.input--inscription{
-    width: 30rem;
-    height: 2rem;
-    margin: 2rem auto .3rem auto ;
-    text-align: center;
-    font-family: var(--Police);
-    padding: 10px; 
-    border-radius: vars.$buttonRadius;
-    border-style:none;
-    
-}
-
-.input--span{
-    color: vars.$mainPink;
-    font-weight: bold;
-    font-style: italic;
-    font-size: .8rem;
-    text-align: center;
-    
-    /*display: none;*/
-}
-
-.input--memory{
-    margin: 3rem 0 0 0 ;
-    font-family: var(--Police);
-    margin: 0 auto;
-}
-
-.button--inscription{
-    width: 12rem;
-    padding: 10px;
-    font-size: 1.3rem;
-    margin: 2rem auto;
-    border-radius:vars.$buttonRadius;
-    color: #FFFFFF;
-    font-weight: bold;
-    background-color: vars.$mainPink;
-    border-style: none;
-}
-
-.button--inscription:hover{
-    
-    background-color: vars.$mainBlue;
-     
-}
-
-textarea {
-    width: 30rem;
-    border-radius:vars.$buttonRadius;
-    border: 1px solid rgb(202, 202, 202);
-    box-shadow: 1px 1px 1px #999;
-    margin: 2rem auto .3rem auto ;
-    font-family: var(--Police);
+ 
+.contact-form-button {
+  border-radius:vars.$buttonRadius;
+  background-color: vars.$mainPink;
+  color: #FFFFFF;
+  font-weight: bold;
+  padding: 12px 20px;
+  width: 20%;
+  margin-bottom: 20px;
+  margin:auto;
+  border: none;
+  cursor: pointer;
+  font-size: 0.8em;
 }
   
 
+//SMARTPHONE --------------- SMARTPHONE ---------------  // 
+@media screen and (max-width: 500px) {
+  
+  .contact-form {
+    padding-top:150px;
+    width:100%;
+    margin-top:0em;
+    
+  }
+ 
+   
 
+}
+
+  
