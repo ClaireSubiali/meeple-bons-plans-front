@@ -6,10 +6,13 @@ import {
   TOGGLE_VISIBILITY_AND_AVATAR,
   CLICK_MEEPLE,
   TOGGLE_IS_PROFILE_VISIBLE,
+  // L'inscription
+  CHANGE_CREATE_PSEUDO,
+  CHANGE_CREATE_MAIL,
+  CHANGE_CREATE_PASSWORD,
+  CHANGE_CONFIRM_PASSWORD,
+  TOGGLE_AVATAR_COLOR,
 } from '../actions/user';
-
-//CHANGE_FIELD_VALUE,
- //   LOGIN,
 
 // le initalstate sert a creer un stat "vierge" qui sert modifier à chaque iteration  
 const initialState = {
@@ -24,6 +27,14 @@ const initialState = {
     password: '', // pour le champs contrôlé du mot de passe
     temporaryMessage: '',//!Temporaire avant API
     // Token ? + Pseudo ?
+  },
+
+  createAccount: {
+    createPseudo: '',
+    createMail: '',
+    createPassword: '',
+    confirmPassword: '',
+    avatarColor: '',
   },
 };
 
@@ -90,6 +101,47 @@ function reducer(state = initialState, action = {}) {
           email: '',
           password: '',
           temporaryMessage: '',
+        },
+      };
+      // Inscription
+    case CHANGE_CREATE_PSEUDO:
+      return {
+        ...state,
+        createAccount: {
+          ...state.createAccount,
+          createPseudo: action.newPseudo,
+        },
+      };
+    case CHANGE_CREATE_MAIL:
+      return {
+        ...state,
+        createAccount: {
+          ...state.createAccount,
+          createMail: action.mail,
+        },
+      };
+    case CHANGE_CREATE_PASSWORD:
+      return {
+        ...state,
+        createAccount: {
+          ...state.createAccount,
+          createPassword: action.password,
+        },
+      };
+    case CHANGE_CONFIRM_PASSWORD:
+      return {
+        ...state,
+        createAccount: {
+          ...state.createAccount,
+          confirmPassword: action.password,
+        },
+      };
+    case TOGGLE_AVATAR_COLOR:
+      return {
+        ...state,
+        createAccount: {
+          ...state.createAccount,
+          avatarColor: action.color,
         },
       };
     default:

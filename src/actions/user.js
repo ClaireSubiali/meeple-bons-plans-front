@@ -3,15 +3,12 @@
 import { useDispatch } from 'react-redux';
 import data from '../data/dataUser';
 
-
-
 //On creer une actions seulement pour le dispatch pas besoin pour le useSelector
-
 // IL faut creer une const exemple
 
+///////////////////////////////////////////////////////////////////! CONNEXION //////////////////////////////////////////////////////
 
 export const TOGGLE_VISIBILITY = 'TOGGLE_VISIBILITY';
-
 
 // le useDispatch (dispatch) envoit a l'action qui elle meme contient les infos au reducer
 export function toggleLogin() {
@@ -90,3 +87,56 @@ export function testLogin(mailFromState, passwordFromState) {
     temporaryMessage: loginStatus,
   };
 }
+
+//////////////////////////////////////////////////////// INSCRIPTION //////////////////////////////////////////////////// 
+
+// ajouter un pseudo
+export const CHANGE_CREATE_PSEUDO = 'CHANGE_CREATE_PSEUDO';
+
+export function changeCreatePseudo(createPseudo) {
+  return {
+    type: CHANGE_CREATE_PSEUDO,
+    newPseudo: createPseudo,
+  };
+}
+
+//rajouter un mail
+export const CHANGE_CREATE_MAIL = 'CHANGE_CREATE_MAIL';
+
+export function changeCreateEmail(createMail) {
+  return {
+    type: CHANGE_CREATE_MAIL,
+    mail: createMail,
+  };
+}
+
+////Rajouter un password
+export const CHANGE_CREATE_PASSWORD = 'CHANGE_CREATE_PASSWORD';
+
+export function changeCreatePassword(createPassword) {
+  return {
+    type: CHANGE_CREATE_PASSWORD,
+    password: createPassword,
+  };
+}
+
+////Confirmer le password
+export const CHANGE_CONFIRM_PASSWORD = 'CHANGE_CONFIRM_PASSWORD';
+
+export function changeConfirmPassword(confimPassword) {
+  return {
+    type: CHANGE_CONFIRM_PASSWORD,
+    password: confimPassword,
+  };
+}
+
+////Choisir son avatar
+export const TOGGLE_AVATAR_COLOR = 'TOGGLE_AVATAR_COLOR';
+
+export function changeAvatarColor(choosedColor) {
+  return {
+    type: TOGGLE_AVATAR_COLOR,
+    color: choosedColor,
+  };
+}
+
