@@ -41,7 +41,7 @@ function DealCard() {
         </div>
         <div className="footer-deal">
           <p className="footer-dealp">
-            <button type="button" className="see-deal">Voir le bon plan</button>
+          <button type="button" className="see-deal">Voir le bon plan</button>
           </p>
           <p className="footer-deal-time"><span className="clock"><FontAwesomeIcon icon={faClock} /></span> il y a 15 minutes</p>
         </div>
