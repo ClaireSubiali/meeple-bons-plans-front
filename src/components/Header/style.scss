@@ -317,13 +317,14 @@ a {
 /* Masquez la forme Popup */
 .form-popup {
   position: fixed;
-  left: 60%;
-  top: 5%;
+  // left: 100%;
+  // top: 5%;
   transform: translate(-45%, 5%);
   z-index: 9;
-  width: 50%;
+  // width: 100%;
+  display : block;
   /*add*/
-
+  
 }
 
 .display-none {
@@ -332,6 +333,8 @@ a {
 
 /* Styles pour le conteneur de la forme */
 .form-container {
+  margin-left: auto;
+    margin-right: auto;
   color: black;
   max-width: 600px;
   padding: 20px;
