@@ -9,6 +9,7 @@
   width:60%;
   margin:auto;
   margin-top:2em;
+  margin-bottom:3.5em;
 }
 
 .contact-form-title {
@@ -37,7 +38,11 @@ border-radius:0.5em;
   outline: none;
 }
 
-
+.contact-secondarytitle {
+  font-size:0.9em;
+  font-weight: bold;
+  color:vars.$secondaryDarkGrey;
+}
  
 .contact-form-span {
   // display:none;

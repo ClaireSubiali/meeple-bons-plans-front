@@ -1,130 +1,92 @@
 @use 'src/styles/vars';
 
-.Parent {
-   display: flex;
-   flex-direction: row;
- 
-}
-
-.newUser {
-  width:60%;
+.register-form {
   display:flex;
-  flex-direction:column;
- 
-  margin: auto;
-  background-color:#ffffff;
+  flex-direction: column;
+  background-color:white;
   padding:20px;
-  margin-top:1.5rem;
-  border-radius: vars.$buttonRadius;
-  box-shadow: 5px 3px 5px rgb(209, 209, 209);
-  background-color:rgb(255, 255, 255);
+  border-radius:vars.$buttonRadius;
+  width:60%;
+  margin:auto;
+  margin-top:2em;
+  margin-bottom:3.5em;
 }
 
- 
-.header-register
-{
+.header-register {
   display:flex;
   flex-direction:row;
   justify-content: center;
-  align-items: center;
-   
-}
-
-.title {
-    
-    font-size:2rem;
-     
-}
-
-
-.title-inscription{
-    font-size:1.8rem;
-    margin-left:0.5em;
-    font-weight: bold;
-   
-}
-
-// .img--user{
-//     height: 5rem;
-//     width: 5rem;
-//     margin: auto;
-//     background-color:rgb(95, 23, 23);
-        
-// }
-
-.input-register { 
-    
-    width: 100%;
-          padding: 10px;
-          margin: 5px 0 22px 0;
-          border-radius: vars.$buttonRadius;
-          border: none;
-          background-color: #ddd; 
-}
-
-#meeple-select { 
-  margin-top:1em;
-    width: 100%;
-    height: 40px;
-    cursor: pointer;
-    background-color: vars.$mainBlue;
-    box-shadow: 0 2px 0 white;
-    color:white;
-    border-radius:vars.$buttonRadius;
-    font-weight: bold;
-    background-color:vars.$mainBlue;
-     
-  }
-
-.input--span{
-    color: vars.$mainPink;
-    font-weight: bold;
-    font-style: italic;
-    font-size: .8rem;
-    background-color:rgb(255, 255, 255);
-    
-    /*display: none; */
-}
-
-// .input--memory{
-//     margin: 3rem 0 0 0 ;
-//     font-family: var(--Police);
-//     margin: 0 auto;
-// }
-
-.button--inscription{
-    width: 12rem;
-    padding: 10px;
-    font-size: 1.3rem;
-    margin: 2rem auto;
-    border-radius:vars.$buttonRadius;
-    color: #FFFFFF;
-    font-weight: bold;
-    background-color: vars.$mainPink;
-    border-style: none;
-}
-
-.button--inscription:hover{
-    
-    background-color: vars.$mainBlue;
-     
-}
-
-@media screen and (max-width: 800px) {
-
-    
-  .header-register
-  {
-    display:flex;
-    flex-direction:column;
-     
-  }
-
-.title-inscription{
-  font-size:1.6em;
+  font-size: 2em;
   margin-bottom:1em;
- 
 }
 
-  
+.register-title-inscription {
+  margin-left:0.2em;
 }
+
+.register-input-register {
+width: 100%;
+padding: 10px;
+margin: 5px 0 22px 0;
+border: none;
+background: #eee;
+border-radius:0.5em;
+}
+
+.register-input-register:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+.register-main  {
+  display:flex;
+  flex-direction: column;
+}
+
+.register-input-span {
+  // display:none;
+  color:red;
+  margin-bottom:1.5em;
+}
+
+.register-secondarytitle {
+  font-size:0.9em;
+  font-weight: bold;
+  color:vars.$secondaryDarkGrey;
+}
+ 
+ 
+.button-register-div {
+  text-align: center;  
+}
+
+.button-register {
+  border-radius:vars.$buttonRadius;
+  background-color: vars.$mainPink;
+  color: #FFFFFF;
+  font-weight: bold;
+  padding: 12px 20px;
+  width: 120px;  //différence avec les autres boutons
+  margin-bottom: 20px;
+  margin:auto;
+  border: none;
+  cursor: pointer;
+  font-size: 0.8em;
+}
+  
+
+//SMARTPHONE --------------- SMARTPHONE ---------------  // 
+@media screen and (max-width: 500px) {
+  
+  .register-form  {
+    padding-top:150px;
+    width:100%;
+    margin-top:0em;
+    
+   }
+ 
+   
+
+}
+
+   
