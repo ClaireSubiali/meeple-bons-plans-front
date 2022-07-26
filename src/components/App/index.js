@@ -1,5 +1,7 @@
 // == Import
 import { Route, Routes } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 import './style.scss';
 
@@ -16,9 +18,22 @@ import LegalMentions from '../LegalMentions';
 import SearchResults from '../SearchResults';
 import Error from '../Error';
 import ContactForm from '../ContactForm';
+
+// Actions Import 
+import { fetchDeal } from '../../actions/deal';
+
 // == Composant
 function App() {
-  
+    const dispatch = useDispatch();
+   // Lors du chargement initial de composant
+   useEffect(
+    () => {
+      // On veut recup la liste des recette depuis l'API
+      // Pour ça, on va dispatcher une action (émettre l'intention de récupérer un fact/un dea)
+      dispatch(fetchDeal());
+    },
+    [],
+  );
   return (
     <div className="app">
       <Header />

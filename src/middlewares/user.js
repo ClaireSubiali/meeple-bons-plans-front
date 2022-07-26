@@ -22,7 +22,7 @@ const userMiddleware = (store) => (next) => (action) => {
         // On commence par importer les actions et axios
 import axios from 'axios';
 // puis les actions
-import {
+//import {
   /*
 }
 
