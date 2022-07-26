@@ -10,9 +10,13 @@ import {
   CHANGE_SHIPPING_PRICE,
   CHANGE_DISCOUNT_CODE,
   CHANGE_EXPIRATION_DATE,
+  SAVE_DEAL,
 } from '../actions/deal';
 
+// ici on initialise le state
 const initialState = {
+  dealList: [],
+
   addDealForm: {
     dealTitle: '',
     dealGame: '',
@@ -27,6 +31,7 @@ const initialState = {
   },
 };
 
+// ici on reprends le state inital ( avec state = initialState) et on lui ajoute (en écrasant) des modifications avec un "parametre"
 function reducer(state = initialState, action = {}) {
   switch (action.type) {
     case CHANGE_DEAL_TITLE:
@@ -108,6 +113,11 @@ function reducer(state = initialState, action = {}) {
           ...state.addDealForm,
           expirationDate: action.date,
         },
+      };
+    case SAVE_DEAL:
+      return{
+        ...state,
+        dealList: action.deal
       };
     default:
       return state;
