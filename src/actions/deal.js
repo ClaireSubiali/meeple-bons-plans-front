@@ -118,3 +118,27 @@ export function changeExpDate(newExpDate) {
     date: newExpDate,
   };
 }
+
+//! -------------------ACTION POUR MIDDLEWARES ---------------------------------------
+
+// Action Type => On l'utilise dans l'action creator ET dans le reducer
+export const FETCH_DEAL = 'FETCH_DEAL';
+
+// Action creator => On l'utilise au moment du dispatch()
+export function fetchDeal() {
+  return {
+    type: FETCH_DEAL,
+  };
+}
+
+// Action Type => On l'utilise dans l'action creator ET dans le reducer
+export const SAVE_DEAL = 'SAVE_DEAL';
+
+// Action creator => On l'utilise au moment du dispatch()
+export function saveDeal(newDealList) {
+  return {
+    type: SAVE_DEAL,
+    deal: newDealList,
+  };
+}
+
