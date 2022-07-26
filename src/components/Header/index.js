@@ -44,7 +44,8 @@ function Header() {
   const isAvatarVisible = useSelector((state) => state.user.isAvatarVisible);
 
   // permet d'envoyer des données au state (avec les actions et reducer)
-  // (useSelector = 'pull' du state // useDispatch = 'push_vers_state')
+  // (useSelector = 'pull' du state (redux) // useDispatch = 'push_vers_state' // useEffect = permet de determiner une fonction a executer a un moment choisi)
+  // (usestate = sans redux? )
   const dispatch = useDispatch();
 
   //! temporaire avant API:
