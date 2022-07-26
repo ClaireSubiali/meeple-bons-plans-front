@@ -45,7 +45,9 @@ function Header() {
   const isAvatarVisible = useSelector((state) => state.user.isAvatarVisible);
   const dealObjectTest = useSelector((state) => state.deal.dealList);
 
-  console.log('CONSOLE LOG sur header', dealObjectTest[0].value);
+  console.log('CONSOLE LOG sur header', dealObjectTest.value);
+  const dealObjectTest2 = dealObjectTest.value;
+ 
 
   // permet d'envoyer des données au state (avec les actions et reducer)
   // (useSelector = 'pull' du state (redux) // useDispatch = 'push_vers_state' // useEffect = permet de determiner une fonction a executer a un moment choisi)
