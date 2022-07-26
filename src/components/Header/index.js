@@ -41,7 +41,11 @@ function Header() {
     isProfileVisible,
   } = useSelector((state) => state.user.loginSettings);
 
+  // Ici on vient 'pull' les données situées dans le state (reducer)
   const isAvatarVisible = useSelector((state) => state.user.isAvatarVisible);
+  const dealObjectTest = useSelector((state) => state.deal.dealList);
+
+  console.log('CONSOLE LOG sur header', dealObjectTest[0].value);
 
   // permet d'envoyer des données au state (avec les actions et reducer)
   // (useSelector = 'pull' du state (redux) // useDispatch = 'push_vers_state' // useEffect = permet de determiner une fonction a executer a un moment choisi)

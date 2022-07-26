@@ -11,6 +11,8 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 //! COMMENTAIRE pour comprendre a quoi sert le applymiddleware et son parent? le composeenhancers console.log(applyMiddleware);
 
+
+
 // trad. exhausteurs => permet d'englober le applyMiddleware qui lui meme engloble tout les middlewares
 const enhancers = composeEnhancers(
   // applyMiddleware permet de "combiner" les deux middlewares (les mettre dans un paquet)

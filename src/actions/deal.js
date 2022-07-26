@@ -130,3 +130,15 @@ export function fetchDeal() {
     type: FETCH_DEAL,
   };
 }
+
+// Action Type => On l'utilise dans l'action creator ET dans le reducer
+export const SAVE_DEAL = 'SAVE_DEAL';
+
+// Action creator => On l'utilise au moment du dispatch()
+export function saveDeal(newDealList) {
+  return {
+    type: SAVE_DEAL,
+    deal: newDealList,
+  };
+}
+
