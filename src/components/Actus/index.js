@@ -12,7 +12,7 @@ function Actus() {
       <article className="card-main">
         <h2 className="Title-big">Titre</h2>
         <time className="date-dig">14/02/2012</time>
-        <p>
+        <p className="description-actu-big">
           Lorem ipsum dolor sit amet. Aut molestiae et ullam delectus qui iste
           error 33 eligendi culpa et explicabo numquam. Eum incidunt sint qui
           dolores consectetur soluta necessitatibus est voluptatem earum aut
@@ -27,7 +27,7 @@ function Actus() {
         <article className="card-medium">
           <h2 className="Title-big">Titre</h2>
           <time className="date-dig">14/02/2012</time>
-          <p>
+          <p className="description-actu-Medium">
             Lorem ipsum dolor sit amet. Aut molestiae et ullam delectus qui iste
             error 33 eligendi culpa et explicabo numquam. Eum incidunt sint qui
             dolores consectetur soluta necessitatibus est voluptatem earum aut
@@ -40,7 +40,7 @@ function Actus() {
         <article className="card-medium">
           <h2 className="Title-big">Titre</h2>
           <time className="date-dig">14/02/2012</time>
-          <p>
+          <p className="description-actu-Medium">
             Lorem ipsum dolor sit amet. Aut molestiae et ullam delectus qui iste
             error 33 eligendi culpa et explicabo numquam. Eum incidunt sint qui
             dolores consectetur soluta necessitatibus est voluptatem earum aut
@@ -53,7 +53,7 @@ function Actus() {
         <article className="card-medium">
           <h2 className="Title-big">Titre</h2>
           <time className="date-dig">14/02/2012</time>
-          <p>
+          <p className="description-actu-Medium">
             Lorem ipsum dolor sit amet. Aut molestiae et ullam delectus qui iste
             error 33 eligendi culpa et explicabo numquam. Eum incidunt sint qui
             dolores consectetur soluta necessitatibus est voluptatem earum aut
@@ -66,7 +66,7 @@ function Actus() {
         <article className="card-medium">
           <h2 className="Title-big">Titre</h2>
           <time className="date-dig">14/02/2012</time>
-          <p>
+          <p className="description-actu-Medium">
             Lorem ipsum dolor sit amet. Aut molestiae et ullam delectus qui iste
             error 33 eligendi culpa et explicabo numquam. Eum incidunt sint qui
             dolores consectetur soluta necessitatibus est voluptatem earum aut
@@ -79,7 +79,7 @@ function Actus() {
         <article className="card-medium">
           <h2 className="Title-big">Titre</h2>
           <time className="date-dig">14/02/2012</time>
-          <p>
+          <p className="description-actu-Medium">
             Lorem ipsum dolor sit amet. Aut molestiae et ullam delectus qui iste
             error 33 eligendi culpa et explicabo numquam. Eum incidunt sint qui
             dolores consectetur soluta necessitatibus est voluptatem earum aut
@@ -92,7 +92,7 @@ function Actus() {
         <article className="card-medium">
           <h2 className="Title-big">Titre</h2>
           <time className="date-dig">14/02/2012</time>
-          <p>
+          <p className="description-actu-Medium">
             Lorem ipsum dolor sit amet. Aut molestiae et ullam delectus qui iste
             error 33 eligendi culpa et explicabo numquam. Eum incidunt sint qui
             dolores consectetur soluta necessitatibus est voluptatem earum aut

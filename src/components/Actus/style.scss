@@ -1,6 +1,12 @@
 @use 'src/styles/vars';
 
 
+/*media screen => 1200 780 660  500
+@media screen and (max-width: 780px) {
+  .Class {
+    ****
+  }
+}*/
 .pseudo-body {
   width: 60%;
   margin: 2% auto 0 auto;
@@ -27,6 +33,10 @@
   color: rgb(94, 92, 92);
 }
 
+.description-actu-big{
+  padding: 0.2rem 0 0.5rem 0;
+}
+
 .contener-card-medium {
   display: flex;
   flex-wrap: wrap;
@@ -35,11 +45,15 @@
 .card-medium {
   border: solid 1px vars.$mainPink;
   border-radius: 0.5rem;
-  padding: 0.4rem;
+  padding: 0.6rem;
   width: 45%;
-  height: 8rem;
   margin: 0 auto 1rem auto;
   background-color: white;
+}
+
+.description-actu-Medium{
+  padding: 0.2rem 0 0.5rem 0;
+  font-size: 0.8rem;
 }
 
 .menu-page {
