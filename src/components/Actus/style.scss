@@ -1,0 +1,48 @@
+@use 'src/styles/vars';
+
+
+.pseudo-body{
+  width: 60%;
+  margin: 2% auto 0 auto;
+}
+
+.card-main{
+  border: solid 1px vars.$mainPink;
+  border-radius: 0.5rem;
+  padding: 0.4rem;
+  width: 80%;
+  margin: 0 auto 1rem auto;
+  background-color: white;
+}
+
+.Title-big{
+  font-weight: 600;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.date-dig{
+  font-size: 0.7rem;
+  font-style: italic;
+  color: rgb(94, 92, 92);
+}
+
+.contener-card-medium{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card-medium{
+  border: solid 1px vars.$mainPink;
+  border-radius: 0.5rem;
+  padding: 0.4rem;
+  width: 45%;
+  height: 8rem;
+  margin: 0 auto 1rem auto;
+  background-color: white;
+}
+
+.menu-page{
+  margin: 0 auto 0 auto;
+  background-color: red;
+}
