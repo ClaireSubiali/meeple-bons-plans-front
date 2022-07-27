@@ -22,13 +22,31 @@ export function toggleVisibility(field) {
   };
 }
 
-// Action Type => On l'utilise dans l'action creator ET dans le reducer
-export const CHANGE_FIELD_VALUE = 'CHANGE_FIELD_VALUE';
-
-// Action creator => On l'utilise au moment du dispatch()
-export function changeFieldValue(value, field) {
+export const CHANGE_FIELD_VALUE_LOGIN_SETTINGS = 'CHANGE_FIELD_VALUE_LOGIN_SETTINGS';
+/**
+ * Permet de changer une valeur dans le state dans le sous tableau LoginSettings
+ * @param {string} value nouvelle valeur à inscrire
+ * @param {string} field nom de l'entrée à modifier dans le state
+ * @returns
+ */
+export function changeFieldValueLoginSettings(value, field) {
   return {
-    type: CHANGE_FIELD_VALUE,
+    type: CHANGE_FIELD_VALUE_LOGIN_SETTINGS,
+    value: value,
+    field: field,
+  };
+}
+
+export const CHANGE_FIELD_VALUE_CREATE_ACCOUNT = 'CHANGE_FIELD_VALUE_CREATE_ACCOUNT';
+/**
+ * Permet de changer une valeur dans le state dans le sous tableauCreateAccount
+ * @param {string} value nouvelle valeur à inscrire
+ * @param {string} field nom de l'entrée à modifier dans le state
+ * @returns
+ */
+export function changeFieldValueCreateAccount(value, field) {
+  return {
+    type: CHANGE_FIELD_VALUE_CREATE_ACCOUNT,
     value: value,
     field: field,
   };

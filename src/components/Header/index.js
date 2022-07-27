@@ -96,7 +96,7 @@ function Header() {
    * @param field string exact correspondant au nom de l'entrée dans le state à modifier
    */
   const handleChangeFieldValue = (value, field) => {
-    dispatch(changeFieldValue(value, field));
+    dispatch(changeFieldValueLoginSettings(value, field));
   }
    /**
    * Toggle une valeur dans le state à son contraire

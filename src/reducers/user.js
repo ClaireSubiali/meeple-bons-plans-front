@@ -9,7 +9,8 @@ import {
   CHANGE_CREATE_PASSWORD,
   CHANGE_CONFIRM_PASSWORD,
   TOGGLE_AVATAR_COLOR,
-  CHANGE_FIELD_VALUE,
+  CHANGE_FIELD_VALUE_LOGIN_SETTINGS,
+  CHANGE_FIELD_VALUE_CREATE_ACCOUNT,
 } from '../actions/user';
 
 // le initalstate sert a créer un statE "vierge" qui sert modifier à chaque itération
@@ -50,12 +51,21 @@ function reducer(state = initialState, action = {}) {
           [action.field]: !state.loginSettings[action.field],
         },
       };
-    // PERMET DE CHANGER LA VALEUR D'UN CHAMP CONTROLE
-    case CHANGE_FIELD_VALUE:
+    // PERMET DE CHANGER LA VALEUR D'UN CHAMP CONTROLE DANS LE SOUS TABLEAU LOGIN SETTINGS
+    case CHANGE_FIELD_VALUE_LOGIN_SETTINGS:
       return {
         ...state,
         loginSettings: {
           ...state.loginSettings,
+          [action.field]: action.value,
+        },
+      };
+    // PERMET DE CHANGER LA VALEUR D'UN CHAMP CONTROLE DANS LE SOUS TABLEAU CREATE ACCOUNT
+    case CHANGE_FIELD_VALUE_CREATE_ACCOUNT:
+      return {
+        ...state,
+        createAccount: {
+          ...state.createAccount,
           [action.field]: action.value,
         },
       };
