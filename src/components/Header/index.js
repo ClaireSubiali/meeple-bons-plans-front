@@ -3,7 +3,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 
 // == Import des éléments de librairies
-// import PropTypesLib from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -18,14 +17,14 @@ import {
   toggleVisibility,
   testLogin,
   disconnect,  
-  changeFieldValue,
+  changeFieldValueLoginSettings,
 } from '../../actions/user';
 
 // == Import de composants
 import LoginPopup from './LoginPopup';
 import ProfilePopup from './ProfilePopup';
 
-// == Import d'images SCSS et autres
+// == Import d'images, SCSS et autres
 import './style.scss';
 import logo from '../../assets/img/logo-meeple.svg';
 import avatar from '../../assets/img/m-orange.png';
