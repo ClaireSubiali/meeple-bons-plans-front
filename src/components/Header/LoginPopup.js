@@ -13,30 +13,39 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons';
 // == Composant
 function LoginPopup({
   SubmitLogin,
-  ToggleLogin,
-  ChangeEmail,
-  ChangePassword,
+  ToggleVisibility,
+  ChangeField,
   email,
   password,
   temporaryMessage,
 }) {
+  const handleChangeEmail = (event) => {
+    ChangeField(event.currentTarget.value, 'email');
+  };
+  const handleChangePassword = (event) => {
+    ChangeField(event.currentTarget.value, 'password');
+  };
+  const handleToggleLogin = () => {
+    ToggleVisibility('isLoginVisible');
+  };
+
   return (
     <div className="login-popup">
       <div className="form-popup">
         <form action="#" className="form-container" onSubmit={SubmitLogin}>
-          <div id="title_login">Connexion<span><button aria-label="Fermer" type="button" className="cancel" onClick={ToggleLogin}><FontAwesomeIcon icon={faXmark} /></button></span></div>
+          <div id="title_login">Connexion<span><button aria-label="Fermer" type="button" className="cancel" onClick={handleToggleLogin}><FontAwesomeIcon icon={faXmark} /></button></span></div>
           <label htmlFor="email">
             <strong className="subtitle_login">E-mail</strong>
           </label>
-          <input type="email" onChange={ChangeEmail} id="email" placeholder="Votre Email" name="email" value={email} required />
+          <input type="email" onChange={handleChangeEmail} id="email" placeholder="Votre Email" name="email" value={email} required />
           <label htmlFor="psw">
             <strong className="subtitle_login">Mot de passe</strong>
           </label>
-          <input type="password" onChange={ChangePassword} id="psw" placeholder="Votre Mot de passe" name="psw" value={password} required />
+          <input type="password" onChange={handleChangePassword} id="psw" placeholder="Votre Mot de passe" name="psw" value={password} required />
           <div className="login_error">{temporaryMessage}</div>
-          <button type="submit" className="btn">Se connecter</button>
+          <button type="submit" className="btn" onSubmit={SubmitLogin}>Se connecter</button>
           <div className="lost_password">Mot de passe oublié?</div>
-          <Link to="/inscription"><button type="button" className="btn register" onClick={ToggleLogin}>S'inscrire</button></Link>
+          <Link to="/inscription"><button type="button" className="btn register" onClick={handleToggleLogin}>S'inscrire</button></Link>
         </form>
       </div>
     </div>
@@ -45,9 +54,8 @@ function LoginPopup({
 
 LoginPopup.propTypes = {
   SubmitLogin: PropTypesLib.func.isRequired,
-  ToggleLogin: PropTypesLib.func.isRequired,
-  ChangeEmail: PropTypesLib.func.isRequired,
-  ChangePassword: PropTypesLib.func.isRequired,
+  ToggleVisibility: PropTypesLib.func.isRequired,
+  ChangeField: PropTypesLib.func.isRequired,
   email: PropTypesLib.string,
   password: PropTypesLib.string,
   temporaryMessage: PropTypesLib.string,

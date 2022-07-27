@@ -1,20 +1,13 @@
 import {
   TOGGLE_VISIBILITY,
-  CHANGE_MAIL,
   CHECK_LOGIN,
-  CHANGE_PASSWORD,
   TOGGLE_VISIBILITY_AND_AVATAR,
-  CLICK_MEEPLE,
-  TOGGLE_IS_PROFILE_VISIBLE,
-  // L'inscription
-  CHANGE_CREATE_PSEUDO,
-  CHANGE_CREATE_MAIL,
-  CHANGE_CREATE_PASSWORD,
-  CHANGE_CONFIRM_PASSWORD,
-  TOGGLE_AVATAR_COLOR,
+  LOGOUT,
+  CHANGE_FIELD_VALUE_LOGIN_SETTINGS,
+  CHANGE_FIELD_VALUE_CREATE_ACCOUNT,
 } from '../actions/user';
 
-// le initalstate sert a creer un stat "vierge" qui sert modifier à chaque iteration  
+// le initalstate sert a créer un statE "vierge" qui sert modifier à chaque itération
 const initialState = {
   currentUser: '', // Pseudo de l'utilisateur Renvoyé par l'API lors de la connexion
   userAvatar: '', // Avatar de l'utilisateur renvoyé par l'api lors de la connexion
@@ -22,10 +15,10 @@ const initialState = {
 
   loginSettings: {
     isProfileVisible: false,
-    isOpen: false, // est-ce que l'encart de connexion est ouvert ?
+    isLoginVisible: false, // est-ce que l'encart de connexion est ouvert ?
     email: '', // pour champs contrôlé email
     password: '', // pour le champs contrôlé du mot de passe
-    temporaryMessage: '',//!Temporaire avant API
+    temporaryMessage: '', // !Temporaire avant API
     // Token ? + Pseudo ?
   },
 
@@ -43,30 +36,25 @@ const initialState = {
 
 function reducer(state = initialState, action = {}) {
   switch (action.type) {
+    // TOGGLE LA VISIBILITE D'UN ELEMENT
     case TOGGLE_VISIBILITY:
       return {
         ...state,
         loginSettings: {
           ...state.loginSettings,
-          isOpen: !state.loginSettings.isOpen,
+          [action.field]: !state.loginSettings[action.field],
         },
       };
-    case CHANGE_MAIL:
+    // PERMET DE CHANGER LA VALEUR D'UN CHAMP CONTROLE DANS LE SOUS TABLEAU LOGIN SETTINGS
+    case CHANGE_FIELD_VALUE_LOGIN_SETTINGS:
       return {
         ...state,
         loginSettings: {
           ...state.loginSettings,
-          email: action.newMail,
+          [action.field]: action.value,
         },
       };
-    case CHANGE_PASSWORD:
-      return {
-        ...state,
-        loginSettings: {
-          ...state.loginSettings,
-          password: action.newPassword,
-        },
-      };
+    // TODO CASE TEMPORAIRE AVANT API QUI VERIFIE LA CONNEXION
     case CHECK_LOGIN:
       return {
         ...state,
@@ -75,73 +63,35 @@ function reducer(state = initialState, action = {}) {
           temporaryMessage: action.temporaryMessage,
         },
       };
+    // TODO CASE TEMPORAIRE AVANT API QUI AFFICHE L'AVATAR SI CONNEXION OK A MODIFIER QUAND API
     case TOGGLE_VISIBILITY_AND_AVATAR:
       return {
         ...state,
         loginSettings: {
           ...state.loginSettings,
-          isOpen: !state.loginSettings.isOpen,
+          isLoginVisible: !state.loginSettings.isLoginVisible,
         },
         isAvatarVisible: !state.isAvatarVisible,
       };
-    case TOGGLE_IS_PROFILE_VISIBLE:
-      return {
-        ...state,
-        loginSettings: {
-          ...state.loginSettings,
-          isProfileVisible: !state.loginSettings.isProfileVisible,
-        },
-      };
-    case CLICK_MEEPLE:
+    // PERMET LA DECONNEXION (VIDE DU STATE DONNÉES USER)
+    case LOGOUT:
       return {
         ...state,
         isAvatarVisible: false,
         loginSettings: {
-          isOpen: false,
+          isLoginVisble: false,
           email: '',
           password: '',
           temporaryMessage: '',
         },
       };
-      // Inscription
-    case CHANGE_CREATE_PSEUDO:
+    // PERMET DE CHANGER LA VALEUR D'UN CHAMP CONTROLE DANS LE SOUS TABLEAU CREATE ACCOUNT
+    case CHANGE_FIELD_VALUE_CREATE_ACCOUNT:
       return {
         ...state,
         createAccount: {
           ...state.createAccount,
-          createPseudo: action.newPseudo,
-        },
-      };
-    case CHANGE_CREATE_MAIL:
-      return {
-        ...state,
-        createAccount: {
-          ...state.createAccount,
-          createMail: action.mail,
-        },
-      };
-    case CHANGE_CREATE_PASSWORD:
-      return {
-        ...state,
-        createAccount: {
-          ...state.createAccount,
-          createPassword: action.password,
-        },
-      };
-    case CHANGE_CONFIRM_PASSWORD:
-      return {
-        ...state,
-        createAccount: {
-          ...state.createAccount,
-          confirmPassword: action.password,
-        },
-      };
-    case TOGGLE_AVATAR_COLOR:
-      return {
-        ...state,
-        createAccount: {
-          ...state.createAccount,
-          avatarColor: action.color,
+          [action.field]: action.value,
         },
       };
     default:

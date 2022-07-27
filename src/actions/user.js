@@ -1,69 +1,81 @@
-//IMPORT TEMPORAIRE LE TEMPS DE VERIFIER LES DONNES DE CONNEXION SANS API
+// TODO IMPORT TEMPORAIRE LE TEMPS DE VERIFIER LES DONNES DE CONNEXION SANS API
 // ! A supprimer après :
-import { useDispatch } from 'react-redux';
 import data from '../data/dataUser';
 
-//On creer une actions seulement pour le dispatch pas besoin pour le useSelector
-// IL faut creer une const exemple
+// On creer une action seulement pour le dispatch pas besoin pour le useSelector
 
-///////////////////////////////////////////////////////////////////! CONNEXION //////////////////////////////////////////////////////
+/*--------------------------------------------------------------------------------*/
+/* ---------- ACTIONS GENERALES AVEC PLUSIEURS UTILISATIONS POSSIBLES ----------- */
+/*--------------------------------------------------------------------------------*/
+
+// le useDispatch (dispatch) envoit a l'action l'info qui elle même transporte les infos au reducer
 
 export const TOGGLE_VISIBILITY = 'TOGGLE_VISIBILITY';
-
-// le useDispatch (dispatch) envoit a l'action qui elle meme contient les infos au reducer
-export function toggleLogin() {
+/**
+ * @param {string} field nom de l'entrée du state à modifier
+ * @returns
+ */
+export function toggleVisibility(field) {
   return {
     type: TOGGLE_VISIBILITY,
+    field,
   };
 }
 
-export const CHANGE_MAIL = 'CHANGE_MAIL';
-
-export function onChangeMail(inputMail) {
+export const CHANGE_FIELD_VALUE_LOGIN_SETTINGS = 'CHANGE_FIELD_VALUE_LOGIN_SETTINGS';
+/**
+ * Permet de changer une valeur dans le state dans le sous tableau LoginSettings
+ * @param {string} value nouvelle valeur à inscrire
+ * @param {string} field nom de l'entrée à modifier dans le state
+ * @returns
+ */
+export function changeFieldValueLoginSettings(value, field) {
   return {
-    type: CHANGE_MAIL,
-    newMail: inputMail,
+    type: CHANGE_FIELD_VALUE_LOGIN_SETTINGS,
+    value: value,
+    field: field,
   };
 }
 
-export const CHANGE_PASSWORD = 'CHANGE_PASSWORD';
-
-export function OnChangePassword(inputPassword) {
+export const CHANGE_FIELD_VALUE_CREATE_ACCOUNT = 'CHANGE_FIELD_VALUE_CREATE_ACCOUNT';
+/**
+ * Permet de changer une valeur dans le state dans le sous tableauCreateAccount
+ * @param {string} value nouvelle valeur à inscrire
+ * @param {string} field nom de l'entrée à modifier dans le state
+ * @returns
+ */
+export function changeFieldValueCreateAccount(value, field) {
   return {
-    type: CHANGE_PASSWORD,
-    newPassword: inputPassword,
+    type: CHANGE_FIELD_VALUE_CREATE_ACCOUNT,
+    value: value,
+    field: field,
   };
 }
 
-export const CLICK_MEEPLE = 'CLICK_MEEPLE';
+/*--------------------------------------------------------------------------------*/
+/* ------------ ACTIONS RELATIVES A LA CONNEXION / DECONNEXION------------------- */
+/*--------------------------------------------------------------------------------*/
 
+export const LOGOUT = 'LOGOUT';
+/**
+ * Vide le state des informations de connexion de l'utilisateur, utilisé pour la déconnexion.
+ * @returns
+ */
 export function disconnect() {
   return {
-    type: CLICK_MEEPLE,
-  };
-}
-// Action Type => On l'utilise dans l'action creator ET dans le reducer
-export const TOGGLE_IS_PROFILE_VISIBLE = 'TOGGLE_IS_PROFILE_VISIBLE';
-
-// Action creator => On l'utilise au moment du dispatch()
-export function toggleIsProfileVisible() {
-  return {
-    type: TOGGLE_IS_PROFILE_VISIBLE,
+    type: LOGOUT,
   };
 }
 
+//! DEBUT DE LA PARTIE TEMPORAIRE
+// TODO ACTION TEMPORAIRE A SUPPRIMER QUAND API PERMET LA CONNEXION
+// A REMPLACER PAR L'ACTION POUR LE MIDDLEWARE
 // pour gerer le dispatcher de icone/avatar
 export const TOGGLE_VISIBILITY_AND_AVATAR = 'TOGGLE_VISIBILITY_AND_AVATAR';
-
-
-//! ACTION TEMPORAIRE A SUPPRIMER QUAND API
 // Action Type => On l'utilise dans l'action creator ET dans le reducer
 export const CHECK_LOGIN = 'CHECK_LOGIN';
-
-
 // Action creator => On l'utilise au moment du dispatch()
 export function testLogin(mailFromState, passwordFromState) {
-  
   let loginStatus = '';
   console.log(mailFromState);
   const meuh = data.find((user) => user.email === mailFromState);
@@ -87,56 +99,4 @@ export function testLogin(mailFromState, passwordFromState) {
     temporaryMessage: loginStatus,
   };
 }
-
-//////////////////////////////////////////////////////// INSCRIPTION //////////////////////////////////////////////////// 
-
-// ajouter un pseudo
-export const CHANGE_CREATE_PSEUDO = 'CHANGE_CREATE_PSEUDO';
-
-export function changeCreatePseudo(createPseudo) {
-  return {
-    type: CHANGE_CREATE_PSEUDO,
-    newPseudo: createPseudo,
-  };
-}
-
-//rajouter un mail
-export const CHANGE_CREATE_MAIL = 'CHANGE_CREATE_MAIL';
-
-export function changeCreateEmail(createMail) {
-  return {
-    type: CHANGE_CREATE_MAIL,
-    mail: createMail,
-  };
-}
-
-////Rajouter un password
-export const CHANGE_CREATE_PASSWORD = 'CHANGE_CREATE_PASSWORD';
-
-export function changeCreatePassword(createPassword) {
-  return {
-    type: CHANGE_CREATE_PASSWORD,
-    password: createPassword,
-  };
-}
-
-////Confirmer le password
-export const CHANGE_CONFIRM_PASSWORD = 'CHANGE_CONFIRM_PASSWORD';
-
-export function changeConfirmPassword(confimPassword) {
-  return {
-    type: CHANGE_CONFIRM_PASSWORD,
-    password: confimPassword,
-  };
-}
-
-////Choisir son avatar
-export const TOGGLE_AVATAR_COLOR = 'TOGGLE_AVATAR_COLOR';
-
-export function changeAvatarColor(choosedColor) {
-  return {
-    type: TOGGLE_AVATAR_COLOR,
-    color: choosedColor,
-  };
-}
-
+//! FIN DE LA PARTIE TEMPORAIRE

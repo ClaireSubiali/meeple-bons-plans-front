@@ -3,7 +3,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 
 // == Import des éléments de librairies
-// import PropTypesLib from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -15,19 +14,17 @@ import {
 
 // == Import des fonctions des actions
 import {
-  toggleLogin,
-  onChangeMail,
-  OnChangePassword,
+  toggleVisibility,
   testLogin,
-  disconnect,
-  toggleIsProfileVisible,
+  disconnect,  
+  changeFieldValueLoginSettings,
 } from '../../actions/user';
 
 // == Import de composants
 import LoginPopup from './LoginPopup';
 import ProfilePopup from './ProfilePopup';
 
-// == Import d'images SCSS et autres
+// == Import d'images, SCSS et autres
 import './style.scss';
 import logo from '../../assets/img/logo-meeple.svg';
 import avatar from '../../assets/img/m-orange.png';
@@ -36,14 +33,14 @@ import avatar from '../../assets/img/m-orange.png';
 // == Composant
 function Header() {
   // TODO les parties dynamiques des URLs sont entrées en dur ICI
-  // à rendre dynamique plus tard avec les props ? Pour le moment ça fonctionne temporairement
+  // à rendre dynamique plus tard avec les props ? Pour le moment ça fonctionne ! (à voir quand API)
   const categoryJDS = 'jeux-de-societe';
   const categoryJDR = 'jeux-de-roles';
   const categoryJDF = 'jeux-de-figurines';
 
   // Récupération des données du state qu'on utilise ici pour gérer le formulaire de connexion:
   const {
-    isOpen,
+    isLoginVisible,
     email,
     password,
     temporaryMessage,
@@ -70,49 +67,43 @@ function Header() {
   };
 
   // Handlers :
-  /* ------------ AFFICHAGE DES POPUPS ------------ */
+  /* ------------ HANDLERS SINGLE USE AFFICHAGE DES POPUPS ------------ */
   /**
    * Function that toggle the login popup
    */
   const handleClickToggleLogin = () => {
-    dispatch(toggleLogin());
+    dispatch(toggleVisibility("isLoginVisible"));
   };
   /**
    * Function that toggle the profile popup
    */
   const handleToggleProfile = () => {
-    dispatch(toggleIsProfileVisible());
+    dispatch(toggleVisibility("isProfileVisible"));
   };
-
-  /* ------------ CHAMPS CONTROLES ------------ */
-
-  // Permet de générer un changement à chaque modification
-  // qui enverra le contenu de la variable inputMail dans le state
-  /**
-   * Handler for controlled input (Email)
-   * @param {*} event
-   */
-  const handleChangeEmail = (event) => {
-    const inputMail = event.currentTarget.value;
-    dispatch(onChangeMail(inputMail));
-  };
-  /**
-   * Handler for controlled input (Password)
-   * @param {*} event
-   */
-  const handleChangePassword = (event) => {
-    const inputPassword = event.currentTarget.value;
-    dispatch(OnChangePassword(inputPassword));
-  };
-
-  /* ------------ AUTRES HANDLERS ------------ */
 
   /**
    * Handler for logout (disconnect)
    */
-  const handleDisconnect = () => {
+   const handleDisconnect = () => {
     dispatch(disconnect());
   };
+
+  /* ---------- HANDLER GENERAUX AVEC PLUSIEURS UTILITES ---------- */
+  /**
+   * Ajout d'une donnée dans le state (idéal pour champ contôlé)
+   * @param value chaine de caractère à dispatch dans le state
+   * @param field string exact correspondant au nom de l'entrée dans le state à modifier
+   */
+  const handleChangeFieldValue = (value, field) => {
+    dispatch(changeFieldValueLoginSettings(value, field));
+  }
+   /**
+   * Toggle une valeur dans le state à son contraire
+   * @param field string exact correspondant au nom de l'entrée dans le state à modifier
+   */
+  const handleToggleVisibility = (field) => {
+    dispatch(toggleVisibility(field));
+  }
 
   return (
     <header>
@@ -151,12 +142,11 @@ function Header() {
         </div>
       </nav>
       {/* ---------- POPUP DE CONNEXION ---------- */}
-      {isOpen ? (
+      {isLoginVisible ? (
         <LoginPopup
           SubmitLogin={handleSubmitLogin}
-          ToggleLogin={handleClickToggleLogin}
-          ChangeEmail={handleChangeEmail}
-          ChangePassword={handleChangePassword}
+          ToggleVisibility={handleToggleVisibility}
+          ChangeField={handleChangeFieldValue}
           email={email}
           password={password}
           temporaryMessage={temporaryMessage}
@@ -165,11 +155,11 @@ function Header() {
       {/* ---------- POPUP DU PROFIL ---------- */}
       {isProfileVisible ? ( 
         <ProfilePopup
-          ToggleProfile={handleToggleProfile}
+          ToggleVisibility={handleToggleVisibility}
           avatar={avatar}
           email={email}
           Disconnect={handleDisconnect}
-        />
+         />
       ) : ''}
     </header>
   );
