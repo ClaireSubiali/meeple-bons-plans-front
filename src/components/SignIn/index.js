@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 // == Import
 // import PropTypesLib from 'prop-types';
 import './style.scss';
@@ -56,33 +57,33 @@ function SignIn() {
 
 
   return (
-    <div className="register-form">
+    <div className="form-section">
       <div className="newUser">
-        <div className="header-register">
+        <div className="form-title">
           <div className="register-title"><FontAwesomeIcon icon={faAddressCard} /> </div>
-          <div className="register-title-inscription"> Créer un compte</div>
+          <div className="form-span"> Créer un compte</div>
         </div>
         <div className="register-main">
-          <label className="register-secondarytitle" htmlFor="register-title">PSEUDO</label>
-          <input className="register-input-register" onChange={handleChangeCreatePseudo} value={createPseudo} placeholder="Choisir un pseudo" type="text" />
-          <span className="register-input-span">Ce pseudo n'est pas disponible</span>
-          <label className="register-secondarytitle" htmlFor="register-mail">E-MAIL</label>
-          <input className="register-input-register" onChange={handleChangeCreateEmail} value={createMail} placeholder="Adresse Mail" type="text" />
-          <span className="register-input-span">L'adresse mail n'est pas valide</span>
-          <label className="register-secondarytitle" htmlFor="register-psw">MOT DE PASSE</label>
-          <input className="register-input-register" type="password" onChange={handleChangeCreatePassword} value={createPassword} placeholder="Mot de passe" />
-          <input className="register-input-register" type="password" onChange={handleChangeConfirmPassword} value={confirmPassword} placeholder="Confirmer le mot de passe" />
-          <span className="register-input-span">{(createPassword!=='')?((createPassword === confirmPassword) ? 'Bravo, tu as saisi deux fois le même mot de passe ! FELICITATIONS pour cet exploit !!!' : 'Les mots de passe saisis ne sont pas identiques... BOUUUUUH !!!'):'Merci de saisir un mot de passe'}</span>
+          <label className="form-secondarytitle" htmlFor="register-title">PSEUDO</label>
+          <input className="form-input" onChange={handleChangeCreatePseudo} value={createPseudo} placeholder="Choisir un pseudo" type="text" />
+          <span className="form-msg-error">Ce pseudo n'est pas disponible</span>
+          <label className="form-secondarytitle" htmlFor="register-mail">E-MAIL</label>
+          <input className="form-input" onChange={handleChangeCreateEmail} value={createMail} placeholder="Adresse Mail" type="text" />
+          <span className="form-msg-error">L'adresse mail n'est pas valide</span>
+          <label className="form-secondarytitle" htmlFor="register-psw">MOT DE PASSE</label>
+          <input className="form-input" type="password" onChange={handleChangeCreatePassword} value={createPassword} placeholder="Mot de passe" />
+          <input className="form-input" type="password" onChange={handleChangeConfirmPassword} value={confirmPassword} placeholder="Confirmer le mot de passe" />
+          <span className="form-msg-error">{(createPassword!=='')?((createPassword === confirmPassword) ? 'Bravo, tu as saisi deux fois le même mot de passe ! FELICITATIONS pour cet exploit !!!' : 'Les mots de passe saisis ne sont pas identiques... BOUUUUUH !!!'):'Merci de saisir un mot de passe'}</span>
         </div>
-        <label className="register-secondarytitle" htmlFor="register-avatar">AVATAR</label>
-        <select className="register-input-register" name="avatars" id="meeple-select" value={avatarColor} onChange={handleChangeAvatarColor}>
+        <label className="form-secondarytitle" htmlFor="register-avatar">AVATAR</label>
+        <select className="form-input" name="avatars" id="meeple-select" value={avatarColor} onChange={handleChangeAvatarColor}>
           <option value="">--Choisis une couleur de MEEPLE--</option>
           <option value="rouge">Rouge</option>
           <option value="vert">Vert</option>
           <option value="blue">Blue</option>
         </select>
         <div className="button-register-div">
-          <button type="button" className="button-register" onClick={handleChangeAvatarColor}>Je m'inscris</button>
+          <button type="button" className="form-button-validate SignIn-button " onClick={handleChangeAvatarColor}>Je m'inscris</button>
         </div>
       </div>
     </div>

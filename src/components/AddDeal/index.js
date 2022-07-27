@@ -87,14 +87,14 @@ function AddDeal() {
   };
   
   return (
-    <div className="adddeal-form">
+    <div className="form-section">
       <form>
-        <div className="adddeal-title"><FontAwesomeIcon icon={faTags} /><span className="adddeal-span">Ajouter un bon plan</span></div>
+        <div className="form-title"><FontAwesomeIcon icon={faTags} /><span className="form-span">Ajouter un bon plan</span></div>
         <div className="adddeal-header">
-          <label className="adddeal-secondarytitle" htmlFor="deal-title">TITRE</label>
-          <input className="adddeal-form-input" type="text" id="deal-title" placeholder="Titre du bon plan" value={dealTitle} onChange={handleChangeDealTitle} />
-          <label className="adddeal-secondarytitle" htmlFor="deal-search">NOM DU JEU</label>
-          <input className="adddeal-form-input" type="text" id="deal-search" placeholder="Saisissez votre recherche" value={dealGame} onChange={handleChangeDealGame} />
+          <label className="form-secondarytitle" htmlFor="deal-title">TITRE</label>
+          <input className="form-input" type="text" id="deal-title" placeholder="Titre du bon plan" value={dealTitle} onChange={handleChangeDealTitle} />
+          <label className="form-secondarytitle" htmlFor="deal-search">NOM DU JEU</label>
+          <input className="form-input" type="text" id="deal-search" placeholder="Saisissez votre recherche" value={dealGame} onChange={handleChangeDealGame} />
           <div className="adddeal-right-element"><span className="missing-game">Jeu manquant ?</span>
             <button className="button-addgame" type="button">Suggérer un jeu</button>
           </div>
@@ -105,9 +105,9 @@ function AddDeal() {
           <span className="adddeal-game">This War of Mine</span>
         </div>
         <div className="content">
-          <label className="adddeal-secondarytitle" htmlFor="deal-description">DESCRIPTION</label>
+          <label className="form-secondarytitle" htmlFor="deal-description">DESCRIPTION</label>
           <textarea
-            className="adddeal-form-input"
+            className="form-input"
             rows="6"
             id="deal-description"
             placeholder="Indiquez une description du bon plan"
@@ -116,9 +116,9 @@ function AddDeal() {
           />
         </div>
         <div>
-          <label className="adddeal-secondarytitle" htmlFor="deal-link">LIEN DU BON PLAN</label>
+          <label className="form-secondarytitle" htmlFor="deal-link">LIEN DU BON PLAN</label>
           <input
-            className="adddeal-form-input"
+            className="form-input"
             onChange={handleGameUrl}
             value={dealURL}
             type="text"
@@ -127,14 +127,14 @@ function AddDeal() {
           />
         </div>
         <div className="adddeal-info">
-          <div className="adddeal-info-title"><label className="adddeal-secondarytitle" htmlFor="deal-discount-price">PRIX REMISÉ</label></div>
-          <div className="input-info-deal"><input className="adddeal-form-input" type="number" id="deal-discount-price" value={discountedPrice} onChange={handleChangeDiscountedPrice} /></div>
-          <div className="adddeal-info-title"><label className="adddeal-secondarytitle" htmlFor="deal-shipping-price">FRAIS DE PORT</label></div>
-          <div className="input-info-deal"><input className="adddeal-form-input" type="number" id="deal-shipping-price" value={shippingPrice} onChange={handleChangeShippingPrice} /></div>
+          <div className="adddeal-info-title"><label className="form-secondarytitle" htmlFor="deal-discount-price">PRIX REMISÉ</label></div>
+          <div className="input-info-deal"><input className="form-input" type="number" id="deal-discount-price" value={discountedPrice} onChange={handleChangeDiscountedPrice} /></div>
+          <div className="adddeal-info-title"><label className="form-secondarytitle" htmlFor="deal-shipping-price">FRAIS DE PORT</label></div>
+          <div className="input-info-deal"><input className="form-input" type="number" id="deal-shipping-price" value={shippingPrice} onChange={handleChangeShippingPrice} /></div>
         </div>
         <div>
-          <label className="adddeal-secondarytitle" htmlFor="deal-vendor">VENDEUR</label>
-          <select className="adddeal-form-input" id="deal-vendor" value={dealVendor} onChange={handleChangeVendor}>
+          <label className="form-secondarytitle" htmlFor="deal-vendor">VENDEUR</label>
+          <select className="form-input" id="deal-vendor" value={dealVendor} onChange={handleChangeVendor}>
             <option value="">---Choisissez un vendeur---</option>
             <option value="philibert">Philibert</option>
             <option value="fnac">La Fnac</option>
@@ -144,13 +144,13 @@ function AddDeal() {
           </select>
         </div>
         <div className="adddeal-secondaryInfo">
-          <label className="adddeal-secondarytitle" htmlFor="deal-discount-code">CODE PROMO</label>
-          <input className="adddeal-form-input" type="text" onChange={handleChangeDiscountCode} value={discountCode} id="deal-discount-code" />
-          <label className="adddeal-secondarytitle" htmlFor="deal-end">EXPIRE LE<span> (facultatif)</span></label>
-          <input className="adddeal-form-input" type="date" id="deal-end" value={expirationDate} onChange={handleChangeExpirationDate} />
+          <label className="form-secondarytitle" htmlFor="deal-discount-code">CODE PROMO</label>
+          <input className="form-input" type="text" onChange={handleChangeDiscountCode} value={discountCode} id="deal-discount-code" />
+          <label className="form-secondarytitle" htmlFor="deal-end">EXPIRE LE<span> (facultatif)</span></label>
+          <input className="form-input" type="date" id="deal-end" value={expirationDate} onChange={handleChangeExpirationDate} />
         </div>
         <div className="button_div">
-          <button className="button-adddeal-send" type="submit">Envoyer</button>
+          <button className="form-button-validate" type="submit">Envoyer</button>
         </div>
       </form>
     </div>

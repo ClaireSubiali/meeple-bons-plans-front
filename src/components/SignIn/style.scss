@@ -1,91 +1,15 @@
 @use 'src/styles/vars';
 
-.register-form {
-  display:flex;
-  flex-direction: column;
-  background-color:white;
-  padding:20px;
-  border-radius:vars.$buttonRadius;
-  width:60%;
-  margin:auto;
-  margin-top:2em;
-  margin-bottom:3.5em;
-}
-
-.header-register {
-  display:flex;
-  flex-direction:row;
-  justify-content: center;
-  font-size: 2em;
-  margin-bottom:1em;
-}
-
-.register-title-inscription {
-  margin-left:0.2em;
-}
-
-.register-input-register {
-width: 100%;
-padding: 10px;
-margin: 5px 0 22px 0;
-border: none;
-background: #eee;
-border-radius:0.5em;
-}
-
-.register-input-register:focus {
-  background-color: #ddd;
-  outline: none;
-}
-
 .register-main  {
   display:flex;
   flex-direction: column;
-}
-
-.register-input-span {
-  // display:none;
-  color:red;
-  margin-bottom:1.5em;
-}
-
-.register-secondarytitle {
-  font-size:0.9em;
-  font-weight: bold;
-  color:vars.$secondaryDarkGrey;
 }
  
 .button-register-div {
   text-align: center;  
 }
 
-.button-register {
-  border-radius:vars.$buttonRadius;
-  background-color: vars.$mainPink;
-  color: #FFFFFF;
-  font-weight: bold;
-  padding: 12px 20px;
-  width: 120px;  //différence avec les autres boutons
-  margin-bottom: 20px;
-  margin:auto;
-  border: none;
-  cursor: pointer;
-  font-size: 0.8em;
+.SignIn-button {
+  width: 120px;
 }
-  
-
-//SMARTPHONE --------------- SMARTPHONE ---------------  // 
-@media screen and (max-width: 500px) {
-  
-  .register-form  {
-    padding-top:150px;
-    width:100%;
-    margin-top:0em;
-    
-   }
- 
-   
-
-}
-
    

@@ -1,54 +1,9 @@
 @use 'src/styles/vars';
 
-.adddeal-form {
-  display:flex;
-  flex-direction: column;
-  background-color:white;
-  padding:20px;
-  border-radius:vars.$buttonRadius;
-  width:60%;
-  margin:auto;
-  margin-top:2em;
-  margin-bottom:3.5em;
-}
-
-.adddeal-title
-{
-  display:flex;
-  flex-direction:row;
-  justify-content: center;
-  font-size: 2em;
-  margin-bottom:1em;
-}
-
-.adddeal-span {
-  margin-left:0.2em;
-}
- 
-.adddeal-form-input {
-  width: 100%;
-  padding: 10px;
-  margin: 5px 0 22px 0;
-  border: none;
-  background: #eee;
-  border-radius:0.5em;
-}
-
-.adddeal-form-input:focus {
-  background-color: #ddd;
-  outline: none;
-}
-
-.adddeal-secondarytitle {
-  font-size:0.9em;
-  font-weight: bold;
-  color:vars.$secondaryDarkGrey;
-}
-
 .adddeal-right-element {
   text-align: center;
- 
 }
+
 .missing-game {
   font-size:0.9em;
   color:vars.$mainPink;
@@ -58,8 +13,6 @@
 { text-align: center;
   font-size:0.9em;
   margin:10px;
-  
- 
 }
 
 .adddeal-game { 
@@ -93,6 +46,7 @@
     font-weight: bold;
     color:vars.$secondaryDarkGrey;
 } 
+
 .adddeal-info-title {
   margin-top:1em;
   margin-right:0.3em;  
@@ -105,33 +59,5 @@
 
 .button_div {
   text-align: center;
-   
-}
-.button-adddeal-send {
-   
-  border-radius:vars.$buttonRadius;
-  background-color: vars.$mainPink;
-  color: #FFFFFF;
-  font-weight: bold;
-  padding: 12px 20px;
-  width: 100px;
-  margin-bottom: 20px;
-  margin:auto;
-  border: none;
-  cursor: pointer;
-  font-size: 0.8em;  
 }
 
-//SMARTPHONE --------------- SMARTPHONE ---------------  // 
-@media screen and (max-width: 500px) {
-  
-  .adddeal-form {
-    padding-top:150px;
-    width:100%;
-    margin-top:0em;
-    
-  }
- 
-   
-
-}
