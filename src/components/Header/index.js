@@ -1,17 +1,19 @@
+// Désactivation de paramètres ESLINT
 
 /* eslint-disable jsx-a11y/label-has-associated-control */
-// == Import
-// import PropTypesLib from 'prop-types';
-import './style.scss';
 
-// import des éléments de FontAwesome
+// == Import des éléments de librairies
+// import PropTypesLib from 'prop-types';
+import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+
+// == Import des éléments de FONTAWESOME
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faPlus, faUser, faNewspaper, faShop, faChess, faDiceD20, faShieldHalved, faCaretDown, faXmark,
 } from '@fortawesome/free-solid-svg-icons';
 
-import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+// == Import des fonctions des actions
 import {
   toggleLogin,
   onChangeMail,
@@ -21,8 +23,15 @@ import {
   toggleIsProfileVisible,
 } from '../../actions/user';
 
+// == Import de composants
+import LoginPopup from './LoginPopup';
+import ProfilePopup from './ProfilePopup';
+
+// == Import d'images SCSS et autres
+import './style.scss';
 import logo from '../../assets/img/logo-meeple.svg';
 import avatar from '../../assets/img/m-orange.png';
+
 
 // == Composant
 function Header() {
@@ -32,7 +41,7 @@ function Header() {
   const categoryJDR = 'jeux-de-roles';
   const categoryJDF = 'jeux-de-figurines';
 
-  // récupération des données du state qu'on utilise ici pour gérer le formulaire de connexion:
+  // Récupération des données du state qu'on utilise ici pour gérer le formulaire de connexion:
   const {
     isOpen,
     email,
@@ -41,13 +50,13 @@ function Header() {
     isProfileVisible,
   } = useSelector((state) => state.user.loginSettings);
 
-  // Ici on vient 'pull' les données situées dans le state (reducer)
+  // Ici on vient extraire/récupérer les données situées dans le state avec useSelector
   const isAvatarVisible = useSelector((state) => state.user.isAvatarVisible);
   const dealObjectTest = useSelector((state) => state.deal.dealList);
 
   console.log('CONSOLE LOG sur header', dealObjectTest.value);
+  // Récupération du fact chuck norris d'essai pour l'appel API
   const dealObjectTest2 = dealObjectTest.value;
- 
 
   // permet d'envoyer des données au state (avec les actions et reducer)
   // (useSelector = 'pull' du state (redux) // useDispatch = 'push_vers_state' // useEffect = permet de determiner une fonction a executer a un moment choisi)
@@ -107,6 +116,7 @@ function Header() {
 
   return (
     <header>
+      {/* ---------- LOGO TITRE ET BOUTONS AJOUT ET CONNEXION ---------- */}
       <div id="head-logo">
         <div id="left-header">
           <Link to="/">
@@ -122,6 +132,7 @@ function Header() {
           {isAvatarVisible ? <button type="button" onClick={handleToggleProfile} id="button-avatar"><img src={avatar} alt="profil meeple" id="avatar" /></button> : <button type="button" id="login" onClick={handleClickToggleLogin}><FontAwesomeIcon icon={faUser} /><span className="displaybutton"> Connexion</span></button> }
         </div>
       </div>
+      {/* ----------  NAVIGATION DANS HEADER---------- */}
       <nav>
         <div className="topnav" id="myTopnav">
           <div className="dropdown">
@@ -139,36 +150,27 @@ function Header() {
           <a href="#"><FontAwesomeIcon icon={faShop} /><span className="nav-link"> Boutiques</span></a>
         </div>
       </nav>
-      <div className="login-popup">
-        <div className={isOpen ? 'form-popup' : 'display-none'}>
-          <form action="#" className="form-container" onSubmit={handleSubmitLogin}>
-            <div id="title_login">Connexion<span><button type="button" className="cancel" onClick={handleClickToggleLogin}><FontAwesomeIcon icon={faXmark} /></button></span></div>
-            <label htmlFor="email">
-              <strong className="subtitle_login">E-mail</strong>
-            </label>
-            <input type="email" onChange={handleChangeEmail} id="email" placeholder="Votre Email" name="email" value={email} required />
-            <label htmlFor="psw">
-              <strong className="subtitle_login">Mot de passe</strong>
-            </label>
-            <input type="password" onChange={handleChangePassword} id="psw" placeholder="Votre Mot de passe" name="psw" value={password} required />
-            <div className="login_error">{temporaryMessage}</div>
-            <button type="submit" className="btn">Se connecter</button>
-            <div className="lost_password">Mot de passe oublié?</div>
-            <Link to="/inscription"><button type="button" className="btn register" onClick={handleClickToggleLogin}>S'inscrire</button></Link>
-          </form>
-        </div>
-      </div>
-      <div className={isProfileVisible ? 'profile-popup' : 'display-none'}>
-        <div className="close-button-div"><button type="button" className="cancel" onClick={handleToggleProfile}><FontAwesomeIcon icon={faXmark} /></button></div>
-        <div className="profile-header">
-          <img src={avatar} alt="profil meeple" id="avatar" />
-          <span>{email}</span>
-        </div>
-        <div>
-          <button type="button" className="btn">Consulter mon profil</button>
-          <button type="button" className="btn" onClick={handleDisconnect}>Se déconnecter</button>
-        </div>
-      </div>
+      {/* ---------- POPUP DE CONNEXION ---------- */}
+      {isOpen ? (
+        <LoginPopup
+          SubmitLogin={handleSubmitLogin}
+          ToggleLogin={handleClickToggleLogin}
+          ChangeEmail={handleChangeEmail}
+          ChangePassword={handleChangePassword}
+          email={email}
+          password={password}
+          temporaryMessage={temporaryMessage}
+        />
+      ) : ''}
+      {/* ---------- POPUP DU PROFIL ---------- */}
+      {isProfileVisible ? ( 
+        <ProfilePopup
+          ToggleProfile={handleToggleProfile}
+          avatar={avatar}
+          email={email}
+          Disconnect={handleDisconnect}
+        />
+      ) : ''}
     </header>
   );
 }
