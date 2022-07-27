@@ -10,7 +10,7 @@ import {
   faPlus, faUser, faNewspaper, faShop, faChess, faDiceD20, faShieldHalved, faCaretDown, faXmark,
 } from '@fortawesome/free-solid-svg-icons';
 
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   toggleLogin,
@@ -135,8 +135,8 @@ function Header() {
               <Link to={`/bons-plans/${categoryJDR}`}><FontAwesomeIcon icon={faDiceD20} />  Jeux de rôle</Link>
             </div>
           </div>
-          <a href="#"><FontAwesomeIcon icon={faNewspaper} /><span className="nav-link"> Actualité</span></a>
-          <a href="#"><FontAwesomeIcon icon={faShop} /><span className="nav-link"> Boutiques</span></a>
+          <NavLink to="#"><FontAwesomeIcon icon={faNewspaper} /><span className="nav-link"> Actualité</span></NavLink>
+          <NavLink to="/Boutiques"> <FontAwesomeIcon icon={faShop} /><span className="nav-link"> Boutiques</span></NavLink>
         </div>
       </nav>
       <div className="login-popup">

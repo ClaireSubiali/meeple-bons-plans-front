@@ -18,6 +18,7 @@ import LegalMentions from '../LegalMentions';
 import SearchResults from '../SearchResults';
 import Error from '../Error';
 import ContactForm from '../ContactForm';
+import ShopList from '../ShopList';
 
 // Actions Import 
 import { fetchDeal } from '../../actions/deal';
@@ -34,6 +35,7 @@ function App() {
     },
     [],
   );
+  //<Route path="/Ici c'est le chemin de la page " element={<Le element correspond au composant />} />
   return (
     <div className="app">
       <Header />
@@ -50,6 +52,7 @@ function App() {
         <Route path="/recherche?s=:searchWord" element={<SearchResults />} />
         <Route path="/contact" element={<ContactForm />} />
         <Route path="*" element={<Error />} />
+        <Route path="/Boutiques" element={<ShopList />} />
       </Routes>
       <Footer />
     </div>
