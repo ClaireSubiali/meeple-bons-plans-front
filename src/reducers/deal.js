@@ -11,6 +11,10 @@ import {
   CHANGE_DISCOUNT_CODE,
   CHANGE_EXPIRATION_DATE,
   SAVE_DEAL,
+  TOGGLE_ADD_GAME,
+  CHANGE_GAME, // POP UP ADD GAME
+  CHANGE_URL, // POP UP ADD GAME
+
 } from '../actions/deal';
 
 // ici on initialise le state
@@ -28,6 +32,9 @@ const initialState = {
     discountCode: '',
     expirationDate: '',
     dealVendor: '',
+    isAddGame: false, // est-ce que l'encart suggérer un jeu est ouvert ?
+    newGame: '',
+    urlGame: '',
   },
 };
 
@@ -115,13 +122,38 @@ function reducer(state = initialState, action = {}) {
         },
       };
     case SAVE_DEAL:
-      return{
+      return {
         ...state,
-        dealList: action.deal
+        dealList: action.deal,
       };
+    case CHANGE_GAME:
+      return {
+        ...state,
+        addDealForm: {
+          ...state.addDealForm,
+          newGame: action.newGame,
+        },
+      };
+    case CHANGE_URL:
+      return {
+        ...state,
+        addDealForm: {
+          ...state.addDealForm,
+          urlGame: action.urlGame,
+        },
+      };
+    case TOGGLE_ADD_GAME:
+      return {
+        ...state,
+        addDealForm: {
+          ...state.addDealForm,
+          isAddGame: !state.addDealForm.isAddGame,
+        },
+      };
+
     default:
       return state;
   }
-} 
+}
 
 export default reducer;

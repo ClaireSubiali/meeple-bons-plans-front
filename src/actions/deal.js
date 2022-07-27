@@ -118,6 +118,30 @@ export function changeExpDate(newExpDate) {
     date: newExpDate,
   };
 }
+//TODO AJOUT DU JEU POP UP
+export const TOGGLE_ADD_GAME = 'TOGGLE_ADD_GAME';
+
+export function ToggleAddGame() {
+  return {
+    type: TOGGLE_ADD_GAME,
+  };
+}
+
+export const CHANGE_GAME = 'CHANGE_GAME';
+export function OnChangeGame(inputAddGame) {
+  return {
+    type: CHANGE_GAME,
+    newGame: inputAddGame,
+  };
+}
+
+export const CHANGE_URL = 'CHANGE_URL';
+export function OnChangeUrl(inputUrlGame) {
+  return {
+    type: CHANGE_URL,
+    urlGame: inputUrlGame,
+  };
+}
 
 //! -------------------ACTION POUR MIDDLEWARES ---------------------------------------
 

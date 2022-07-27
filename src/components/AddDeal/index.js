@@ -7,6 +7,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTags } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch, useSelector } from 'react-redux';
 
+// == Import de composants
+import AddGamePopUp from './AddGamePopUp';  //TODO Pop Up ADD GAME
+
 import {
   changeDealTitle,
   changeDealGame,
@@ -18,12 +21,20 @@ import {
   changeVendor,
   changediscountcode,
   changeExpDate,
+  OnChangeGame,
+  OnChangeUrl,
+  ToggleAddGame, //<----------------------------------------
 } from '../../actions/deal';
+
+
 
 // == Composant
 function AddDeal() {
   const dispatch = useDispatch();
   const {
+    isAddGame, //TODO Pop Up ADD GAME
+    newGame,
+    urlGame,
     dealTitle,
     dealGame,
     concernAGame,
@@ -85,7 +96,28 @@ function AddDeal() {
     const newExpDate = event.currentTarget.value;
     dispatch(changeExpDate(newExpDate));
   };
-  
+
+ // TODO Pop Up ADD GAME
+  /* ------------ AFFICHAGE DES POPUPS ------------ */
+  /**
+   * Function that toggle the login popup
+   */
+  const handleClickToggleAddGame = () => {
+    dispatch(ToggleAddGame());}
+
+  const handleSubmitGame = () => {
+    dispatch(handleSubmitGame());}
+
+  const handleChangeGame = (event) => {
+    const inputAddGame = event.currentTarget.value;
+    dispatch(OnChangeGame(inputAddGame));
+  };
+
+  const handleChangeUrl = (event) => {
+    const inputUrlGame = event.currentTarget.value;
+    dispatch(OnChangeUrl(inputUrlGame));
+  };
+
   return (
     <div className="form-section">
       <form>
@@ -96,7 +128,7 @@ function AddDeal() {
           <label className="form-secondarytitle" htmlFor="deal-search">NOM DU JEU</label>
           <input className="form-input" type="text" id="deal-search" placeholder="Saisissez votre recherche" value={dealGame} onChange={handleChangeDealGame} />
           <div className="adddeal-right-element"><span className="missing-game">Jeu manquant ?</span>
-            <button className="button-addgame" type="button">Suggérer un jeu</button>
+            <button className="button-addgame" onClick={handleClickToggleAddGame} type="button">Suggérer un jeu</button>
           </div>
         </div>
         <div className="gameornot">
@@ -153,9 +185,19 @@ function AddDeal() {
           <button className="form-button-validate" type="submit">Envoyer</button>
         </div>
       </form>
+      {/* ---------- POPUP D'AJOUT DE JEU ---------- */}
+      {isAddGame ? (
+        <AddGamePopUp
+          SubmitGame={handleSubmitGame}
+          ToggleAddGame={handleClickToggleAddGame}
+          ChangeGame={handleChangeGame}
+          ChangeUrl={handleChangeUrl}
+          NewGame={newGame}
+          UrlGame={urlGame}
+        />
+      ) : ''}
     </div>
   );
 }
-
 // == Export
 export default AddDeal;
