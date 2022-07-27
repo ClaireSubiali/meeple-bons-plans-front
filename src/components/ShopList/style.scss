@@ -10,11 +10,13 @@
   border: solid 1px vars.$mainPink;
   background-color: white;
   border-radius: 0.5rem;
+  margin: 0 0 1.3rem 0;
 }
 
 .title-shop{
   text-align: center;
   font-size: 2rem;
+  margin: 1rem 0 1rem 0;
 }
 
 .shop-card-contener{
@@ -47,16 +49,20 @@ width: 30%;
 }
 
 .description-shop{
-  margin: 1rem 0 0.5rem 1rem;
+  margin: 1rem 1rem 0.5rem 1rem;
   font-size: 1.2rem;
 
 }
 
 .contener-store{
-  margin: 2rem 0 1rem 0.5rem;
+  margin: 2rem 0 0 0.5rem;
 }
 
 .icone-store{
   height: 1.2rem;
   margin: 0 0.5rem 0 0.5rem;
+}
+
+.contener-site{
+  margin: 0.8rem 0 1rem 0.5rem;
 }
