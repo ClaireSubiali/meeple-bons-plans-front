@@ -19,6 +19,7 @@ import SearchResults from '../SearchResults';
 import Error from '../Error';
 import ContactForm from '../ContactForm';
 import ShopList from '../ShopList';
+import Actus from '../Actus';
 
 // Actions Import 
 import { fetchDeal } from '../../actions/deal';
@@ -53,6 +54,7 @@ function App() {
         <Route path="/contact" element={<ContactForm />} />
         <Route path="*" element={<Error />} />
         <Route path="/Boutiques" element={<ShopList />} />
+        <Route path="/Actus" element={<Actus />} />
       </Routes>
       <Footer />
     </div>

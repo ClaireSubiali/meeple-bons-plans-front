@@ -135,7 +135,7 @@ function Header() {
               <Link to={`/bons-plans/${categoryJDR}`}><FontAwesomeIcon icon={faDiceD20} />  Jeux de rôle</Link>
             </div>
           </div>
-          <NavLink to="#"><FontAwesomeIcon icon={faNewspaper} /><span className="nav-link"> Actualité</span></NavLink>
+          <NavLink to="/Actus"><FontAwesomeIcon icon={faNewspaper} /><span className="nav-link"> Actualité</span></NavLink>
           <NavLink to="/Boutiques"> <FontAwesomeIcon icon={faShop} /><span className="nav-link"> Boutiques</span></NavLink>
         </div>
       </nav>
