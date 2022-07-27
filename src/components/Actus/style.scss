@@ -1,12 +1,12 @@
 @use 'src/styles/vars';
 
 
-.pseudo-body{
+.pseudo-body {
   width: 60%;
   margin: 2% auto 0 auto;
 }
 
-.card-main{
+.card-main {
   border: solid 1px vars.$mainPink;
   border-radius: 0.5rem;
   padding: 0.4rem;
@@ -15,24 +15,24 @@
   background-color: white;
 }
 
-.Title-big{
+.Title-big {
   font-weight: 600;
   font-size: 1.5rem;
   text-align: center;
 }
 
-.date-dig{
+.date-dig {
   font-size: 0.7rem;
   font-style: italic;
   color: rgb(94, 92, 92);
 }
 
-.contener-card-medium{
+.contener-card-medium {
   display: flex;
   flex-wrap: wrap;
 }
 
-.card-medium{
+.card-medium {
   border: solid 1px vars.$mainPink;
   border-radius: 0.5rem;
   padding: 0.4rem;
@@ -42,7 +42,23 @@
   background-color: white;
 }
 
-.menu-page{
-  margin: 0 auto 0 auto;
-  background-color: red;
+.menu-page {
+  margin: 2rem auto 0 auto;
+  width: 7%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.button-previous {
+  display: flex;
+}
+
+.page-number{
+  display: flex;
+  justify-content: center;
+}
+
+.button-next {
+  display: flex;
+  justify-content: flex-end;
 }

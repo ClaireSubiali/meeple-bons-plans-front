@@ -103,11 +103,11 @@ function Actus() {
 
       {/*le menu pour faire defiler les pages */}
       <div className="menu-page">
-        <button type="button">
+        <button className="button-previous" type="button">
           <FontAwesomeIcon icon={faAngleLeft} />
         </button>
-        <span>1</span>
-        <button type="button">
+        <span className="page-number" >1</span>
+        <button className="button-next" type="button">
           <FontAwesomeIcon icon={faAngleRight} />
         </button>
       </div>
