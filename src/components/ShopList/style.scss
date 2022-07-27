@@ -15,7 +15,8 @@
 
 .title-shop{
   text-align: center;
-  font-size: 2rem;
+  font-size: 1.5rem;
+  font-weight: 600;
   margin: 1rem 0 1rem 0;
 }
 
@@ -37,7 +38,9 @@ width: 30%;
 .button-shop-detail{
   width: 50%;
   margin: 0 auto 1rem auto;
-  background-color: vars.$mainPink;
+  background-color: vars.$mainBlue;
+  font-weight: 600;
+  font-size: 1.2rem;
   border-radius: 0.5rem;
   color: white;
 }
