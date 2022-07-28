@@ -3,7 +3,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 
 // == Import des éléments de librairies
-import { Link } from 'react-router-dom';
+import { Link,NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 // == Import des éléments de FONTAWESOME
@@ -12,12 +12,7 @@ import {
   faPlus, faUser, faNewspaper, faShop, faChess, faDiceD20, faShieldHalved, faCaretDown, faXmark,
 } from '@fortawesome/free-solid-svg-icons';
 
-<<<<<<< HEAD
 // == Import des fonctions des actions
-=======
-import { Link, NavLink } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
->>>>>>> DEV-Integration-Boutique
 import {
   toggleVisibility,
   testLogin,
