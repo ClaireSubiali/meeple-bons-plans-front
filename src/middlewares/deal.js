@@ -10,42 +10,41 @@ import { FETCH_DEAL, saveDeal } from '../actions/deal';
 const dealMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case FETCH_DEAL: {
-      console.log('PARAPLUIE');
+      
        // Set config defaults when creating the instance+
-       const api = axios.create({
-        baseURL: 'http://nedaudchristophe-server.eddi.cloud/meeple/current/public/api/deals',
-      });
-        const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NTg5OTcwODIsImV4cCI6MTY1OTA2MTg4Miwicm9sZXMiOlsiUk9MRV9BRE1JTiIsIlJPTEVfVVNFUiJdLCJ1c2VybmFtZSI6ImFkbWluQGFkbWluLmNvbSJ9.NMXim7fRbVHD0Anw_z0GBtM_rkllGvgfd_eRYB6V_d9wPDgYF0dwFlGZPSQSRoymvC4ZwHm4-5_dQ8I_3UhfKatGbdEtCi6bakxHB9JBSFq7FD83PMhAjghi35wGE5FnBIGjDAOTssB3H0cJ6-hEFb0CNycoOH3ehknQac5Cn2-sfYydu7ejz119qJCyHy8mkswV7JblbUSBL3ZbNzpby9QB7HRXDYtTO1cs85MAE027H-zJS4VNt5lap3o1A0xk9t_6LnUzl2GXB5CZxYGt3WrAChliwZDN4xVbSYKfnytKa1zKfmI94ZoJ5HREAa-uWAu-l6qm-7XkjIS5OQF50Q';
-        api.defaults.headers.common.Authorization = `bearer ${token}`
-        console.log('IMPERMEABLE')
+      //const api = axios.create({
+     // baseURL: 'http://nedaudchristophe-server.eddi.cloud/meeple/current/public/api/deals',
+      //});
+        const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NTkwMjE3NzcsImV4cCI6MTY1OTA4NjU3Nywicm9sZXMiOlsiUk9MRV9BRE1JTiIsIlJPTEVfVVNFUiJdLCJ1c2VybmFtZSI6ImFkbWluQGFkbWluLmNvbSJ9.rzw7-G3e94Tyf7KphGJIn3MiaUlIc1F7XFVP4hTtTbmDKPKM96Jcx78RmpDxCDiarIWdnz6xYYUU4rx-tQviZFEkmKATu_fpLuEqO89oAHqeIsid2UCekOV0myjLqwyPGmpfSAoaZr_qYpNwCjpACDP3KtDeC5s3FtVLK_rFmEjaU5D4VesAsd8KoTe7eygpKezZO6IP9SGYhAJp4wVq7WUfF7HMK0IcPObtRcp0af4W7EQZfRJT-XOX6ju5OIBwibVY5Rz38-bYQiw0mT6HVJIUQK0K2lPW1UltqGyjKRqT784plcynv99RPsiuZHRIT56O2RvX6o6HD--gAkiQ';
+        //api.defaults.headers.common.Authorization = `bearer ${token}`;
+        
        axios.get('http://nedaudchristophe-server.eddi.cloud/meeple/current/public/api/deals', {
         headers: {
-          'Authorization': `bearer ${token}`
-        }        
-      })
-        .then(          
-          (response) => {
-            console.log('BOTTES')
-            // Ici on recup bien les données de notre API (les recettes)
-            // On veut maintenant les rajouter dans le state
-            // Pour ça on va dispatcher une action (l'intention de mémoriser les recettes)
-            // store.dispatch(saveDeal(response.data));
-            console.log('Response API ->',response);
-            //On envoie le resultat de la requete au reducer qui sera chargé de l'ecriture
-            //store.dispatch(saveDeal(response.data));
-          },
-        )
-        .catch(
-          (error) => {
-            console.log(error);
-          },
-        );
+         Authorization: `bearer ${token}`,
+        }
+       })
+       .then(
+        (response) => {
+          // Ici on recup bien les données de notre API (les recettes)
+          // On veut maintenant les rajouter dans le state
+          // Pour ça on va dispatcher une action (l'intention de mémoriser les recettes)
+          // store.dispatch(saveDeal(response.data));
+          console.log('Response API',response);
+          //On envoie le resultat de la requete au reducer qui sera chargé de l'ecriture
+          //store.dispatch(saveDeal(response.data));
+        },
+      )
+      .catch(
+        (error) => {
+          console.log(error);
+        },
+      );
 
-      return next(action);
-    }
-    default:
-      return next(action);
+    return next(action);
   }
+  default:
+    return next(action);
+}
 };
 
 export default dealMiddleware;
