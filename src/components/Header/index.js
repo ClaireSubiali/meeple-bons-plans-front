@@ -29,7 +29,6 @@ import './style.scss';
 import logo from '../../assets/img/logo-meeple.svg';
 import avatar from '../../assets/img/m-orange.png';
 
-
 // == Composant
 function Header() {
   // TODO les parties dynamiques des URLs sont entrées en dur ICI
