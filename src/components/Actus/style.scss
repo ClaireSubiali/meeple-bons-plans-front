@@ -1,12 +1,7 @@
 @use 'src/styles/vars';
 
 
-/*media screen => 1200 780 660  500
-@media screen and (max-width: 780px) {
-  .Class {
-    ****
-  }
-}*/
+
 .pseudo-body {
   width: 60%;
   margin: 2% auto 0 auto;
@@ -76,3 +71,22 @@
   display: flex;
   justify-content: flex-end;
 }
+
+@media screen and (max-width: 1200px) {
+  .Title-big {
+    font-weight: 600;
+    font-size: 1.2rem;
+  }
+
+  .description-actu-Medium{
+    padding: 0.2rem 0 0.5rem 0;
+    font-size: 0.6rem;
+  }
+}
+
+/*media screen => 1200 780 660  500
+@media screen and (max-width: 780px) {
+  .Class {
+    ****
+  }
+}*/
