@@ -123,3 +123,15 @@ export function testLogin(mailFromState, passwordFromState) {
   };
 }
 //! FIN DE LA PARTIE TEMPORAIRE
+
+
+// Action Type => On l'utilise dans l'action creator ET dans le reducer
+export const FETCH_LOGIN = 'FETCH_LOGIN';
+
+// Action creator => On l'utilise au moment du dispatch()
+export function fetchLogin() {
+  return {
+    type: FETCH_LOGIN,
+  };
+}
+

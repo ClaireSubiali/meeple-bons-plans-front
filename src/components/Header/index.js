@@ -15,7 +15,7 @@ import {
 // == Import des fonctions des actions
 import {
   toggleVisibility,
-  testLogin,
+  fetchLogin,
   disconnect,  
   changeFieldValueLoginSettings,
 } from '../../actions/user';
@@ -62,7 +62,7 @@ function Header() {
   //! temporaire avant API:
   const handleSubmitLogin = (event) => {
     event.preventDefault();
-    dispatch(testLogin(email, password));
+    dispatch(fetchLogin(email, password));
   };
 
   // Handlers :
