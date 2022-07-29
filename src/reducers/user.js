@@ -5,6 +5,7 @@ import {
   LOGOUT,
   CHANGE_FIELD_VALUE_LOGIN_SETTINGS,
   CHANGE_FIELD_VALUE_CREATE_ACCOUNT,
+  SAVE_TOKEN,
 } from '../actions/user';
 
 // le initalstate sert a créer un statE "vierge" qui sert modifier à chaque itération
@@ -12,6 +13,7 @@ const initialState = {
   currentUser: '', // Pseudo de l'utilisateur Renvoyé par l'API lors de la connexion
   userAvatar: '', // Avatar de l'utilisateur renvoyé par l'api lors de la connexion
   isAvatarVisible: false,
+  token: '',
 
   loginSettings: {
     isProfileVisible: false,
@@ -93,6 +95,11 @@ function reducer(state = initialState, action = {}) {
           ...state.createAccount,
           [action.field]: action.value,
         },
+      };
+    case SAVE_TOKEN:
+      return {
+        ...state,
+        token: action.token,
       };
     default:
       return state;

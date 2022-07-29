@@ -135,3 +135,14 @@ export function fetchLogin() {
   };
 }
 
+// Action Type => On l'utilise dans l'action creator ET dans le reducer
+export const SAVE_TOKEN = 'SAVE_TOKEN';
+
+// Action creator => On l'utilise au moment du dispatch()
+export function SaveTokenInState(token) {
+  return {
+    type: SAVE_TOKEN,
+    token,
+  };
+}
+
