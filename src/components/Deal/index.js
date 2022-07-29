@@ -2,6 +2,10 @@
 // import PropTypesLib from 'prop-types';
 import './style.scss';
 
+import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock } from '@fortawesome/free-solid-svg-icons';
 
@@ -10,9 +14,33 @@ import iceCubeIcon from '../../assets/img/logo-icecube.svg';
 import testImage from '../../assets/img/img-test.png';
 
 import avatar from '../../assets/img/m-orange.png';
+// import { findDeal } from '../selectors/deal';
+import { fetchOneDeal } from '../../actions/deal';
+
+
 
 // == Composant
 function Deal() {
+  const { dealId } = useParams();
+  const dispatch = useDispatch();
+  // Récupération du paramètre d'url pour avoir l'id correspondant au deal à afficher
+  useEffect(
+    () => {
+      // On veut recup la liste des recette depuis l'API
+      // Pour ça, on va dispatcher une action (émettre l'intention de charger les recettes)
+      dispatch(fetchOneDeal(dealId));
+    },
+    [],
+  );
+  const deal = useSelector((state) => state.deal.activeDeal);
+  console.log('activedeal', deal);
+
+  if (!deal) {
+    return (
+      <div>chargement</div>
+    );
+  }
+  else{
   return (
     <div className="deal-detail-comments">
       <div className="deal detail-card">
@@ -31,22 +59,23 @@ function Deal() {
         <div className="right-deal">
           <div className="header-deal">
             <div className="title-deal">
-              <h2>Dixit</h2>
-              <h6>Bon plan jeux de société<span className="shop"> | Philibert</span></h6>
+              <h2>{deal.title}</h2>
+              <h6>Bon plan jeux de société<span className="shop"> | ef</span></h6>
+              <h6>Bon plan posté par<span className="user"></span></h6>
             </div>
             <div className="deal-label">
               <div className="discount">-20%</div>
               <div className="price">20.90€</div>
             </div>
-          </div>
+          </div>S
           <div className="main-deal">
-            <p className="deal-text">Le principe de Dixit est simple : les joueurs doivent deviner et faire deviner des cartes illustrées. À chaque tour, un joueur devient le conteur qui choisit une carte et la décrit avec une phase, un mot ou un son...</p>
+            <p className="deal-text">{deal.description}</p>
           </div>
           <div className="footer-deal">
             <p className="footer-dealp">
               <button type="button" className="see-deal">Voir le bon plan</button>
             </p>
-            <p className="footer-deal-time"><span className="clock"><FontAwesomeIcon icon={faClock} /></span> il y a 15 minutes</p>
+            {/*<p className="footer-deal-time"><span className="clock"><FontAwesomeIcon icon={faClock} /></span> il y a 15 minutes</p>*/}
           </div>
         </div>
       </div>
@@ -88,7 +117,8 @@ function Deal() {
         </div>
       </div>
     </div>
-  );
+  )};
+  
 }
 
 // == Export

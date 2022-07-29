@@ -13,12 +13,13 @@ import {
   SAVE_DEAL,
   TOGGLE_ADD_GAME,
   CHANGE_GAME, // POP UP ADD GAME
-  CHANGE_URL, // POP UP ADD GAME
-
+  CHANGE_URL,
+  SAVE_ONE_DEAL,
 } from '../actions/deal';
 
 // ici on initialise le state
 const initialState = {
+  activeDeal: {},
   dealList: [],
 
   addDealForm: {
@@ -149,6 +150,11 @@ function reducer(state = initialState, action = {}) {
           ...state.addDealForm,
           isAddGame: !state.addDealForm.isAddGame,
         },
+      };
+    case SAVE_ONE_DEAL:
+      return {
+        ...state,
+        activeDeal: action.oneDeal.deal,
       };
 
     default:

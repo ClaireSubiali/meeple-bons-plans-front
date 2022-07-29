@@ -166,3 +166,24 @@ export function saveDeal(newDealList) {
   };
 }
 
+// Action Type => On l'utilise dans l'action creator ET dans le reducer
+export const FETCH_ONE_DEAL = 'FETCH_ONE_DEAL';
+
+// Action creator => On l'utilise au moment du dispatch()
+export function fetchOneDeal(dealId) {
+  return {
+    type: FETCH_ONE_DEAL,
+    dealId,
+  };
+}
+
+// Action Type => On l'utilise dans l'action creator ET dans le reducer
+export const SAVE_ONE_DEAL = 'SAVE_ONE_DEAL';
+
+// Action creator => On l'utilise au moment du dispatch()
+export function saveOneDeal(oneDeal) {
+  return {
+    type: SAVE_ONE_DEAL,
+    oneDeal,
+  };
+}

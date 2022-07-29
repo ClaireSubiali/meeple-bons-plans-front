@@ -67,6 +67,19 @@ export function disconnect() {
   };
 }
 
+//Ici on defini la l'action click sur le button 'se connecter' pour envoyer les champs a la bdd
+export const SEND_DATA_USER = 'SEND_DATA_USER';
+
+/*export function sendUser() {
+  return (
+    type: SEND_DATA_USER;
+    name: createPseudo,
+    email: createMail,
+    password: createPassword,
+    avatar: avatarColor,
+  )
+}*/
+
 //! DEBUT DE LA PARTIE TEMPORAIRE
 // TODO ACTION TEMPORAIRE A SUPPRIMER QUAND API PERMET LA CONNEXION
 // A REMPLACER PAR L'ACTION POUR LE MIDDLEWARE

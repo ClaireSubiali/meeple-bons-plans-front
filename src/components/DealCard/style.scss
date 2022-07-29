@@ -5,6 +5,7 @@
   display:flex;
   flex-direction: row;
   margin-bottom:1em; 
+  /*justify-content: space-between;*/
 }
 
 .left-deal {
@@ -53,16 +54,22 @@ height: 20px;
 }
 
 .right-deal {
-margin-left:1em;
-display: flex;
-flex-direction: column;
-justify-content: space-between;
+  margin-left:1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /*align-content: space-between;*/
+   
+  width:100%;
+  
 }
 
 .header-deal {
 display:flex;
+flex-direction: row;
 align-items: baseline;
 justify-content: space-between;
+ 
 margin-top:0.5em;
 }
 
@@ -130,6 +137,7 @@ align-items: flex-end;
 align-content: flex-end;
 padding-right:0.5em;
 margin-bottom:0.5em; 
+ 
 }
 
 .see-deal {

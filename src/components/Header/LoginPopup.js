@@ -6,9 +6,14 @@ import './style.scss';
 // == Import des éléments de librairies
 import { Link } from 'react-router-dom';
 
+//import des hooks
+import { useSelector, useDispatch } from 'react-redux';
+
 // == Import des éléments de FONTAWESOME
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
+
+
 
 // == Composant
 function LoginPopup({
@@ -19,6 +24,8 @@ function LoginPopup({
   password,
   temporaryMessage,
 }) {
+  const dispatch = useDispatch();
+
   const handleChangeEmail = (event) => {
     ChangeField(event.currentTarget.value, 'email');
   };
@@ -28,6 +35,12 @@ function LoginPopup({
   const handleToggleLogin = () => {
     ToggleVisibility('isLoginVisible');
   };
+  // losque l'on clique sur le bouton valider, on envoie les champs contenu dans le stats au back
+  const HandleSendDatas = (event) => {
+    //le reste le passe dans le stat et l'action('')
+  };
+
+ 
 
   return (
     <div className="login-popup">
@@ -45,7 +58,7 @@ function LoginPopup({
           <div className="login_error">{temporaryMessage}</div>
           <button type="submit" className="btn" onSubmit={SubmitLogin}>Se connecter</button>
           <div className="lost_password">Mot de passe oublié?</div>
-          <Link to="/inscription"><button type="button" className="btn register" onClick={handleToggleLogin}>S'inscrire</button></Link>
+          <Link to="/inscription"><button type="button" className="btn register" onClick={handleToggleLogin, HandleSendDatas}>S'inscrire</button></Link>
         </form>
       </div>
     </div>

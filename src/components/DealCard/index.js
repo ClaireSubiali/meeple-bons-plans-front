@@ -1,20 +1,36 @@
 // == Import
-// import PropTypesLib from 'prop-types';
+import PropTypesLib from 'prop-types';
 import './style.scss';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClock } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
+
+// TODO == Import pour l'heure
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faClock } from '@fortawesome/free-solid-svg-icons';
 
 import flameIcon from '../../assets/img/logo-flamme.svg';
 import iceCubeIcon from '../../assets/img/logo-icecube.svg';
-import testImage from '../../assets/img/img-test.png';
 
 // == Composant
-function DealCard() {
+function DealCard({
+  id,
+  title,
+  game,
+  description,
+  shop,
+  createdAt,
+  offerPrice: reducedPrice,
+  type }) {
+  const calcPercentage = () => {
+    const percentage = Math.round((reducedPrice * 100) / game.price);
+    return percentage;
+  };
+  const percentage = calcPercentage();
+
   return (
     <div className="deal">
       <div className="left-deal">
-        <img className="picture-deal" src={testImage} alt="Bon plan" />
+        <img className="picture-deal" src={game.image} alt="Bon plan" />
         <div className="vote">
           <div className="icone-degree">
             <img className="flamme" src={flameIcon} alt="Icone flamme" />
@@ -28,26 +44,36 @@ function DealCard() {
       <div className="right-deal">
         <div className="header-deal">
           <div className="title-deal">
-            <h2>Dixit</h2>
-            <h6>Bon plan jeux de société<span className="shop"> | Philibert</span></h6>
+            <h2>{title}</h2>
+            <h6>{game.category.name}<span className="shop"> | boutique {shop.name}</span></h6>
           </div>
           <div className="deal-label">
-            <div className="discount">-20%</div>
-            <div className="price">20.90€</div>
+            <div className="discount">- {percentage} %</div>
+            <div className="price">{reducedPrice} €</div>
           </div>
         </div>
         <div className="main-deal">
-          <p className="deal-text">Le principe de Dixit est simple : les joueurs doivent deviner et faire deviner des cartes illustrées. À chaque tour, un joueur devient le conteur qui choisit une carte et la décrit avec une phase, un mot ou un son...</p>
+          <p className="deal-text">{description}</p>
         </div>
         <div className="footer-deal">
           <p className="footer-dealp">
-          <button type="button" className="see-deal">Voir le bon plan</button>
+            <Link to={`/bon-plan/${id}`}><button type="button" className="see-deal">Voir le bon plan</button></Link>
           </p>
-          <p className="footer-deal-time"><span className="clock"><FontAwesomeIcon icon={faClock} /></span> il y a 15 minutes</p>
+          {/*
+          <p className="footer-deal-time"><span className="clock"><FontAwesomeIcon icon={faClock} /></span>{createdAt}</p>*/}
         </div>
       </div>
     </div>
   );
+}
+
+DealCard.propType = {
+  title: PropTypesLib.string.isRequired,
+  game: PropTypesLib.object.isRequired,
+  description: PropTypesLib.string.isRequired,
+  shop: PropTypesLib.object.isRequired,
+  createdAt: PropTypesLib.string.isRequired,
+  reducedPrice: PropTypesLib.number.isRequired,
 }
 
 // == Export
