@@ -37,6 +37,7 @@ function LoginPopup({
   };
   // losque l'on clique sur le bouton valider, on envoie les champs contenu dans le stats au back
   const HandleSendDatas = (event) => {
+    sendUser('createPseudo', 'createMail','createPassword','confirmPassword', 'avatarColor');
     //le reste le passe dans le stat et l'action('')
   };
 

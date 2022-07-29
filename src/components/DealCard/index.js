@@ -20,7 +20,7 @@ function DealCard({
   shop,
   createdAt,
   offerPrice: reducedPrice,
-  type }) {
+  user }) {
   const calcPercentage = () => {
     const percentage = Math.round((reducedPrice * 100) / game.price);
     return percentage;
@@ -49,7 +49,7 @@ function DealCard({
           </div>
           <div className="deal-label">
             <div className="discount">- {percentage} %</div>
-            <div className="price">{reducedPrice} €</div>
+            <div className="price">{(reducedPrice).toFixed(2)} €</div>
           </div>
         </div>
         <div className="main-deal">

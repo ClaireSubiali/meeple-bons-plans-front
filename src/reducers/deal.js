@@ -19,7 +19,7 @@ import {
 
 // ici on initialise le state
 const initialState = {
-  activeDeal: {},
+  activeDeal: '',
   dealList: [],
 
   addDealForm: {

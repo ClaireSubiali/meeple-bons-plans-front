@@ -30,7 +30,6 @@ const dealMiddleware = (store) => (next) => (action) => {
           avatar: avatarColor,
         },
       })
-      console.log(name);
         .then(
           (response) => {
             // Ici on doit charger l'action d'envoyer les donnes de l'utilisateur en post
@@ -39,7 +38,7 @@ const dealMiddleware = (store) => (next) => (action) => {
             // store.dispatch(saveDeal(response.data));
             console.log('Response API', response.data);
             // On envoie le resultat de la requete au reducer qui sera chargé de l'ecriture
-            store.dispatch(saveDeal(response.data));
+            store.dispatch(HandleSendDatas(response.data));
           },
         )
         .catch((error) => {

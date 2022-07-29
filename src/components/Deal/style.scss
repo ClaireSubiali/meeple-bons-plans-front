@@ -1,7 +1,18 @@
 
 @use 'src/styles/vars';
 
+//message si utilisateur non connecté
+.need-login-msg {
+  text-align:center;
+  color:vars.$secondaryDarkGrey;
+  width: 100%;
 
+   &-link{font-weight: bold;}
+   &-link:hover{
+    color:vars.$mainPink;
+    cursor:pointer;
+}
+}
 
 .detail-card {
   width:60%;
