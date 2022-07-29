@@ -10,12 +10,11 @@ import { FETCH_DEAL, saveDeal } from '../actions/deal';
 const dealMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case FETCH_DEAL: {
-      
        // Set config defaults when creating the instance+
       //const api = axios.create({
      // baseURL: 'http://nedaudchristophe-server.eddi.cloud/meeple/current/public/api/deals',
       //});
-        const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NTkwMjE3NzcsImV4cCI6MTY1OTA4NjU3Nywicm9sZXMiOlsiUk9MRV9BRE1JTiIsIlJPTEVfVVNFUiJdLCJ1c2VybmFtZSI6ImFkbWluQGFkbWluLmNvbSJ9.rzw7-G3e94Tyf7KphGJIn3MiaUlIc1F7XFVP4hTtTbmDKPKM96Jcx78RmpDxCDiarIWdnz6xYYUU4rx-tQviZFEkmKATu_fpLuEqO89oAHqeIsid2UCekOV0myjLqwyPGmpfSAoaZr_qYpNwCjpACDP3KtDeC5s3FtVLK_rFmEjaU5D4VesAsd8KoTe7eygpKezZO6IP9SGYhAJp4wVq7WUfF7HMK0IcPObtRcp0af4W7EQZfRJT-XOX6ju5OIBwibVY5Rz38-bYQiw0mT6HVJIUQK0K2lPW1UltqGyjKRqT784plcynv99RPsiuZHRIT56O2RvX6o6HD--gAkiQ';
+        const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NTkwODAxODEsImV4cCI6MTY1OTE0NDk4MSwicm9sZXMiOlsiUk9MRV9BRE1JTiIsIlJPTEVfVVNFUiJdLCJ1c2VybmFtZSI6ImFkbWluQGFkbWluLmNvbSJ9.hjPpUdPSSOSVmY11jKPNmD9ZBDA6YI9wplYIq0Xx7bCnF5eSw-h9Hw-IY4Y003K6wzGku3xgsEXwI7Sum9N39SbE10rHcrN9OdgLMgQ1c3hwduLtPwKAC4GD-d1Ui6i48fLloOYdujumepvad51PfEMnBoOXjXfhjabGok2RXB7ATyq_JhofaWDNFZDpPb9DtRkfswmPH2nDvj9l_qrqu0zjoU0uoIfXKL0xTo2Nu6MfiBDXrE1zVRyzx_uznaobCotnwdN1gNx2DiwJJ-2Q--7YnkR6DTGohvDzHuvpYoScNUF6kDawELoLOOsi_kJxwSglhTPOIkdrN5rBwpDplg';
         //api.defaults.headers.common.Authorization = `bearer ${token}`;
         
        axios.get('http://nedaudchristophe-server.eddi.cloud/meeple/current/public/api/deals', {
@@ -29,7 +28,7 @@ const dealMiddleware = (store) => (next) => (action) => {
           // On veut maintenant les rajouter dans le state
           // Pour ça on va dispatcher une action (l'intention de mémoriser les recettes)
           // store.dispatch(saveDeal(response.data));
-          console.log('Response API',response);
+          console.log('Response API', response);
           //On envoie le resultat de la requete au reducer qui sera chargé de l'ecriture
           //store.dispatch(saveDeal(response.data));
         },
