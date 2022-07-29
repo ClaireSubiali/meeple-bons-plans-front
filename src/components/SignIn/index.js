@@ -14,6 +14,7 @@ import {
 // == Import des fonctions des actions
 import {
   changeFieldValueCreateAccount,
+  fetchFromSignIn,
 } from '../../actions/user';
 
 // == Import SCSS et autres
@@ -49,9 +50,16 @@ function SignIn() {
     dispatch(changeFieldValueCreateAccount(event.currentTarget.value, 'avatarColor'));
   };
 
+  const handleSubmitCreateAccount = (event) => {
+    event.preventDefault();
+    console.log('handleSubmit');
+    // TODO vérification mot de passe identique avec un if
+    dispatch(fetchFromSignIn());
+  };
+
   return (
     <div className="form-section">
-      <div className="newUser">
+      <form className="newUser" onSubmit={handleSubmitCreateAccount}>
         <div className="form-title">
           <div className="register-title"><FontAwesomeIcon icon={faAddressCard} /> </div>
           <div className="form-span"> Créer un compte</div>
@@ -62,7 +70,7 @@ function SignIn() {
           <input className="form-input" onChange={handleCreatePseudo} value={createPseudo} placeholder="Choisir un pseudo" type="text" />
           <span className="form-msg-error">Ce pseudo n'est pas disponible</span>
           <label className="form-secondarytitle" htmlFor="register-mail">E-MAIL</label>
-          <input className="form-input" onChange={handleCreateEmail} value={createMail} placeholder="Adresse Mail" type="text" />
+          <input className="form-input" onChange={handleCreateEmail} value={createMail} placeholder="Adresse Mail" type="email" />
           <span className="form-msg-error">L'adresse mail n'est pas valide</span>
           {/* ---------- GESTION MOT DE PASSE ----------- */}
           <label className="form-secondarytitle" htmlFor="register-psw">MOT DE PASSE</label>
@@ -80,9 +88,9 @@ function SignIn() {
           <option value="blue">Blue</option>
         </select>
         <div className="button-register-div">
-          <button type="button" className="form-button-validate SignIn-button ">Je m'inscris</button>
+          <button type="submit" className="form-button-validate SignIn-button ">Je m'inscris</button>
         </div>
-      </div>
+      </form>
     </div>
 
   );

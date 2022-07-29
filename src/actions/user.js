@@ -67,8 +67,18 @@ export function disconnect() {
   };
 }
 
+// Action Type => On l'utilise dans l'action creator ET dans le reducer
+export const FETCH_FORM_SIGNIN = 'FETCH_FORM_SIGNIN';
+
+// Action creator => On l'utilise au moment du dispatch()
+export function fetchFromSignIn() {
+  return {
+    type: FETCH_FORM_SIGNIN,
+  };
+}
+
 //Ici on defini la l'action click sur le button 'se connecter' pour envoyer les champs a la bdd
-export const SEND_DATA_USER = 'SEND_DATA_USER';
+// export const SEND_DATA_USER = 'SEND_DATA_USER';
 
 /*export function sendUser() {
   return (

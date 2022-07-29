@@ -35,11 +35,6 @@ function LoginPopup({
   const handleToggleLogin = () => {
     ToggleVisibility('isLoginVisible');
   };
-  // losque l'on clique sur le bouton valider, on envoie les champs contenu dans le stats au back
-  const HandleSendDatas = (event) => {
-    sendUser('createPseudo', 'createMail','createPassword','confirmPassword', 'avatarColor');
-    //le reste le passe dans le stat et l'action('')
-  };
 
  
 
@@ -59,7 +54,7 @@ function LoginPopup({
           <div className="login_error">{temporaryMessage}</div>
           <button type="submit" className="btn" onSubmit={SubmitLogin}>Se connecter</button>
           <div className="lost_password">Mot de passe oublié?</div>
-          <Link to="/inscription"><button type="button" className="btn register" onClick={handleToggleLogin, HandleSendDatas}>S'inscrire</button></Link>
+          <Link to="/inscription"><button type="button" className="btn register" onClick={handleToggleLogin}>S'inscrire</button></Link>
         </form>
       </div>
     </div>

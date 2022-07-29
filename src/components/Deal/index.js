@@ -36,7 +36,7 @@ function Deal() {
   console.log('activedeal', deal);
   if (deal === '') {
     return (
-      <div>Chargement en cours, veuillez patienter</div>
+      <div className="loading">Loading&#8230;</div>
     );
   }
   const calcPercentage = () => {
