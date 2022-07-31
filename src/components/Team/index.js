@@ -6,26 +6,82 @@ import './style.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPeopleGroup } from '@fortawesome/free-solid-svg-icons';
 
+// import photos équipe
+import julien from '../../assets/img/julien.jpg';
+import chris from '../../assets/img/chris.jpeg';
+import camille from '../../assets/img/cam.jpeg';
+import claire from '../../assets/img/claire.jpeg';
+
 // == Composant
 function Team() {
   return (
     <div className="team-page">
-      <h1 className="title"><FontAwesomeIcon icon={faPeopleGroup} className="icon" />  L'équipe MEEPLE Bons plans</h1>
+      <div className="title-team"><FontAwesomeIcon icon={faPeopleGroup} /> <div className="form-span"> L'ÉQUIPE</div></div>
       <div className="team">
-        <div className="card">
-          <div className="cardName">Julien</div>
-        </div>
-        <div className="card">
-          <div className="cardName">Claire</div>
-        </div>
-        <div className="card">
-          <div className="cardName">Laurent</div>
-        </div>
-        <div className="card">
-          <div className="cardName">Camille</div>
-        </div>
-        <div className="card">
-          <div className="cardName">Christophe</div>
+        <div className="cards">
+          <div className="card-div">
+            <section className="card">
+              <div className="card__side card__side--front">
+                <img src={julien} alt="profil team" id="card-ava" />
+                <p>Julien</p>
+              </div>
+              <div className="card__side card__side--back">
+                <p>Dev Front</p>
+                <p>Product Owner</p>
+              </div>
+            </section>
+          </div>
+
+          <div className="card-div">
+            <section className="card">
+              <div className="card__side card__side--front">
+                <p>Laurent</p>
+              </div>
+
+              <div className="card__side card__side--back">
+                <p>Dev Front</p>
+                <p>Scrum Master</p>
+              </div>
+            </section>
+          </div>
+
+          <div className="card-div">
+            <section className="card">
+              <div className="card__side card__side--front">
+                <img src={claire} alt="profil team" id="card-ava" />
+                <p>Claire</p>
+              </div>
+              <div className="card__side card__side--back">
+                <p>Dev Front</p>
+                <p>Lead Front</p>
+              </div>
+            </section>
+          </div>
+
+          <div className="card-div">
+            <section className="card">
+              <div className="card__side card__side--front">
+                <img src={camille} alt="profil team" id="card-ava" />
+                <p>Camille</p>
+              </div>
+              <div className="card__side card__side--back">
+                <p>Dev Back</p>
+                <p>Lead Back</p>
+              </div>
+            </section>
+          </div>
+          <div className="card-div">
+            <section className="card">
+              <div className="card__side card__side--front">
+                <img src={chris} alt="profil team" id="card-ava" />
+                <p>Christophe</p>
+              </div>
+              <div className="card__side card__side--back">
+                <p> Dev Back</p>
+                <p>Git Master</p>
+              </div>
+            </section>
+          </div>
         </div>
       </div>
     </div>
