@@ -143,7 +143,16 @@ export function OnChangeUrl(inputUrlGame) {
   };
 }
 
-// sert a changer de
+// ---------------------- sert a changer de page apres la soumission du form
+
+export const ADD_DEAL_SUMIT_FORM = 'ADD_DEAL_SUMIT_FORM';
+
+export function fetchFromAddDeal () {
+  return {
+    type: ADD_DEAL_SUMIT_FORM,
+    
+  };
+}
 
 //! -------------------ACTION POUR MIDDLEWARES ---------------------------------------
 
@@ -189,3 +198,15 @@ export function saveOneDeal(oneDeal) {
     oneDeal,
   };
 }
+
+// Action Type => On l'utilise dans l'action creator ET dans le reducer
+export const SEARCH_GAME = 'SEARCH_GAME';
+
+// Action creator => On l'utilise au moment du dispatch()
+export function searchGame(searchedGame) {
+  return {
+    type: SEARCH_GAME,
+    searchedGame,
+  };
+}
+

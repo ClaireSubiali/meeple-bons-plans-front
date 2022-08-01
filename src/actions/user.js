@@ -175,11 +175,34 @@ export function saveEmailInState(email) {
 // Action Type => On l'utilise dans l'action creator ET dans le reducer
 export const TOGGLE_IS_LOGGED = 'TOGGLE_IS_LOGGED';
 
+// Action Type => On l'utilise dans l'action creator ET dans le reducer
+export const SAVE_IS_LOGGED = 'SAVE_IS_LOGGED';
+
+// Action creator => On l'utilise au moment du dispatch()
+export function saveIsLogged(isLogged) {
+  return {
+    type: SAVE_IS_LOGGED,
+    isLogged,
+  };
+}
+
+
 // Action creator => On l'utilise au moment du dispatch()
 export function toggleIsLogged() {
   return {
     type: TOGGLE_IS_LOGGED,
   };
 }
+
+// Action Type => On l'utilise dans l'action creator ET dans le reducer
+export const FETCH_USER_WITH_MAIL = 'FETCH_USER_WITH_MAIL';
+
+// Action creator => On l'utilise au moment du dispatch()
+export function fetchUserWithMail() {
+  return {
+    type: FETCH_USER_WITH_MAIL,
+  };
+}
+
 
 

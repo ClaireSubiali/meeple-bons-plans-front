@@ -5,6 +5,7 @@ import {
   CHANGE_FIELD_VALUE_CREATE_ACCOUNT,
   SAVE_TOKEN,
   SAVE_EMAIL,
+  SAVE_IS_LOGGED,
   CLEAR_LOGIN,
   TOGGLE_IS_LOGGED,
 } from '../actions/user';
@@ -128,6 +129,11 @@ function reducer(state = initialState, action = {}) {
       return {
         ...state,
         currentUserEmail: action.email,
+      };
+    case SAVE_IS_LOGGED:
+      return {
+        ...state,
+        isUserLogged: action.isLogged,
       };
     default:
       return state;

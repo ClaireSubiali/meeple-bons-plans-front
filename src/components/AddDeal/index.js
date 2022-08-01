@@ -23,7 +23,9 @@ import {
   changeExpDate,
   OnChangeGame,
   OnChangeUrl,
-  ToggleAddGame, //<----------------------------------------
+  ToggleAddGame,
+  fetchFromAddDeal,//<----------------------------------------
+  searchGame,
 } from '../../actions/deal';
 
 
@@ -32,6 +34,7 @@ import {
 function AddDeal() {
   const dispatch = useDispatch();
   const {
+    //On importles sous state
     isAddGame, //TODO Pop Up ADD GAME
     newGame,
     urlGame,
@@ -117,22 +120,28 @@ function AddDeal() {
     const inputUrlGame = event.currentTarget.value;
     dispatch(OnChangeUrl(inputUrlGame));
   };
-  const handleSubmit = (event) => {
+  const handleSubmitAddDeal = (event) => {
     event.preventDefault();
-    console.log('On veut envoyer le form et aller sur une autre page');
-    // TODO vérification mot de passe identique avec un if
-    dispatch(f());
+    console.log('new deal composant ');
+    dispatch(fetchFromAddDeal());
   };
+  const handleSearchGame = () => {
+    
+    console.log('test search game');
+    dispatch(searchGame(dealGame));
+
+  }
 
   return (
     <div className="form-section">
-      <form onSubmit={SubmitAddDeal}>
+      <form onSubmit={handleSubmitAddDeal}>
         <div className="form-title"><FontAwesomeIcon icon={faTags} /><span className="form-span">Ajouter un bon plan</span></div>
         <div className="adddeal-header">
           <label className="form-secondarytitle" htmlFor="deal-title">TITRE</label>
           <input className="form-input" type="text" id="deal-title" placeholder="Titre du bon plan" value={dealTitle} onChange={handleChangeDealTitle} />
           <label className="form-secondarytitle" htmlFor="deal-search">NOM DU JEU</label>
           <input className="form-input" type="text" id="deal-search" placeholder="Saisissez votre recherche" value={dealGame} onChange={handleChangeDealGame} />
+          <button type="button" onClick={handleSearchGame}> cherche jeu</button>
           <div className="adddeal-right-element"><span className="missing-game">Jeu manquant ?</span>
             <button className="button-addgame" onClick={handleClickToggleAddGame} type="button">Suggérer un jeu</button>
           </div>

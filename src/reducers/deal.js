@@ -15,6 +15,7 @@ import {
   CHANGE_GAME, // POP UP ADD GAME
   CHANGE_URL,
   SAVE_ONE_DEAL,
+  ADD_DEAL_SUMIT_FORM,
 } from '../actions/deal';
 
 // ici on initialise le state
@@ -151,6 +152,15 @@ function reducer(state = initialState, action = {}) {
           isAddGame: !state.addDealForm.isAddGame,
         },
       };
+      //Ici on envoie les data du ajouter un bon plan au stat
+    case ADD_DEAL_SUMIT_FORM:
+      return{
+        ...state,
+        addDealForm: {
+          ...state.addDealForm,
+          isAddGame: !state.addDealForm.isAddGame,
+        },
+      }
     case SAVE_ONE_DEAL:
       return {
         ...state,

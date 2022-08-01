@@ -24,7 +24,7 @@ import Actus from '../Actus';
 
 // Actions Import 
 import { fetchDeal } from '../../actions/deal';
-import { SaveTokenInState, saveEmailInState} from '../../actions/user';
+import { SaveTokenInState, saveEmailInState, saveIsLogged} from '../../actions/user';
 
 // == Composant
 function App() {
