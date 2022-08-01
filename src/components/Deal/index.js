@@ -17,6 +17,7 @@ import avatar from '../../assets/img/m-orange.png';
 // import { findDeal } from '../selectors/deal';
 import { fetchOneDeal } from '../../actions/deal';
 import Comment from './Comment';
+import { toggleVisibility } from '../../actions/user';
 
 // == Composant
 function Deal() {
@@ -25,7 +26,7 @@ function Deal() {
   // Récupération du paramètre d'url pour avoir l'id correspondant au deal à afficher
   useEffect(
     () => {
-      // On veut recup la liste des recette depuis l'API
+      // On veut recup la liste des deal depuis l'API
       // Pour ça, on va dispatcher une action (émettre l'intention de charger les recettes)
       dispatch(fetchOneDeal(dealId));
     },
@@ -45,6 +46,10 @@ function Deal() {
   };
   const percentage = calcPercentage();
   console.log('test');
+
+  const handleConnexion = () => {
+    dispatch(toggleVisibility('isLoginVisible'));
+  }
   return (
       <div className="deal-detail-comments">
         <div className="deal detail-card">
@@ -100,7 +105,7 @@ function Deal() {
         </div>
         ) : (
           <div className="deal-comments com-user">
-            <p className="need-login-msg">Veuillez vous <span className="need-login-msg-link" aria-label="lien pour se connecter">connecter</span> pour laisser un commentaire</p>
+            <p className="need-login-msg">Veuillez vous <span className="need-login-msg-link" aria-label="lien pour se connecter" onClick={handleConnexion}>connecter</span> pour laisser un commentaire</p>
           </div>
         )}
         {deal.comments.map((comment) => (

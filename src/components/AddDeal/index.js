@@ -117,10 +117,16 @@ function AddDeal() {
     const inputUrlGame = event.currentTarget.value;
     dispatch(OnChangeUrl(inputUrlGame));
   };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log('On veut envoyer le form et aller sur une autre page');
+    // TODO vérification mot de passe identique avec un if
+    dispatch(f());
+  };
 
   return (
     <div className="form-section">
-      <form>
+      <form onSubmit={SubmitAddDeal}>
         <div className="form-title"><FontAwesomeIcon icon={faTags} /><span className="form-span">Ajouter un bon plan</span></div>
         <div className="adddeal-header">
           <label className="form-secondarytitle" htmlFor="deal-title">TITRE</label>

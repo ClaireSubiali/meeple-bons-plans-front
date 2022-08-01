@@ -143,6 +143,8 @@ export function OnChangeUrl(inputUrlGame) {
   };
 }
 
+// sert a changer de
+
 //! -------------------ACTION POUR MIDDLEWARES ---------------------------------------
 
 // Action Type => On l'utilise dans l'action creator ET dans le reducer

@@ -48,7 +48,7 @@ function DealCard({
             <h6>{game.category.name}<span className="shop"> | boutique {shop.name}</span></h6>
           </div>
           <div className="deal-label">
-            <div className="discount">- {percentage} %</div>
+            <div className="discount">-{percentage} %</div>
             <div className="price">{(reducedPrice).toFixed(2)} €</div>
           </div>
         </div>

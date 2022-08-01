@@ -68,6 +68,22 @@ export function disconnect() {
 }
 
 // Action Type => On l'utilise dans l'action creator ET dans le reducer
+export const CLEAR_LOGIN = 'CLEAR_LOGIN';
+
+// Action creator => On l'utilise au moment du dispatch()
+/** 
+ * Vide les deux champs controlés du popup de connexion
+ * Accepte un paramètre optionnel qui correspond au message temporaire dans l'encorat de connexion
+ */
+export function clearLogin(temporaryMessage = '') {
+  return {
+    type: CLEAR_LOGIN,
+    message: temporaryMessage,
+  };
+}
+
+
+// Action Type => On l'utilise dans l'action creator ET dans le reducer
 export const FETCH_FORM_SIGNIN = 'FETCH_FORM_SIGNIN';
 
 // Action creator => On l'utilise au moment du dispatch()
@@ -90,39 +106,39 @@ export function fetchFromSignIn() {
   )
 }*/
 
-//! DEBUT DE LA PARTIE TEMPORAIRE
-// TODO ACTION TEMPORAIRE A SUPPRIMER QUAND API PERMET LA CONNEXION
-// A REMPLACER PAR L'ACTION POUR LE MIDDLEWARE
-// pour gerer le dispatcher de icone/avatar
-export const TOGGLE_VISIBILITY_AND_AVATAR = 'TOGGLE_VISIBILITY_AND_AVATAR';
-// Action Type => On l'utilise dans l'action creator ET dans le reducer
-export const CHECK_LOGIN = 'CHECK_LOGIN';
-// Action creator => On l'utilise au moment du dispatch()
-export function testLogin(mailFromState, passwordFromState) {
-  let loginStatus = '';
-  console.log(mailFromState);
-  const meuh = data.find((user) => user.email === mailFromState);
-  if (meuh) {
-    if (meuh.password === passwordFromState) {
-      loginStatus = 'OK CONNEXION DE L\'UTILISATEUR';
-      console.log('pass ok');
-      return {
-        type: TOGGLE_VISIBILITY_AND_AVATAR,
-      };
-    }
-    loginStatus = 'ERREUR : Mot de passe erroné…';
-    console.log('pass incorrect');
-  }
-  else {
-    loginStatus = 'ERREUR : Cet utilisateur n\'existe pas';
-    console.log('pas membre');
-  }
-  return {
-    type: CHECK_LOGIN,
-    temporaryMessage: loginStatus,
-  };
-}
-//! FIN DE LA PARTIE TEMPORAIRE
+// //! DEBUT DE LA PARTIE TEMPORAIRE
+// // TODO ACTION TEMPORAIRE A SUPPRIMER QUAND API PERMET LA CONNEXION
+// // A REMPLACER PAR L'ACTION POUR LE MIDDLEWARE
+// // pour gerer le dispatcher de icone/avatar
+// export const TOGGLE_VISIBILITY_AND_AVATAR = 'TOGGLE_VISIBILITY_AND_AVATAR';
+// // Action Type => On l'utilise dans l'action creator ET dans le reducer
+// export const CHECK_LOGIN = 'CHECK_LOGIN';
+// // Action creator => On l'utilise au moment du dispatch()
+// export function testLogin(mailFromState, passwordFromState) {
+//   let loginStatus = '';
+//   console.log(mailFromState);
+//   const meuh = data.find((user) => user.email === mailFromState);
+//   if (meuh) {
+//     if (meuh.password === passwordFromState) {
+//       loginStatus = 'OK CONNEXION DE L\'UTILISATEUR';
+//       console.log('pass ok');
+//       return {
+//         type: TOGGLE_VISIBILITY_AND_AVATAR,
+//       };
+//     }
+//     loginStatus = 'ERREUR : Mot de passe erroné…';
+//     console.log('pass incorrect');
+//   }
+//   else {
+//     loginStatus = 'ERREUR : Cet utilisateur n\'existe pas';
+//     console.log('pas membre');
+//   }
+//   return {
+//     type: CHECK_LOGIN,
+//     temporaryMessage: loginStatus,
+//   };
+// }
+// //! FIN DE LA PARTIE TEMPORAIRE
 
 
 // Action Type => On l'utilise dans l'action creator ET dans le reducer
@@ -145,4 +161,25 @@ export function SaveTokenInState(token) {
     token,
   };
 }
+
+// Action Type => On l'utilise dans l'action creator ET dans le reducer
+export const SAVE_EMAIL = 'SAVE_EMAIL';
+
+// Action creator => On l'utilise au moment du dispatch()
+export function saveEmailInState(email) {
+  return {
+    type: SAVE_EMAIL,
+    email,
+  };
+}
+// Action Type => On l'utilise dans l'action creator ET dans le reducer
+export const TOGGLE_IS_LOGGED = 'TOGGLE_IS_LOGGED';
+
+// Action creator => On l'utilise au moment du dispatch()
+export function toggleIsLogged() {
+  return {
+    type: TOGGLE_IS_LOGGED,
+  };
+}
+
 

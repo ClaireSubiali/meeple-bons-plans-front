@@ -14,13 +14,13 @@ function ProfilePopup({
   Disconnect,
 }) {
   const handleToggleVisibility = () => {
-    ToggleVisibility('isLoginVisible');
+    ToggleVisibility('isProfileVisible');
   };
   return (
     <div className="profile-popup">
       <div className="close-button-div"><button type="button" aria-label="Fermer" className="cancel" onClick={handleToggleVisibility}><FontAwesomeIcon icon={faXmark} /></button></div>
       <div className="profile-header">
-        <img src={avatar} alt="profil meeple" id="avatar" />
+        <img src="https://www.zupimages.net/up/22/31/wgqb.png" alt="profil meeple" id="avatar" />
         <span>{email}</span>
       </div>
       <div>

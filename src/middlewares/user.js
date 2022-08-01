@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-import { FETCH_FORM_SIGNIN, FETCH_LOGIN, SaveTokenInState } from '../actions/user';
+import { FETCH_FORM_SIGNIN, FETCH_LOGIN, SaveTokenInState, clearLogin, saveEmailInState, toggleIsLogged, toggleVisibility } from '../actions/user';
+import { useNavigate } from "react-router-dom";
+import { Redirect } from 'react-router-dom';
 
 
 // IMAGE POUR COMPRENDRE => le middlewares est un SAVANT qui sait tout (connecté a l'api), Le reducer est un ECRIVIAN qui est le seul a detenir un manuscrit (le stat), le messager (le dispatch) chargé de raconter les nouvelles (_ACTION_) de la ville à l'écrivain qui les note dans son manuscrit).
@@ -39,9 +41,10 @@ const userMiddleware = (store) => (next) => (action) => {
           // pour ca, il faut idientifier les datas a envoyer
           // store.dispatch(saveDeal(response.data));
           console.log('Response API', response);
-          alert('compte bien crée');
-          <Redirect to="/" />
-
+          console.log('jusqu ici tout va bien');
+          alert('Compte bien crée');
+          
+          location.replace('/');  
           
           // On envoie le resultat de la requete au reducer qui sera chargé de l'ecriture
           // store.dispatch(HandleSendDatas(response.data));
@@ -77,11 +80,20 @@ const userMiddleware = (store) => (next) => (action) => {
           console.log('Response API, token => ', response);
           // On envoie le resultat de la requete au reducer qui sera chargé de l'ecriture
           localStorage.setItem('TOKEN', response.data.token);
+          localStorage.setItem('UserEmail', email);
+          localStorage.setItem('isUserLogged', true);
           store.dispatch(SaveTokenInState(response.data.token));
+          store.dispatch(saveEmailInState(email));
+          store.dispatch(toggleIsLogged());
+          store.dispatch(toggleVisibility('isLoginVisible'));
+          alert('Connexion réussie');
         },
       )
         .catch((error) => {
           console.log(error);
+          if(error.request.status === 401) {           
+            store.dispatch(clearLogin('Mot de passe ou email incorrect'));            
+          }
         });
       return next(action);
     }

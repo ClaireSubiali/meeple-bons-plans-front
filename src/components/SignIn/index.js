@@ -52,14 +52,22 @@ function SignIn() {
 
   const handleSubmitCreateAccount = (event) => {
     event.preventDefault();
+    if(createPassword !== '' && (createPassword === confirmPassword)){
     console.log('handleSubmit');
     // TODO vérification mot de passe identique avec un if
-    dispatch(fetchFromSignIn());
+    dispatch(fetchFromSignIn());}
+    else {
+      alert('Merci de saisir un mot de passe valide et de le confirmer');
+    }
   };
+
+  const handleSubmitchangeView = (event) => {
+    event.preventDefault();
+  }
 
   return (
     <div className="form-section">
-      <form className="newUser" onSubmit={handleSubmitCreateAccount}>
+      <form className="newUser" onSubmit={handleSubmitCreateAccount}>{/*navigate et outlet ?  <outlet /> est un hook permetant de donner acces aux route enfants ???? */}
         <div className="form-title">
           <div className="register-title"><FontAwesomeIcon icon={faAddressCard} /> </div>
           <div className="form-span"> Créer un compte</div>
@@ -88,7 +96,7 @@ function SignIn() {
           <option value="blue">Blue</option>
         </select>
         <div className="button-register-div">
-          <button type="submit" className="form-button-validate SignIn-button">Je m'inscris</button> 
+          { <button type="submit"  className="form-button-validate SignIn-button">Je m'inscris</button> }
         </div>
       </form>
     </div>

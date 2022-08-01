@@ -47,7 +47,7 @@ function Header() {
   } = useSelector((state) => state.user.loginSettings);
 
   // Ici on vient extraire/récupérer les données situées dans le state avec useSelector
-  const isAvatarVisible = useSelector((state) => state.user.isAvatarVisible);
+  const {isAvatarVisible, isUserLogged } = useSelector((state) => state.user);
   const dealObjectTest = useSelector((state) => state.deal.dealList);
 
   console.log('CONSOLE LOG sur header', dealObjectTest.value);
@@ -84,7 +84,10 @@ function Header() {
    * Handler for logout (disconnect)
    */
    const handleDisconnect = () => {
+    
     dispatch(disconnect());
+    console.log('deconnexion clear storage');
+    window.localStorage.clear();
   };
 
   /* ---------- HANDLER GENERAUX AVEC PLUSIEURS UTILITES ---------- */
@@ -112,14 +115,16 @@ function Header() {
           <Link to="/">
             <img src={logo} className="logotype" alt="Logo Meeple Bons Plans" />
           </Link>
+          <Link to="/">
           <div className="header__title">MEEPLE BONS PLANS</div>
+          </Link>
         </div>
         <div id="right-header">
           <div className="search">
             <input type="search" className="search-bar" name="q" placeholder="Rechercher" />
           </div>
           <Link to="/ajouter-bon-plan" id="add-deal"><FontAwesomeIcon icon={faPlus} /><span className="displaybutton"> Ajouter un bon plan</span></Link>
-          {isAvatarVisible ? <button type="button" onClick={handleToggleProfile} id="button-avatar"><img src={avatar} alt="profil meeple" id="avatar" /></button> : <button type="button" id="login" onClick={handleClickToggleLogin}><FontAwesomeIcon icon={faUser} /><span className="displaybutton"> Connexion</span></button> }
+          {isUserLogged ? <button type="button" onClick={handleToggleProfile} id="button-avatar"><img src={avatar} alt="profil meeple" id="avatar" /></button> : <button type="button" id="login" onClick={handleClickToggleLogin}><FontAwesomeIcon icon={faUser} /><span className="displaybutton"> Connexion</span></button> }
         </div>
       </div>
       {/* ----------  NAVIGATION DANS HEADER---------- */}
