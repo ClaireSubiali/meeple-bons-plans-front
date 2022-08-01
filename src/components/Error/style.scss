@@ -1,54 +1,43 @@
 @use 'src/styles/vars';
 
-.errormsg {text-align:center;
-margin-top:2em;}
+.error-card, .front, .back {
+ 
+	background-color:none;
+}
+.error-card {
+	margin: 5rem;
+}
+.front, .back {
+	box-sizing: border-box;
+	padding: 2rem;
+	border-radius: 2px;
+  
+	  
+ 
+}
+ 
 
-.error {
+.error-card {
+	position: relative;
+}
+.front, .back {
 	position: absolute;
-	top: 50%;
-	left: 50%;	
-	// box-shadow:   0px 20px 60px 0 rgba(0,0,0,0.2),    0px 12px 24px 0 rgba(0,0,0,0.05);
-	 
-	transform-style: preserve-3d;
-	transform: translate(-50%, -50%);
-	animation: rotate 1.8s infinite linear;
+	top: 0;
+	left: 50%;
+	backface-visibility: hidden;
+	overflow: hidden;
+	transition: transform .8s ease;
+}
+.back {
+	transform: rotateY(180deg);
+}
+.error-card:hover .front {
+	transform: rotateY(-180deg);
+}
+.error-card:hover .back {
+	transform: rotateY(0deg);
 }
 
-@keyframes rotate {
-	0% {
-    transform:     translate(-50%, -50%) rotate3d(1, -1, 0.1,10deg);
-    
-  }
-	12.5% {
-    transform:     translate(-50%, -50%) rotate3d(1, 0, 0,10deg);
-    
-  }
-	25% {
-    transform:     translate(-50%, -50%) rotate3d(1, 1, -0.1,10deg);
-    
-  }
-	37.5% {
-    transform:     translate(-50%, -50%) rotate3d(0, 1, 0, 15deg);
-    
-  }
-	50% {
-    transform:     translate(-50%, -50%) rotate3d(-1, 1, 0.1,10deg);
-    
-  }
-	62.5% {
-    transform:     translate(-50%, -50%) rotate3d(-1, 0, 0,10deg);
-    
-  }
-	75% {
-    transform:     translate(-50%, -50%) rotate3d(-1, -1, -0.1,10deg);
-    
-  }
-	87.5% {
-    transform:     translate(-50%, -50%) rotate3d(0, -1, 0, 15deg);
-   
-  }
-	100% {
-    transform:     translate(-50%, -50%) rotate3d(1, -1, 0.1,10deg);
-    
-  }
+.error-card {
+	perspective: 75rem;
 }

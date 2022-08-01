@@ -7,15 +7,15 @@ import { FETCH_DEAL, FETCH_ONE_DEAL, saveDeal, saveOneDeal } from '../actions/de
 
 // Lorsqu'on met en place un middleware, il ne faut pas oublier de le brancher au store !
 const dealMiddleware = (store) => (next) => (action) => {
-  const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NTkwNzk3NTQsImV4cCI6MTY1OTE0NDU1NCwicm9sZXMiOlsiUk9MRV9BRE1JTiIsIlJPTEVfVVNFUiJdLCJ1c2VybmFtZSI6ImFkbWluQGFkbWluLmNvbSJ9.YApDF1vsCN0gDB4BJrxU5ZriCnBiTeQjUECE_TzDT4wOBClsf92W2GBMUYlMTBJMgS2_uGJ7K6V8eYfu9yeBDdbZbLydE0b8-oWGwyTSzrPTmLbp7gXMCfomfZ-kPRoM6qBMMiBlaoPvhn9EXcYXIiV7gq2FL_d3RE33xucr2IQWy5JvPF0rVroK5aBF-5l-_1EmmomYu03JfGACwaljUezHyeGN6T1hPyMLVCZcrrEYEEKd5lL4ArXMS_7qrKCaXe68rWCVScx9CLY6ZQ1TcXYQYWAy3QPIMHUW65k0xneJaNy-8QfTnIQe9QXkoJo4wagHzKSeglnxkkNWnRqFeA';
+  const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NTkzNDU2MjQsImV4cCI6MTY1OTQxMDQyNCwicm9sZXMiOlsiUk9MRV9BRE1JTiIsIlJPTEVfVVNFUiJdLCJ1c2VybmFtZSI6ImFkbWluQGFkbWluLmNvbSJ9.jX4U1Iioz3MBUJLjZtfr3b2epbOZUuog9eb7agziVx4SudToQkPsnPRgOWAQOM3OauE48D9_8Gk5wyyabZNCl2mRk5HCe-ZkWEN4WKXBngoBIFUJBdswlyc_ZQDEH9gfuXFnQyjxFoX2mJAnEHJ9jCuK1IQMlUB9TYZVjGwyse9Y41h_JlEF5YMvGdDb8LtJziouFZIz74lIlC4wUnWRgwJ85S9GBxFHh1wijhlgEQ90viRKDevleZolHscKoD3qrGQRSXpmzd5fiR_vkyTCUna50Fs8_KSYbIRJ5Txolq6kWKfys-MnOLLdngpr5zt0_zJdxdingO3CiS_1UmV83A';
   switch (action.type) {
     case FETCH_DEAL: {
       // Set config defaults when creating the instance+
       // const api = axios.create({
-      // baseURL: 'http://nedaudchristophe-server.eddi.cloud/meeple/current/public/api/deals',
+      // baseURL: 'http://christophe-nedaud.vpnuser.lan/Meeple%20bons%20plans/projet-04-meeple-bons-plans-back/public/api/deals',
       // });
       // api.defaults.headers.common.Authorization = `bearer ${token}`;
-      axios.get('http://christophe-nedaud.vpnuser.lan/Meeple%20bons%20plans/projet-04-meeple-bons-plans-back/public/api/deals', {
+      axios.get('http://nedaudchristophe-server.eddi.cloud/meeple/current/public/api/deals', {
         headers: {
           Authorization: `bearer ${token}`,
         },
@@ -38,7 +38,7 @@ const dealMiddleware = (store) => (next) => (action) => {
       return next(action);
         }
         case FETCH_ONE_DEAL: {
-          axios.get(`http://christophe-nedaud.vpnuser.lan/Meeple%20bons%20plans/projet-04-meeple-bons-plans-back/public/api/deals/${action.dealId}`, {
+          axios.get(`http://nedaudchristophe-server.eddi.cloud/meeple/current/public/api/deals/${action.dealId}`, {
             headers: {
               Authorization: `bearer ${token}`,
             },

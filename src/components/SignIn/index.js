@@ -88,7 +88,7 @@ function SignIn() {
           <option value="blue">Blue</option>
         </select>
         <div className="button-register-div">
-          <button type="submit" className="form-button-validate SignIn-button ">Je m'inscris</button>
+          <button type="submit" className="form-button-validate SignIn-button">Je m'inscris</button> 
         </div>
       </form>
     </div>

@@ -1,7 +1,8 @@
 // == Import
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+
 
 import './style.scss';
 
@@ -54,7 +55,8 @@ function App() {
         <Route path="/mentions-legales" element={<LegalMentions />} />
         <Route path="/recherche?s=:searchWord" element={<SearchResults />} />
         <Route path="/contact" element={<ContactForm />} />
-        <Route path="*" element={<Error />} />
+        <Route path="/erreur404" element={<Error />} />
+        <Route path="*" element={<Navigate replace to="/erreur404" />} />
         <Route path="/Boutiques" element={<ShopList />} />
         <Route path="/Actus" element={<Actus />} />
       </Routes>
