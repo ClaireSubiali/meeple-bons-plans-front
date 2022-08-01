@@ -1,0 +1,54 @@
+@use 'src/styles/vars';
+
+.errormsg {text-align:center;
+margin-top:2em;}
+
+.error {
+	position: absolute;
+	top: 50%;
+	left: 50%;	
+	// box-shadow:   0px 20px 60px 0 rgba(0,0,0,0.2),    0px 12px 24px 0 rgba(0,0,0,0.05);
+	 
+	transform-style: preserve-3d;
+	transform: translate(-50%, -50%);
+	animation: rotate 1.8s infinite linear;
+}
+
+@keyframes rotate {
+	0% {
+    transform:     translate(-50%, -50%) rotate3d(1, -1, 0.1,10deg);
+    
+  }
+	12.5% {
+    transform:     translate(-50%, -50%) rotate3d(1, 0, 0,10deg);
+    
+  }
+	25% {
+    transform:     translate(-50%, -50%) rotate3d(1, 1, -0.1,10deg);
+    
+  }
+	37.5% {
+    transform:     translate(-50%, -50%) rotate3d(0, 1, 0, 15deg);
+    
+  }
+	50% {
+    transform:     translate(-50%, -50%) rotate3d(-1, 1, 0.1,10deg);
+    
+  }
+	62.5% {
+    transform:     translate(-50%, -50%) rotate3d(-1, 0, 0,10deg);
+    
+  }
+	75% {
+    transform:     translate(-50%, -50%) rotate3d(-1, -1, -0.1,10deg);
+    
+  }
+	87.5% {
+    transform:     translate(-50%, -50%) rotate3d(0, -1, 0, 15deg);
+   
+  }
+	100% {
+    transform:     translate(-50%, -50%) rotate3d(1, -1, 0.1,10deg);
+    
+  }
+}
