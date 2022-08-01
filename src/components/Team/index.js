@@ -11,6 +11,7 @@ import julien from '../../assets/img/julien.jpg';
 import chris from '../../assets/img/chris.jpeg';
 import camille from '../../assets/img/cam.jpeg';
 import claire from '../../assets/img/claire.jpeg';
+import laurent from '../../assets/img/lolo.jpeg';
 
 // == Composant
 function Team() {
@@ -35,6 +36,7 @@ function Team() {
           <div className="card-div">
             <section className="card">
               <div className="card__side card__side--front">
+                <img src={laurent} alt="profil team" id="card-ava" />               
                 <p>Laurent</p>
               </div>
 
