@@ -81,3 +81,31 @@
   text-align: center;
 }
 
+//POP UP SEARCH GAME //TODO factoriser CSS
+
+.results_searchgame ul{
+  overflow-y:scroll;
+  height:30vh;
+ 
+}
+
+.results_searchgame li {
+  display:flex;
+  flex-direction:row;
+  align-items: center;
+  margin-bottom:0.5em;
+
+}
+
+.results_searchgame img {
+  width:80px;
+}
+
+.results_searchgame span {
+  margin-left:1em;
+  font-size:1em;
+  font-weight: bold;
+  // padding:1.5em;
+   
+  
+}
