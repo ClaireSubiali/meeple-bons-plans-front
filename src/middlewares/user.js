@@ -33,7 +33,7 @@ const userMiddleware = (store) => (next) => (action) => {
       // baseURL: 'http://nedaudchristophe-server.eddi.cloud/meeple/current/public/api/deals',
       // });
       //On utilise un token fourni par le back pour s'autentifier sur l'api
-      const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NTk0NDcyNTksImV4cCI6MTY1OTUxMjA1OSwicm9sZXMiOlsiUk9MRV9BRE1JTiIsIlJPTEVfVVNFUiJdLCJ1c2VybmFtZSI6ImFkbWluQGFkbWluLmNvbSJ9.aRu-w4EsYJHyCXdE-9JDeTIWOsvluEz_WGZRT7Qe_ETAA3hZrwV_alSkGndDQgm1ZJQKuKIEE48KCVEnmf813nKoFcyJQOXF3wExZaNPgKLuY0DKdxmpovSv_ZpVX9BoiEK5ddiT_nmdqo5r-K165IVlz5es_ErfoZk56qdkWsQ4HMx9Z1B2WkKSi91hwkePs2SXXFvKyU1PATq9-JoQb7K9XGBXxICzJYYE3Kmayd7fjkax16Bl7NMfeLt5Lutry5T6Hwvyt_GDQALYZ4UY2qk5GzRtYRFfmGGsR4qAP-dKir967w0uwTZupWQ4RWXqJ8d-MlmlT8EVGuS0czyEOw';
+      const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NTk0NTE4MDIsImV4cCI6MTY1OTUxNjYwMiwicm9sZXMiOlsiUk9MRV9BRE1JTiIsIlJPTEVfVVNFUiJdLCJ1c2VybmFtZSI6ImFkbWluQGFkbWluLmNvbSJ9.GdZiaM9Hgt-vDvOfW3pnw1Um5dX58-QZn2Ft7F_7kGgkbOVQMUNPQMWpCT13vbzbx2eu_cbTdXU_2pUGWdSxxu76X79XZZx29wVTX3BOEJOtyIASuNxYscyL4wGxcr4ppA0q3oFEzrmj_6k7JA9ImBzI5TEE4dcOk5ooaYRlCZj2ND-S8IPsWwdGE3R-sik3xuJ4gkQjvBsahAXG_pyxpXavZ2_Q3IBbykU-0saFtMs2cPoTPe_gmODm0EFjBjpAdd_zzLE1dQFt9s4R5Kcx-G6s63gPM-gETx5iV4ET_PMEGHCM461eUzlXewrwY2ntsG6IHOnTkUQycAD-o9ZeUg';
       // api.defaults.headers.common.Authorization = `bearer ${token}`;
       //axios.post('http://nedaudchristophe-server.eddi.cloud/meeple/current/public/api/users',
       axios.post('http://nedaudchristophe-server.eddi.cloud/meeple/current/public/api/users',
@@ -43,9 +43,9 @@ const userMiddleware = (store) => (next) => (action) => {
         password: createPassword,
         avatar: avatarColor,
         },
-        {headers: {
-          Authorization: `bearer ${token}`,
-        }}
+        // {headers: {
+        //   Authorization: `bearer ${token}`,
+        // }}
       ).then(
         (response) => {
           // Ici on doit charger l'action d'envoyer les donnes de l'utilisateur en post
@@ -131,7 +131,9 @@ const userMiddleware = (store) => (next) => (action) => {
           // pour ca, il faut idientifier les datas a envoyer
           // store.dispatch(saveDeal(response.data));
 
-          console.log('Response API, récupération utilisateur avec email => ', response);
+          console.log('Response API, récupération utilisateur avec email => ', response.data);
+          // dispatch(saveUserId(response.data.avatar_id));
+          // dispatch(saveUserName(response.data.name));
           
         },
       )

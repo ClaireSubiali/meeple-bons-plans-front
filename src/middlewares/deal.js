@@ -18,16 +18,16 @@ LE SAVANT ENVOIE UNE INFORMATION A L ECRIVAIN QUI LORSQU'IL A UNE INFO L'INSCRIT
 
 // Lorsqu'on met en place un middleware, il ne faut pas oublier de le brancher au store !
 const dealMiddleware = (store) => (next) => (action) => {
-  const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NTk0NDcyNTksImV4cCI6MTY1OTUxMjA1OSwicm9sZXMiOlsiUk9MRV9BRE1JTiIsIlJPTEVfVVNFUiJdLCJ1c2VybmFtZSI6ImFkbWluQGFkbWluLmNvbSJ9.aRu-w4EsYJHyCXdE-9JDeTIWOsvluEz_WGZRT7Qe_ETAA3hZrwV_alSkGndDQgm1ZJQKuKIEE48KCVEnmf813nKoFcyJQOXF3wExZaNPgKLuY0DKdxmpovSv_ZpVX9BoiEK5ddiT_nmdqo5r-K165IVlz5es_ErfoZk56qdkWsQ4HMx9Z1B2WkKSi91hwkePs2SXXFvKyU1PATq9-JoQb7K9XGBXxICzJYYE3Kmayd7fjkax16Bl7NMfeLt5Lutry5T6Hwvyt_GDQALYZ4UY2qk5GzRtYRFfmGGsR4qAP-dKir967w0uwTZupWQ4RWXqJ8d-MlmlT8EVGuS0czyEOw';
+  const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NTk0NTE4MDIsImV4cCI6MTY1OTUxNjYwMiwicm9sZXMiOlsiUk9MRV9BRE1JTiIsIlJPTEVfVVNFUiJdLCJ1c2VybmFtZSI6ImFkbWluQGFkbWluLmNvbSJ9.GdZiaM9Hgt-vDvOfW3pnw1Um5dX58-QZn2Ft7F_7kGgkbOVQMUNPQMWpCT13vbzbx2eu_cbTdXU_2pUGWdSxxu76X79XZZx29wVTX3BOEJOtyIASuNxYscyL4wGxcr4ppA0q3oFEzrmj_6k7JA9ImBzI5TEE4dcOk5ooaYRlCZj2ND-S8IPsWwdGE3R-sik3xuJ4gkQjvBsahAXG_pyxpXavZ2_Q3IBbykU-0saFtMs2cPoTPe_gmODm0EFjBjpAdd_zzLE1dQFt9s4R5Kcx-G6s63gPM-gETx5iV4ET_PMEGHCM461eUzlXewrwY2ntsG6IHOnTkUQycAD-o9ZeUg';
   switch (action.type) {
     // RECUPERATION DE LA LISTE DE TOUS LES DEALS DEPUIS L'API AU CHARGMEENT INITIAL DU SITE
     case FETCH_DEAL: {
       axios.get('http://nedaudchristophe-server.eddi.cloud/meeple/current/public/api/deals',
-        {
-          headers: {
-            Authorization: `bearer ${token}`,
-          },
-        },
+        // {
+        //   headers: {
+        //     Authorization: `bearer ${token}`,
+        //   },
+        // },
       )
         .then((response) => {
           console.log('Response API récupération de tous les deals', response.data);
@@ -43,18 +43,18 @@ const dealMiddleware = (store) => (next) => (action) => {
     case SEARCH_GAME: {
       const gameToSearch = action.searchedGame;
       const token =
-    "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NTk0NDcyNTksImV4cCI6MTY1OTUxMjA1OSwicm9sZXMiOlsiUk9MRV9BRE1JTiIsIlJPTEVfVVNFUiJdLCJ1c2VybmFtZSI6ImFkbWluQGFkbWluLmNvbSJ9.aRu-w4EsYJHyCXdE-9JDeTIWOsvluEz_WGZRT7Qe_ETAA3hZrwV_alSkGndDQgm1ZJQKuKIEE48KCVEnmf813nKoFcyJQOXF3wExZaNPgKLuY0DKdxmpovSv_ZpVX9BoiEK5ddiT_nmdqo5r-K165IVlz5es_ErfoZk56qdkWsQ4HMx9Z1B2WkKSi91hwkePs2SXXFvKyU1PATq9-JoQb7K9XGBXxICzJYYE3Kmayd7fjkax16Bl7NMfeLt5Lutry5T6Hwvyt_GDQALYZ4UY2qk5GzRtYRFfmGGsR4qAP-dKir967w0uwTZupWQ4RWXqJ8d-MlmlT8EVGuS0czyEOw";
+    "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NTk0NTE4MDIsImV4cCI6MTY1OTUxNjYwMiwicm9sZXMiOlsiUk9MRV9BRE1JTiIsIlJPTEVfVVNFUiJdLCJ1c2VybmFtZSI6ImFkbWluQGFkbWluLmNvbSJ9.GdZiaM9Hgt-vDvOfW3pnw1Um5dX58-QZn2Ft7F_7kGgkbOVQMUNPQMWpCT13vbzbx2eu_cbTdXU_2pUGWdSxxu76X79XZZx29wVTX3BOEJOtyIASuNxYscyL4wGxcr4ppA0q3oFEzrmj_6k7JA9ImBzI5TEE4dcOk5ooaYRlCZj2ND-S8IPsWwdGE3R-sik3xuJ4gkQjvBsahAXG_pyxpXavZ2_Q3IBbykU-0saFtMs2cPoTPe_gmODm0EFjBjpAdd_zzLE1dQFt9s4R5Kcx-G6s63gPM-gETx5iV4ET_PMEGHCM461eUzlXewrwY2ntsG6IHOnTkUQycAD-o9ZeUg";
       axios
         .post(
           "http://nedaudchristophe-server.eddi.cloud/meeple/current/public/api/games",
           {
             name: gameToSearch,
           },
-          {
-            headers: {
-              Authorization: `bearer ${token}`,
-            },
-          }
+          // {
+          //   headers: {
+          //     Authorization: `bearer ${token}`,
+          //   },
+          // }
         )
         .then((response) => {
           console.log('Response API DE LA RECHERCHE DE JEU', response.data);
@@ -69,11 +69,11 @@ const dealMiddleware = (store) => (next) => (action) => {
       axios
         .get(
           `http://nedaudchristophe-server.eddi.cloud/meeple/current/public/api/deals/${action.dealId}`,
-          {
-            headers: {
-              Authorization: `bearer ${token}`,
-            },
-          }
+          // {
+          //   headers: {
+          //     Authorization: `bearer ${token}`,
+          //   },
+          // }
         )
         .then((response) => {
           // Ici on recup bien les données de notre API (les recettes)

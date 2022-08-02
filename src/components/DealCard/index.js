@@ -22,10 +22,17 @@ function DealCard({
   offerPrice: reducedPrice,
   user }) {
   const calcPercentage = () => {
-    const percentage = Math.round((reducedPrice * 100) / game.price);
+    const percentage = Math.round(-((reducedPrice - game.price) / game.price) * 100);
     return percentage;
   };
   const percentage = calcPercentage();
+  let descriptionReformated = 'rien';
+
+  if (description.length < 215 ) {
+    descriptionReformated = description.substring(0, 215);
+  } else {
+    descriptionReformated = `${description.substring(0, 215)} ...`;
+  }
 
   return (
     <div className="deal">
@@ -44,16 +51,16 @@ function DealCard({
       <div className="right-deal">
         <div className="header-deal">
           <div className="title-deal">
-            <h2>{title}</h2>
-            <h6>{game.category.name}<span className="shop"> | boutique {shop.name}</span></h6>
+            <div className="mainTitleDeal">{title}</div>
+            <div className="secondaryTitleDeal">{game.category.name}<span className="shop"> | boutique {shop.name}</span></div>
           </div>
           <div className="deal-label">
-            <div className="discount">-{percentage} %</div>
-            <div className="price">{(reducedPrice).toFixed(2)} €</div>
+            <div className="discount">-{percentage}%</div>
+            <div className="price">{(reducedPrice).toFixed(2)}€</div>
           </div>
         </div>
         <div className="main-deal">
-          <p className="deal-text">{description}</p>
+          <p className="deal-text">{descriptionReformated}</p>
         </div>
         <div className="footer-deal">
           <p className="footer-dealp">

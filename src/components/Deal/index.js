@@ -68,13 +68,13 @@ function Deal() {
           <div className="right-deal">
             <div className="header-deal">
               <div className="title-deal">
-                <h2>{deal.title}</h2>
-                <h6>Bon plan jeux de société<span className="shop"> | {deal.shop.name}</span></h6>
-                <h6>Bon plan posté par<span className="user"> {deal.user.name}</span></h6>
+                <div className="mainTitleDeal">{deal.title}</div> 
+                <div className="secondaryTitleDeal">Bon plan jeux de société<span className="shop"> | {deal.shop.name}</span></div>
+                <div className="secondaryTitleDeal">Bon plan posté par<span className="user"> {deal.user.name}</span></div>
               </div>
               <div className="deal-label">
-                <div className="discount">-{percentage} %</div>
-                <div className="price">{(deal.offerPrice).toFixed(2)} €</div>
+                <div className="discount">-{percentage}%</div>
+                <div className="price">{(deal.offerPrice).toFixed(2)}€</div>
               </div>
             </div>
             <div className="main-deal">

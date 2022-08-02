@@ -5,7 +5,7 @@ import './style.scss';
 
 // == Import des éléments de FONTAWESOME
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChess, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons';
 
 // == Composant
 function SearchGamePopUp({
@@ -16,7 +16,7 @@ function SearchGamePopUp({
     <div className="login-popup">
       <div className="form-popup">
         <div action="#" className="form-container">
-          <div id="title_login"><FontAwesomeIcon icon={faChess} />Résultats de votre recherche<span><button aria-label="Fermer" type="button" className="cancel" onClick={ToggleSearchGame}><FontAwesomeIcon icon={faXmark} /></button></span>
+          <div id="title_login"><FontAwesomeIcon icon={faMagnifyingGlass} />Résultats de votre recherche<span><button aria-label="Fermer" type="button" className="cancel" onClick={ToggleSearchGame}><FontAwesomeIcon icon={faXmark} /></button></span>
           </div>
           <div className="results_searchgame">
             <ul>
