@@ -33,9 +33,11 @@ const userMiddleware = (store) => (next) => (action) => {
       // baseURL: 'http://nedaudchristophe-server.eddi.cloud/meeple/current/public/api/deals',
       // });
       //On utilise un token fourni par le back pour s'autentifier sur l'api
-      const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NTkzNjg4NDIsImV4cCI6MTY1OTQzMzY0Miwicm9sZXMiOlsiUk9MRV9BRE1JTiIsIlJPTEVfVVNFUiJdLCJ1c2VybmFtZSI6ImFkbWluQGFkbWluLmNvbSJ9.IQtYn4BV7HxvGn8RISpeldQsBV0rwmIzeJ9ReD3qqFwEgNvAmq8RzK2w2N3EFkUHtNntLotKWBoAobfHcpKYOPQMRUwLY7-51vjBcvnWeJyPr--_wBwgPVmLsrE52fvCZHwf5gPDcZStLtlSqlVkPZQeLYByWPbFYsxD6AKoftgvWM3nGaRJ5tj_K30PgyUDdl67sgLE2a8T_i4ZIVRb9kynLNNBtt7xtLXuoaeCBxiyXLp6y0n48Op4zhGB7oE3zvWgmTujwvg_cGNLQW_hiprPrLg8fhXrXkfiZfOBdId5X3EP7Tyzd32VXMn2-_R_j_9AJr-nj0FWwMcPPRiGFQ';
+      const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NTk0NDcyNTksImV4cCI6MTY1OTUxMjA1OSwicm9sZXMiOlsiUk9MRV9BRE1JTiIsIlJPTEVfVVNFUiJdLCJ1c2VybmFtZSI6ImFkbWluQGFkbWluLmNvbSJ9.aRu-w4EsYJHyCXdE-9JDeTIWOsvluEz_WGZRT7Qe_ETAA3hZrwV_alSkGndDQgm1ZJQKuKIEE48KCVEnmf813nKoFcyJQOXF3wExZaNPgKLuY0DKdxmpovSv_ZpVX9BoiEK5ddiT_nmdqo5r-K165IVlz5es_ErfoZk56qdkWsQ4HMx9Z1B2WkKSi91hwkePs2SXXFvKyU1PATq9-JoQb7K9XGBXxICzJYYE3Kmayd7fjkax16Bl7NMfeLt5Lutry5T6Hwvyt_GDQALYZ4UY2qk5GzRtYRFfmGGsR4qAP-dKir967w0uwTZupWQ4RWXqJ8d-MlmlT8EVGuS0czyEOw';
       // api.defaults.headers.common.Authorization = `bearer ${token}`;
+      //axios.post('http://nedaudchristophe-server.eddi.cloud/meeple/current/public/api/users',
       axios.post('http://nedaudchristophe-server.eddi.cloud/meeple/current/public/api/users',
+      
         {name: createPseudo,
         email: createMail,
         password: createPassword,
@@ -53,7 +55,7 @@ const userMiddleware = (store) => (next) => (action) => {
           console.log('jusqu ici tout va bien');
           alert('Compte bien crée');
           
-          location.replace('/');  
+          location.replace('/');
           
           // On envoie le resultat de la requete au reducer qui sera chargé de l'ecriture
           // store.dispatch(HandleSendDatas(response.data));
@@ -76,11 +78,12 @@ const userMiddleware = (store) => (next) => (action) => {
       //On utilise un token fourni par le back pour s'autentifier sur l'api
       
       // api.defaults.headers.common.Authorization = `bearer ${token}`;
+      //axios.post('http://nedaudchristophe-server.eddi.cloud/meeple/current/public/api/login_check',
       axios.post('http://nedaudchristophe-server.eddi.cloud/meeple/current/public/api/login_check',
         {
           username: email,
           password: password,
-        }
+        },
       ).then(
         (response) => {
           // Ici on doit charger l'action d'envoyer les donnes de l'utilisateur en post
@@ -110,12 +113,15 @@ const userMiddleware = (store) => (next) => (action) => {
     }
     case FETCH_USER_WITH_MAIL: {
       const state = store.getState();
-      const { email, token } = state.user
+      const { currentUserEmail, token } = state.user;
+     //const testMail = email.replace(' ', '');
       console.log('passage dans middleware user');     
       
       
+      //axios.post('http://nedaudchristophe-server.eddi.cloud/meeple/current/public/api/users/custom',
       axios.post('http://nedaudchristophe-server.eddi.cloud/meeple/current/public/api/users/custom',
-        {email: email,},
+        {email: currentUserEmail
+        ,},
         {headers: {
           Authorization: `bearer ${token}`,
         }}

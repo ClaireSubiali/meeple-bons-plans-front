@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 // == Import de composants
 import AddGamePopUp from './AddGamePopUp';  //TODO Pop Up ADD GAME
+import SearchGamePopUp from './SearchGamePopUp';  //TODO Pop Up SEARCH GAME
 
 import {
   changeDealTitle,
@@ -24,17 +25,17 @@ import {
   OnChangeGame,
   OnChangeUrl,
   ToggleAddGame,
-  fetchFromAddDeal,//<----------------------------------------
+  fetchFromAddDeal,
   searchGame,
+  ToggleSearchGame, //<-----------------
 } from '../../actions/deal';
-
-
 
 // == Composant
 function AddDeal() {
   const dispatch = useDispatch();
+
   const {
-    //On importles sous state
+    //On import les sous state
     isAddGame, //TODO Pop Up ADD GAME
     newGame,
     urlGame,
@@ -49,6 +50,10 @@ function AddDeal() {
     expirationDate,
     dealVendor,
   } = useSelector((state) => state.deal.addDealForm);
+
+  const {
+    isSearchGame, //TODO Pop Up Search GAME
+  } = useSelector((state) => state.deal.searchGame);
 
   const handleChangeDealTitle = (event) => {
     const newDealTitle = event.currentTarget.value;
@@ -120,19 +125,25 @@ function AddDeal() {
     const inputUrlGame = event.currentTarget.value;
     dispatch(OnChangeUrl(inputUrlGame));
   };
+  //Le but est qu'au clic on envoie au back les data dans le state donc on utilise a use selector
   const handleSubmitAddDeal = (event) => {
     event.preventDefault();
     console.log('new deal composant ');
     dispatch(fetchFromAddDeal());
   };
   const handleSearchGame = () => {
-    
     console.log('test search game');
-    dispatch(searchGame(dealGame));
+    dispatch(searchGame(dealGame)); //TODO onClick={handleSearchGame}
+  };
 
-  }
+  // TODO Pop Up ADD GAME
+  const handleClickToggleSearchGame = () => {
+    dispatch(ToggleSearchGame());
+  };
+
 
   return (
+   
     <div className="form-section">
       <form onSubmit={handleSubmitAddDeal}>
         <div className="form-title"><FontAwesomeIcon icon={faTags} /><span className="form-span">Ajouter un bon plan</span></div>
@@ -142,7 +153,7 @@ function AddDeal() {
           <label className="form-secondarytitle" htmlFor="deal-search">NOM DU JEU</label>
           <div className="searchgame">
             <input className="form-input" type="text" id="deal-search" placeholder="Saisissez votre recherche" value={dealGame} onChange={handleChangeDealGame} />
-            <button className="button-searchgame" type="button" onClick={handleSearchGame}> <FontAwesomeIcon icon={faMagnifyingGlass} /></button>
+            <button className="button-searchgame" type="button" onClick={handleClickToggleSearchGame}> <FontAwesomeIcon icon={faMagnifyingGlass} /></button>
           </div>
           <div className="adddeal-right-element"><span className="missing-game">Jeu manquant ?</span>
             <button className="button-addgame" onClick={handleClickToggleAddGame} type="button">Suggérer un jeu</button>
@@ -185,11 +196,11 @@ function AddDeal() {
           <label className="form-secondarytitle" htmlFor="deal-vendor">VENDEUR</label>
           <select className="form-input" id="deal-vendor" value={dealVendor} onChange={handleChangeVendor}>
             <option value="">---Choisissez un vendeur---</option>
-            <option value="philibert">Philibert</option>
-            <option value="fnac">La Fnac</option>
-            <option value="cultura">Cultura</option>
-            <option value="donjon-deodatien">Le Donjon déodatien</option>
-            <option value="other">Autre boutique</option>
+            <option value="1">Philibert</option>
+            <option value="2">La Fnac</option>
+            <option value="3">Cultura</option>
+            <option value="4">Le Donjon déodatien</option>
+            <option value="5">Autre boutique</option>
           </select>
         </div>
         <div className="adddeal-secondaryInfo">
@@ -211,6 +222,12 @@ function AddDeal() {
           ChangeUrl={handleChangeUrl}
           NewGame={newGame}
           UrlGame={urlGame}
+        />
+      ) : ''}
+      {/* ---------- POPUP DE RECHERCHE ---------- */}
+      {isSearchGame ? (
+        <SearchGamePopUp
+          ToggleSearchGame={handleClickToggleSearchGame}
         />
       ) : ''}
     </div>

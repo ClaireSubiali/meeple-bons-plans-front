@@ -118,7 +118,7 @@ export function changeExpDate(newExpDate) {
     date: newExpDate,
   };
 }
-//TODO AJOUT DU JEU POP UP
+// TODO AJOUT DU JEU POP UP
 export const TOGGLE_ADD_GAME = 'TOGGLE_ADD_GAME';
 
 export function ToggleAddGame() {
@@ -147,10 +147,18 @@ export function OnChangeUrl(inputUrlGame) {
 
 export const ADD_DEAL_SUMIT_FORM = 'ADD_DEAL_SUMIT_FORM';
 
-export function fetchFromAddDeal () {
+export function fetchFromAddDeal() {
   return {
     type: ADD_DEAL_SUMIT_FORM,
-    
+  };
+}
+
+// TODO SEARCH RESULT POP UP
+export const TOGGLE_SEARCH_GAME = 'TOGGLE_SEARCH_GAME';
+
+export function ToggleSearchGame() {
+  return {
+    type: TOGGLE_SEARCH_GAME,
   };
 }
 
@@ -209,4 +217,3 @@ export function searchGame(searchedGame) {
     searchedGame,
   };
 }
-

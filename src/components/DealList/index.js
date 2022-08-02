@@ -29,12 +29,13 @@ function DealList() {
       listToDisplay = dealList;
   }
 
-  
   return (
     <div className="deallist">
-      {listToDisplay.map((deal) => (
-        <DealCard key={deal.id} id={deal.id} {...deal} />
-      ))}
+      <div className="titledeallist">
+        {listToDisplay.map((deal) => (
+          <DealCard key={deal.id} id={deal.id} {...deal} />
+        ))}
+      </div>
     </div>
   );
 }

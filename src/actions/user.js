@@ -1,6 +1,5 @@
 // TODO IMPORT TEMPORAIRE LE TEMPS DE VERIFIER LES DONNES DE CONNEXION SANS API
 // ! A supprimer après :
-import data from '../data/dataUser';
 
 // On creer une action seulement pour le dispatch pas besoin pour le useSelector
 
@@ -71,7 +70,7 @@ export function disconnect() {
 export const CLEAR_LOGIN = 'CLEAR_LOGIN';
 
 // Action creator => On l'utilise au moment du dispatch()
-/** 
+/**
  * Vide les deux champs controlés du popup de connexion
  * Accepte un paramètre optionnel qui correspond au message temporaire dans l'encorat de connexion
  */
@@ -81,7 +80,6 @@ export function clearLogin(temporaryMessage = '') {
     message: temporaryMessage,
   };
 }
-
 
 // Action Type => On l'utilise dans l'action creator ET dans le reducer
 export const FETCH_FORM_SIGNIN = 'FETCH_FORM_SIGNIN';
@@ -93,10 +91,10 @@ export function fetchFromSignIn() {
   };
 }
 
-//Ici on defini la l'action click sur le button 'se connecter' pour envoyer les champs a la bdd
+// Ici on defini la l'action click sur le button 'se connecter' pour envoyer les champs a la bdd
 // export const SEND_DATA_USER = 'SEND_DATA_USER';
 
-/*export function sendUser() {
+/* export function sendUser() {
   return (
     type: SEND_DATA_USER;
     name: createPseudo,
@@ -104,42 +102,7 @@ export function fetchFromSignIn() {
     password: createPassword,
     avatar: avatarColor,
   )
-}*/
-
-// //! DEBUT DE LA PARTIE TEMPORAIRE
-// // TODO ACTION TEMPORAIRE A SUPPRIMER QUAND API PERMET LA CONNEXION
-// // A REMPLACER PAR L'ACTION POUR LE MIDDLEWARE
-// // pour gerer le dispatcher de icone/avatar
-// export const TOGGLE_VISIBILITY_AND_AVATAR = 'TOGGLE_VISIBILITY_AND_AVATAR';
-// // Action Type => On l'utilise dans l'action creator ET dans le reducer
-// export const CHECK_LOGIN = 'CHECK_LOGIN';
-// // Action creator => On l'utilise au moment du dispatch()
-// export function testLogin(mailFromState, passwordFromState) {
-//   let loginStatus = '';
-//   console.log(mailFromState);
-//   const meuh = data.find((user) => user.email === mailFromState);
-//   if (meuh) {
-//     if (meuh.password === passwordFromState) {
-//       loginStatus = 'OK CONNEXION DE L\'UTILISATEUR';
-//       console.log('pass ok');
-//       return {
-//         type: TOGGLE_VISIBILITY_AND_AVATAR,
-//       };
-//     }
-//     loginStatus = 'ERREUR : Mot de passe erroné…';
-//     console.log('pass incorrect');
-//   }
-//   else {
-//     loginStatus = 'ERREUR : Cet utilisateur n\'existe pas';
-//     console.log('pas membre');
-//   }
-//   return {
-//     type: CHECK_LOGIN,
-//     temporaryMessage: loginStatus,
-//   };
-// }
-// //! FIN DE LA PARTIE TEMPORAIRE
-
+} */
 
 // Action Type => On l'utilise dans l'action creator ET dans le reducer
 export const FETCH_LOGIN = 'FETCH_LOGIN';
@@ -186,7 +149,6 @@ export function saveIsLogged(isLogged) {
   };
 }
 
-
 // Action creator => On l'utilise au moment du dispatch()
 export function toggleIsLogged() {
   return {
@@ -203,6 +165,3 @@ export function fetchUserWithMail() {
     type: FETCH_USER_WITH_MAIL,
   };
 }
-
-
-

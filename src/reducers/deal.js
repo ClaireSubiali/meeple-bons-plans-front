@@ -16,6 +16,7 @@ import {
   CHANGE_URL,
   SAVE_ONE_DEAL,
   ADD_DEAL_SUMIT_FORM,
+  TOGGLE_SEARCH_GAME,// POP UP SEARCH GAME
 } from '../actions/deal';
 
 // ici on initialise le state
@@ -26,7 +27,7 @@ const initialState = {
   addDealForm: {
     dealTitle: '',
     dealGame: '',
-    concernAGame: false,
+    concernAGame: true,
     dealDescription: '',
     dealURL: '',
     discountedPrice: '',
@@ -37,6 +38,10 @@ const initialState = {
     isAddGame: false, // est-ce que l'encart suggérer un jeu est ouvert ?
     newGame: '',
     urlGame: '',
+  },
+
+  searchGame: {
+    isSearchGame: false, // est-ce que l'encart suggérer un jeu est ouvert ?
   },
 };
 
@@ -152,6 +157,17 @@ function reducer(state = initialState, action = {}) {
           isAddGame: !state.addDealForm.isAddGame,
         },
       };
+
+      //WIP-------------------------POP UP SEARCH GAME-----------------
+      case TOGGLE_SEARCH_GAME:
+        return {
+          ...state,
+          searchGame: {
+            ...state.searchGame,
+            isSearchGame: !state.searchGame.isSearchGame,
+          },
+        };
+
       //Ici on envoie les data du ajouter un bon plan au stat
     case ADD_DEAL_SUMIT_FORM:
       return{

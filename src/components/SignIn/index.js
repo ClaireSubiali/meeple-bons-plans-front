@@ -36,6 +36,7 @@ function SignIn() {
   // == HANDLERS
   // possibilité de factoriser d'avantage en ajoutant des sous-composants
   // mais plus pratique à faire soit en début de projet ou soit une fois le CSS fixé définitivement
+
   const handleCreatePseudo = (event) => {
     dispatch(changeFieldValueCreateAccount(event.currentTarget.value, 'createPseudo'));
   };
@@ -53,10 +54,10 @@ function SignIn() {
     if (selectedValue === "0") {
       const randomValue = Math.floor(Math.random() * (max - min + 1)) + min;
       console.log('valeur aléatoire d\'avatar: ', randomValue);
-      const avatarID = parseInt(randomValue);
+      const avatarID = parseInt(randomValue, 10);
       dispatch(changeFieldValueCreateAccount(avatarID, 'avatarColor'));
     }else {
-      const avatarID = parseInt(selectedValue);
+      const avatarID = parseInt(selectedValue, 10);
       dispatch(changeFieldValueCreateAccount(avatarID, 'avatarColor'));
     }
     

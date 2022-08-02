@@ -10,7 +10,7 @@ import {
   TOGGLE_IS_LOGGED,
 } from '../actions/user';
 
-// le initalstate sert a créer un statE "vierge" qui sert modifier à chaque itération
+// le initalstate sert a créer un state "vierge" qui sert modifier à chaque itération
 const initialState = {
   currentUserPseudo: '', // Pseudo de l'utilisateur Renvoyé par l'API lors de la connexion
   currentUserEmail: '',
