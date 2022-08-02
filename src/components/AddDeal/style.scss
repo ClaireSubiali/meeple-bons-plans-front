@@ -40,6 +40,26 @@
   margin-left:0.5em;
 }
 
+.searchgame {
+  display:flex;
+  flex-direction: row;
+  align-items: baseline;
+	
+}
+
+.button-searchgame {
+  border-radius:vars.$buttonRadius;
+  background-color: vars.$secondaryDarkGrey;
+  color: #FFFFFF;
+  font-weight: bold;
+  padding: 10px;
+  width: 50px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.8em;
+  margin-left:0.5em;
+}
+
 .adddeal-info {
     display:flex;
     flex-direction:row;

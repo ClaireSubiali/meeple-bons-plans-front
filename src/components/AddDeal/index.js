@@ -4,7 +4,7 @@
 import './style.scss';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTags } from '@fortawesome/free-solid-svg-icons';
+import { faTags, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch, useSelector } from 'react-redux';
 
 // == Import de composants
@@ -140,8 +140,10 @@ function AddDeal() {
           <label className="form-secondarytitle" htmlFor="deal-title">TITRE</label>
           <input className="form-input" type="text" id="deal-title" placeholder="Titre du bon plan" value={dealTitle} onChange={handleChangeDealTitle} />
           <label className="form-secondarytitle" htmlFor="deal-search">NOM DU JEU</label>
-          <input className="form-input" type="text" id="deal-search" placeholder="Saisissez votre recherche" value={dealGame} onChange={handleChangeDealGame} />
-          <button type="button" onClick={handleSearchGame}> cherche jeu</button>
+          <div className="searchgame">
+            <input className="form-input" type="text" id="deal-search" placeholder="Saisissez votre recherche" value={dealGame} onChange={handleChangeDealGame} />
+            <button className="button-searchgame" type="button" onClick={handleSearchGame}> <FontAwesomeIcon icon={faMagnifyingGlass} /></button>
+          </div>
           <div className="adddeal-right-element"><span className="missing-game">Jeu manquant ?</span>
             <button className="button-addgame" onClick={handleClickToggleAddGame} type="button">Suggérer un jeu</button>
           </div>
