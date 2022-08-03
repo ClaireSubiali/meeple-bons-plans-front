@@ -16,20 +16,30 @@ import {
   CHANGE_URL,
   SAVE_ONE_DEAL,
   ADD_DEAL_SUMIT_FORM,
-  SEARCH_GAME,
+  SAVE_GAME_LIST,
+  ADD_COMMENT,
   SEARCH_GAME_HEADER,
-  TOGGLE_SEARCH_GAME, // POP UP SEARCH GAME
+  TOGGLE_SEARCH_GAME,
+  SAVE_CHOOSED_GAME,
+  CLEAR_STATE_CONCERN_GAME,
+  WARNING_MESSAGE,
+  SAVE_SHOPS, // POP UP SEARCH GAME
 } from '../actions/deal';
 
 // ici on initialise le state
 const initialState = {
   activeDeal: '',
   dealList: [],
+  userComment: '',
+  gameList: [],
+  shopList: [],
+  choosedGame: '',
+  warningMessage: '',
 
   addDealForm: {
     dealTitle: '',
     dealGame: '',
-    concernAGame: true,
+    concernAGame: false,
     dealDescription: '',
     dealURL: '',
     discountedPrice: '',
@@ -59,6 +69,22 @@ function reducer(state = initialState, action = {}) {
           dealTitle: action.title,
         },
       };
+    case WARNING_MESSAGE:
+      return {
+        ...state,
+        warningMessage: action.message,
+      };
+    case CLEAR_STATE_CONCERN_GAME:
+      return {
+        ...state,
+        choosedGame: '',
+        addDealForm: {
+          ...state.addDealForm,
+          shippingPrice: '',
+          discountedPrice: '',
+          dealGame: '',
+        },
+      };
     case CHANGE_DEAL_GAME:
       return {
         ...state,
@@ -66,6 +92,11 @@ function reducer(state = initialState, action = {}) {
           ...state.addDealForm,
           dealGame: action.game,
         },
+      };
+    case SAVE_CHOOSED_GAME:
+      return {
+        ...state,
+        choosedGame: action.game,
       };
     case TOGGLE_CONCERN_A_GAME:
       return {
@@ -160,6 +191,16 @@ function reducer(state = initialState, action = {}) {
           isAddGame: !state.addDealForm.isAddGame,
         },
       };
+    case SAVE_SHOPS:
+      return {
+        ...state,
+        shopList: action.shopList,
+      };
+    case SAVE_GAME_LIST:
+      return {
+        ...state,
+        gameList: action.gameList,
+      };
 
       //WIP-------------------------POP UP SEARCH GAME-----------------
       case TOGGLE_SEARCH_GAME:
@@ -185,6 +226,11 @@ function reducer(state = initialState, action = {}) {
         ...state,
         activeDeal: action.oneDeal.deal,
       };
+    case ADD_COMMENT:
+    return {
+      ...state,
+      userComment: action.comment,
+    };
     //CHAMP CONTROLE DE LA RECHERCHE DANS LE HEADER
     case SEARCH_GAME_HEADER:
       return {

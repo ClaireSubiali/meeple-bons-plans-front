@@ -21,7 +21,7 @@ function ProfilePopup({
       <div className="close-button-div"><button type="button" aria-label="Fermer" className="cancel" onClick={handleToggleVisibility}><FontAwesomeIcon icon={faXmark} /></button></div>
       <div className="profile-header">
         <img src={avatar} alt="profil meeple" id="avatar" />
-        <span>{username}</span>
+        <span>&ensp;{username}</span>
       </div>
       <div>
         <button type="button" className="btn">Consulter mon profil</button>

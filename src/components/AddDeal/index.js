@@ -27,7 +27,9 @@ import {
   ToggleAddGame,
   fetchFromAddDeal,
   searchGame,
-  ToggleSearchGame, //<-----------------
+  ToggleSearchGame,
+  clearConcernAGameFields,
+  changeWarningMessage, //<-----------------
 } from '../../actions/deal';
 
 import { toggleVisibility } from '../../actions/user';
@@ -58,6 +60,15 @@ function AddDeal() {
     isSearchGame, //TODO Pop Up Search GAME
   } = useSelector((state) => state.deal.searchGame);
 
+  const gameList = useSelector((state) => state.deal.gameList);
+
+  const shopList = useSelector((state) => state.deal.shopList);
+
+  const choosedGame = useSelector((state) => state.deal.choosedGame);
+  console.log(choosedGame);
+
+  const warningMessage = useSelector((state) => state.deal.warningMessage);
+
   const handleChangeDealTitle = (event) => {
     const newDealTitle = event.currentTarget.value;
     dispatch(changeDealTitle(newDealTitle));
@@ -70,6 +81,8 @@ function AddDeal() {
 
   const handleToggleConcernAGame = () => {
     dispatch(toggleConcernAGame());
+    dispatch(clearConcernAGameFields());
+    //il faut clear le state de choosed game addDealForm discounted et shipping price
   };
 
   const handleChangeDescription = (event) => {
@@ -132,7 +145,11 @@ function AddDeal() {
   const handleSubmitAddDeal = (event) => {
     event.preventDefault();
     console.log('new deal composant ');
-    dispatch(fetchFromAddDeal());
+    if (concernAGame === false && choosedGame === '') {
+      dispatch(changeWarningMessage('Merci d\'ajouter le jeu correspondant au bon plan'));
+    }else {
+      dispatch(fetchFromAddDeal());
+    }
   };
 
   // TODO Pop Up ADD GAME
@@ -142,13 +159,15 @@ function AddDeal() {
 
   const handleSearchGame = () => {
     console.log('test search game');
-    dispatch(searchGame(dealGame)); //TODO onClick={handleSearchGame}
-    handleClickToggleSearchGame();
+    if (dealGame !== '') {
+      dispatch(searchGame(dealGame)); //TODO onClick={handleSearchGame}
+      handleClickToggleSearchGame();
+    }
   };
 
   const handleConnexion = () => {
     dispatch(toggleVisibility('isLoginVisible'));
-  }
+  };
 
   if (isUserLogged) {
     return (
@@ -157,30 +176,35 @@ function AddDeal() {
           <div className="form-title"><FontAwesomeIcon icon={faTags} /><span className="form-span">Ajouter un bon plan</span></div>
           <div className="adddeal-header">
             <label className="form-secondarytitle" htmlFor="deal-title">TITRE</label>
-            <input className="form-input" type="text" id="deal-title" placeholder="Titre du bon plan" value={dealTitle} onChange={handleChangeDealTitle} />
-            <label className="form-secondarytitle" htmlFor="deal-search">NOM DU JEU</label>
-            <div className="searchgame">
-              <input className="form-input" type="text" id="deal-search" placeholder="Saisissez votre recherche" value={dealGame} onChange={handleChangeDealGame} />
-              <button className="button-searchgame" type="button" onClick={handleSearchGame}> <FontAwesomeIcon icon={faMagnifyingGlass} /></button>
+            <input className="form-input" type="text" id="deal-title" placeholder="Titre du bon plan" value={dealTitle} onChange={handleChangeDealTitle} required />
+            <div className="gameornot">
+              <input type="checkbox" id="game-concern" checked={concernAGame ? 'checked' : ''} onChange={handleToggleConcernAGame} />
+              <label htmlFor="game-concern">Cochez si le bon plan ne concerne pas un jeu en particulier</label>
             </div>
-            <div className="adddeal-right-element"><span className="missing-game">Jeu manquant ?</span>
-              <button className="button-addgame" onClick={handleClickToggleAddGame} type="button">Suggérer un jeu</button>
-            </div>
-          </div>
-          <div className="gameornot">
-            <input type="checkbox" id="game-concern" checked={concernAGame ? 'checked' : ''} onChange={handleToggleConcernAGame} />
-            <label htmlFor="game-concern">Cochez si le bon plan ne concerne pas un jeu en particulier</label>
-            <span className="adddeal-game">This War of Mine</span>
+            {(concernAGame) ? '' : (
+              <div>
+                <label className="form-secondarytitle" htmlFor="deal-search">NOM DU JEU</label>
+                <div className="searchgame">
+                  <input className="form-input" type="text" id="deal-search" placeholder="Saisissez votre recherche" value={dealGame} onChange={handleChangeDealGame} />
+                  <button className="button-searchgame" type="button" onClick={handleSearchGame}> <FontAwesomeIcon icon={faMagnifyingGlass} /></button>
+                </div>
+                <div className="adddeal-right-element"><span className="missing-game">Jeu manquant ?</span>
+                  <button className="button-addgame" onClick={handleClickToggleAddGame} type="button">Suggérer un jeu</button>
+                </div>
+                {(choosedGame === '') ? '' : <span className="adddeal-game">{choosedGame[0].name}</span>}
+              </div>
+            )}
           </div>
           <div className="content">
             <label className="form-secondarytitle" htmlFor="deal-description">DESCRIPTION</label>
             <textarea
-              className="form-input"
+              className="form-input textarea1"
               rows="6"
               id="deal-description"
               placeholder="Indiquez une description du bon plan"
               value={dealDescription}
               onChange={handleChangeDescription}
+              required
             />
           </div>
           <div>
@@ -192,33 +216,35 @@ function AddDeal() {
               type="text"
               id="deal-link"
               placeholder="Lien vers le bon plan en ligne (ou un lien de la boutique physique)"
+              required
             />
           </div>
-          <div className="adddeal-info">
-            <div className="adddeal-info-title"><label className="form-secondarytitle" htmlFor="deal-discount-price">PRIX REMISÉ</label></div>
-            <div className="input-info-deal"><input className="form-input" type="number" id="deal-discount-price" value={discountedPrice} onChange={handleChangeDiscountedPrice} /></div>
-            <div className="adddeal-info-title"><label className="form-secondarytitle" htmlFor="deal-shipping-price">FRAIS DE PORT</label></div>
-            <div className="input-info-deal"><input className="form-input" type="number" id="deal-shipping-price" value={shippingPrice} onChange={handleChangeShippingPrice} /></div>
-          </div>
+          {(concernAGame) ? '' : (
+            <div className="adddeal-info">
+              <div className="adddeal-info-title"><label className="form-secondarytitle" htmlFor="deal-discount-price">PRIX REMISÉ</label></div>
+              <div className="input-info-deal"><input className="form-input" type="number" id="deal-discount-price" value={discountedPrice} onChange={handleChangeDiscountedPrice} /></div>
+              <div className="adddeal-info-title"><label className="form-secondarytitle" htmlFor="deal-shipping-price">FRAIS DE PORT</label></div>
+              <div className="input-info-deal"><input className="form-input" type="number" id="deal-shipping-price" value={shippingPrice} onChange={handleChangeShippingPrice} /></div>
+            </div>
+          )}
           <div>
             <label className="form-secondarytitle" htmlFor="deal-vendor">VENDEUR</label>
-            <select className="form-input" id="deal-vendor" value={dealVendor} onChange={handleChangeVendor}>
-              <option value="">---Choisissez un vendeur---</option>
-              <option value="1">Philibert</option>
-              <option value="2">La Fnac</option>
-              <option value="3">Cultura</option>
-              <option value="4">Le Donjon déodatien</option>
-              <option value="5">Autre boutique</option>
+            <select required className="form-input" id="deal-vendor" value={dealVendor} onChange={handleChangeVendor}>
+              <option disabled value="">---Choisissez un vendeur---</option>
+              {shopList.map((shop) => (
+                <option key={shop.id} value={shop.id}>{shop.name}</option>
+              ))}
             </select>
           </div>
           <div className="adddeal-secondaryInfo">
             <label className="form-secondarytitle" htmlFor="deal-discount-code">CODE PROMO</label>
             <input className="form-input" type="text" onChange={handleChangeDiscountCode} value={discountCode} id="deal-discount-code" />
-            <label className="form-secondarytitle" htmlFor="deal-end">EXPIRE LE<span> (facultatif)</span></label>
-            <input className="form-input" type="date" id="deal-end" value={expirationDate} onChange={handleChangeExpirationDate} />
+            <label className="form-secondarytitle display-none" htmlFor="deal-end">EXPIRE LE<span> (facultatif)</span></label>
+            <input className="form-input display-none" type="date" id="deal-end" value={expirationDate} onChange={handleChangeExpirationDate} />
           </div>
           <div className="button_div">
             <button className="form-button-validate" type="submit">Envoyer</button>
+            <span>{warningMessage}</span>
           </div>
         </form>
         {/* ---------- POPUP D'AJOUT DE JEU ---------- */}
@@ -236,6 +262,7 @@ function AddDeal() {
         {isSearchGame ? (
           <SearchGamePopUp
             ToggleSearchGame={handleClickToggleSearchGame}
+            gameList={gameList}
           />
         ) : ''}
       </div>
@@ -245,8 +272,8 @@ function AddDeal() {
     <div className="form-section">
       <div className="form-title"><FontAwesomeIcon icon={faTags} /><span className="form-span">Ajouter un bon plan</span></div>
       <div className="deal-comments com-user">
-            <p className="need-login-msg">Veuillez vous <span className="need-login-msg-link" aria-label="lien pour se connecter" onClick={handleConnexion}>connecter</span> pour proposer un bon plan</p>
-          </div>
+        <p className="need-login-msg">Veuillez vous <span className="need-login-msg-link" aria-label="lien pour se connecter" onClick={handleConnexion}>connecter</span> pour proposer un bon plan</p>
+      </div>
     </div>
   );
 }

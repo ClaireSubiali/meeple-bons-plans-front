@@ -5,7 +5,7 @@ import './style.scss';
 
 // == Import des éléments de FONTAWESOME
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChess, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faChess, faXmark, faCircleExclamation } from '@fortawesome/free-solid-svg-icons';
 
 // == Composant
 function AddGamePopUp({
@@ -29,8 +29,16 @@ function AddGamePopUp({
             <strong className="subtitle_login">Lien du jeu</strong>
           </label>
           <input type="text" onChange={ChangeUrl} id="urlGame" placeholder="Url du produit : boutique ou autre" name="urlGame" value={UrlGame} required />
+          
+          <p className="alertaddgame"> <span className="warning-icon"><FontAwesomeIcon icon={faCircleExclamation} /> </span>
+              La demande que vous allez effectuer <span>va être traitée manuellement, merci de bien vouloir être patient. </span>
+              Le lien (url du produit) doit permettre de récupérer les détails du jeu.
+                          En attendant vous pouvez choisir de : <em>"Cochez si le bon plan ne concerne pas un jeu en particulier" </em>
+              puis de mettre le nom du jeu en titre ainsi qu'un maximum d'informations dans la description.
+              </p>
           <button type="submit" onClick={SubmitGame} className="btn">Envoyer ma demande</button>
-        </form>
+           
+        </form> 
       </div>
     </div>
   );

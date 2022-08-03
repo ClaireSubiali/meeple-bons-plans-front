@@ -232,6 +232,90 @@ export function searchGame(searchedGame) {
   };
 }
 
+// Action Type => On l'utilise dans l'action creator ET dans le reducer
+export const ADD_COMMENT = 'ADD_COMMENT';
 
+// Action creator => On l'utilise au moment du dispatch()
+export function addComment(comment) {
+  return {
+    type: ADD_COMMENT,
+    comment,
+  };
+}
 
-//Action pour le champs controlé search
+// Action Type => On l'utilise dans l'action creator ET dans le reducer
+export const SAVE_COMMENT = 'SAVE_COMMENT';
+
+// Action creator => On l'utilise au moment du dispatch()
+export function saveComment(comment) {
+  return {
+    type: SAVE_COMMENT,
+    comment,
+  };
+}
+
+// Action Type => On l'utilise dans l'action creator ET dans le reducer
+export const SAVE_GAME_LIST = 'SAVE_GAME_LIST';
+
+// Action creator => On l'utilise au moment du dispatch()
+export function saveGameData(gameList) {
+  return {
+    type: SAVE_GAME_LIST,
+    gameList,
+  };
+}
+
+// Action Type => On l'utilise dans l'action creator ET dans le reducer
+export const SAVE_CHOOSED_GAME = 'SAVE_CHOOSED_GAME';
+
+// Action creator => On l'utilise au moment du dispatch()
+export function saveChoosedGame(game) {
+  return {
+    type: SAVE_CHOOSED_GAME,
+    game,
+  };
+}
+
+// Action Type => On l'utilise dans l'action creator ET dans le reducer
+export const CLEAR_STATE_CONCERN_GAME = 'CLEAR_STATE_CONCERN_GAME';
+
+// Action creator => On l'utilise au moment du dispatch()
+export function clearConcernAGameFields() {
+  return {
+    type: CLEAR_STATE_CONCERN_GAME,
+  };
+}
+
+// Action Type => On l'utilise dans l'action creator ET dans le reducer
+export const WARNING_MESSAGE = 'WARNING_MESSAGE';
+
+// Action creator => On l'utilise au moment du dispatch()
+export function changeWarningMessage(message) {
+  return {
+    type: WARNING_MESSAGE,
+    message,
+  };
+}
+
+// Action Type => On l'utilise dans l'action creator ET dans le reducer
+export const FETCH_SHOPS = 'FETCH_SHOPS';
+
+// Action creator => On l'utilise au moment du dispatch()
+export function fetchShops(shops) {
+  return {
+    type: FETCH_SHOPS,
+    shops,
+  };
+}
+
+// Action Type => On l'utilise dans l'action creator ET dans le reducer
+export const SAVE_SHOPS = 'SAVE_SHOPS';
+
+// Action creator => On l'utilise au moment du dispatch()
+export function saveShops(shopList) {
+  return {
+    type: SAVE_SHOPS,
+    shopList,
+  };
+}
+

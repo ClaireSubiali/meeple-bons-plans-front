@@ -129,7 +129,7 @@ function Header() {
             <img src={logo} className="logotype" alt="Logo Meeple Bons Plans" />
           </Link>
           <Link to="/">
-          <div className="header__title">MEEPLE BONS PLANS</div>
+            <div className="header__title">MEEPLE BONS PLANS</div>
           </Link>
         </div>
         <div id="right-header">
@@ -137,7 +137,7 @@ function Header() {
             <input type="search" className="search-bar" name="q" placeholder="Rechercher" onChange={handleInputSearch}/>
           </div>
           <Link to="/ajouter-bon-plan" id="add-deal"><FontAwesomeIcon icon={faPlus} /><span className="displaybutton"> Ajouter un bon plan</span></Link>
-          {isUserLogged ? <button type="button" onClick={handleToggleProfile} id="button-avatar"><img src={userAvatar} alt="profil meeple" id="avatar" /></button> : <button type="button" id="login" onClick={handleClickToggleLogin}><FontAwesomeIcon icon={faUser} /><span className="displaybutton"> Connexion</span></button> }
+          {isUserLogged ? <button type="button" onClick={handleToggleProfile} id="button-avatar"><img src={userAvatar} alt="profil meeple" id="avatar" className="avatar-effect" /></button> : <button type="button" id="login" onClick={handleClickToggleLogin}><FontAwesomeIcon icon={faUser} /><span className="displaybutton"> Connexion</span></button> }
         </div>
       </div>
       {/* ----------  NAVIGATION DANS HEADER---------- */}

@@ -12,7 +12,7 @@ header {
   width: 100%;
   z-index: 9;
   transition: 0.5s;
-  
+
 }
 
 .scrollEffect {
@@ -50,6 +50,19 @@ header {
   margin-right: 5px;
   padding:5px;
 }
+
+.header__title:hover 
+{
+  transition: all 0.3s ease-in-out 0s;
+  filter:blur(0.1rem);
+}
+
+.logotype:hover {
+  transition: all 0.3s ease-in-out 0s;
+  filter:blur(0.1rem);
+}
+
+
 
 @media screen and (max-width: 1200px) {
   .header__title {
@@ -157,6 +170,11 @@ header {
   border-radius: vars.$buttonRadiusResponsive;
   width: 40px;
   height: 40px;
+}
+
+.avatar-effect:hover {
+  transform: scale(0.9) rotate(360deg);
+  transition: all 0.3s ease-in-out 0s;
 }
 
 #button-avatar {
@@ -409,6 +427,13 @@ a {
 
 }
 
+.profile-popup:hover {
+  box-shadow: 1px 2px 2px 2px vars.$mainPinkAlternate;
+  
+}
+
+
+
 .profile-header {
   
   display: flex;
@@ -429,6 +454,7 @@ a {
   margin-bottom: 10px;
   opacity: 0.8;
 }
+
 
 .profile-popup .close {
   background-color: #b8b8b8;
@@ -487,6 +513,8 @@ a {
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+
 
 @media screen and (max-width: 780px) {
   .nav-link {
@@ -775,8 +803,8 @@ border-radius: 0;
   }
   
   
+  
    
 
 }
-
-  
+ 

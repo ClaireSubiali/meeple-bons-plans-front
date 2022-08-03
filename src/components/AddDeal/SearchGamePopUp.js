@@ -7,11 +7,25 @@ import './style.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons';
 
+import { useDispatch } from 'react-redux';
+
+import { saveChoosedGame, changeDealGame } from '../../actions/deal';
+
 // == Composant
 function SearchGamePopUp({
   ToggleSearchGame,
+  gameList,
 
 }) {
+  const dispatch = useDispatch();
+  const handleSelectGame = (event) => {
+    console.log('id', event.currentTarget.value);
+    const choosedGame = gameList.filter((game) => game.id == event.currentTarget.value);
+    console.log('jeu choisi', choosedGame);
+    dispatch(saveChoosedGame(choosedGame));
+    dispatch(changeDealGame(''));
+    ToggleSearchGame();
+  };
   return (
     <div className="login-popup">
       <div className="form-popup searchgamepopup">
@@ -20,9 +34,9 @@ function SearchGamePopUp({
           </div>
           <div className="results_searchgame">
             <ul>
-              <li><img src="https://www.myludo.fr/img/jeux/1640829454/300/by/50473.png"/><span>Dixit</span></li>
-              <li><img src="https://www.myludo.fr/img/jeux/1640829454/300/by/50473.png"/><span>Ici le nom du second jeu</span></li>
-              <li><img src="https://www.myludo.fr/img/jeux/1640829454/300/by/50473.png"/><span>Ici le nom du 3e jeu</span></li>
+              {gameList.map((game) => (
+                <li value={game.id} key={game.id} onClick={handleSelectGame}><img src={game.image} alt="" /><span>{game.name}</span></li>
+              ))}
             </ul>
           </div>
         </div>
@@ -33,6 +47,7 @@ function SearchGamePopUp({
 
 SearchGamePopUp.propTypes = {
   ToggleSearchGame: PropTypesLib.func.isRequired,
+  gameList: PropTypesLib.array.isRequired,
 };
 
 SearchGamePopUp.defaultProps = {

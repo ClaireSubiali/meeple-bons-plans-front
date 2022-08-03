@@ -5,8 +5,8 @@ import './style.scss';
 import { Link } from 'react-router-dom';
 
 // TODO == Import pour l'heure
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faClock } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faClock, faUpRightFromSquare, faComment, faInfo, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 import flameIcon from '../../assets/img/logo-flamme.svg';
 import iceCubeIcon from '../../assets/img/logo-icecube.svg';
@@ -18,13 +18,24 @@ function DealCard({
   game,
   description,
   shop,
+  url,
   createdAt,
   offerPrice: reducedPrice,
-  user }) {
+  user,
+  status,
+}) {
+
+  //! BRICOLAGE
+  let prixReduit = 0;
+  if (reducedPrice !== null) {
+    prixReduit = reducedPrice;
+  }
   const calcPercentage = () => {
-    const percentage = Math.round(-((reducedPrice - game.price) / game.price) * 100);
+    const percentage = Math.round(-((prixReduit - game.price) / game.price) * 100);
     return percentage;
   };
+
+  
   const percentage = calcPercentage();
   let descriptionReformated = 'rien';
 
@@ -33,12 +44,12 @@ function DealCard({
   } else {
     descriptionReformated = `${description.substring(0, 215)} ...`;
   }
-
+  if(status === true) {
   return (
     <div className="deal">
       <div className="left-deal">
-        <Link to={`/bon-plan/${id}`}><img className="picture-deal" src={game.image} alt="Bon plan" /></Link>
-        <div className="vote">
+        <Link to={`/bon-plan/${id}`}><img className="picture-deal picture-effect" src={game.image} alt="Bon plan" /></Link>
+        <div className="vote display-none">
           <div className="icone-degree">
             <img className="flamme" src={flameIcon} alt="Icone flamme" />
           </div>
@@ -54,13 +65,12 @@ function DealCard({
             <div className="mainTitleDeal"> <Link to={`/bon-plan/${id}`}>{title}</Link></div>
             <div className="secondaryTitleDeal">{game.category.name}<span className="shop"> | {shop.name}</span></div>
           </div>
-          {(reducedPrice === 0 ? '' : (
+          {(prixReduit === 0 ? '' : (
             <div className="deal-label">
               <div className="discount">-{percentage}%</div>
-              <div className="price">{(reducedPrice).toFixed(2)}€</div>
+              <div className="price">{(prixReduit).toFixed(2)}€</div>
             </div>
-          ))}
-          
+          ))}          
         </div>
         <Link to={`/bon-plan/${id}`}>
           <div className="main-deal">
@@ -69,7 +79,8 @@ function DealCard({
         </Link>
         <div className="footer-deal">
           <p className="footer-dealp">
-            <Link to={`/bon-plan/${id}`}><button type="button" className="see-deal">Voir le bon plan</button></Link>
+            <Link to={`/bon-plan/${id}`}><button type="button" className="see-deal buttonComment"><FontAwesomeIcon icon={faPlus} /> d'infos</button></Link>
+            <button type="button" className="see-deal"><a href={url} target="_blank" rel="noreferrer">Voir le bon plan</a> &ensp;<FontAwesomeIcon icon={faUpRightFromSquare} /></button>
           </p>
           {/*
           <p className="footer-deal-time"><span className="clock"><FontAwesomeIcon icon={faClock} /></span>{createdAt}</p>*/}
@@ -77,6 +88,7 @@ function DealCard({
       </div>
     </div>
   );
+}
 }
 
 DealCard.propType = {

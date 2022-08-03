@@ -10,7 +10,7 @@
 export function filterDealOfOneCategory(dealList, categoryId) {
   const deal = dealList.filter((testedDeal) => {
     // TODO remettre un === mais attention que ce soit deux types identiques
-    return testedDeal.game.category.id == categoryId;
+    return (testedDeal.game.category.id == categoryId && testedDeal.status === true);
   });
   return deal;
 }

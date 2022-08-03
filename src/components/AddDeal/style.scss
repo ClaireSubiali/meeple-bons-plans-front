@@ -24,6 +24,7 @@
   display:flex;
   font-weight: bold;
   flex-direction:column;
+  margin-bottom:15px;
 }
 
 .button-addgame {
@@ -81,31 +82,54 @@
   text-align: center;
 }
 
-//POP UP SEARCH GAME //TODO factoriser CSS
+//POP UP SEARCH GAME  
 
-.results_searchgame ul{
+.results_searchgame {
+  
+  ul{
   overflow-y:scroll;
   height:30vh;
- 
 }
 
-.results_searchgame li {
+li {
   display:flex;
   flex-direction:row;
   align-items: center;
   margin-bottom:0.5em;
-
+  height:100px;
 }
 
-.results_searchgame img {
-  width:80px;
+img {
+ width:80px;
 }
 
-.results_searchgame span {
+span {
   margin-left:1em;
   font-size:1em;
   font-weight: bold;
   // padding:1.5em;
-   
-  
 }
+
+li:hover{
+  background-color:rgb(238, 238, 238);
+}
+}
+
+
+//POP UP ADD GAME 
+.alertaddgame {
+  font-size:0.9em;
+  text-align: justify;
+  line-height: 150%;
+  margin-bottom:0.8em;
+
+  span {font-weight: bold;}
+  em {font-style: italic;
+    font-weight: bold;
+  color:vars.$mainBlue;}
+}
+
+.warning-icon {
+  color:rgb(228, 0, 0);
+}
+

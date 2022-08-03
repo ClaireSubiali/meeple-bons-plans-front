@@ -23,7 +23,7 @@ import ShopList from '../ShopList';
 import Actus from '../Actus';
 
 // Actions Import 
-import { fetchDeal } from '../../actions/deal';
+import { fetchDeal, fetchShops } from '../../actions/deal';
 import { SaveTokenInState, saveUser, saveIsLogged } from '../../actions/user';
 
 // == Composant
@@ -34,7 +34,9 @@ function App() {
     () => {
       // On veut recup la liste des recette depuis l'API
       // Pour ça, on va dispatcher une action (émettre l'intention de récupérer un fact/un dea)
+
       dispatch(fetchDeal());
+      dispatch(fetchShops());
       dispatch(SaveTokenInState(localStorage.getItem('TOKEN')));
       dispatch(saveUser(localStorage.getItem('UserEmail', 'currentUserEmail')));
       dispatch(saveIsLogged(localStorage.getItem('isUserLogged')));

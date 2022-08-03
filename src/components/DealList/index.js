@@ -28,6 +28,7 @@ function DealList() {
     default:
       listToDisplay = dealList;
   }
+  console.log('LOG DE LISTTODISPLAY', listToDisplay);
 
   return (
     <div className="deallist">

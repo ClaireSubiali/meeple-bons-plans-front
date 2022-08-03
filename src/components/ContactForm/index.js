@@ -24,7 +24,7 @@ function ContactForm() {
       <label className="form-secondarytitle" htmlFor="message-contact">Message</label>
       <textarea
         rows="6"
-        className="form-input"
+        className="form-input textarea1"
         placeholder="Saisissez votre message ici"
       />
       <button type="button" className="form-button-validate">Envoyer</button>

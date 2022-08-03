@@ -104,6 +104,11 @@ background-color: #ddd;
   font-size:0.7em;
   }
 
+/*for all textarea */
+  .textarea1 {
+    resize: vertical; /* user can resize vertically, but width is fixed */
+  }
+
 //SMARTPHONE --------------- SMARTPHONE ---------------  // 
 @media screen and (max-width: 500px) {
   .form-section {
@@ -112,5 +117,8 @@ background-color: #ddd;
     margin-top:0em;   
   } 
 }
+
+.display-none {display:none;}
+
 
 

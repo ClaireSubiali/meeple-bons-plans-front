@@ -25,7 +25,9 @@
   margin-bottom:1em;
 }
  
-
+.user {
+  color:vars.$mainPink;
+}
 .deal-comments {
   margin-top:2em;
   width:60%;
@@ -247,6 +249,22 @@ border-radius:0.5em;
     width:100%;
   }
  
+  //display NONE  left dealpicture and degree
+  .displayleftdeal {display:none;}
    
 
 }
+
+
+.shipping-member {
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.ship-deal {
+ margin-right:0.5em;
+ color:gray;
+ font-weight: bold;
+}
+ 
