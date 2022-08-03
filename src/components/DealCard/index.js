@@ -37,7 +37,7 @@ function DealCard({
   return (
     <div className="deal">
       <div className="left-deal">
-        <img className="picture-deal" src={game.image} alt="Bon plan" />
+        <Link to={`/bon-plan/${id}`}><img className="picture-deal" src={game.image} alt="Bon plan" /></Link>
         <div className="vote">
           <div className="icone-degree">
             <img className="flamme" src={flameIcon} alt="Icone flamme" />
@@ -51,17 +51,19 @@ function DealCard({
       <div className="right-deal">
         <div className="header-deal">
           <div className="title-deal">
-            <div className="mainTitleDeal">{title}</div>
-            <div className="secondaryTitleDeal">{game.category.name}<span className="shop"> | boutique {shop.name}</span></div>
+            <div className="mainTitleDeal"> <Link to={`/bon-plan/${id}`}>{title}</Link></div>
+            <div className="secondaryTitleDeal">{game.category.name}<span className="shop"> | {shop.name}</span></div>
           </div>
           <div className="deal-label">
             <div className="discount">-{percentage}%</div>
             <div className="price">{(reducedPrice).toFixed(2)}€</div>
           </div>
         </div>
-        <div className="main-deal">
-          <p className="deal-text">{descriptionReformated}</p>
-        </div>
+        <Link to={`/bon-plan/${id}`}>
+          <div className="main-deal">
+            <p className="deal-text">{descriptionReformated}</p>
+          </div>
+        </Link>
         <div className="footer-deal">
           <p className="footer-dealp">
             <Link to={`/bon-plan/${id}`}><button type="button" className="see-deal">Voir le bon plan</button></Link>

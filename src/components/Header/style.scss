@@ -12,6 +12,7 @@ header {
   width: 100%;
   z-index: 9;
   transition: 0.5s;
+  
 }
 
 .scrollEffect {
@@ -47,6 +48,7 @@ header {
 .logotype {
   height: 50px;
   margin-right: 5px;
+  padding:5px;
 }
 
 @media screen and (max-width: 1200px) {

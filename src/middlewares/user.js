@@ -9,7 +9,8 @@ import {
   saveEmailInState, 
   toggleIsLogged, 
   toggleVisibility,
-fetchUserWithMail } from '../actions/user';
+fetchUserWithMail,
+saveUser } from '../actions/user';
 import { useNavigate } from "react-router-dom";
 import { Redirect } from 'react-router-dom';
 
@@ -95,7 +96,7 @@ const userMiddleware = (store) => (next) => (action) => {
           localStorage.setItem('UserEmail', email);
           localStorage.setItem('isUserLogged', true);
           store.dispatch(SaveTokenInState(response.data.token));
-          store.dispatch(saveEmailInState(email));
+          store.dispatch(saveUser(email, 'currentUserEmail'));
           store.dispatch(toggleIsLogged());
           store.dispatch(toggleVisibility('isLoginVisible'));
           alert('Connexion réussie');
@@ -119,7 +120,8 @@ const userMiddleware = (store) => (next) => (action) => {
       
       
       //axios.post('http://nedaudchristophe-server.eddi.cloud/meeple/current/public/api/users/custom',
-      axios.post('http://nedaudchristophe-server.eddi.cloud/meeple/current/public/api/users/custom',
+      axios.post(
+        'http://nedaudchristophe-server.eddi.cloud/meeple/current/public/api/users/custom',
         {email: currentUserEmail
         ,},
         {headers: {
@@ -132,8 +134,12 @@ const userMiddleware = (store) => (next) => (action) => {
           // store.dispatch(saveDeal(response.data));
 
           console.log('Response API, récupération utilisateur avec email => ', response.data);
-          // dispatch(saveUserId(response.data.avatar_id));
-          // dispatch(saveUserName(response.data.name));
+          localStorage.setItem('UserID', response.data.id);
+          localStorage.setItem('UserName', response.data.name);
+          localStorage.setItem('UserAvatar', response.data.avatar_image);
+          store.dispatch(saveUser(response.data.id, 'currentUserId'));
+          store.dispatch(saveUser(response.data.name, 'currentUserPseudo'));
+          store.dispatch(saveUser(response.data.avatar_image, 'userAvatar'));
           
         },
       )

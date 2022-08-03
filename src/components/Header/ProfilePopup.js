@@ -10,7 +10,7 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons';
 function ProfilePopup({
   ToggleVisibility,
   avatar,
-  email,
+  username,
   Disconnect,
 }) {
   const handleToggleVisibility = () => {
@@ -20,8 +20,8 @@ function ProfilePopup({
     <div className="profile-popup">
       <div className="close-button-div"><button type="button" aria-label="Fermer" className="cancel" onClick={handleToggleVisibility}><FontAwesomeIcon icon={faXmark} /></button></div>
       <div className="profile-header">
-        <img src="https://www.zupimages.net/up/22/31/wgqb.png" alt="profil meeple" id="avatar" />
-        <span>{email}</span>
+        <img src={avatar} alt="profil meeple" id="avatar" />
+        <span>{username}</span>
       </div>
       <div>
         <button type="button" className="btn">Consulter mon profil</button>
@@ -35,7 +35,7 @@ ProfilePopup.propTypes = {
   ToggleVisibility: PropTypesLib.func.isRequired,
   Disconnect: PropTypesLib.func.isRequired,
   avatar: PropTypesLib.string.isRequired,
-  email: PropTypesLib.string.isRequired,
+  username: PropTypesLib.string.isRequired,
 };
 
 // == Export

@@ -8,7 +8,7 @@ function Actus() {
   return (
     <div className="pseudo-body">
       {/*L'actu la plus grande */}
-
+     
       <article className="card-main">
         <h2 className="Title-big">Titre</h2>
         <time className="date-dig">14/02/2012</time>

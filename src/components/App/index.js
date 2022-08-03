@@ -24,7 +24,7 @@ import Actus from '../Actus';
 
 // Actions Import 
 import { fetchDeal } from '../../actions/deal';
-import { SaveTokenInState, saveEmailInState, saveIsLogged} from '../../actions/user';
+import { SaveTokenInState, saveUser, saveIsLogged } from '../../actions/user';
 
 // == Composant
 function App() {
@@ -36,9 +36,11 @@ function App() {
       // Pour ça, on va dispatcher une action (émettre l'intention de récupérer un fact/un dea)
       dispatch(fetchDeal());
       dispatch(SaveTokenInState(localStorage.getItem('TOKEN')));
-      dispatch(saveEmailInState(localStorage.getItem('UserEmail')));
+      dispatch(saveUser(localStorage.getItem('UserEmail', 'currentUserEmail')));
       dispatch(saveIsLogged(localStorage.getItem('isUserLogged')));
-
+      dispatch(saveUser(localStorage.getItem('UserName'), 'currentUserPseudo'));
+      dispatch(saveUser(localStorage.getItem('UserID'), 'currentUserId'));
+      dispatch(saveUser(localStorage.getItem('UserAvatar'), 'userAvatar'));
     },
     [],
   );

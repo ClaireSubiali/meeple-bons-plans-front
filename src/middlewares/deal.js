@@ -6,6 +6,7 @@ import {
   ADD_DEAL_SUMIT_FORM,
   saveDeal,
   saveOneDeal,
+  SEARCH_GAME_HEADER,
 } from '../actions/deal';
 
 /* IMAGE POUR COMPRENDRE => le middlewares est un SAVANT qui sait tout (connecté a l'api),
@@ -23,12 +24,12 @@ const dealMiddleware = (store) => (next) => (action) => {
     // RECUPERATION DE LA LISTE DE TOUS LES DEALS DEPUIS L'API AU CHARGMEENT INITIAL DU SITE
     case FETCH_DEAL: {
       axios.get('http://nedaudchristophe-server.eddi.cloud/meeple/current/public/api/deals',
-        // {
-        //   headers: {
-        //     Authorization: `bearer ${token}`,
-        //   },
-        // },
-      )
+          // {
+          //   headers: {
+          //     Authorization: `bearer ${token}`,
+          //   },
+          // },
+        )
         .then((response) => {
           console.log('Response API récupération de tous les deals', response.data);
           // On envoie le resultat de la requête au reducer qui sera chargé de l'ecriture
@@ -43,11 +44,10 @@ const dealMiddleware = (store) => (next) => (action) => {
     case SEARCH_GAME: {
       const gameToSearch = action.searchedGame;
       const token =
-    "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NTk0NTE4MDIsImV4cCI6MTY1OTUxNjYwMiwicm9sZXMiOlsiUk9MRV9BRE1JTiIsIlJPTEVfVVNFUiJdLCJ1c2VybmFtZSI6ImFkbWluQGFkbWluLmNvbSJ9.GdZiaM9Hgt-vDvOfW3pnw1Um5dX58-QZn2Ft7F_7kGgkbOVQMUNPQMWpCT13vbzbx2eu_cbTdXU_2pUGWdSxxu76X79XZZx29wVTX3BOEJOtyIASuNxYscyL4wGxcr4ppA0q3oFEzrmj_6k7JA9ImBzI5TEE4dcOk5ooaYRlCZj2ND-S8IPsWwdGE3R-sik3xuJ4gkQjvBsahAXG_pyxpXavZ2_Q3IBbykU-0saFtMs2cPoTPe_gmODm0EFjBjpAdd_zzLE1dQFt9s4R5Kcx-G6s63gPM-gETx5iV4ET_PMEGHCM461eUzlXewrwY2ntsG6IHOnTkUQycAD-o9ZeUg";
+        "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NTk0NTE4MDIsImV4cCI6MTY1OTUxNjYwMiwicm9sZXMiOlsiUk9MRV9BRE1JTiIsIlJPTEVfVVNFUiJdLCJ1c2VybmFtZSI6ImFkbWluQGFkbWluLmNvbSJ9.GdZiaM9Hgt-vDvOfW3pnw1Um5dX58-QZn2Ft7F_7kGgkbOVQMUNPQMWpCT13vbzbx2eu_cbTdXU_2pUGWdSxxu76X79XZZx29wVTX3BOEJOtyIASuNxYscyL4wGxcr4ppA0q3oFEzrmj_6k7JA9ImBzI5TEE4dcOk5ooaYRlCZj2ND-S8IPsWwdGE3R-sik3xuJ4gkQjvBsahAXG_pyxpXavZ2_Q3IBbykU-0saFtMs2cPoTPe_gmODm0EFjBjpAdd_zzLE1dQFt9s4R5Kcx-G6s63gPM-gETx5iV4ET_PMEGHCM461eUzlXewrwY2ntsG6IHOnTkUQycAD-o9ZeUg";
       axios
         .post(
-          "http://nedaudchristophe-server.eddi.cloud/meeple/current/public/api/games",
-          {
+          "http://nedaudchristophe-server.eddi.cloud/meeple/current/public/api/games", {
             name: gameToSearch,
           },
           // {
@@ -64,8 +64,7 @@ const dealMiddleware = (store) => (next) => (action) => {
         });
       return next(action);
     }
-    case FETCH_ONE_DEAL:
-    {
+    case FETCH_ONE_DEAL: {
       axios
         .get(
           `http://nedaudchristophe-server.eddi.cloud/meeple/current/public/api/deals/${action.dealId}`,
@@ -90,8 +89,7 @@ const dealMiddleware = (store) => (next) => (action) => {
       return next(action);
     }
     // FORMULAIRE D'AJOUT DE BON PLAN
-    case ADD_DEAL_SUMIT_FORM:
-    {
+    case ADD_DEAL_SUMIT_FORM: {
       const state = store.getState();
       const {
         dealTitle,
@@ -117,8 +115,7 @@ const dealMiddleware = (store) => (next) => (action) => {
       //on doit récupérer l'id de l'utilisateur connecté 
       axios
         .post(
-          'http://nedaudchristophe-server.eddi.cloud/meeple/current/public/api/deals',
-          {
+          'http://nedaudchristophe-server.eddi.cloud/meeple/current/public/api/deals', {
             title: dealTitle,
             description: dealDescription,
             url: dealURL,
@@ -131,8 +128,7 @@ const dealMiddleware = (store) => (next) => (action) => {
             shippingCost: parseInt(shippingPrice, 10), // paramètre optionnel
             promoCode: discountCode, // paramètre optionnel
 
-          },
-          {
+          }, {
             headers: {
               Authorization: `bearer ${token}`,
             },
@@ -152,7 +148,27 @@ const dealMiddleware = (store) => (next) => (action) => {
         });
       return next(action);
     }
-
+    // chercher un jeu depuis la barre de recherche
+    case SEARCH_GAME_HEADER: {
+      axios
+        .get("http://nedaudchristophe-server.eddi.cloud/meeple/current/public/api/RoutBIDON", {
+          DataBidon: ARECUPERER,
+        }, {
+          headers: {
+            Authorization: `bearer ${token}`,
+          },
+        },
+        )
+      .then((response) => {
+          ICIONMANIPULELESDATA;
+          return next(action);
+        })
+        .catch((error) => {
+          console.log(error);
+          return next(action);
+        });
+      return next(action);
+    }
     default:
       return next(action);
   }

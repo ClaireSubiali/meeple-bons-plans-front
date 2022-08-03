@@ -165,3 +165,15 @@ export function fetchUserWithMail() {
     type: FETCH_USER_WITH_MAIL,
   };
 }
+
+// Action Type => On l'utilise dans l'action creator ET dans le reducer
+export const SAVE_USER = 'SAVE_USER';
+
+// Action creator => On l'utilise au moment du dispatch()
+export function saveUser(data, placeInState) {
+  return {
+    type: SAVE_USER,
+    data,
+    placeInState,
+  };
+}

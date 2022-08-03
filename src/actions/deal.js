@@ -143,6 +143,9 @@ export function OnChangeUrl(inputUrlGame) {
   };
 }
 
+
+
+
 // ---------------------- sert a changer de page apres la soumission du form
 
 export const ADD_DEAL_SUMIT_FORM = 'ADD_DEAL_SUMIT_FORM';
@@ -208,6 +211,17 @@ export function saveOneDeal(oneDeal) {
 }
 
 // Action Type => On l'utilise dans l'action creator ET dans le reducer
+export const SEARCH_GAME_HEADER = 'SEARCH_GAME_HEADER';
+
+//Action pour le champs controlé search
+// Action creator => On l'utilise au moment du dispatch()
+export function searchGameNav(searchedGameHeader) {
+  return {
+    type: SEARCH_GAME_HEADER,
+    searchedGameHeader,
+  };
+}
+
 export const SEARCH_GAME = 'SEARCH_GAME';
 
 // Action creator => On l'utilise au moment du dispatch()
@@ -217,3 +231,7 @@ export function searchGame(searchedGame) {
     searchedGame,
   };
 }
+
+
+
+//Action pour le champs controlé search

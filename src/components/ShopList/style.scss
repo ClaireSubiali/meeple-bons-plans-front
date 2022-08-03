@@ -2,17 +2,22 @@
 
 
 .pseudo-body{
+   //60
   width: 60%;
-  margin: 2% auto 0 auto;
+  max-width: 100%;
+  margin:auto;
+  margin-top:2em;
 }
-
+ 
 .shop-card{
-  border: solid 1px vars.$mainPink;
+  
   background-color: white;
-  border-radius: 0.5rem;
+  border-radius:vars.$buttonRadius;
   margin: 0 0 1.3rem 0;
+  padding:20px;
+  max-width: 100%;
+   
 }
-
 .title-shop{
   text-align: center;
   font-size: 1.5rem;
@@ -28,7 +33,7 @@
 .card-shop-left{
 display: flex;
 flex-direction: column;
-width: 30%;
+width: 25%;
 }
 
 .img-shop{
@@ -39,15 +44,19 @@ width: 30%;
   width: 50%;
   margin: 0 auto 1rem auto;
   background-color: vars.$mainBlue;
-  font-weight: 600;
-  font-size: 1.2rem;
-  border-radius: 0.5rem;
+  font-weight: bold;
+  font-size: 0.9rem;
+  border: none;
+  cursor: pointer;
+  border-radius: vars.$buttonRadius;
   color: white;
+  padding: 12px 20px;
+
 }
 
 .card-shop-right{
   display: flex;
-  width: 70%;
+  width: 75%;
   flex-direction: column;
 }
 
@@ -78,6 +87,7 @@ width: 30%;
   .shop-card-contener{
     display: flex;
     flex-direction: column;
+    
   }
 
   .card-shop-left{
@@ -117,6 +127,7 @@ width: 30%;
 
     .button-shop-detail{
       width: 50%;
+      
       margin: 0 auto 1rem auto;
       background-color: vars.$mainBlue;
       font-weight: 600;
@@ -140,15 +151,16 @@ width: 30%;
     color: white;
   }
 } 
-/*media screen =>  500
-@media screen and (max-width: 780px) {
-  .Class {
-    ****
-  }
-} */
-/*media screen => 1200 780 660  500
-@media screen and (max-width: 780px) {
-  .Class {
-    ****
-  }
-} */
+
+
+//SMARTPHONE --------------- SMARTPHONE ---------------  // 
+@media screen and (max-width: 500px) {
+  .pseudo-body {
+    padding-top:150px;
+    width:100%;
+    
+
+  } 
+
+  .shop-card{border-radius:0px; }
+}

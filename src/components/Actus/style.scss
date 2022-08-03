@@ -1,11 +1,7 @@
 @use 'src/styles/vars';
 
 
-
-.pseudo-body {
-  width: 60%;
-  margin: 2% auto 0 auto;
-}
+ 
 
 .card-main {
   border: solid 1px vars.$mainPink;
@@ -78,7 +74,7 @@
 @media screen and (max-width: 1200px) {
 
   .pseudo-body {
-    width: 80%;
+    width: 60%;
     margin: 4% auto 0 auto;
   }
 
@@ -150,36 +146,10 @@
 }
 
 //Les portables -------------------------------------------------
-
+//SMARTPHONE --------------- SMARTPHONE ---------------  // 
 @media screen and (max-width: 500px) {
-  .pseudo-body {
-    width: 80%;
-    margin: 8% auto 0 auto;
-  }
+ 
 
+  .card-main{border-radius:0px; }
 }
-
-@media screen and (max-width: 300px) {
-  .pseudo-body {
-    width: 80%;
-    margin: 8% auto 0 auto;
-  }
-
-  /*.card-medium {
-    border: solid 1px vars.$mainPink;
-    border-radius: 0.5rem;
-    padding: 0.6rem;
-    width: 45%;
-    font-size: 0.5rem;
-    margin: 0 auto 1rem auto;
-    background-color: white;
-  }*/
-
-}
-
-/*media screen => 1200 780 660  500
-@media screen and (max-width: 780px) {
-  .Class {
-    ****
-  }
-} */
+ 

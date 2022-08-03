@@ -4,7 +4,7 @@ import {
   CHANGE_FIELD_VALUE_LOGIN_SETTINGS,
   CHANGE_FIELD_VALUE_CREATE_ACCOUNT,
   SAVE_TOKEN,
-  SAVE_EMAIL,
+  SAVE_USER,
   SAVE_IS_LOGGED,
   CLEAR_LOGIN,
   TOGGLE_IS_LOGGED,
@@ -14,6 +14,7 @@ import {
 const initialState = {
   currentUserPseudo: '', // Pseudo de l'utilisateur Renvoyé par l'API lors de la connexion
   currentUserEmail: '',
+  currentUserId: '',
   userAvatar: '', // Avatar de l'utilisateur renvoyé par l'api lors de la connexion
   isUserLogged: false,
   isAvatarVisible: false,
@@ -65,25 +66,6 @@ function reducer(state = initialState, action = {}) {
           [action.field]: action.value,
         },
       };
-    // // TODO CASE TEMPORAIRE AVANT API QUI VERIFIE LA CONNEXION
-    // case CHECK_LOGIN:
-    //   return {
-    //     ...state,
-    //     loginSettings: {
-    //       ...state.loginSettings,
-    //       temporaryMessage: action.temporaryMessage,
-    //     },
-    //   };
-    // // TODO CASE TEMPORAIRE AVANT API QUI AFFICHE L'AVATAR SI CONNEXION OK A MODIFIER QUAND API
-    // case TOGGLE_VISIBILITY_AND_AVATAR:
-    //   return {
-    //     ...state,
-    //     loginSettings: {
-    //       ...state.loginSettings,
-    //       isLoginVisible: !state.loginSettings.isLoginVisible,
-    //     },
-    //     isAvatarVisible: !state.isAvatarVisible,
-    //   };
     // PERMET LA DECONNEXION (VIDE DU STATE DONNÉES USER)
     case LOGOUT:
       return {
@@ -125,10 +107,10 @@ function reducer(state = initialState, action = {}) {
         ...state,
         token: action.token,
       };
-    case SAVE_EMAIL:
+    case SAVE_USER:
       return {
         ...state,
-        currentUserEmail: action.email,
+        [action.placeInState]: action.data,
       };
     case SAVE_IS_LOGGED:
       return {

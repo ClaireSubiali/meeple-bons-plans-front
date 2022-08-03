@@ -16,9 +16,13 @@ import {
 import {
   toggleVisibility,
   fetchLogin,
-  disconnect,  
+  disconnect,
   changeFieldValueLoginSettings,
 } from '../../actions/user';
+
+import {
+  searchGameNav,
+} from '../../actions/deal';
 
 // == Import de composants
 import LoginPopup from './LoginPopup';
@@ -27,7 +31,7 @@ import ProfilePopup from './ProfilePopup';
 // == Import d'images, SCSS et autres
 import './style.scss';
 import logo from '../../assets/img/logo-meeple.svg';
-import avatar from '../../assets/img/m-orange.png';
+
 
 // == Composant
 function Header() {
@@ -47,7 +51,11 @@ function Header() {
   } = useSelector((state) => state.user.loginSettings);
 
   // Ici on vient extraire/récupérer les données situées dans le state avec useSelector
-  const {isAvatarVisible, isUserLogged } = useSelector((state) => state.user);
+  const {
+    isUserLogged,
+    currentUserPseudo,
+    userAvatar,
+  } = useSelector((state) => state.user);
   const dealObjectTest = useSelector((state) => state.deal.dealList);
 
   console.log('CONSOLE LOG sur header', dealObjectTest.value);
@@ -90,6 +98,11 @@ function Header() {
     window.localStorage.clear();
   };
 
+  // Dispatch champs controlé search
+  const handleInputSearch = () => {
+    dispatch(searchGameNav());
+  };
+
   /* ---------- HANDLER GENERAUX AVEC PLUSIEURS UTILITES ---------- */
   /**
    * Ajout d'une donnée dans le state (idéal pour champ contôlé)
@@ -121,10 +134,10 @@ function Header() {
         </div>
         <div id="right-header">
           <div className="search">
-            <input type="search" className="search-bar" name="q" placeholder="Rechercher" />
+            <input type="search" className="search-bar" name="q" placeholder="Rechercher" onChange={handleInputSearch}/>
           </div>
           <Link to="/ajouter-bon-plan" id="add-deal"><FontAwesomeIcon icon={faPlus} /><span className="displaybutton"> Ajouter un bon plan</span></Link>
-          {isUserLogged ? <button type="button" onClick={handleToggleProfile} id="button-avatar"><img src={avatar} alt="profil meeple" id="avatar" /></button> : <button type="button" id="login" onClick={handleClickToggleLogin}><FontAwesomeIcon icon={faUser} /><span className="displaybutton"> Connexion</span></button> }
+          {isUserLogged ? <button type="button" onClick={handleToggleProfile} id="button-avatar"><img src={userAvatar} alt="profil meeple" id="avatar" /></button> : <button type="button" id="login" onClick={handleClickToggleLogin}><FontAwesomeIcon icon={faUser} /><span className="displaybutton"> Connexion</span></button> }
         </div>
       </div>
       {/* ----------  NAVIGATION DANS HEADER---------- */}
@@ -160,8 +173,8 @@ function Header() {
       {isProfileVisible ? ( 
         <ProfilePopup
           ToggleVisibility={handleToggleVisibility}
-          avatar={avatar}
-          email={email}
+          avatar={userAvatar}
+          username={currentUserPseudo}
           Disconnect={handleDisconnect}
          />
       ) : ''}

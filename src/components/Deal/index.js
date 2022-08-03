@@ -33,7 +33,7 @@ function Deal() {
     [dealId],
   );
   const deal = useSelector((state) => state.deal.activeDeal);
-  const { isAvatarVisible, userAvatar } = useSelector((state) => state.user)
+  const { isUserLogged, userAvatar } = useSelector((state) => state.user)
   console.log('activedeal', deal);
   if (deal === '') {
     return (
@@ -89,9 +89,9 @@ function Deal() {
           </div>
         </div>
         {/* ----------- AJOUT D'UN COMMENTAIRE ------------ */}
-        {(isAvatarVisible) ? (
+        {(isUserLogged) ? (
         <div className="deal-comments com-user">
-          <div className="avatar-user-com"><img src={avatar} alt="profil meeple" id="avatar" />
+          <div className="avatar-user-com"><img src={userAvatar} alt="profil meeple" id="avatar" />
           </div>
           <div className="comment-textarea">
             <label className="deal-secondarytitle" htmlFor="message-comments">Commentaire</label>

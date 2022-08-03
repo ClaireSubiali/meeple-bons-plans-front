@@ -30,6 +30,8 @@ import {
   ToggleSearchGame, //<-----------------
 } from '../../actions/deal';
 
+import { toggleVisibility } from '../../actions/user';
+
 // == Composant
 function AddDeal() {
   const dispatch = useDispatch();
@@ -50,7 +52,8 @@ function AddDeal() {
     expirationDate,
     dealVendor,
   } = useSelector((state) => state.deal.addDealForm);
-
+  const isUserLogged = useSelector((state) => state.user.isUserLogged);
+  
   const {
     isSearchGame, //TODO Pop Up Search GAME
   } = useSelector((state) => state.deal.searchGame);
@@ -131,105 +134,119 @@ function AddDeal() {
     console.log('new deal composant ');
     dispatch(fetchFromAddDeal());
   };
-  const handleSearchGame = () => {
-    console.log('test search game');
-    dispatch(searchGame(dealGame)); //TODO onClick={handleSearchGame}
-  };
 
   // TODO Pop Up ADD GAME
   const handleClickToggleSearchGame = () => {
     dispatch(ToggleSearchGame());
   };
 
+  const handleSearchGame = () => {
+    console.log('test search game');
+    dispatch(searchGame(dealGame)); //TODO onClick={handleSearchGame}
+    handleClickToggleSearchGame();
+  };
 
+  const handleConnexion = () => {
+    dispatch(toggleVisibility('isLoginVisible'));
+  }
+
+  if (isUserLogged) {
+    return (
+      <div className="form-section">
+        <form onSubmit={handleSubmitAddDeal}>
+          <div className="form-title"><FontAwesomeIcon icon={faTags} /><span className="form-span">Ajouter un bon plan</span></div>
+          <div className="adddeal-header">
+            <label className="form-secondarytitle" htmlFor="deal-title">TITRE</label>
+            <input className="form-input" type="text" id="deal-title" placeholder="Titre du bon plan" value={dealTitle} onChange={handleChangeDealTitle} />
+            <label className="form-secondarytitle" htmlFor="deal-search">NOM DU JEU</label>
+            <div className="searchgame">
+              <input className="form-input" type="text" id="deal-search" placeholder="Saisissez votre recherche" value={dealGame} onChange={handleChangeDealGame} />
+              <button className="button-searchgame" type="button" onClick={handleSearchGame}> <FontAwesomeIcon icon={faMagnifyingGlass} /></button>
+            </div>
+            <div className="adddeal-right-element"><span className="missing-game">Jeu manquant ?</span>
+              <button className="button-addgame" onClick={handleClickToggleAddGame} type="button">Suggérer un jeu</button>
+            </div>
+          </div>
+          <div className="gameornot">
+            <input type="checkbox" id="game-concern" checked={concernAGame ? 'checked' : ''} onChange={handleToggleConcernAGame} />
+            <label htmlFor="game-concern">Cochez si le bon plan ne concerne pas un jeu en particulier</label>
+            <span className="adddeal-game">This War of Mine</span>
+          </div>
+          <div className="content">
+            <label className="form-secondarytitle" htmlFor="deal-description">DESCRIPTION</label>
+            <textarea
+              className="form-input"
+              rows="6"
+              id="deal-description"
+              placeholder="Indiquez une description du bon plan"
+              value={dealDescription}
+              onChange={handleChangeDescription}
+            />
+          </div>
+          <div>
+            <label className="form-secondarytitle" htmlFor="deal-link">LIEN DU BON PLAN</label>
+            <input
+              className="form-input"
+              onChange={handleGameUrl}
+              value={dealURL}
+              type="text"
+              id="deal-link"
+              placeholder="Lien vers le bon plan en ligne (ou un lien de la boutique physique)"
+            />
+          </div>
+          <div className="adddeal-info">
+            <div className="adddeal-info-title"><label className="form-secondarytitle" htmlFor="deal-discount-price">PRIX REMISÉ</label></div>
+            <div className="input-info-deal"><input className="form-input" type="number" id="deal-discount-price" value={discountedPrice} onChange={handleChangeDiscountedPrice} /></div>
+            <div className="adddeal-info-title"><label className="form-secondarytitle" htmlFor="deal-shipping-price">FRAIS DE PORT</label></div>
+            <div className="input-info-deal"><input className="form-input" type="number" id="deal-shipping-price" value={shippingPrice} onChange={handleChangeShippingPrice} /></div>
+          </div>
+          <div>
+            <label className="form-secondarytitle" htmlFor="deal-vendor">VENDEUR</label>
+            <select className="form-input" id="deal-vendor" value={dealVendor} onChange={handleChangeVendor}>
+              <option value="">---Choisissez un vendeur---</option>
+              <option value="1">Philibert</option>
+              <option value="2">La Fnac</option>
+              <option value="3">Cultura</option>
+              <option value="4">Le Donjon déodatien</option>
+              <option value="5">Autre boutique</option>
+            </select>
+          </div>
+          <div className="adddeal-secondaryInfo">
+            <label className="form-secondarytitle" htmlFor="deal-discount-code">CODE PROMO</label>
+            <input className="form-input" type="text" onChange={handleChangeDiscountCode} value={discountCode} id="deal-discount-code" />
+            <label className="form-secondarytitle" htmlFor="deal-end">EXPIRE LE<span> (facultatif)</span></label>
+            <input className="form-input" type="date" id="deal-end" value={expirationDate} onChange={handleChangeExpirationDate} />
+          </div>
+          <div className="button_div">
+            <button className="form-button-validate" type="submit">Envoyer</button>
+          </div>
+        </form>
+        {/* ---------- POPUP D'AJOUT DE JEU ---------- */}
+        {isAddGame ? (
+          <AddGamePopUp
+            SubmitGame={handleSubmitGame}
+            ToggleAddGame={handleClickToggleAddGame}
+            ChangeGame={handleChangeGame}
+            ChangeUrl={handleChangeUrl}
+            NewGame={newGame}
+            UrlGame={urlGame}
+          />
+        ) : ''}
+        {/* ---------- POPUP DE RECHERCHE ---------- */}
+        {isSearchGame ? (
+          <SearchGamePopUp
+            ToggleSearchGame={handleClickToggleSearchGame}
+          />
+        ) : ''}
+      </div>
+    );
+  }
   return (
-   
     <div className="form-section">
-      <form onSubmit={handleSubmitAddDeal}>
-        <div className="form-title"><FontAwesomeIcon icon={faTags} /><span className="form-span">Ajouter un bon plan</span></div>
-        <div className="adddeal-header">
-          <label className="form-secondarytitle" htmlFor="deal-title">TITRE</label>
-          <input className="form-input" type="text" id="deal-title" placeholder="Titre du bon plan" value={dealTitle} onChange={handleChangeDealTitle} />
-          <label className="form-secondarytitle" htmlFor="deal-search">NOM DU JEU</label>
-          <div className="searchgame">
-            <input className="form-input" type="text" id="deal-search" placeholder="Saisissez votre recherche" value={dealGame} onChange={handleChangeDealGame} />
-            <button className="button-searchgame" type="button" onClick={handleClickToggleSearchGame}> <FontAwesomeIcon icon={faMagnifyingGlass} /></button>
+      <div className="form-title"><FontAwesomeIcon icon={faTags} /><span className="form-span">Ajouter un bon plan</span></div>
+      <div className="deal-comments com-user">
+            <p className="need-login-msg">Veuillez vous <span className="need-login-msg-link" aria-label="lien pour se connecter" onClick={handleConnexion}>connecter</span> pour proposer un bon plan</p>
           </div>
-          <div className="adddeal-right-element"><span className="missing-game">Jeu manquant ?</span>
-            <button className="button-addgame" onClick={handleClickToggleAddGame} type="button">Suggérer un jeu</button>
-          </div>
-        </div>
-        <div className="gameornot">
-          <input type="checkbox" id="game-concern" checked={concernAGame ? 'checked' : ''} onChange={handleToggleConcernAGame} />
-          <label htmlFor="game-concern">Cochez si le bon plan ne concerne pas un jeu en particulier</label>
-          <span className="adddeal-game">This War of Mine</span>
-        </div>
-        <div className="content">
-          <label className="form-secondarytitle" htmlFor="deal-description">DESCRIPTION</label>
-          <textarea
-            className="form-input"
-            rows="6"
-            id="deal-description"
-            placeholder="Indiquez une description du bon plan"
-            value={dealDescription}
-            onChange={handleChangeDescription}
-          />
-        </div>
-        <div>
-          <label className="form-secondarytitle" htmlFor="deal-link">LIEN DU BON PLAN</label>
-          <input
-            className="form-input"
-            onChange={handleGameUrl}
-            value={dealURL}
-            type="text"
-            id="deal-link"
-            placeholder="Lien vers le bon plan en ligne (ou un lien de la boutique physique)"
-          />
-        </div>
-        <div className="adddeal-info">
-          <div className="adddeal-info-title"><label className="form-secondarytitle" htmlFor="deal-discount-price">PRIX REMISÉ</label></div>
-          <div className="input-info-deal"><input className="form-input" type="number" id="deal-discount-price" value={discountedPrice} onChange={handleChangeDiscountedPrice} /></div>
-          <div className="adddeal-info-title"><label className="form-secondarytitle" htmlFor="deal-shipping-price">FRAIS DE PORT</label></div>
-          <div className="input-info-deal"><input className="form-input" type="number" id="deal-shipping-price" value={shippingPrice} onChange={handleChangeShippingPrice} /></div>
-        </div>
-        <div>
-          <label className="form-secondarytitle" htmlFor="deal-vendor">VENDEUR</label>
-          <select className="form-input" id="deal-vendor" value={dealVendor} onChange={handleChangeVendor}>
-            <option value="">---Choisissez un vendeur---</option>
-            <option value="1">Philibert</option>
-            <option value="2">La Fnac</option>
-            <option value="3">Cultura</option>
-            <option value="4">Le Donjon déodatien</option>
-            <option value="5">Autre boutique</option>
-          </select>
-        </div>
-        <div className="adddeal-secondaryInfo">
-          <label className="form-secondarytitle" htmlFor="deal-discount-code">CODE PROMO</label>
-          <input className="form-input" type="text" onChange={handleChangeDiscountCode} value={discountCode} id="deal-discount-code" />
-          <label className="form-secondarytitle" htmlFor="deal-end">EXPIRE LE<span> (facultatif)</span></label>
-          <input className="form-input" type="date" id="deal-end" value={expirationDate} onChange={handleChangeExpirationDate} />
-        </div>
-        <div className="button_div">
-          <button className="form-button-validate" type="submit">Envoyer</button>
-        </div>
-      </form>
-      {/* ---------- POPUP D'AJOUT DE JEU ---------- */}
-      {isAddGame ? (
-        <AddGamePopUp
-          SubmitGame={handleSubmitGame}
-          ToggleAddGame={handleClickToggleAddGame}
-          ChangeGame={handleChangeGame}
-          ChangeUrl={handleChangeUrl}
-          NewGame={newGame}
-          UrlGame={urlGame}
-        />
-      ) : ''}
-      {/* ---------- POPUP DE RECHERCHE ---------- */}
-      {isSearchGame ? (
-        <SearchGamePopUp
-          ToggleSearchGame={handleClickToggleSearchGame}
-        />
-      ) : ''}
     </div>
   );
 }

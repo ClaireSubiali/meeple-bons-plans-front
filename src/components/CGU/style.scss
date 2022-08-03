@@ -3,14 +3,14 @@
 .title {
   margin-bottom:1em;
   text-align: center;
-  margin-left:.05em;
+  margin-left:0.5em;
   font-weight: bold; 
 }
 .cgu-page {
   width:60%;
   display:flex;
   flex-direction:column;
-  max-width: 80%;
+  max-width: 100%;
   margin: auto;
   background-color:#FFFFFF;
   padding:50px;
@@ -25,3 +25,11 @@
 }
 
 
+//SMARTPHONE --------------- SMARTPHONE ---------------  // 
+@media screen and (max-width: 500px) {
+  .cgu-page {
+    padding-top:150px;
+    width:100%;
+    margin-top:0em;   
+  } 
+}

@@ -16,7 +16,9 @@ import {
   CHANGE_URL,
   SAVE_ONE_DEAL,
   ADD_DEAL_SUMIT_FORM,
-  TOGGLE_SEARCH_GAME,// POP UP SEARCH GAME
+  SEARCH_GAME,
+  SEARCH_GAME_HEADER,
+  TOGGLE_SEARCH_GAME, // POP UP SEARCH GAME
 } from '../actions/deal';
 
 // ici on initialise le state
@@ -42,6 +44,7 @@ const initialState = {
 
   searchGame: {
     isSearchGame: false, // est-ce que l'encart suggérer un jeu est ouvert ?
+    SearchBar: '',
   },
 };
 
@@ -176,13 +179,18 @@ function reducer(state = initialState, action = {}) {
           ...state.addDealForm,
           isAddGame: !state.addDealForm.isAddGame,
         },
-      }
+      };
     case SAVE_ONE_DEAL:
       return {
         ...state,
         activeDeal: action.oneDeal.deal,
       };
-
+    //CHAMP CONTROLE DE LA RECHERCHE DANS LE HEADER
+    case SEARCH_GAME_HEADER:
+      return {
+        ...state,
+          SearchBar: action.SearchBar,
+      };
     default:
       return state;
   }
