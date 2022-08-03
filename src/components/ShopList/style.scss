@@ -1,13 +1,13 @@
 @use 'src/styles/vars';
 
-
 .pseudo-body{
-   //60
-  width: 60%;
-  max-width: 100%;
-  margin:auto;
-  margin-top:2em;
+  //60
+ width: 60%;
+ max-width: 100%;
+ margin:auto;
+ 
 }
+
  
 .shop-card{
   
@@ -158,8 +158,6 @@ width: 25%;
   .pseudo-body {
     padding-top:150px;
     width:100%;
-    
-
   } 
 
   .shop-card{border-radius:0px; }

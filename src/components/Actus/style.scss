@@ -1,8 +1,5 @@
 @use 'src/styles/vars';
 
-
- 
-
 .card-main {
   border: solid 1px vars.$mainPink;
   border-radius: 0.5rem;
@@ -73,10 +70,6 @@
 
 @media screen and (max-width: 1200px) {
 
-  .pseudo-body {
-    width: 60%;
-    margin: 4% auto 0 auto;
-  }
 
   .Title-big {
     font-weight: 600;
@@ -88,10 +81,7 @@
 
 @media screen and (max-width: 780px) {
 
-  .pseudo-body {
-    width: 80%;
-    margin: 4% auto 0 auto;
-  }
+
 
   .menu-page {
     margin: 2rem auto 0 auto;
@@ -104,15 +94,7 @@
 //Les tablettes ---------------------------------------------------------
 @media screen and (max-width: 600px) {
 
-  .pseudo-body {
-    width: 80%;
-    margin: 4% auto 0 auto;
-  }
-
-  .pseudo-body {
-    width: 90%;
-    margin: 2% auto 0 auto;
-  }
+  
 
   .card-main {
     border: solid 1px vars.$mainPink;

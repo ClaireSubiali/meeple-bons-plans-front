@@ -54,10 +54,13 @@ function DealCard({
             <div className="mainTitleDeal"> <Link to={`/bon-plan/${id}`}>{title}</Link></div>
             <div className="secondaryTitleDeal">{game.category.name}<span className="shop"> | {shop.name}</span></div>
           </div>
-          <div className="deal-label">
-            <div className="discount">-{percentage}%</div>
-            <div className="price">{(reducedPrice).toFixed(2)}€</div>
-          </div>
+          {(reducedPrice === 0 ? '' : (
+            <div className="deal-label">
+              <div className="discount">-{percentage}%</div>
+              <div className="price">{(reducedPrice).toFixed(2)}€</div>
+            </div>
+          ))}
+          
         </div>
         <Link to={`/bon-plan/${id}`}>
           <div className="main-deal">
