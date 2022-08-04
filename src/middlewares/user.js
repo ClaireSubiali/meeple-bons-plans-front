@@ -61,7 +61,10 @@ const userMiddleware = (store) => (next) => (action) => {
           // store.dispatch(saveDeal(response.data));
           console.log('Response API', response);
           console.log('jusqu ici tout va bien');
-          alert('Compte bien crée');
+          store.dispatch(setPopupMessage('Compte bien créé, vous pouvez désormais vous connecter'));
+          setTimeout(() => {
+            store.dispatch(setPopupMessage(''))
+          }, 3800);
           
           location.replace('/');
           
@@ -96,7 +99,7 @@ const userMiddleware = (store) => (next) => (action) => {
           // store.dispatch(saveDeal(response.data));
           console.log('Response API suite au vote', response);
           
-          alert('Vote pris en compte');
+          
           window.location.reload();
           
           
@@ -143,7 +146,7 @@ const userMiddleware = (store) => (next) => (action) => {
           store.dispatch(saveUser(email, 'currentUserEmail'));
           store.dispatch(toggleIsLogged());
           store.dispatch(toggleVisibility('isLoginVisible'));
-          alert('Connexion réussie');
+         
           //je charge et sauvegarde les données de l'utilisateur:
           store.dispatch(fetchUserWithMail());
         },
@@ -184,6 +187,11 @@ const userMiddleware = (store) => (next) => (action) => {
           store.dispatch(saveUser(response.data.id, 'currentUserId'));
           store.dispatch(saveUser(response.data.name, 'currentUserPseudo'));
           store.dispatch(saveUser(response.data.avatar_image, 'userAvatar'));
+
+          store.dispatch(setPopupMessage(`Bienvenue ${response.data.name} sur MEEPLE Bons plans !`));
+          setTimeout(() => {
+            store.dispatch(setPopupMessage(''))
+          }, 3800);
           
         },
       )

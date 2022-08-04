@@ -33,7 +33,7 @@ import {
   addNewGame, //<-----------------
 } from '../../actions/deal';
 
-import { toggleVisibility } from '../../actions/user';
+import { toggleVisibility, setPopupMessage } from '../../actions/user';
 
 // == Composant
 function AddDeal() {
@@ -133,7 +133,8 @@ function AddDeal() {
     //ajout de nouveau jeu
   const handleSubmitGame = (event) => {
     event.preventDefault();
-    dispatch(addNewGame());}
+    dispatch(addNewGame());
+    };
 
   const handleChangeGame = (event) => {
     const inputAddGame = event.currentTarget.value;

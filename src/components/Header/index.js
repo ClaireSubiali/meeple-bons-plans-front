@@ -18,6 +18,8 @@ import {
   fetchLogin,
   disconnect,
   changeFieldValueLoginSettings,
+  setPopupMessage,
+
 } from '../../actions/user';
 
 import {
@@ -48,6 +50,7 @@ function Header() {
     password,
     temporaryMessage,
     isProfileVisible,
+
   } = useSelector((state) => state.user.loginSettings);
 
   // Ici on vient extraire/récupérer les données situées dans le state avec useSelector
@@ -62,6 +65,7 @@ function Header() {
   console.log('CONSOLE LOG sur header', dealObjectTest.value);
   // Récupération du fact chuck norris d'essai pour l'appel API
   const dealObjectTest2 = dealObjectTest.value;
+
 
   // permet d'envoyer des données au state (avec les actions et reducer)
   // (useSelector = 'pull' du state (redux) // useDispatch = 'push_vers_state' // useEffect = permet de determiner une fonction a executer a un moment choisi)
@@ -95,9 +99,13 @@ function Header() {
    const handleDisconnect = () => {
     
     dispatch(disconnect());
-    console.log('deconnexion clear storage');
+    dispatch(setPopupMessage('Déconnexion en cours ... veuillez patienter ...'));
+    setTimeout(() => {
+      dispatch(setPopupMessage(''))
+    }, 3800);
     window.localStorage.clear();
-    window.location.reload();
+    window.location.reload(); 
+    
   };
 
   // Dispatch champs controlé search
@@ -182,7 +190,7 @@ function Header() {
          />
       ) : ''}
        {/* ---------- POPUP GENERIQUE ---------- */}
-      <div className={(popupMessage === '') ? "popupgen-none" : "popupgen"}>Je suis un texte de popup qui va changer en fonction de où je suis déclanché
+      <div className={(popupMessage === '') ? "popupgen-none" : "popupgen"}>{popupMessage}
       </div>
     </header>
   );

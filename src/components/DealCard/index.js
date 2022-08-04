@@ -41,24 +41,43 @@ function DealCard({
 
   const handleVoteFlame = () => {
     if(isUserLogged === false || isUserLogged === null){
-      alert('Merci de vous connecter pour voter');
+      dispatch(setPopupMessage('Merci de vous connecter pour pouvoir voter'));
+      setTimeout(() => {
+        dispatch(setPopupMessage(''))
+      }, 3800);
+      
     }else if(array.rightToVote === false){
-      alert('Vous ne pouvez pas voter deux fois sur le même bon plan');
+      dispatch(setPopupMessage('Vous ne pouvez pas voter deux fois sur le même bon plan'));
+      setTimeout(() => {
+        dispatch(setPopupMessage(''))
+      }, 3800);
     }else{
       dispatch(vote(1, id))
+      dispatch(setPopupMessage('Vote flamme bien pris en compte !'));
+      setTimeout(() => {
+        dispatch(setPopupMessage(''))
+      }, 3800);
       }};
 
   const handleVoteIce = () => {
     if(isUserLogged === false || isUserLogged === null){
-      console.log('Merci de vous connecter pour voter');
-      dispatch(setPopupMessage('Merci de vous connecter pour voter'));
-      // setTimeout(setPopupMessage(''),2);
+      dispatch(setPopupMessage('Merci de vous connecter pour pouvoir voter'));
+      setTimeout(() => {
+        dispatch(setPopupMessage(''))
+      }, 3800);
      
      
     }else if(array.rightToVote === false){
-      alert('Vous ne pouvez pas voter deux fois sur le même bon plan');
+      dispatch(setPopupMessage('Vous ne pouvez pas voter deux fois sur le même bon plan'));
+      setTimeout(() => {
+        dispatch(setPopupMessage(''))
+      }, 3800);
     }else{
       dispatch(vote(-1, id))
+      dispatch(setPopupMessage('Vote glaçon bien pris en compte !'));
+      setTimeout(() => {
+        dispatch(setPopupMessage(''))
+      }, 3800);
       }};
   
 

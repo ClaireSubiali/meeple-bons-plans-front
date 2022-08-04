@@ -51,8 +51,9 @@ function SignIn() {
   };
   const handleAvatarColor = (event) => {
    const selectedValue = event.currentTarget.value;
+   console.log('TEEEEEEEEEST');
     if (selectedValue === "0") {
-      const randomValue = Math.floor(Math.random() * (max - min + 1)) + min;
+      const randomValue = Math.floor(Math.random() * (10 - 1 + 1)) + 1;
       console.log('valeur aléatoire d\'avatar: ', randomValue);
       const avatarID = parseInt(randomValue, 10);
       dispatch(changeFieldValueCreateAccount(avatarID, 'avatarColor'));
@@ -98,9 +99,10 @@ function SignIn() {
           <span className="form-msg-error">{(createPassword!=='')?((createPassword === confirmPassword) ? 'Bravo, tu as saisi deux fois le même mot de passe ! FELICITATIONS pour cet exploit !!!' : 'Les mots de passe saisis ne sont pas identiques... BOUUUUUH !!!'):'Merci de saisir un mot de passe'}</span>
         </div>
         {/* ---------- GESTION CHOIX COULEUR DE L'AVATAR ----------- */}
-        <label className="form-secondarytitle" htmlFor="register-avatar">AVATAR - choisissez la couleur dans le menu déroulant</label>
-        <select className="form-input" name="avatars" id="meeple-select" value={avatarColor} onChange={handleAvatarColor}>
-          <option value="0">Aléatoire</option>
+        <label className="form-secondarytitle" htmlFor="register-avatar">AVATAR</label>
+        <select className="form-input" name="avatars" id="meeple-select" value={avatarColor} onChange={handleAvatarColor}>   
+          <option value="" disabled className="choiceWhite choice">--- Choisissez votre couleur ---</option>
+          <option value="0"> &#127922; Aléatoire &#x1F3B2;</option>       
           <option value="10"className="choiceWhite choice">Jaune</option>
           <option value="4" className="choice">Orange</option>
           <option value="7" className="choiceWhite choice">Rouge</option>
@@ -110,7 +112,8 @@ function SignIn() {
           <option value="8" className="choiceWhite choice">Turquoise</option>
           <option value="3" className="choice">Vert</option>
           <option value="1" className="choiceWhite choice">Noir</option>
-          <option value="9" className="choice">Blanc</option>                 
+          <option value="9" className="choice">Blanc</option>
+                          
         </select>
         <div className="button-register-div">
           { <button type="submit"  className="form-button-validate SignIn-button">Je m'inscris</button> }

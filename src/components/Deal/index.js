@@ -18,7 +18,7 @@ import avatar from '../../assets/img/m-orange.png';
 // import { findDeal } from '../selectors/deal';
 import { fetchOneDeal, addComment, saveComment } from '../../actions/deal';
 import Comment from './Comment';
-import { toggleVisibility } from '../../actions/user';
+import { toggleVisibility, setPopupMessage} from '../../actions/user';
 import { arrayOfResults } from '../selectors/deal';
 
 // == Composant
@@ -89,6 +89,12 @@ function Deal() {
 
   const handleSendComment = (event) => {
     event.preventDefault();
+    if(userComment === ''){
+      dispatch(setPopupMessage('N\'oubliez pas d\'écrire votre commentaire avant de l\'envoyer ;)'));
+      setTimeout(() => {
+        dispatch(setPopupMessage(''))
+      }, 3800);
+    }else
     dispatch(saveComment(userComment));
   };
   

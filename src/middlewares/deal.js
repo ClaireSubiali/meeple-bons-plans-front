@@ -21,7 +21,7 @@ import {
   saveNews,
   
 } from '../actions/deal';
-import { disconnect } from '../actions/user';
+import { disconnect, setPopupMessage } from '../actions/user';
 
 /* IMAGE POUR COMPRENDRE => le middlewares est un SAVANT qui sait tout (connecté a l'api),
 Le reducer est un ECRIVIAN qui est le seul a detenir un manuscrit (le stat),
@@ -67,7 +67,10 @@ const dealMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           console.log('Response API envoi de nouveau jeu', response.data);
           // On envoie le resultat de la requête au reducer qui sera chargé de l'ecriture
-          alert('Suggestion de jeu bien envoyée');
+          store.dispatch(setPopupMessage('Votre suggestion de jeu est bien enregistrée, merci de votre contribution !'));
+          setTimeout(() => {
+          store.dispatch(setPopupMessage(''))
+    }, 3800);
           store.dispatch(ToggleAddGame());
           store.dispatch(OnChangeGame(''));
           store.dispatch(OnChangeUrl(''));
@@ -201,7 +204,10 @@ const dealMiddleware = (store) => (next) => (action) => {
           console.log("Passage dans l'ajout de bon plan dans dealMiddleware", response.data);
           // On envoie le resultat de la requete au reducer qui sera chargé de l'ecriture
           // store.dispatch(saveFromAddDeal(response.data));
-          alert('Bon plan bien crée');
+          store.dispatch(setPopupMessage('Bon plan envoyé !'));
+          setTimeout(() => {
+          store.dispatch(setPopupMessage(''))
+          }, 3800);
 
           location.replace('/');
         })
