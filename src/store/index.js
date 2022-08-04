@@ -6,6 +6,7 @@ import reducer from '../reducers';
 import dealMiddleware from '../middlewares/deal';
 import userMiddleware from '../middlewares/user';
 
+
 // permet d'utiliser les react dev tool sur le localhost
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 

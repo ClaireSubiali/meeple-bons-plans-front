@@ -51,6 +51,8 @@ margin:0.5em;
 color:rgb(255, 123, 0);
 }
 
+
+
 .icone-degree {
 display:flex;
 flex-direction: row;
@@ -62,9 +64,40 @@ align-self: center;
 height: 25px;
 }
 
+.flamme:hover {
+    /* Start the shake animation and make the animation last for 0.5 seconds */
+  animation: shake 0.5s;
+   /* When the animation is finished, start again */
+   animation-iteration-count: infinite;
+  }
+  @keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+  }
+
 .icecube {
 height: 20px; 
+transition: width 2s, height 2s, background-color 2s, transform 2s;
 }
+
+.icecube:hover {
+  height: 18px; 
+  transform: rotate(180deg);
+  }
+
+  .btn-vote {
+    border-style : none;
+    background-color:transparent;
+  }
 
 .right-deal {
   margin-left:1em;
@@ -150,7 +183,7 @@ margin:0;
 padding:0;
 }
 
-.display-none {display:none;}
+
 
 /*.fb-icon {
 margin:0;

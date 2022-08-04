@@ -319,3 +319,23 @@ export function saveShops(shopList) {
   };
 }
 
+// Action Type => On l'utilise dans l'action creator ET dans le reducer
+export const NEW_GAME = 'NEW_GAME';
+
+// Action creator => On l'utilise au moment du dispatch()
+export function addNewGame() {
+  return {
+    type: NEW_GAME,    
+  };
+}
+
+// Reception des acticles (actus)
+export const FETCH_NEWS = 'FETCH_NEWS';
+
+// Action creator => On l'utilise au moment du dispatch()
+export function fetchNews(newsList) {
+  return {
+    type: FETCH_SHOPS,
+    newsList,
+  };
+}

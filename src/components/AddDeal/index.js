@@ -29,7 +29,8 @@ import {
   searchGame,
   ToggleSearchGame,
   clearConcernAGameFields,
-  changeWarningMessage, //<-----------------
+  changeWarningMessage,
+  addNewGame, //<-----------------
 } from '../../actions/deal';
 
 import { toggleVisibility } from '../../actions/user';
@@ -129,8 +130,10 @@ function AddDeal() {
   const handleClickToggleAddGame = () => {
     dispatch(ToggleAddGame());}
 
-  const handleSubmitGame = () => {
-    dispatch(handleSubmitGame());}
+    //ajout de nouveau jeu
+  const handleSubmitGame = (event) => {
+    event.preventDefault();
+    dispatch(addNewGame());}
 
   const handleChangeGame = (event) => {
     const inputAddGame = event.currentTarget.value;
@@ -149,6 +152,7 @@ function AddDeal() {
       dispatch(changeWarningMessage('Merci d\'ajouter le jeu correspondant au bon plan'));
     }else {
       dispatch(fetchFromAddDeal());
+      dispatch(ToggleAddGame())
     }
   };
 
@@ -231,9 +235,13 @@ function AddDeal() {
             <label className="form-secondarytitle" htmlFor="deal-vendor">VENDEUR</label>
             <select required className="form-input" id="deal-vendor" value={dealVendor} onChange={handleChangeVendor}>
               <option disabled value="">---Choisissez un vendeur---</option>
-              {shopList.map((shop) => (
-                <option key={shop.id} value={shop.id}>{shop.name}</option>
-              ))}
+              {shopList.map((shop) => {
+                if(shop.id === 22){
+                  return
+                }else{
+                return(<option key={shop.id} value={shop.id}>{shop.name}</option>)}
+              })}
+              <option value="22">Autre boutique</option>
             </select>
           </div>
           <div className="adddeal-secondaryInfo">

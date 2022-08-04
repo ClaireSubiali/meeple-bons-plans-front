@@ -232,6 +232,23 @@ border-radius:0.5em;
   }
 }
 
+//TODO voir si on laisse ici ce code ou bien plus haut
+
+.promoCode {
+  background-size: contain;
+  border-radius:vars.$buttonRadius;
+  color:vars.$mainPink;
+  padding:10px;
+  border: 3px dotted vars.$secondaryBlue;
+  font-weight:bold;
+  margin-right:0.5em;
+  background-color:grey;
+   
+    span {color:#000;}
+    
+}
+ 
+
 
 
  //SMARTPHONE --------------- SMARTPHONE ---------------  // 
@@ -250,8 +267,18 @@ border-radius:0.5em;
   }
  
   //display NONE  left dealpicture and degree
-  .displayleftdeal {display:none;}
-   
+  // .displayleftdeal {display:none;}
+  .picture-display-deal {display:none;}
+   .votedealdetail {padding:20px;
+    display:flex;
+  align-items:center;}
+
+  .left-deal {
+    // display:flex;
+    // flex-direction: column;
+    justify-content: center;
+    padding:0em;
+    }
 
 }
 

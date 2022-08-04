@@ -98,7 +98,7 @@
   .card-shop-left{
     display: flex;
     flex-direction: column;
-    width: 100%;
+   width: 100%;
     }
 
     .img-shop{
@@ -132,29 +132,27 @@
     }
 
     .button-shop-detail{
-      width: 50%;
+      width: 100%;
       margin: 0 auto 1rem auto;
       background-color: vars.$mainBlue;
       font-weight: 600;
       font-size: 1rem;
       border-radius: 0.5rem;
       color: white;
+      margin-top:1em;
+    }
+
+    .contener-shop-footer {
+      display: flex;
+      flex-direction: column ;
+ 
     }
 } 
 
 //Les tablettes ------------------------------
 
 @media screen and (max-width: 660px) {
-
-  .button-shop-detail{
-    width: 50%;
-    margin: 0 auto 1rem auto;
-    background-color: vars.$mainBlue;
-    font-weight: 600;
-    font-size: 0.8rem;
-    border-radius: 0.5rem;
-    color: white;
-  }
+ 
 } 
 
 

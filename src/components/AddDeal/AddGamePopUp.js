@@ -36,7 +36,7 @@ function AddGamePopUp({
                           En attendant vous pouvez choisir de : <em>"Cochez si le bon plan ne concerne pas un jeu en particulier" </em>
               puis de mettre le nom du jeu en titre ainsi qu'un maximum d'informations dans la description.
               </p>
-          <button type="submit" onClick={SubmitGame} className="btn">Envoyer ma demande</button>
+          <button type="submit" className="btn">Envoyer ma demande</button>
            
         </form> 
       </div>

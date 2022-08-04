@@ -33,6 +33,7 @@ const initialState = {
   userComment: '',
   gameList: [],
   shopList: [],
+  newsList: [],
   choosedGame: '',
   warningMessage: '',
 
@@ -235,11 +236,13 @@ function reducer(state = initialState, action = {}) {
     case SEARCH_GAME_HEADER:
       return {
         ...state,
+        searchGame:{
+          ...state.searchGame,
           SearchBar: action.SearchBar,
+        }  
       };
     default:
       return state;
   }
 }
-
 export default reducer;

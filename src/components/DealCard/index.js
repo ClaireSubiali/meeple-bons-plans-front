@@ -3,6 +3,7 @@ import PropTypesLib from 'prop-types';
 import './style.scss';
 
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 // TODO == Import pour l'heure
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -10,6 +11,10 @@ import { faClock, faUpRightFromSquare, faComment, faInfo, faPlus } from '@fortaw
 
 import flameIcon from '../../assets/img/logo-flamme.svg';
 import iceCubeIcon from '../../assets/img/logo-icecube.svg';
+
+import { vote } from '../../actions/user';
+import { arrayOfResults } from '../selectors/deal';
+
 
 // == Composant
 function DealCard({
@@ -23,8 +28,10 @@ function DealCard({
   offerPrice: reducedPrice,
   user,
   status,
+  reviews,
 }) {
-
+  const { currentUserId } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
   //! BRICOLAGE
   let prixReduit = 0;
   if (reducedPrice !== null) {
@@ -34,8 +41,11 @@ function DealCard({
     const percentage = Math.round(-((prixReduit - game.price) / game.price) * 100);
     return percentage;
   };
-
+  console.log(id,'reviews', reviews);
+  const array = arrayOfResults(reviews, currentUserId)
   
+  console.log(id,'ArrayOfresults', array);
+
   const percentage = calcPercentage();
   let descriptionReformated = 'rien';
 
@@ -45,17 +55,25 @@ function DealCard({
     descriptionReformated = `${description.substring(0, 215)} ...`;
   }
   if(status === true) {
+  const handleVoteFlame = () => {
+  dispatch(vote(1, id))
+  };
+  
+  const handleVoteIce = () => {
+    dispatch(vote(-1, id))
+  };
+
   return (
     <div className="deal">
       <div className="left-deal">
         <Link to={`/bon-plan/${id}`}><img className="picture-deal picture-effect" src={game.image} alt="Bon plan" /></Link>
         <div className="vote display-none">
           <div className="icone-degree">
-            <img className="flamme" src={flameIcon} alt="Icone flamme" />
+            <button className="btn-vote" onClick={handleVoteFlame}type="button" aria-label='bouton glaçon (voter pour le bon plan)'><img className="flamme" src={flameIcon} alt="Icone flamme" /></button>
           </div>
-          <div className="degree">25°</div>
+          <div className="degree">{array.totalVote}°</div>
           <div className="icone-degree">
-            <img className="icecube" src={iceCubeIcon} alt="Icone glacon" />
+          <button className="btn-vote" onClick={handleVoteIce}type="button" aria-label='bouton flamme (voter contre le bon plan)'><img className="icecube" src={iceCubeIcon} alt="Icone glacon" /></button>
           </div>
         </div>
       </div>

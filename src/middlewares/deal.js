@@ -12,6 +12,12 @@ import {
   saveGameData,
   FETCH_SHOPS,
   saveShops,
+  NEW_GAME,
+  ToggleAddGame,
+  OnChangeGame,
+  OnChangeUrl,
+  FETCH_NEWS,
+  fetchNews,
 } from '../actions/deal';
 import { disconnect } from '../actions/user';
 
@@ -44,6 +50,32 @@ const dealMiddleware = (store) => (next) => (action) => {
         });
       return next(action);
     }
+    case NEW_GAME: {
+      const { newGame, urlGame } =state.deal.addDealForm;
+      axios.post('http://nedaudchristophe-server.eddi.cloud/meeple/current/public/api/new/game',
+      {
+        name: newGame,
+        url: urlGame,
+      },
+      {
+          headers: {
+            Authorization: `bearer ${token}`,
+          },
+        })
+        .then((response) => {
+          console.log('Response API envoi de nouveau jeu', response.data);
+          // On envoie le resultat de la requête au reducer qui sera chargé de l'ecriture
+          alert('Suggestion de jeu bien envoyée');
+          store.dispatch(ToggleAddGame());
+          store.dispatch(OnChangeGame(''));
+          store.dispatch(OnChangeUrl(''));
+          
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      return next(action);
+    }
     // RECHERCHE DE JEUX DEPUIS L'API POUR FORMULAIRE AJOUT DE BON PLAN
     case SEARCH_GAME: {
       const gameToSearch = action.searchedGame;
@@ -65,11 +97,7 @@ const dealMiddleware = (store) => (next) => (action) => {
       axios
         .get(
           `http://nedaudchristophe-server.eddi.cloud/meeple/current/public/api/deals/${action.dealId}`,
-          // {
-          //   headers: {
-          //     Authorization: `bearer ${token}`,
-          //   },
-          // }
+          
         )
         .then((response) => {
           // Ici on recup bien les données de notre API (les recettes)
@@ -85,6 +113,8 @@ const dealMiddleware = (store) => (next) => (action) => {
         });
       return next(action);
     }
+
+    //Reception des boutiques
     case FETCH_SHOPS: {
       axios
         .get('http://nedaudchristophe-server.eddi.cloud/meeple/current/public/api/shops')
@@ -96,6 +126,22 @@ const dealMiddleware = (store) => (next) => (action) => {
           console.log("Response API SHOPS", response.data);
           // On envoie le resultat de la requete au reducer qui sera chargé de l'ecriture
           store.dispatch(saveShops(response.data));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      return next(action);
+    }
+    //Reception des actus
+    case FETCH_NEWS: {
+      axios
+        .get('http://nedaudchristophe-server.eddi.cloud/meeple/current/public/api/articles')
+        .then((response) => {
+
+          console.log('coucou');
+          console.log("Response API NEWS", response.data);
+          // On envoie le resultat de la requete au reducer qui sera chargé de l'ecriture
+          store.dispatch(fetchNews(response.data));
         })
         .catch((error) => {
           console.log(error);
@@ -118,10 +164,13 @@ const dealMiddleware = (store) => (next) => (action) => {
         urlGame, // Manque le user ? ou mais il faudra le piocher ailleurs dans le state
       } = state.deal.addDealForm;
 
-      const { choosedGame } = state.deal.choosedGame;
+      const { choosedGame } = state.deal;
+      console.log('choosedgame', choosedGame);
       //
-      let gameID = 1;
-      if (!choosedGame === '') {
+      let gameID = 0;
+      if (choosedGame==='') {
+        gameID = 1;
+      }else {
         gameID = choosedGame[0].id;
       }
       //on doit récupérer l'id de l'utilisateur connecté 
@@ -196,10 +245,9 @@ const dealMiddleware = (store) => (next) => (action) => {
       return next(action);
     }
     // chercher un jeu depuis la barre de recherche
-    case SEARCH_GAME_HEADER: {
+    /*case SEARCH_GAME_HEADER: {
       axios
-        .get("http://nedaudchristophe-server.eddi.cloud/meeple/current/public/api/RoutBIDON", {
-          DataBidon: ARECUPERER,
+        .get("http://nedaudchristophe-server.eddi.cloud/meeple/current/public/api/deals", {
         }, {
           headers: {
             Authorization: `bearer ${token}`,
@@ -207,7 +255,9 @@ const dealMiddleware = (store) => (next) => (action) => {
         },
         )
       .then((response) => {
-          ICIONMANIPULELESDATA;
+        console.log('!!!!!!Response API récupération de tous les dedeals', response.data);
+          //ICIONMANIPULELESDATA;
+          store.dispatch(saveDeal(response.data));
           return next(action);
         })
         .catch((error) => {
@@ -215,7 +265,7 @@ const dealMiddleware = (store) => (next) => (action) => {
           return next(action);
         });
       return next(action);
-    }
+    }*/
     default:
       return next(action);
   }

@@ -23,8 +23,9 @@ import ShopList from '../ShopList';
 import Actus from '../Actus';
 
 // Actions Import 
-import { fetchDeal, fetchShops } from '../../actions/deal';
-import { SaveTokenInState, saveUser, saveIsLogged } from '../../actions/user';
+import { fetchDeal, fetchShops, fetchNews } from '../../actions/deal';
+import { SaveTokenInState, saveUser, saveIsLogged} from '../../actions/user';
+import { saveComment } from '../../actions/deal'
 
 // == Composant
 function App() {
@@ -36,7 +37,8 @@ function App() {
       // Pour ça, on va dispatcher une action (émettre l'intention de récupérer un fact/un dea)
 
       dispatch(fetchDeal());
-      dispatch(fetchShops());
+      dispatch(fetchShops());  
+      dispatch(fetchNews());    
       dispatch(SaveTokenInState(localStorage.getItem('TOKEN')));
       dispatch(saveUser(localStorage.getItem('UserEmail', 'currentUserEmail')));
       dispatch(saveIsLogged(localStorage.getItem('isUserLogged')));

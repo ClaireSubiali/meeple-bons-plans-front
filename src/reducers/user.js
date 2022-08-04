@@ -8,6 +8,7 @@ import {
   SAVE_IS_LOGGED,
   CLEAR_LOGIN,
   TOGGLE_IS_LOGGED,
+  VOTE,
 } from '../actions/user';
 
 // le initalstate sert a créer un state "vierge" qui sert modifier à chaque itération
@@ -19,6 +20,7 @@ const initialState = {
   isUserLogged: false,
   isAvatarVisible: false,
   token: '',
+  vote: '',
 
   loginSettings: {
     isProfileVisible: false,
@@ -106,6 +108,12 @@ function reducer(state = initialState, action = {}) {
       return {
         ...state,
         token: action.token,
+      };
+    case VOTE:
+      return {
+        ...state,
+        vote: action.value,
+        votedDeal: action.dealId,
       };
     case SAVE_USER:
       return {

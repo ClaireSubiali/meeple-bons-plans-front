@@ -29,9 +29,10 @@ function Deal() {
     () => {
       // On veut recup la liste des deal depuis l'API
       // Pour ça, on va dispatcher une action (émettre l'intention de charger les recettes)
+      //dispatch(saveComment(''));
       dispatch(fetchOneDeal(dealId));
     },
-    [dealId],
+    [],
   );
   const deal = useSelector((state) => state.deal.activeDeal);
   const userComment = useSelector((state) => state.deal.userComment);
@@ -42,8 +43,14 @@ function Deal() {
       <div className="loading">Loading&#8230;</div>
     );
   }
+
+  //! BRICOLAGE
+  let prixReduit = 0;
+  if (deal.offerPrice !== null) {
+    prixReduit = deal.offerPrice;
+  }
   const calcPercentage = () => {
-    const percentage = Math.round((deal.offerPrice * 100) / deal.game.price);
+    const percentage = Math.round(-((prixReduit - deal.game.price) / deal.game.price) * 100);
     return percentage;
   };
   const percentage = calcPercentage();
@@ -66,8 +73,8 @@ function Deal() {
       <div className="deal-detail-comments">
         <div className="deal detail-card">
           <div className="left-deal displayleftdeal">
-            <img className="picture-deal" src={deal.game.image} alt="Bon plan" />
-            <div className="vote display-none">
+            <img className="picture-deal picture-display-deal" src={deal.game.image} alt="Bon plan" />
+            <div className="vote display-none votedealdetail">
               <div className="icone-degree">
                 <img className="flamme" src={flameIcon} alt="Icone flamme" />
               </div>
@@ -84,21 +91,27 @@ function Deal() {
                 <div className="secondaryTitleDeal">Bon plan jeux de société<span className="shop"> | {deal.shop.name}</span></div>
                 <div className="secondaryTitleDeal">Posté par<span className="user"> {deal.user.name}</span></div>
               </div>
-              <div className="deal-label">
-                <div className="discount">-{percentage}%</div>
-                <div className="price">{(deal.offerPrice).toFixed(2)}€</div>
-              </div>
+              {(prixReduit === 0 ? '' : (
+            <div className="deal-label">
+              <div className="discount">-{percentage}%</div>
+              <div className="price">{(prixReduit).toFixed(2)}€</div>
+            </div>
+          ))}        
             </div>
             <div className="main-deal">
               <p className="deal-text">{deal.description}</p>
-            </div>
+            </div>  
+            <div className="promoCode"><span>CODE PROMO : </span> {deal.promoCode} </div>
             <div className="footer-deal shipping-member">
+            
               <p className="ship-deal"><FontAwesomeIcon icon={faTruckFast}></FontAwesomeIcon> 3.99€</p>
               <p className="footer-dealp">
-<button type="button" className="see-deal"><a href={deal.url} target="_blank" rel="noreferrer">Voir le bon plan</a>&ensp;<FontAwesomeIcon icon={faUpRightFromSquare} /></button>                
+                <button type="button" className="see-deal"><a href={deal.url} target="_blank" rel="noreferrer">Voir le bon plan</a>&ensp;<FontAwesomeIcon icon={faUpRightFromSquare} /></button>
+                              
               </p>
               {/*<p className="footer-deal-time"><span className="clock"><FontAwesomeIcon icon={faClock} /></span> il y a 15 minutes</p>*/}
             </div>
+            
           </div>
         </div>
         {/* ----------- AJOUT D'UN COMMENTAIRE ------------ */}

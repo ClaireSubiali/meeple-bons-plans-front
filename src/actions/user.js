@@ -177,3 +177,18 @@ export function saveUser(data, placeInState) {
     placeInState,
   };
 }
+
+// Action Type => On l'utilise dans l'action creator ET dans le reducer
+export const VOTE = 'VOTE';
+
+// Action creator => On l'utilise au moment du dispatch()
+export function vote(value, dealId) {
+  return {
+    type: VOTE,
+    value,
+    dealId,
+  };
+}
+
+
+

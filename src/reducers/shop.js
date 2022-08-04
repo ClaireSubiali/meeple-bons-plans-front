@@ -1,7 +1,11 @@
-
+import reducer from "./deal";
 
 const initalstate = {
- nameShop: '',
- descriptionShop: '',
- 
-}
+  /*nameShop: "",
+  imgShop: "",
+  descriptionShop: "",
+  adresseShop: "",
+  siteWebShop*/
+};
+
+// export default reducer;
