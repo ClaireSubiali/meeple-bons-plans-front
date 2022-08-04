@@ -28,6 +28,7 @@ function Team() {
               </div>
               <div className="card__side card__side--back">
                 <p>Dev Front</p>
+                <p>&#11201;</p>
                 <p>Product Owner</p>
               </div>
             </section>
@@ -42,6 +43,7 @@ function Team() {
 
               <div className="card__side card__side--back">
                 <p>Dev Front</p>
+                <p>&#11201;</p>
                 <p>Scrum Master</p>
               </div>
             </section>
@@ -55,6 +57,7 @@ function Team() {
               </div>
               <div className="card__side card__side--back">
                 <p>Dev Front</p>
+                <p>&#11201;</p>
                 <p>Lead Front</p>
               </div>
             </section>
@@ -68,6 +71,7 @@ function Team() {
               </div>
               <div className="card__side card__side--back">
                 <p>Dev Back</p>
+                <p>&#11201;</p>
                 <p>Lead Back</p>
               </div>
             </section>
@@ -80,6 +84,7 @@ function Team() {
               </div>
               <div className="card__side card__side--back">
                 <p> Dev Back</p>
+                <p>&#11201;</p>
                 <p>Git Master</p>
               </div>
             </section>

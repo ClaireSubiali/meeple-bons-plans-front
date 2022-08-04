@@ -59,6 +59,7 @@ border-radius:0.5em;
 .form-input:focus {
 background-color: #ddd;
   outline: none;
+  box-shadow:inset 0px 0px 2px 1px #00e1fa;
 }
 
 .form-secondarytitle {
@@ -165,4 +166,27 @@ background-color: #ddd;
 //SMARTPHONE --------------- SMARTPHONE ---------------  // 
 @media screen and (max-width: 425px) {
   .popupgen {width:320px;}
+}
+
+
+//DOC FOOTER
+.doc-title {
+  margin-bottom:2em;
+  text-align: center;
+  margin-left:0.5em;
+  font-weight: bold; 
+  font-size:2em;
+}
+
+.doc-secondarytitle {
+  margin-bottom:0.5em;
+  
+  font-weight: bold; 
+  font-size:1.2em;
+}
+
+
+
+.icon {
+  margin-right: 1rem;
 }

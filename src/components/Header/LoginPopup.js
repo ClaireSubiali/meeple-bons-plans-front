@@ -54,6 +54,7 @@ function LoginPopup({
           <div className="login_error">{temporaryMessage}</div>
           <button type="submit" className="btn" onSubmit={SubmitLogin}>Se connecter</button>
           {/* <div className="lost_password">Mot de passe oublié?</div> */}
+          <div className="or"> OU </div>
           <Link to="/inscription"><button type="button" className="btn register" onClick={handleToggleLogin}>S'inscrire</button></Link>
         </form>
       </div>

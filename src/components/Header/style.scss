@@ -435,8 +435,7 @@ a {
 }
 
 .profile-popup:hover {
-  box-shadow: 1px 2px 2px 2px vars.$mainPinkAlternate;
-  
+  box-shadow: 0px 0px 5px 2px vars.$mainPinkAlternate;
 }
 
 
@@ -580,6 +579,13 @@ a {
   width: 100%;
 }
 
+.or {
+  padding:0.2em;
+  color:#333333;
+  font-size:1em;
+  margin-bottom:0.2em;
+  }
+
 /* Masquez la forme Popup */
 .form-popup {
   /*display: none;*/
@@ -619,6 +625,7 @@ a {
   margin: 5px 0 22px 0;
   border: none;
   background: #eee;
+  border-radius:vars.$buttonRadius;
 }
 
 /* Quand les entrées sont concentrées, faites quelque chose */
@@ -626,7 +633,10 @@ a {
 .form-container input[type="password"]:focus {
   background-color: #ddd;
   outline: none;
+  box-shadow:inset 0px 0px 2px 1px #00e1fa;
 }
+
+
 
 
 /* Stylez le bouton de connexion */

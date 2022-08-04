@@ -10,13 +10,13 @@ import { faFileContract } from '@fortawesome/free-solid-svg-icons';
 function CGU() {
   return (
     <div className="cgu-page">
-      <h1 className="title"><FontAwesomeIcon icon={faFileContract} className="icon" />  Conditions générales d'utilisation</h1>
-      <h2>PROPRIÉTÉ INTELLECTUELLE</h2>
+      <div className="doc-title"><FontAwesomeIcon icon={faFileContract} className="icon" />  Conditions générales d'utilisation</div>
+      <div className="doc-secondarytitle">PROPRIÉTÉ INTELLECTUELLE</div>
       <p>Tout contenu publié et mis à disposition sur ce site est la propriété de MEEEPLE BONS PLANS et de ses créateurs. Cela comprend, mais n'est pas limité aux images, textes, logos, documents, fichiers téléchargeables et tout ce qui contribue à la composition du site.
       </p>
       <br />
 
-      <h2>CONTRIBUTIONS D'UTILISATEURS</h2>
+      <div className="doc-secondarytitle">CONTRIBUTIONS D'UTILISATEURS</div>
       <p>Les utilisateurs peuvent publier les informations suivantes sur notre site :
         <ul>
           <li>Des bons plans</li>
@@ -26,7 +26,7 @@ function CGU() {
       </p>
       <br />
 
-      <h2>COMPTES</h2>
+      <div className="doc-secondarytitle">COMPTES</div>
       <p>Lorsque vous créez un compte sur notre site, vous acceptez ce qui suit:
         <ul>
           <li>que vous êtes seul responsable de votre compte et de la sécurité et la confidentialité de votre compte, y compris les mots de passe ou les renseignements de nature délicate joints à ce compte, et</li>
@@ -36,7 +36,7 @@ function CGU() {
       </p>
       <br />
 
-      <h2>LIMITATION DE RESPONSABILITÉ</h2>
+      <div className="doc-secondarytitle">LIMITATION DE RESPONSABILITÉ</div>
       <p>MEEPLE BONS PLANS ou l'un de ses créateurs sera tenu responsable de tout problème découlant de ce site. Néanmoins MEEPLE BONS PLANS et ses créateurs ne seront pas tenus responsables de tout problème découlant de toute utilisation irrégulière de ce site.
        
       </p>

@@ -10,32 +10,32 @@ import { faFileLines } from '@fortawesome/free-solid-svg-icons';
 function LegalMentions() {
   return (
     <div className="legal-mentions-page">
-      <h1 className="title"><FontAwesomeIcon icon={faFileLines} className="icon" />  Mentions Légales</h1>
+      <div className="doc-title"><FontAwesomeIcon icon={faFileLines} className="icon" />  Mentions Légales</div>
       
-      <h2>IDENTITÉ</h2>
+      <div className="doc-secondarytitle">IDENTITÉ</div>
       <p>
-      <ul>
-        <li>Nom du site web : MEEPLE BONS PLANS</li>
-        Adresse : https://meeplebonsplans.fr/
-        <li>Propriétaire : Lorem Ipsum</li>
-        <li>Responsable de publication : Lorem Ipsum</li>
-        <li>Adresse : Lorem Ipsum</li>
-        <li>Contact : contact@meeplebonsplans.fr</li>
-        <li>Conception et réalisation : L'équipe MEEPLE</li>
-        <li>SIRET : 5*9*8*8*8*8*8*8*</li>
-        <li>Hébergement : Lorem Impsum</li>
+        <ul>
+          <li>Nom du site web : MEEPLE BONS PLANS</li>
+          Adresse : https://meeplebonsplans.fr/
+          <li>Propriétaire : Lorem Ipsum</li>
+          <li>Responsable de publication : Lorem Ipsum</li>
+          <li>Adresse : Lorem Ipsum</li>
+          <li>Contact : contact@meeplebonsplans.fr</li>
+          <li>Conception et réalisation : L'équipe MEEPLE</li>
+          <li>SIRET : 5*9*8*8*8*8*8*8*</li>
+          <li>Hébergement : Lorem Impsum</li>
         </ul>
       </p>
       <br />
 
-      <h2>CONDITIONS D’UTILISATION</h2>
-      <p>
+      <div className="doc-secondarytitle">CONDITIONS D’UTILISATION</div>
+        <p>
       L’utilisation du présent site implique l’acceptation pleine et entière des conditions générales d’utilisation décrites ci-après. 
 Ces conditions d’utilisation sont susceptibles d’être modifiées ou complétées à tout moment.
-      </p>
+       </p>
       <br />
 
-      <h2>INFORMATIONS</h2>
+      <div className="doc-secondarytitle">INFORMATIONS</div>
       <p>
       Les informations et documents du site sont présentés à titre indicatif, n’ont pas de caractère exhaustif, et ne peuvent engager la responsabilité du propriétaire du site.
 
@@ -43,7 +43,7 @@ Le propriétaire du site ne peut être tenu responsable des dommages directs et 
       </p>
 
       <br />
-      <h2>INTERACTIVITÉ</h2>
+      <div className="doc-secondarytitle">INTERACTIVITÉ</div>
       <p>
       Les utilisateurs du site peuvent y déposer du contenu, apparaissant sur le site dans des espaces dédiés (notamment via les commentaires). Le contenu déposé reste sous la responsabilité de leurs auteurs, qui en assument pleinement l’entière responsabilité juridique.
 
@@ -51,7 +51,7 @@ Le propriétaire du site se réserve néanmoins le droit de retirer sans préavi
       </p>
 
       <br />
-      <h2>PROPRIÉTÉ INTELLECTUELLE</h2>
+      <div className="doc-secondarytitle">PROPRIÉTÉ INTELLECTUELLE</div>
       <p>
       Sauf mention contraire, tous les éléments accessibles sur le site (textes, images, graphismes, logo, icônes, sons, logiciels, etc.) restent la propriété exclusive de leurs auteurs, en ce qui concerne les droits de propriété intellectuelle ou les droits d’usage. 1
 
@@ -63,7 +63,7 @@ Les marques et logos reproduits sur le site sont déposés par les sociétés qu
       </p>
 
       <br />
-      <h2>LIENS</h2>
+      <div className="doc-secondarytitle">LIENS</div>
       <p>
       Liens sortants Le propriétaire du site décline toute responsabilité et n’est pas engagé par le référencement via des liens hypertextes, de ressources tierces présentes sur le réseau Internet, tant en ce qui concerne leur contenu que leur pertinence.
 
@@ -73,7 +73,7 @@ tout risque de confusion entre le site citant et le propriétaire du site ainsi 
       </p>
 
       <br />
-      <h2>CONFIDENTIALITÉ</h2>
+      <div className="doc-secondarytitle">CONFIDENTIALITÉ</div>
       <p>
       Tout utilisateur dispose d’un droit d’accès, de rectification et d’opposition aux données personnelles le concernant, en effectuant sa demande écrite et signée, accompagnée d’une preuve d’identité. 5678
 

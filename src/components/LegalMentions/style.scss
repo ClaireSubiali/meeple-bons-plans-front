@@ -1,11 +1,6 @@
 @use 'src/styles/vars';
 
-.title {
-  margin-bottom:1em;
-  text-align: center;
-  margin-left:0.5em;
-  font-weight: bold; 
-}
+ 
 .legal-mentions-page {
   width:60%;
   display:flex;
@@ -17,12 +12,14 @@
   margin-top:2rem;
   border-radius: vars.$buttonRadius;
   box-shadow: 5px 3px 5px rgb(163, 163, 163);
+  margin-bottom:3.5rem;
 }
 
-.icon {
-  margin-right: 1rem;
-
+.legal-mentions-page p{
+  
+  margin-bottom:30px;
 }
+ 
 
 //SMARTPHONE --------------- SMARTPHONE ---------------  // 
 @media screen and (max-width: 500px) {
