@@ -218,8 +218,9 @@ export const SEARCH_GAME_HEADER = 'SEARCH_GAME_HEADER';
 export function searchGameNav(searchedGameHeader) {
   return {
     type: SEARCH_GAME_HEADER,
-    searchedGameHeader,
+    search: searchedGameHeader,
   };
+  console.log('cest a moi que tu parles ?');
 }
 
 export const SEARCH_GAME = 'SEARCH_GAME';
@@ -230,6 +231,7 @@ export function searchGame(searchedGame) {
     type: SEARCH_GAME,
     searchedGame,
   };
+ 
 }
 
 // Action Type => On l'utilise dans l'action creator ET dans le reducer
@@ -333,9 +335,18 @@ export function addNewGame() {
 export const FETCH_NEWS = 'FETCH_NEWS';
 
 // Action creator => On l'utilise au moment du dispatch()
-export function fetchNews(newsList) {
+export function fetchNews() {
   return {
-    type: FETCH_SHOPS,
-    newsList,
+    type: FETCH_NEWS,    
+  };
+}
+// Action Type => On l'utilise dans l'action creator ET dans le reducer
+export const SAVE_NEWS = 'SAVE_NEWS';
+
+// Action creator => On l'utilise au moment du dispatch()
+export function saveNews(data) {
+  return {
+    type: SAVE_NEWS,
+    data,
   };
 }

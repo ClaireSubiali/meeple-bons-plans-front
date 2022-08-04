@@ -190,5 +190,29 @@ export function vote(value, dealId) {
   };
 }
 
+// Action Type => On l'utilise dans l'action creator ET dans le reducer
+export const DISPLAY_POPUP = 'DISPLAY_POPUP';
+
+// Action creator => On l'utilise au moment du dispatch()
+export function displayPopup(message) {
+  return {
+    type: DISPLAY_POPUP,
+    message,
+  };
+}
+
+// Action Type => On l'utilise dans l'action creator ET dans le reducer
+export const SET_POPUP_MESSAGE = 'SET_POPUP_MESSAGE';
+
+// Action creator => On l'utilise au moment du dispatch()
+export function setPopupMessage(message) {
+  return {
+    type: SET_POPUP_MESSAGE,
+    message,
+  };
+}
+
+
+
 
 

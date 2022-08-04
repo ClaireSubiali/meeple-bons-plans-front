@@ -23,7 +23,8 @@ import {
   SAVE_CHOOSED_GAME,
   CLEAR_STATE_CONCERN_GAME,
   WARNING_MESSAGE,
-  SAVE_SHOPS, // POP UP SEARCH GAME
+  SAVE_SHOPS,
+  SAVE_NEWS, // POP UP SEARCH GAME
 } from '../actions/deal';
 
 // ici on initialise le state
@@ -197,6 +198,11 @@ function reducer(state = initialState, action = {}) {
         ...state,
         shopList: action.shopList,
       };
+      case SAVE_NEWS:
+      return {
+        ...state,
+        newsList: action.data,
+      };
     case SAVE_GAME_LIST:
       return {
         ...state,
@@ -238,8 +244,8 @@ function reducer(state = initialState, action = {}) {
         ...state,
         searchGame:{
           ...state.searchGame,
-          SearchBar: action.SearchBar,
-        }  
+          SearchBar: action.search,
+        },
       };
     default:
       return state;

@@ -41,6 +41,8 @@
   margin-left:0.5em;
 }
 
+.button-addgame:hover {background-color:#1ab9b9}
+
 .searchgame {
   display:flex;
   flex-direction: row;
@@ -60,6 +62,7 @@
   font-size: 0.8em;
   margin-left:0.5em;
 }
+.button-searchgame:hover {background-color: vars.$secondaryLightGrey;}
 
 .adddeal-info {
     display:flex;
@@ -133,3 +136,14 @@ li:hover{
   color:rgb(228, 0, 0);
 }
 
+
+.btn_validate_deal {
+    display:flex;
+    flex-direction: column;
+
+    span {
+      padding-top:0.5em;
+      color:rgb(228, 0, 0);
+
+}
+}

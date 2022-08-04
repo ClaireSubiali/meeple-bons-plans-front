@@ -18,6 +18,8 @@ import {
   OnChangeUrl,
   FETCH_NEWS,
   fetchNews,
+  saveNews,
+  
 } from '../actions/deal';
 import { disconnect } from '../actions/user';
 
@@ -141,7 +143,7 @@ const dealMiddleware = (store) => (next) => (action) => {
           console.log('coucou');
           console.log("Response API NEWS", response.data);
           // On envoie le resultat de la requete au reducer qui sera chargé de l'ecriture
-          store.dispatch(fetchNews(response.data));
+          store.dispatch(saveNews(response.data));
         })
         .catch((error) => {
           console.log(error);

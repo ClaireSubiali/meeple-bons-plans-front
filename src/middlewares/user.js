@@ -11,7 +11,10 @@ import {
   toggleIsLogged, 
   toggleVisibility,
   fetchUserWithMail,  
-  saveUser, } from '../actions/user';
+  saveUser,
+  DISPLAY_POPUP,
+  setPopupMessage,
+ } from '../actions/user';
 import { useNavigate } from "react-router-dom";
 import { Redirect } from 'react-router-dom';
 
@@ -107,6 +110,7 @@ const userMiddleware = (store) => (next) => (action) => {
           });
         return next(action);
     }
+    
     case FETCH_LOGIN: {
       const state = store.getState();
       const { email, password } = state.user.loginSettings;

@@ -19,6 +19,7 @@ import avatar from '../../assets/img/m-orange.png';
 import { fetchOneDeal, addComment, saveComment } from '../../actions/deal';
 import Comment from './Comment';
 import { toggleVisibility } from '../../actions/user';
+import { arrayOfResults } from '../selectors/deal';
 
 // == Composant
 function Deal() {
@@ -36,7 +37,7 @@ function Deal() {
   );
   const deal = useSelector((state) => state.deal.activeDeal);
   const userComment = useSelector((state) => state.deal.userComment);
-  const { isUserLogged, userAvatar } = useSelector((state) => state.user);
+  const { isUserLogged, userAvatar, currentUserId } = useSelector((state) => state.user);
   console.log('activedeal', deal);
   if (deal === '') {
     return (
@@ -49,6 +50,28 @@ function Deal() {
   if (deal.offerPrice !== null) {
     prixReduit = deal.offerPrice;
   }
+
+  const handleVoteFlame = () => {
+    if(isUserLogged === false || isUserLogged === null){
+      alert('Merci de vous connecter pour voter');
+    }else if(array.rightToVote === false){
+      alert('Vous ne pouvez pas voter deux fois sur le même bon plan');
+    }else{
+      dispatch(vote(1, id))
+      }};
+
+  const handleVoteIce = () => {
+    if(isUserLogged === false || isUserLogged === null){
+      alert('Merci de vous connecter pour voter');
+    
+    }else if(array.rightToVote === false){
+      alert('Vous ne pouvez pas voter deux fois sur le même bon plan');
+    }else{
+      dispatch(vote(-1, id))
+      }};
+      
+      const array = arrayOfResults(deal.reviews, currentUserId);   
+
   const calcPercentage = () => {
     const percentage = Math.round(-((prixReduit - deal.game.price) / deal.game.price) * 100);
     return percentage;
@@ -68,20 +91,20 @@ function Deal() {
     event.preventDefault();
     dispatch(saveComment(userComment));
   };
-
+  
   return (
       <div className="deal-detail-comments">
         <div className="deal detail-card">
           <div className="left-deal displayleftdeal">
             <img className="picture-deal picture-display-deal" src={deal.game.image} alt="Bon plan" />
             <div className="vote display-none votedealdetail">
-              <div className="icone-degree">
-                <img className="flamme" src={flameIcon} alt="Icone flamme" />
-              </div>
-              <div className="degree">25°</div>
-              <div className="icone-degree">
-                <img className="icecube" src={iceCubeIcon} alt="Icone glacon" />
-              </div>
+            <div className="icone-degree">
+            {(array.flameIconIsVisible) ?<button className="btn-vote"  onClick={handleVoteFlame} type="button" aria-label='bouton glaçon (voter pour le bon plan)'><img className="flamme" src={flameIcon} alt="Icone flamme" /></button>:''}
+            </div>
+            <div className={(array.totalVote >= 0)?'degree' : 'degree negativ-temp'}>{array.totalVote}°</div>
+            <div className="icone-degree">
+            {(array.iceIconIsVisible) ?<button className="btn-vote" onClick={handleVoteIce} type="button" aria-label='bouton flamme (voter contre le bon plan)'><img className="icecube" src={iceCubeIcon} alt="Icone glacon" /></button>:''}
+            </div>
             </div>
           </div>
           <div className="right-deal">
@@ -101,7 +124,8 @@ function Deal() {
             <div className="main-deal">
               <p className="deal-text">{deal.description}</p>
             </div>  
-            <div className="promoCode"><span>CODE PROMO : </span> {deal.promoCode} </div>
+{(deal.promoCode===null) ? '' : (<div className="promoCode"><span>CODE PROMO : </span> {deal.promoCode} </div>)}            
+            
             <div className="footer-deal shipping-member">
             
               <p className="ship-deal"><FontAwesomeIcon icon={faTruckFast}></FontAwesomeIcon> 3.99€</p>

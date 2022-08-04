@@ -55,6 +55,7 @@ function Header() {
     isUserLogged,
     currentUserPseudo,
     userAvatar,
+    popupMessage,
   } = useSelector((state) => state.user);
   const dealObjectTest = useSelector((state) => state.deal.dealList);
 
@@ -96,11 +97,13 @@ function Header() {
     dispatch(disconnect());
     console.log('deconnexion clear storage');
     window.localStorage.clear();
+    window.location.reload();
   };
 
   // Dispatch champs controlé search
-  const handleInputSearch = () => {
-    dispatch(searchGameNav());
+  const handleInputSearch = (event) => {
+    const searchedGameHeader = event.currentTarget.value;
+    dispatch(searchGameNav(searchedGameHeader));
   };
 
   /* ---------- HANDLER GENERAUX AVEC PLUSIEURS UTILITES ---------- */
@@ -178,6 +181,9 @@ function Header() {
           Disconnect={handleDisconnect}
          />
       ) : ''}
+       {/* ---------- POPUP GENERIQUE ---------- */}
+      <div className={(popupMessage === '') ? "popupgen-none" : "popupgen"}>Je suis un texte de popup qui va changer en fonction de où je suis déclanché
+      </div>
     </header>
   );
 }

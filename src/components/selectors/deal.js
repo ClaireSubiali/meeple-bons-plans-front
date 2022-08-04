@@ -40,15 +40,14 @@ export function arrayOfResults( reviewList, userId) {
 
   // EST-CE QUE L'UTILISATEUR A DEJA VOTÉ ?
   const userVoteReview = reviewList.find(review => review.user.id == userId);
-
-  console.log('userVoteReview', userVoteReview);
-  let canVote = '';
-  if(userVoteReview === false) {
+  let canVote;
+  if (userVoteReview === undefined){
     canVote = true;
-  };
-  if(userVoteReview === true){
+  }else{
     canVote = false;
-  };
+  }
+  console.log('userVoteReview', userVoteReview);
+ 
 
   // Ajout du calcul dans le tableau de résultats :
   results.rightToVote = canVote; 

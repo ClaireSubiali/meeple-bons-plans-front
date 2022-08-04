@@ -93,6 +93,8 @@ header {
   margin-right: 10px;
 }
 
+#add-deal:hover {background-color: vars.$mainPinkAlternate;}
+
 #add-deal:after {
   content: "";
   background: vars.$mainPinkAlternate;
@@ -128,7 +130,7 @@ header {
   cursor: pointer;
 
 }
-
+#login:hover {background-color: vars.$mainPinkAlternate;}
 #login:after {
   content: "";
   background: vars.$mainPinkAlternate;
@@ -187,6 +189,10 @@ header {
   outline: unset;
   /*inherit*/
 }
+
+
+
+
 
 @media screen and (max-width: 1520px) {
 
@@ -395,6 +401,7 @@ a {
   margin-bottom: 10px;
   opacity: 0.8;
 }
+
 
 /* Stylez le bouton pour annuler */
 .form-container .cancel {
@@ -808,3 +815,24 @@ border-radius: 0;
 
 }
  
+.btn-log-disconnect {
+  border-radius:vars.$buttonRadius;
+  background-color: vars.$mainPink;
+  color: #FFFFFF;
+  font-weight: bold;
+  padding: 12px 20px;
+    
+  margin-bottom: 20px;
+  margin:auto;
+  border: none;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.btn-log-disconnect:hover {
+  background-color: vars.$mainPinkAlternate;
+}
+
+
+
+

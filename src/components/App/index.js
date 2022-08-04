@@ -48,6 +48,7 @@ function App() {
     },
     [],
   );
+  
   //<Route path="/Ici c'est le chemin de la page " element={<Le element correspond au composant />} />
   return (
     <div className="app">

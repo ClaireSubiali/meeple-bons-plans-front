@@ -86,10 +86,10 @@ function SignIn() {
           {/* ---------- GESTION PSEUDO ET MAIL---------- */}
           <label className="form-secondarytitle" htmlFor="register-title">PSEUDO</label>
           <input className="form-input" onChange={handleCreatePseudo} value={createPseudo} placeholder="Choisir un pseudo" type="text" />
-          <span className="form-msg-error">Ce pseudo n'est pas disponible</span>
+          {/*<span className="form-msg-error">Ce pseudo n'est pas disponible</span>*/}
           <label className="form-secondarytitle" htmlFor="register-mail">E-MAIL</label>
           <input className="form-input" onChange={handleCreateEmail} value={createMail} placeholder="Adresse Mail" type="email" />
-          <span className="form-msg-error">L'adresse mail n'est pas valide</span>
+          {/*<span className="form-msg-error">{(createMail.value == '@') ? ((createMail.value != '@') ? "L\'adresse mail n'est pas valide")}</span>*/}
           {/* ---------- GESTION MOT DE PASSE ----------- */}
           <label className="form-secondarytitle" htmlFor="register-psw">MOT DE PASSE</label>
           <input className="form-input" type="password" onChange={handleCreatePassword} value={createPassword} placeholder="Mot de passe" />

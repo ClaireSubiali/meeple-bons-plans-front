@@ -9,6 +9,7 @@ import {
   CLEAR_LOGIN,
   TOGGLE_IS_LOGGED,
   VOTE,
+  SET_POPUP_MESSAGE,
 } from '../actions/user';
 
 // le initalstate sert a créer un state "vierge" qui sert modifier à chaque itération
@@ -21,6 +22,7 @@ const initialState = {
   isAvatarVisible: false,
   token: '',
   vote: '',
+  popupMessage: '',
 
   loginSettings: {
     isProfileVisible: false,
@@ -59,6 +61,11 @@ function reducer(state = initialState, action = {}) {
       ...state,
       isUserLogged: !state.isUserLogged,
     };
+    case SET_POPUP_MESSAGE:
+      return {
+        ...state,
+        popupMessage: action.message,
+      };
     // PERMET DE CHANGER LA VALEUR D'UN CHAMP CONTROLE DANS LE SOUS TABLEAU LOGIN SETTINGS
     case CHANGE_FIELD_VALUE_LOGIN_SETTINGS:
       return {

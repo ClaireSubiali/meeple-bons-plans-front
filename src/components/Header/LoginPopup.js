@@ -53,7 +53,7 @@ function LoginPopup({
           <input type="password" onChange={handleChangePassword} id="psw" placeholder="Votre Mot de passe" name="psw" value={password} required />
           <div className="login_error">{temporaryMessage}</div>
           <button type="submit" className="btn" onSubmit={SubmitLogin}>Se connecter</button>
-          <div className="lost_password">Mot de passe oublié?</div>
+          {/* <div className="lost_password">Mot de passe oublié?</div> */}
           <Link to="/inscription"><button type="button" className="btn register" onClick={handleToggleLogin}>S'inscrire</button></Link>
         </form>
       </div>

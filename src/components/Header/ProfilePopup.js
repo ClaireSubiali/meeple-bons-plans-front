@@ -24,8 +24,8 @@ function ProfilePopup({
         <span>&ensp;{username}</span>
       </div>
       <div>
-        <button type="button" className="btn">Consulter mon profil</button>
-        <button type="button" className="btn" onClick={Disconnect}>Se déconnecter</button>
+        {/* <button type="button" className="btn">Consulter mon profil</button> */}
+        <button type="button" className="btn-log-disconnect" onClick={Disconnect}>Se déconnecter</button>
       </div>
     </div>
   );

@@ -250,7 +250,7 @@ function AddDeal() {
             <label className="form-secondarytitle display-none" htmlFor="deal-end">EXPIRE LE<span> (facultatif)</span></label>
             <input className="form-input display-none" type="date" id="deal-end" value={expirationDate} onChange={handleChangeExpirationDate} />
           </div>
-          <div className="button_div">
+          <div className="button_div btn_validate_deal">
             <button className="form-button-validate" type="submit">Envoyer</button>
             <span>{warningMessage}</span>
           </div>

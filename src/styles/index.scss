@@ -81,6 +81,11 @@ background-color: #ddd;
   font-size: 0.8em;
 }
 
+.form-button-validate:hover {
+  background-color: vars.$mainPinkAlternate;
+}
+
+
 .form-msg-error {
   // display:none;
   color:red;
@@ -120,5 +125,30 @@ background-color: #ddd;
 
 .display-none {display:none;}
 
+.popupgen-none {
+  display:none;}
 
+.popupgen {
+  box-shadow: 2px 2px 2px 2px #333;
+  position: absolute;
+  left:50%;
+  z-index:9;
+  background-color:white;
+  color:#333;
+  padding:50px;
+  font-weight: bold;
+  margin:auto;
+  text-align:center;
+  width:500px;
+  border-radius:10px;
+  opacity:100%;
+  animation-name:byepopup;
+  animation-duration: 4s;
+  animation-iteration-count: 1;
+  animation-delay: 5s;
+}
 
+@keyframes byepopup {
+  from { opacity:100%; }
+  to   { opacity:0%; }
+}
