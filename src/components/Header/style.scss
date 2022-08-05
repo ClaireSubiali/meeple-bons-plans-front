@@ -1,9 +1,5 @@
 @use 'src/styles/vars';
 
-
-
-
-
 /*! HEADER */
 header {
   /*width:100%;*/
@@ -12,7 +8,6 @@ header {
   width: 100%;
   z-index: 9;
   transition: 0.5s;
-
 }
 
 .scrollEffect {
@@ -190,15 +185,10 @@ header {
   /*inherit*/
 }
 
-
-
-
-
 @media screen and (max-width: 1520px) {
 
   .displaybutton {
     display: none;
-
   }
 
   #add-deal {
@@ -206,7 +196,6 @@ header {
     width: 40px;
     height: 40px;
     font-size: 1.2em;
-
   }
 
   #login {
@@ -232,7 +221,7 @@ nav {
 
 a {
   text-decoration: none;
-  transition: 0.5s;
+  // transition: 0.5s;
 }
 
 /*TOP NAVIGATION*/
@@ -320,8 +309,6 @@ a {
     display: none;
   }
 }
-
-
 
 /*! LOGIN */
 
@@ -431,17 +418,13 @@ a {
   top: 5%;
   transform: translate(-45%, 5%);
   z-index: 9;
-
 }
 
 .profile-popup:hover {
   box-shadow: 0px 0px 5px 2px vars.$mainPinkAlternate;
 }
 
-
-
 .profile-header {
-  
   display: flex;
   align-items: center;
   justify-content: center;
@@ -520,14 +503,11 @@ a {
   display: block;
 }
 
-
-
 @media screen and (max-width: 780px) {
   .nav-link {
     display: none;
   }
 }
-
 
 
 /*! LOGIN */
@@ -635,9 +615,6 @@ a {
   outline: none;
   box-shadow:inset 0px 0px 2px 1px #00e1fa;
 }
-
-
-
 
 /* Stylez le bouton de connexion */
 .form-container .btn {
@@ -847,4 +824,4 @@ border-radius: 0;
 
 
 
-.search {display:none;}
+

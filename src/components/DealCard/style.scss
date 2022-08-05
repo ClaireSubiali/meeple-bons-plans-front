@@ -28,9 +28,10 @@ max-width:150px;
 }
  
 
-.mainTitleDeal:hover {
+.TitleHoverPink:hover {
   color:vars.$mainPink;
 }
+ 
 
 .vote {
 display:flex;
@@ -282,7 +283,7 @@ font-size:1.2em;
   }
 
   .left-deal {
-    
+    margin-top:0.5em;
     margin-right:1em;
     margin-bottom:1em;
     

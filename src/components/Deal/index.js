@@ -5,20 +5,17 @@ import './style.scss';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClock, faUpRightFromSquare, faTruckFast } from '@fortawesome/free-solid-svg-icons';
+import { faUpRightFromSquare, faTruckFast } from '@fortawesome/free-solid-svg-icons';
 
 import flameIcon from '../../assets/img/logo-flamme.svg';
 import iceCubeIcon from '../../assets/img/logo-icecube.svg';
-import testImage from '../../assets/img/img-test.png';
 
-import avatar from '../../assets/img/m-orange.png';
 // import { findDeal } from '../selectors/deal';
 import { fetchOneDeal, addComment, saveComment } from '../../actions/deal';
 import Comment from './Comment';
-import { toggleVisibility, setPopupMessage} from '../../actions/user';
+import { toggleVisibility, setPopupMessage, vote} from '../../actions/user';
 import { arrayOfResults } from '../selectors/deal';
 
 // == Composant
@@ -30,7 +27,7 @@ function Deal() {
     () => {
       // On veut recup la liste des deal depuis l'API
       // Pour ça, on va dispatcher une action (émettre l'intention de charger les recettes)
-      //dispatch(saveComment(''));
+      // dispatch(saveComment(''));
       dispatch(fetchOneDeal(dealId));
     },
     [],
@@ -51,26 +48,49 @@ function Deal() {
     prixReduit = deal.offerPrice;
   }
 
+  const array = arrayOfResults(deal.reviews, currentUserId);   
+
   const handleVoteFlame = () => {
     if(isUserLogged === false || isUserLogged === null){
-      alert('Merci de vous connecter pour voter');
+      dispatch(setPopupMessage('Merci de vous connecter pour pouvoir voter'));
+      setTimeout(() => {
+        dispatch(setPopupMessage(''))
+      }, 3800);
+      
     }else if(array.rightToVote === false){
-      alert('Vous ne pouvez pas voter deux fois sur le même bon plan');
+      dispatch(setPopupMessage('Vous ne pouvez pas voter deux fois sur le même bon plan'));
+      setTimeout(() => {
+        dispatch(setPopupMessage(''))
+      }, 3800);
     }else{
-      dispatch(vote(1, id))
+      dispatch(vote(1, deal.id));
+      dispatch(setPopupMessage('Vote flamme bien pris en compte !'));
+      setTimeout(() => {
+        dispatch(setPopupMessage(''));
+      }, 3800);
       }};
 
   const handleVoteIce = () => {
     if(isUserLogged === false || isUserLogged === null){
-      alert('Merci de vous connecter pour voter');
-    
+      dispatch(setPopupMessage('Merci de vous connecter pour pouvoir voter'));
+      setTimeout(() => {
+        dispatch(setPopupMessage(''))
+      }, 3800);
+     
+     
     }else if(array.rightToVote === false){
-      alert('Vous ne pouvez pas voter deux fois sur le même bon plan');
+      dispatch(setPopupMessage('Vous ne pouvez pas voter deux fois sur le même bon plan'));
+      setTimeout(() => {
+        dispatch(setPopupMessage(''))
+      }, 3800);
     }else{
-      dispatch(vote(-1, id))
+      dispatch(vote(-1, deal.id))
+      dispatch(setPopupMessage('Vote glaçon bien pris en compte !'));
+      setTimeout(() => {
+        dispatch(setPopupMessage(''))
+      }, 3800);
       }};
       
-      const array = arrayOfResults(deal.reviews, currentUserId);   
 
   const calcPercentage = () => {
     const percentage = Math.round(-((prixReduit - deal.game.price) / deal.game.price) * 100);

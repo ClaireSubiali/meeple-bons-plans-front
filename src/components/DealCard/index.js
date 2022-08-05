@@ -118,7 +118,7 @@ function DealCard({
         <div className="right-deal">
           <div className="header-deal">
             <div className="title-deal">
-              <div className="mainTitleDeal"> <Link to={`/bon-plan/${id}`}>{title}</Link></div>
+              <div className="mainTitleDeal TitleHoverPink"> <Link to={`/bon-plan/${id}`}>{title}</Link></div>
               <div className="secondaryTitleDeal">{game.category.name}<span className="shop"> | {shop.name}</span></div>
             </div>
             {(prixReduit === 0 ? '' : (
