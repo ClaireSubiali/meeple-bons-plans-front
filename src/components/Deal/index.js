@@ -12,9 +12,9 @@ import { faUpRightFromSquare, faTruckFast } from '@fortawesome/free-solid-svg-ic
 import flameIcon from '../../assets/img/logo-flamme.svg';
 import iceCubeIcon from '../../assets/img/logo-icecube.svg';
 
-// import { findDeal } from '../selectors/deal';
-import { fetchOneDeal, addComment, saveComment } from '../../actions/deal';
 import Comment from './Comment';
+
+import { fetchOneDeal, addComment, saveComment } from '../../actions/deal';
 import { toggleVisibility, setPopupMessage, vote} from '../../actions/user';
 import { arrayOfResults } from '../selectors/deal';
 
